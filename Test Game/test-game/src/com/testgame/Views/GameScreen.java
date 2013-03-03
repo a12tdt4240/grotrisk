@@ -10,6 +10,9 @@ public class GameScreen extends AbstractScreen {
 		super(game);
 	}
 
+	/**
+	 * Updates and draws objects.
+	 **/
 	@Override
 	public void render(float delta) {
 		// touch brings main menu
@@ -17,13 +20,18 @@ public class GameScreen extends AbstractScreen {
 			game.setScreen(new MainMenuScreen(game));
 	}
 
+	/**
+	 * Called when this screen is set as the screen with game.setScreen();
+	 */
 	@Override
 	public void show() {
-		// called when this screen is set as the screen with game.setScreen();
 	}
 
+	/**
+	 * Called when the current screen changes from this to a different screen.
+	 * Remember to dispose objects.
+	 */
 	@Override
 	public void hide() {
-		// called when current screen changes from this to a different screen
 	}
 }

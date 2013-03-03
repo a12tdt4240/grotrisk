@@ -14,7 +14,7 @@ public class EndGameScreen extends AbstractScreen {
 	public void render(float delta) {
 		// update and draw stuff
 		if (Gdx.input.justTouched())
-			game.setScreen(game.mainMenuScreen);
+			game.setScreen(new MainMenuScreen(game));
 	}
 
 	@Override

@@ -1,48 +1,30 @@
 package com.testgame;
 
 import com.badlogic.gdx.ApplicationListener;
-import com.testgame.Views.EndGameScreen;
-import com.testgame.Views.GameScreen;
+import com.badlogic.gdx.Files.FileType;
+import com.badlogic.gdx.Gdx;
 import com.testgame.Views.MainMenuScreen;
-import com.testgame.Views.QuestionScreen;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.audio.Music;
 
-public class MyGame extends Game implements ApplicationListener  {
-	
-	public MainMenuScreen mainMenuScreen;
-//    public GameScreen gameScreen;
-//	public QuestionScreen questionScreen;
-//	public EndGameScreen endGameScreen;
-	
+public class MyGame extends Game implements ApplicationListener {
+
+	MainMenuScreen mainMenuScreen;
+	private Music music;
+
 	@Override
-	public void create() {		
+	public void create() {
+		// Load music and start playing:
+		music = Gdx.audio.newMusic(Gdx.files.getFileHandle(
+				"data/Riskspillet.mp3", FileType.Internal));
+		music.setLooping(true);
+		music.play();
 		mainMenuScreen = new MainMenuScreen(this);
-//      gameScreen = new GameScreen(this);
-//		questionScreen = new QuestionScreen(this);
-//		endGameScreen = new EndGameScreen(this);
-		
-        setScreen(mainMenuScreen); 
+		setScreen(mainMenuScreen);
 	}
 
 	@Override
 	public void dispose() {
-		
-	}
-
-	@Override
-	public void render() {		
-		
-	}
-
-	@Override
-	public void resize(int width, int height) {
-	}
-
-	@Override
-	public void pause() {
-	}
-
-	@Override
-	public void resume() {
+		music.dispose();
 	}
 }

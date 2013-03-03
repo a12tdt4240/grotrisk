@@ -19,6 +19,17 @@ public class MainMenuScreen extends AbstractScreen {
 	}
 
 	/**
+	 * Called when this screen is set as the screen with game.setScreen();
+	 */
+	@Override
+	public void show() {
+		mainMenu = new TextureRegion(new Texture(
+				Gdx.files.internal("data/mainmenu.png")), 0, 0, 480, 320);
+		batch = new SpriteBatch();
+		batch.getProjectionMatrix().setToOrtho2D(0, 0, 480, 320);
+	}
+
+	/**
 	 * Updates and draws objects.
 	 **/
 	@Override
@@ -37,20 +48,10 @@ public class MainMenuScreen extends AbstractScreen {
 	}
 
 	/**
-	 * Called when this screen is set as the screen with
-	 * game.setScreen();
+	 * Called when the current screen changes from this to a different screen.
+	 * Remember to dispose objects.
 	 */
-	public void show() {
-		// mainMenu = new TextureRegion(new
-		// Texture(Gdx.files.internal("data/menu.png")), 0, 0, 480, 320);
-		batch = new SpriteBatch();
-		batch.getProjectionMatrix().setToOrtho2D(0, 0, 480, 320);
-	}
-
-	/**
-	 * Called when the current screen changes from this to a different
-	 * screen
-	 */
+	@Override
 	public void hide() {
 		Gdx.app.debug("testgame", "Disposing Main Menu");
 		mainMenu.getTexture().dispose();
