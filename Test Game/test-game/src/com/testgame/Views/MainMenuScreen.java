@@ -10,6 +10,7 @@ import com.testgame.MyGame;
 public class MainMenuScreen extends AbstractScreen {
 
 	TextureRegion mainMenu;
+	TextureRegion buttons;
 	SpriteBatch batch;
 	float time = 0;
 
@@ -24,7 +25,9 @@ public class MainMenuScreen extends AbstractScreen {
 	@Override
 	public void show() {
 		mainMenu = new TextureRegion(new Texture(
-				Gdx.files.internal("data/mainmenu.png")), 0, 0, 480, 320);
+				Gdx.files.internal("data/mainmenu.png")), 20, -10, 480, 320);
+		buttons = new TextureRegion(new Texture(
+				Gdx.files.internal("data/examplebuttons.png")), 0, 0, 456, 456);
 		batch = new SpriteBatch();
 		batch.getProjectionMatrix().setToOrtho2D(0, 0, 480, 320);
 	}
@@ -37,6 +40,7 @@ public class MainMenuScreen extends AbstractScreen {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		batch.draw(mainMenu, 0, 0);
+		batch.draw(buttons,80,-105,320,320);
 		batch.end();
 
 		time += delta;
