@@ -24,7 +24,7 @@ public class MainMenuScreen extends AbstractScreen {
 	@Override
 	public void show() {
 		mainMenu = new TextureRegion(new Texture(
-				Gdx.files.internal("data/mainmenu.png")), 0, 0, 480, 320);
+				Gdx.files.internal("data/mainmenu.png")), 20, -10, 480, 320);
 		batch = new SpriteBatch();
 		batch.getProjectionMatrix().setToOrtho2D(0, 0, 480, 320);
 	}
