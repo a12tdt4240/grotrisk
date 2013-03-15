@@ -1,6 +1,7 @@
 package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL10;
 import com.testgame.MyGame;
 
 public class GameScreen extends AbstractScreen {
@@ -15,9 +16,7 @@ public class GameScreen extends AbstractScreen {
 	 **/
 	@Override
 	public void render(float delta) {
-		// touch brings main menu
-		if (Gdx.input.justTouched())
-			game.setScreen(new MainMenuScreen(game));
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 	}
 
 	/**
