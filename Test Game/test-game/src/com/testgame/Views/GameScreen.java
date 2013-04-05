@@ -4,9 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.testgame.MyGame;
 
-public class GameScreen extends AbstractScreen {
+public class GameScreen extends AbstractGameScreen {
 
-	
 	// constructor to keep a reference to the main Game class
 	public GameScreen(MyGame game) {
 		super(game);
@@ -25,8 +24,15 @@ public class GameScreen extends AbstractScreen {
 	 */
 	@Override
 	public void show() {
+		super.show();
+		game.setScreen(new NextPlayerScreen(game, 1));
 	}
 
+	@Override
+	public void resize(int width, int height) {
+		super.resize(width, height);
+	}
+	
 	/**
 	 * Called when the current screen changes from this to a different screen.
 	 * Remember to dispose objects.
