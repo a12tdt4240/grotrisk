@@ -4,8 +4,8 @@ import com.badlogic.gdx.graphics.Color;
 
 public class Category {
 
-	// Vi vil ha muligheten til Œ sp¿rre et Question om hvilken kategori det tilh¿rer.
-	// En kategori skal ha en visuell gjenkjenning som kan vises pŒ kart/gamescreen. Farge?
+	// Vi vil ha muligheten til ï¿½ spï¿½rre et Question om hvilken kategori det tilhï¿½rer.
+	// En kategori skal ha en visuell gjenkjenning som kan vises pï¿½ kart/gamescreen. Farge?
 	
 	String category;
 	Color visual;
@@ -15,9 +15,35 @@ public class Category {
 		setVisual(category);
 	}
 	
+	/**
+	 * Name of category
+	 * 
+	 * @return String
+	 */
+	public String getCategoryName() {
+		return category;
+	}
 	
 	/**
-	 * JSON-parseren skal ta seg av Œ sette categori-fargen? Jeg lar metodenskallet stŒ til eventuell bruk.
+	 * Colour of category
+	 * 
+	 * @return Color
+	 */
+	public Color getCategoryColor() {
+		return visual;
+	}
+	
+	/**
+	 * Sets color of category
+	 * 
+	 * @input Color
+	 */
+	public void setCategoryColor(Color color) {
+		visual = color;
+	}
+	
+	/**
+	 * JSON-parseren skal ta seg av ï¿½ sette categori-fargen? Jeg lar metodenskallet stï¿½ til eventuell bruk.
 	 * @param category
 	 */
 	public void setVisual(String category) {
