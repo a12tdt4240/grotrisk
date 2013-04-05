@@ -6,6 +6,7 @@ import com.testgame.MyGame;
 
 public class GameScreen extends AbstractScreen {
 
+	
 	// constructor to keep a reference to the main Game class
 	public GameScreen(MyGame game) {
 		super(game);
