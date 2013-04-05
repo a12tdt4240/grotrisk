@@ -75,7 +75,7 @@ public class NextPlayerScreen extends AbstractScreen {
 		LabelStyle labelStyleHeader = new LabelStyle();
 		labelStyleHeader.font = font;
 		labelStyleHeader.fontColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
-		nextPlayerInfo = new Label("Send enheten videre til:", labelStyleHeader);
+		nextPlayerInfo = new Label("Send enheten til:", labelStyleHeader);
 		nextPlayerInfo.setX(Gdx.graphics.getWidth() / 2 - nextPlayerInfo.getWidth() / 2);
 		nextPlayerInfo.setY(Gdx.graphics.getHeight() / 2 - nextPlayerInfo.getHeight() / 2 + Gdx.graphics.getHeight() * 0.19f);
 		nextPlayerInfo.setWidth(0.6f * Gdx.graphics.getWidth());
@@ -84,7 +84,7 @@ public class NextPlayerScreen extends AbstractScreen {
 		labelStyle.fontColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		nextPlayerLabel = new Label("spiller " + player, labelStyle);
 		nextPlayerLabel.setX(Gdx.graphics.getWidth() / 2 - nextPlayerLabel.getWidth() / 2);
-		nextPlayerLabel.setY(Gdx.graphics.getHeight() / 2 - nextPlayerLabel.getHeight() / 2 + Gdx.graphics.getHeight() * 0.12f);
+		nextPlayerLabel.setY(Gdx.graphics.getHeight() / 2 - nextPlayerLabel.getHeight() / 2 + Gdx.graphics.getHeight() * 0.045f);
 		nextPlayerLabel.scale(0.8f, 0.8f);
 
 		
