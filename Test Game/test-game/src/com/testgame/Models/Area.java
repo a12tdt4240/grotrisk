@@ -1,11 +1,20 @@
 package com.testgame.Models;
 
+import java.util.ArrayList;
+
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+
 public class Area {
+	
 	private Player owner;
 	private Question question;
-	private int value;
+	private int value, xPosition, yPosition;
+	private ArrayList<Area> neighbors;
+	private Image areaImage;
 	
-	public Area(int value) {
+	public Area(int xPosition, int yPosition, int value) {
+		this.xPosition = xPosition;
+		this.yPosition = yPosition;
 		this.value = value;
 	}
 	
@@ -52,5 +61,21 @@ public class Area {
 	 */
 	public int getValueOfArea() {
 		return value;
+	}
+
+	public int getXPosition() {
+		return xPosition;
+	}
+
+	public void setXPosition(int xPosition) {
+		this.xPosition = xPosition;
+	}
+
+	public int getYPosition() {
+		return yPosition;
+	}
+
+	public void setYPosition(int yPosition) {
+		this.yPosition = yPosition;
 	}
 }
