@@ -6,8 +6,8 @@ public class Question {
 	String questionText;
 	Alternative alt1, alt2, alt3, alt4;
 
-	// Les inn sp¿rsmŒl fra tekstfil (bruke en ferdig parser?).
-	// Et sp¿rsmŒl tilh¿rer en kategori, har en sp¿rsmŒltekst
+	// Les inn spï¿½rsmï¿½l fra tekstfil (bruke en ferdig parser?).
+	// Et spï¿½rsmï¿½l tilhï¿½rer en kategori, har en spï¿½rsmï¿½ltekst
 	// og har fire alternativer. Andre attributter?
 	
 	public Question(Category cat, String txt, Alternative alt1,
@@ -18,6 +18,24 @@ public class Question {
 		this.alt2 = alt2;
 		this.alt3 = alt3;
 		this.alt4 = alt4;
+	}
+	
+	/**
+	 * Provides the category of the question
+	 * 
+	 * @return Category
+	 */
+	public Category getCategory() {
+		return category;
+	}
+	
+	/**
+	 * Provides the question text
+	 * 
+	 * @return String
+	 */
+	public String getQuestionText() {
+		return questionText;
 	}
 
 }

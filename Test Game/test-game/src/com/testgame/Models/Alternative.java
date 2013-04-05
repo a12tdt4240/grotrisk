@@ -12,4 +12,21 @@ public class Alternative {
 		this.isCorrectAnswer = isCorrectAnswer;
 	}
 	
+	/**
+	 * Provides the textual version of the alternative
+	 * 
+	 * @return String
+	 */
+	public String getAlternativeText() {
+		return text;
+	}
+	
+	/**
+	 * Knows if the alternative is correct or not
+	 * 
+	 * @return boolean
+	 */
+	public boolean isCorrectAnswer() {
+		return isCorrectAnswer;
+	}
 }
