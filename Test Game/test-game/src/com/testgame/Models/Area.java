@@ -44,4 +44,13 @@ public class Area {
 	public Question getQuestion() {
 		return question;
 	}
+	
+	/**
+	 * The value of the area
+	 * 
+	 * @return int
+	 */
+	public int getValueOfArea() {
+		return value;
+	}
 }
