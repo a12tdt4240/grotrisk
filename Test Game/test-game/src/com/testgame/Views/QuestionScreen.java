@@ -9,11 +9,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.testgame.MyGame;
+import com.testgame.Models.Question;
 
 public class QuestionScreen extends AbstractScreen {
 
 	// private final Sound correct;
 	// private final Sound wrong;
+	Question currentQuestion;
 	TextButton alt1Button, alt2Button, alt3Button, alt4Button;
 	Label questionText;
 
@@ -55,10 +57,14 @@ public class QuestionScreen extends AbstractScreen {
 		super.initializeStyle();
 	}
 
+	/**
+	 * Button initialization
+	 */
 	public void initializeButtons() {
-
-		// Button initalization
-		alt1Button = new TextButton("AlternativTekst", buttonStyle);
+		// get question
+		currentQuestion = game.getQuestionPool().getRandomQuestion();
+		
+		alt1Button = new TextButton(currentQuestion.getAlt1().getAlternativeText(), buttonStyle);
 		alt1Button.setWidth(458);
 		alt1Button.setHeight(88);
 		alt1Button
@@ -84,8 +90,7 @@ public class QuestionScreen extends AbstractScreen {
 		labelStyleHeader.font = font;
 		labelStyleHeader.fontColor = new Color(0.647059f, 0.164706f, 0.164706f,
 				1.0f);
-		questionText = new Label("Her kommer spørsmålteksten: ",
-				labelStyleHeader);
+		questionText = new Label(currentQuestion.getQuestionText(), labelStyleHeader);
 		questionText.setX(Gdx.graphics.getWidth() / 2 - questionText.getWidth()
 				/ 2);
 		questionText.setY(Gdx.graphics.getHeight() / 2

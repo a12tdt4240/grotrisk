@@ -10,6 +10,22 @@ public class Question {
 	// Et sp�rsm�l tilh�rer en kategori, har en sp�rsm�ltekst
 	// og har fire alternativer. Andre attributter?
 	
+	public Alternative getAlt1() {
+		return alt1;
+	}
+
+	public Alternative getAlt2() {
+		return alt2;
+	}
+
+	public Alternative getAlt3() {
+		return alt3;
+	}
+
+	public Alternative getAlt4() {
+		return alt4;
+	}
+
 	public Question(Category cat, String txt, Alternative alt1,
 			Alternative alt2, Alternative alt3, Alternative alt4) {
 		this.category = cat;
