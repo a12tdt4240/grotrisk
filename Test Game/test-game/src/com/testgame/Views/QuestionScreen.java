@@ -9,13 +9,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.testgame.MyGame;
-import com.testgame.Models.Question;
+import com.testgame.Models.Quiz;
 
 public class QuestionScreen extends AbstractScreen {
 
 	// private final Sound correct;
 	// private final Sound wrong;
-	Question currentQuestion;
+	Quiz currentQuestion;
 	TextButton alt1Button, alt2Button, alt3Button, alt4Button;
 	Label questionText;
 
@@ -59,11 +59,11 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	public void initializeButtons() {
 		// get question
-		currentQuestion = game.getQuestionPool().getRandomQuestion();
+		currentQuestion = (Quiz) game.getQuestionPool().getRandomQuestion();
 		
 		// create buttons
 		// Alternative 1
-		alt1Button = new TextButton(currentQuestion.getAlt1().getAlternativeText(), buttonStyle);
+		alt1Button = new TextButton(currentQuestion.getAlt1().getName(), buttonStyle);
 		alt1Button.setWidth(200);
 		alt1Button.setHeight(100);
 		alt1Button
@@ -72,7 +72,7 @@ public class QuestionScreen extends AbstractScreen {
 				.setY((Gdx.graphics.getHeight() / 4 - alt1Button.getHeight() / 4)
 						- Gdx.graphics.getHeight() * 0.15f);
 		// Alternative 2
-		alt2Button = new TextButton(currentQuestion.getAlt2().getAlternativeText(), buttonStyle);
+		alt2Button = new TextButton(currentQuestion.getAlt2().getName(), buttonStyle);
 		alt2Button.setWidth(200);
 		alt2Button.setHeight(100);
 		alt2Button
