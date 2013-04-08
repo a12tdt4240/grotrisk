@@ -17,7 +17,7 @@ public class Alternative {
 	 * 
 	 * @return String
 	 */
-	public String getAlternativeText() {
+	public String getName() {
 		return text;
 	}
 	
