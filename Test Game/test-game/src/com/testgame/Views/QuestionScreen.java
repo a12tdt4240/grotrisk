@@ -65,49 +65,32 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	public void initializeButtons() {
 		// get question
-<<<<<<< HEAD
-		currentQuestion = game.getQuestionPool().getRandomQuestion();
-
-=======
 		currentQuestion = (Quiz) game.getQuestionPool().getRandomQuestion();
 		
->>>>>>> 7903e75b993e586234535182ad7d2dcc53be0b6f
 		// create buttons
 		// Vi kan skalere tekstst¿rrelsen til Œ passe i knappene.
 		buttonStyle.font.setScale(0.7f);
 
 		// Alternative 1
-<<<<<<< HEAD
 		alt1Button = new TextButton(currentQuestion.getAlt1()
-				.getAlternativeText(), buttonStyle);
+				.getName(), buttonStyle);
 		alt1Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
 		alt1Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
-=======
-		alt1Button = new TextButton(currentQuestion.getAlt1().getName(), buttonStyle);
-		alt1Button.setWidth(200);
-		alt1Button.setHeight(100);
->>>>>>> 7903e75b993e586234535182ad7d2dcc53be0b6f
 		alt1Button
 				.setX(Gdx.graphics.getWidth() / 2 - alt1Button.getWidth() - 5);
 		alt1Button
 				.setY((Gdx.graphics.getHeight() / 2 - alt1Button.getHeight() / 2));
 		// Alternative 2
-<<<<<<< HEAD
 		alt2Button = new TextButton(currentQuestion.getAlt2()
-				.getAlternativeText(), buttonStyle);
+				.getName(), buttonStyle);
 		alt2Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
 		alt2Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
 		alt2Button.setX(Gdx.graphics.getWidth() / 2 + 5);
-=======
-		alt2Button = new TextButton(currentQuestion.getAlt2().getName(), buttonStyle);
-		alt2Button.setWidth(200);
-		alt2Button.setHeight(100);
->>>>>>> 7903e75b993e586234535182ad7d2dcc53be0b6f
 		alt2Button
 				.setY((Gdx.graphics.getHeight() / 2 - alt2Button.getHeight() / 2));
 		// Alternative 3
 		alt3Button = new TextButton(currentQuestion.getAlt3()
-				.getAlternativeText(), buttonStyle);
+				.getName(), buttonStyle);
 		alt3Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
 		alt3Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
 		alt3Button
@@ -115,7 +98,7 @@ public class QuestionScreen extends AbstractScreen {
 		alt3Button.setY((Gdx.graphics.getHeight() / 4));
 		// Alternative 4
 		alt4Button = new TextButton(currentQuestion.getAlt4()
-				.getAlternativeText(), buttonStyle);
+				.getName(), buttonStyle);
 		alt4Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
 		alt4Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
 		alt4Button.setX(Gdx.graphics.getWidth() / 2 + 5);
