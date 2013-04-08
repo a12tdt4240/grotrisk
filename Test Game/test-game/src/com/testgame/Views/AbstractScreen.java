@@ -87,7 +87,6 @@ public abstract class AbstractScreen implements Screen {
 				215, 200, 140, 140);
 
 		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
-
 		batch = new SpriteBatch();
 
 	}

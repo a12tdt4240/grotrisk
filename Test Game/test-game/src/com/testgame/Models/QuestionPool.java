@@ -15,7 +15,7 @@ public class QuestionPool {
 	}
 	
 	/**
-	 * Method for testing purposes.
+	 * Temporary method for testing purposes.
 	 * @return
 	 */
 	public Question getRandomQuestion() {
