@@ -6,6 +6,9 @@ import com.testgame.MyGame;
 
 public class GameScreen extends AbstractGameScreen {
 
+	// Vi trenger et bakgrunnsbilde som vises her. Et blått hav eller en havtekstur.
+	// Oppå det blå havet tegner vi landområder, Area, via AreaViews.
+	
 	// constructor to keep a reference to the main Game class
 	public GameScreen(MyGame game) {
 		super(game);
