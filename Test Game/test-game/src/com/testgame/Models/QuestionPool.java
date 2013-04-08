@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  */
 public class QuestionPool {
-	private ArrayList<Category> categories;
+	private ArrayList<Question> questions;
 	
 	public QuestionPool(){
 	}
@@ -24,7 +24,7 @@ public class QuestionPool {
 		Alternative alt2 = new Alternative("17.mai 1814", false);
 		Alternative alt3 = new Alternative("7.juni 1905", true);
 		Alternative alt4 = new Alternative("7.mai 1945", false);
-		Question questionOne = new Question(catOne,
+		Question questionOne = new Quiz(catOne,
 				"NŒr ble det moderne Norge uavhengig?", alt1, alt2, alt3, alt4);
 		return questionOne;
 	}

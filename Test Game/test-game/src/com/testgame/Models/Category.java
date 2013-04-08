@@ -20,7 +20,7 @@ public class Category {
 	 * 
 	 * @return String
 	 */
-	public String getCategoryName() {
+	public String getName() {
 		return category;
 	}
 	
