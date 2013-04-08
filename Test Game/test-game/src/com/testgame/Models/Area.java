@@ -94,4 +94,8 @@ public class Area {
 	public void setYPosition(int yPosition) {
 		this.yPosition = yPosition;
 	}
+	
+	public ArrayList<Area> getNeighbors() {
+		return neighbors;
+	}
 }
