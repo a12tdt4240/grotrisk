@@ -15,7 +15,7 @@ public class QuestionPool {
 	}
 	
 	/**
-	 * Method for testing purposes.
+	 * Temporary method for testing purposes.
 	 * @return
 	 */
 	public Question getRandomQuestion() {
@@ -27,5 +27,14 @@ public class QuestionPool {
 		Question questionOne = new Quiz(catOne,
 				"NŒr ble det moderne Norge uavhengig?", alt1, alt2, alt3, alt4);
 		return questionOne;
+	}
+	
+	/**
+	 * Returns a random question from the questions in store
+	 * 
+	 * @return Question
+	 */
+	public Question theRealGetRandomQuestion() {
+		return null;
 	}
 }

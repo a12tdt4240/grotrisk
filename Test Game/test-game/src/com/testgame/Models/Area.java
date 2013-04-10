@@ -9,25 +9,35 @@ import java.util.ArrayList;
 
 public class Area {
 	
+	// An area has an owner. Player 1, Player 2 or null;
 	private Player owner;
+	// An area holds a question.
 	private Question question;
-
+	// The visual representation of the area.
 	private Image image;
+	
 	private Color color;
 
 	private int value, xPosition, yPosition;
+	// A list of neighboring areas. Areas that can be moved to in one move.
 	private ArrayList<Area> neighbors;
 
-	
+	/**
+	 * Constructor.
+	 * @param xPosition
+	 * @param yPosition
+	 * @param value
+	 */
 	public Area(int xPosition, int yPosition, int value) {
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
-		
 		this.value = value;
-		
 		loadAreaImage();
 	}
 	
+	/**
+	 * Helper method for loading the Image.
+	 */
 	protected void loadAreaImage() {
 		image = new Image(new Texture( new FileHandle("data/maps/mo/area001.png")));
 	}
@@ -81,11 +91,6 @@ public class Area {
 		return question;
 	}
 	
-	/**
-	 * The value of the area
-	 * 
-	 * @return int
-	 */
 	public int getValueOfArea() {
 		return value;
 	}
