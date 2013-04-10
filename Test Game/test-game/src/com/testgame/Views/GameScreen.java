@@ -6,8 +6,8 @@ import com.testgame.MyGame;
 
 public class GameScreen extends AbstractGameScreen {
 
-	// Vi trenger et bakgrunnsbilde som vises her. Et blŒtt hav eller en havtekstur.
-	// OppŒ det blŒ havet tegner vi landomrŒder, Area, via AreaViews.
+	// Vi trenger et bakgrunnsbilde som vises her. Et blï¿½tt hav eller en havtekstur.
+	// Oppï¿½ det blï¿½ havet tegner vi landomrï¿½der, Area, via AreaViews.
 	
 	// constructor to keep a reference to the main Game class
 	public GameScreen(MyGame game) {
@@ -20,6 +20,7 @@ public class GameScreen extends AbstractGameScreen {
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		
 	}
 
 	/**
