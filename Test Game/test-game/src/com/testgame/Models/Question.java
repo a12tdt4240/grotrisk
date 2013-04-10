@@ -4,6 +4,8 @@ public class Question {
 
 	Category category;
 
+	public Question() {}
+	
 	public Question(Category cat) {
 		this.category = cat;
 	}

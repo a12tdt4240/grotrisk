@@ -28,6 +28,7 @@ public class GameScreen extends AbstractGameScreen {
 	@Override
 	public void show() {
 		super.show();
-		game.setScreen(new NextPlayerScreen(game, 1));
+		// 
+		game.setScreen(new NextPlayerScreen(game, game.getCurrentPlayer()));
 	}
 }
