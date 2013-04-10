@@ -7,8 +7,15 @@ public class AreaView extends Button {
 	private Area areaModel;
 
 	public AreaView(Area area) {
-		super(new ButtonStyle(area.getImage(), area.getImage()
-				, area.getImage()));
+//		super(new ButtonStyle(area.getImage(), area.getImage()
+//				, area.getImage()));
+		super(area.getImage());
+		
+		this.areaModel = area;
+		
+		setX(area.getXPosition());
+		setY(area.getYPosition());
+		
 	}
 
 	public void setModel(Area model) {

@@ -1,5 +1,6 @@
 package com.testgame.Views;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.testgame.MyGame;
@@ -19,9 +20,10 @@ public class GameScreen extends AbstractGameScreen {
 		super(game);
 
 		// Create dummy areaViews
-		areaView1 = new AreaView(new Area(100, 100, 100));
-		areaView2 = new AreaView(new Area(200, 100, 100));
-		areaView3 = new AreaView(new Area(300, 100, 100));
+		areaView1 = new AreaView(new Area((2 * Gdx.graphics.getWidth()) / 6, Gdx.graphics.getHeight() / 2, 100));
+		areaView2 = new AreaView(new Area((3 * Gdx.graphics.getWidth()) / 6, Gdx.graphics.getHeight() / 2, 100));
+		areaView3 = new AreaView(new Area((4 * Gdx.graphics.getWidth()) / 6, Gdx.graphics.getHeight() / 2, 100));
+		
 		// Add listeners to dummy areas
 		areaView1.addListener(new InputEventListener());
 		areaView2.addListener(new InputEventListener());
@@ -40,11 +42,11 @@ public class GameScreen extends AbstractGameScreen {
 	 * Called when this screen is set as the screen with game.setScreen();
 	 */
 	@Override
-	public void show() {
-		super.show();
-		stage.addActor(areaView1);
-		stage.addActor(areaView2);
-		stage.addActor(areaView3);
+	public void resize(int width, int height) {
+		super.resize(width, height);
+		this.stage.addActor(areaView1);
+		this.stage.addActor(areaView2);
+		this.stage.addActor(areaView3);
 
 	}
 
