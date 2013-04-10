@@ -238,8 +238,8 @@ public class QuestionScreen extends AbstractScreen {
 			String altName = alt.getName();
 			
 			//if(altName.equals(currentQuestion.getA))
-			if (currentQuestion.getAlt2().isCorrectAnswer())
-				game.setScreen(new NextPlayerScreen(game, 1));
+//			if (currentQuestion.getAlt2().isCorrectAnswer())
+//				game.setScreen(new NextPlayerScreen(game, 1));
 		}
 	}
 }
