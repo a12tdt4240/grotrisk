@@ -15,35 +15,6 @@ public class MainMenuScreen extends AbstractScreen {
 	public MainMenuScreen(MyGame game) {
 		super(game);
 	}
-
-	@Override
-	public void resize(int width, int height) {
-		super.resize(width, height);
-	}
-	
-	/**
-	 * Called when this screen is set as the screen with game.setScreen();
-	 */
-	@Override
-	public void show() {
-		super.show();
-		
-	}
-
-	/**
-	 * Updates and draws objects.
-	 **/
-	@Override
-	public void render(float delta) {
-		super.render(delta);
-	}
-	
-	/**
-	 * Sets the style of UI elements.
-	 */
-	public void initializeStyle() {
-		super.initializeStyle();
-	}
 	
 	/**
 	 * Creates the buttons for drawing.
@@ -65,15 +36,5 @@ public class MainMenuScreen extends AbstractScreen {
 			}
 		});
 		this.stage.addActor(newGameButton);
-	}
-
-	/**
-	 * Called when the current screen changes from this to a different screen.
-	 * Remember to dispose objects.
-	 */
-	@Override
-	public void hide() {
-		super.hide();
-		
 	}
 }
