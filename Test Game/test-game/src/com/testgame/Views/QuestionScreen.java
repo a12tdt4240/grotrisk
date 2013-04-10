@@ -59,14 +59,14 @@ public class QuestionScreen extends AbstractScreen {
 	public void initializeButtons() {
 		// get question
 		currentQuestion = (Quiz) game.getQuestionPool().getRandomQuestion();
-		
+
 		// create buttons
 		// Vi kan skalere tekstst¿rrelsen til Œ passe i knappene.
 		buttonStyle.font.setScale(0.7f);
 
 		// Alternative 1
-		alt1Button = new TextButton(currentQuestion.getAlt1()
-				.getName(), buttonStyle);
+		alt1Button = new TextButton(currentQuestion.getAlt1().getName(),
+				buttonStyle);
 		alt1Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
 		alt1Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
 		alt1Button
@@ -74,24 +74,24 @@ public class QuestionScreen extends AbstractScreen {
 		alt1Button
 				.setY((Gdx.graphics.getHeight() / 2 - alt1Button.getHeight() / 2));
 		// Alternative 2
-		alt2Button = new TextButton(currentQuestion.getAlt2()
-				.getName(), buttonStyle);
+		alt2Button = new TextButton(currentQuestion.getAlt2().getName(),
+				buttonStyle);
 		alt2Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
 		alt2Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
 		alt2Button.setX(Gdx.graphics.getWidth() / 2 + 5);
 		alt2Button
 				.setY((Gdx.graphics.getHeight() / 2 - alt2Button.getHeight() / 2));
 		// Alternative 3
-		alt3Button = new TextButton(currentQuestion.getAlt3()
-				.getName(), buttonStyle);
+		alt3Button = new TextButton(currentQuestion.getAlt3().getName(),
+				buttonStyle);
 		alt3Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
 		alt3Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
 		alt3Button
 				.setX(Gdx.graphics.getWidth() / 2 - alt3Button.getWidth() - 5);
 		alt3Button.setY((Gdx.graphics.getHeight() / 4));
 		// Alternative 4
-		alt4Button = new TextButton(currentQuestion.getAlt4()
-				.getName(), buttonStyle);
+		alt4Button = new TextButton(currentQuestion.getAlt4().getName(),
+				buttonStyle);
 		alt4Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
 		alt4Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
 		alt4Button.setX(Gdx.graphics.getWidth() / 2 + 5);
@@ -106,8 +106,20 @@ public class QuestionScreen extends AbstractScreen {
 
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				if (currentQuestion.getAlt1().isCorrectAnswer()) 
-				game.setScreen(new NextPlayerScreen(game, 1));
+				if (currentQuestion.getAlt1().isCorrectAnswer()) {
+					// Answer was correct. 
+					// 1. Update score  
+					game.getCurrentPlayer().updateScore(100);
+					game.switchCurrentPlayer();
+					// 2. TODO: Show that answer was correct
+					
+					// 3. Move on to the nextplayerscreen.
+					game.setScreen(new NextPlayerScreen(game, 1));
+				} else {
+					// Answer was wrong.
+					// 1. Show that answer was wrong 2. Move on to the nextplayerscreen.
+					
+				}
 			}
 
 		});
@@ -120,7 +132,7 @@ public class QuestionScreen extends AbstractScreen {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				if (currentQuestion.getAlt2().isCorrectAnswer())
-				game.setScreen(new NextPlayerScreen(game, 1));
+					game.setScreen(new NextPlayerScreen(game, 1));
 			}
 		});
 		alt3Button.addListener(new InputListener() {
@@ -132,7 +144,7 @@ public class QuestionScreen extends AbstractScreen {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				if (currentQuestion.getAlt3().isCorrectAnswer())
-				game.setScreen(new NextPlayerScreen(game, 1));
+					game.setScreen(new NextPlayerScreen(game, 1));
 			}
 		});
 		alt4Button.addListener(new InputListener() {
@@ -144,7 +156,7 @@ public class QuestionScreen extends AbstractScreen {
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
 				if (currentQuestion.getAlt4().isCorrectAnswer())
-				game.setScreen(new NextPlayerScreen(game, 1));
+					game.setScreen(new NextPlayerScreen(game, 1));
 			}
 		});
 

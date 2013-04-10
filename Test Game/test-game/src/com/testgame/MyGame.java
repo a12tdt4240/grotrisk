@@ -14,7 +14,7 @@ public class MyGame extends Game implements ApplicationListener {
 	MainMenuScreen mainMenuScreen;
 	private Music music;
 	QuestionPool questionPool;
-	Player player1, player2;
+	Player player1, player2, currentPlayer;
 
 	@Override
 	public void create() {
@@ -28,14 +28,43 @@ public class MyGame extends Game implements ApplicationListener {
 		questionPool = new QuestionPool();
 		
 		//TODO: Create players.
-		player1 = new Player("Player 1");
-		player2 = new Player("Player 2");
+		player1 = new Player(1);
+		player2 = new Player(2);
+		//TODO: Set the current player.
+		setCurrentPlayer(player1);
 		
 		// Launch main menu screen.
 		mainMenuScreen = new MainMenuScreen(this);
 		setScreen(mainMenuScreen);
 	}
 	
+	public void switchCurrentPlayer() {
+		switch(currentPlayer.getNumeric()) {
+		case 1:
+			setCurrentPlayer(player2);
+			break;
+		case 2:
+			setCurrentPlayer(player1);
+			break;
+		}
+	}
+	
+	/**
+	 * Returns the current player.
+	 * @return
+	 */
+	public Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	/**
+	 * Sets the current player.
+	 * @param currentPlayer
+	 */
+	public void setCurrentPlayer(Player currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
+
 	public QuestionPool getQuestionPool() {
 		return questionPool;
 	}

@@ -15,5 +15,8 @@ public class Score {
 	public void setScore(int score) {
 		this.score = score;
 	}
-
+	
+	public void updateScore(int value) {
+		this.score = score + value;
+	}
 }
