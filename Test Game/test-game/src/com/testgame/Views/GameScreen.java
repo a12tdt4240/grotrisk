@@ -1,15 +1,31 @@
 package com.testgame.Views;
 
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.testgame.MyGame;
+import com.testgame.Models.Area;
 
 public class GameScreen extends AbstractGameScreen {
 
-	// Vi trenger et bakgrunnsbilde som vises her. Et blått hav eller en havtekstur.
+	// Vi trenger et bakgrunnsbilde som vises her. Et blått hav eller en
+	// havtekstur.
 	// Oppå det blå havet tegner vi landområder, Area, via AreaViews.
-	
+
+	MapView mapView;
+	AreaView areaView1, areaView2, areaView3;
+
 	// constructor to keep a reference to the main Game class
 	public GameScreen(MyGame game) {
 		super(game);
+
+		// Create dummy areaViews
+		areaView1 = new AreaView(new Area(100, 100, 100));
+		areaView2 = new AreaView(new Area(200, 100, 100));
+		areaView3 = new AreaView(new Area(300, 100, 100));
+		// Add listeners to dummy areas
+		areaView1.addListener(new InputEventListener());
+		areaView2.addListener(new InputEventListener());
+		areaView3.addListener(new InputEventListener());
 	}
 
 	/**
@@ -26,6 +42,27 @@ public class GameScreen extends AbstractGameScreen {
 	@Override
 	public void show() {
 		super.show();
-		//game.setScreen(new NextPlayerScreen(game));
+		stage.addActor(areaView1);
+		stage.addActor(areaView2);
+		stage.addActor(areaView3);
+
+	}
+
+	/**
+	 * Unified InputListener
+	 * 
+	 */
+	class InputEventListener extends InputListener {
+		public boolean touchDown(InputEvent event, float x, float y,
+				int pointer, int button) {
+			return true;
+		}
+
+		public void touchUp(InputEvent event, float x, float y, int pointer,
+				int button) {
+			AreaView areaView = (AreaView) event.getTarget();
+			game.setScreen(new QuestionScreen(game, areaView.getArea()));
+
+		}
 	}
 }
