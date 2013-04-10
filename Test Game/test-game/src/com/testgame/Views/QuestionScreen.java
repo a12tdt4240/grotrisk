@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.utils.Timer;
+import com.badlogic.gdx.utils.Timer.Task;
 import com.testgame.MyGame;
 import com.testgame.Models.Quiz;
 
@@ -16,7 +18,10 @@ public class QuestionScreen extends AbstractScreen {
 	// private final Sound wrong;
 	Quiz currentQuestion;
 	TextButton alt1Button, alt2Button, alt3Button, alt4Button;
-	Label questionText, responseText;
+	Label questionText, responseText, countDownText;
+	LabelStyle labelStyleHeader;
+	int countDownTime = 5;
+	int currentTime = 0;
 
 	/**
 	 * Constructor to keep a reference to the main Game class
@@ -27,6 +32,28 @@ public class QuestionScreen extends AbstractScreen {
 		super(game);
 		// correct = Gdx.audio.newSound(Gdx.files.internal("data/correct.wav"));
 		// wrong = Gdx.audio.newSound(Gdx.files.internal("data/wrong.wav"));
+		
+		startTimer();
+	}
+	
+	private void startTimer() {
+		Timer.schedule(new Task() {
+			
+			@Override
+			public void run() {
+				if (countDownTime-currentTime != 0) {
+					currentTime++;
+					startTimer();
+				} else {
+					nextPlayer();
+				}	
+			}
+			
+		}, 1);
+	}
+	
+	public void nextPlayer() {
+		game.setScreen(new NextPlayerScreen(game));
 	}
 
 	/**
@@ -36,8 +63,14 @@ public class QuestionScreen extends AbstractScreen {
 	public void render(float delta) {
 		super.render(delta);
 
+		// Count down label must update each render
+				countDownText = new Label("" + (countDownTime - currentTime), labelStyleHeader);
+				countDownText.setX((4 * Gdx.graphics.getWidth()) / 5);
+				countDownText.setY((3 * Gdx.graphics.getHeight()) / 4);
+		
 		batch.begin();
 		questionText.draw(batch, 1.0f);
+		countDownText.draw(batch, 1.0f);
 		batch.end();
 	}
 
@@ -49,7 +82,7 @@ public class QuestionScreen extends AbstractScreen {
 		currentQuestion = (Quiz) game.getQuestionPool().random();
 
 		// create buttons
-		// Vi kan skalere tekststørrelsen til å passe i knappene.
+		// Vi kan skalere tekstst√∏rrelsen til √• passe i knappene.
 		buttonStyle.font.setScale(0.7f);
 
 		// Alternative 1
