@@ -4,10 +4,13 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.Json.Serializable;
+import com.badlogic.gdx.utils.OrderedMap;
 
 import java.util.ArrayList;
 
-public class Area {
+public class Area implements Serializable {
 	
 	// An area has an owner. Player 1, Player 2 or null;
 	private Player owner;
@@ -23,6 +26,8 @@ public class Area {
 	// A list of neighboring areas. Areas that can be moved to in one move.
 	private ArrayList<Area> neighbors;
 
+	public Area() {}
+	
 	/**
 	 * Constructor.
 	 * @param xPosition
@@ -118,5 +123,20 @@ public class Area {
 	
 	public ArrayList<Area> getNeighbors() {
 		return neighbors;
+	}
+
+	@Override
+	public void write(Json json) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void read(Json json, OrderedMap<String, Object> jsonData) {
+		// TODO Auto-generated method stub
+		this.xPosition = json.readValue("xPosition", Integer.class, jsonData);
+		this.yPosition = json.readValue("yPosition", Integer.class, jsonData);
+		this.value = json.readValue("value", Integer.class, jsonData);
+//		loadAreaImage();
 	}
 }
