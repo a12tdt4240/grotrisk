@@ -226,6 +226,10 @@ public class QuestionScreen extends AbstractScreen {
 		// wrong.dispose();
 	}
 	
+	/**
+	 * Unified InputListener
+	 *
+	 */
 	class InputEventListener extends InputListener {
 		public boolean touchDown(InputEvent event, float x, float y,
 				int pointer, int button) {
@@ -237,9 +241,27 @@ public class QuestionScreen extends AbstractScreen {
 			TextButton alt = (TextButton) event.getTarget();
 			String altName = alt.getName();
 			
-			//if(altName.equals(currentQuestion.getA))
-//			if (currentQuestion.getAlt2().isCorrectAnswer())
-//				game.setScreen(new NextPlayerScreen(game, 1));
+			if(altName.equals(currentQuestion.getAlt1().getName())) {
+				if(currentQuestion.getAlt1().isCorrectAnswer()) {
+					// Update score
+				}
+				game.setScreen(new NextPlayerScreen(game));
+			} else if(altName.equals(currentQuestion.getAlt2().getName())) {
+				if(currentQuestion.getAlt2().isCorrectAnswer()) {
+					// Update score
+				}
+				game.setScreen(new NextPlayerScreen(game));
+			} else if(altName.equals(currentQuestion.getAlt3().getName())) {
+				if(currentQuestion.getAlt3().isCorrectAnswer()) {
+					// Update score
+				}
+				game.setScreen(new NextPlayerScreen(game));
+			} else if(altName.equals(currentQuestion.getAlt4().getName())) {
+				if(currentQuestion.getAlt4().isCorrectAnswer()) {
+					// Update score
+				}
+				game.setScreen(new NextPlayerScreen(game));
+			}
 		}
 	}
 }

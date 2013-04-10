@@ -20,9 +20,8 @@ public class NextPlayerScreen extends AbstractScreen {
 	int player;
 	
 	// constructor to keep a reference to the main Game class
-	public NextPlayerScreen(MyGame game, Player player) {
+	public NextPlayerScreen(MyGame game) {
 		super(game);
-		this.player = player.getNumeric();
 	}
 
 	@Override
