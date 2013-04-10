@@ -16,6 +16,7 @@ public class Area {
 	// The visual representation of the area.
 	private Image image;
 	
+	// Holds color of area
 	private Color color;
 
 	private int value, xPosition, yPosition;
