@@ -15,6 +15,7 @@ import com.testgame.MyGame;
 
 public abstract class AbstractGameScreen implements Screen {
 
+	
 	MyGame game;
 
 	Stage stage;
@@ -24,6 +25,7 @@ public abstract class AbstractGameScreen implements Screen {
 	TextureAtlas atlas;
 	BitmapFont font;
 	Skin skin;
+	TextButtonStyle buttonStyle;
 
 	// Our NinePatches
 	NinePatch background;
@@ -44,25 +46,29 @@ public abstract class AbstractGameScreen implements Screen {
 	public void render(float delta) {
 
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		
+
 		stage.act(delta);
 
 		batch.begin();
 		background.draw(batch,
-				(Gdx.graphics.getWidth() - Gdx.graphics.getWidth() * 1.0f) / 2,
-				(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 1.0f) / 2,
-				Gdx.graphics.getWidth() * 1.0f,
-				Gdx.graphics.getHeight() * 1.0f);
+						(Gdx.graphics.getWidth() - Gdx.graphics.getWidth() * 1.0f) / 2,
+						(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 1.0f) / 2,
+						Gdx.graphics.getWidth() * 1.0f,
+						Gdx.graphics.getHeight() * 1.0f);
+		
+		
 		batch.end();
 
 		stage.draw();
 	}
 
+	
 	/**
 	 * Called when this screen is set as the screen with game.setScreen();
 	 */
 	@Override
 	public void show() {
+
 		stage = new Stage();
 
 		atlas = new TextureAtlas("skins/mainmenu.atlas");
@@ -72,9 +78,10 @@ public abstract class AbstractGameScreen implements Screen {
 
 		background = new NinePatch(new TextureRegion(
 				atlas.findRegion("background")), 190, 190, 114, 292);
-		
+
 		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
 		batch = new SpriteBatch();
+
 	}
 
 	/**
@@ -96,9 +103,8 @@ public abstract class AbstractGameScreen implements Screen {
 
 		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
 											// this stage
-
 	}
-	
+
 	@Override
 	public void pause() {
 	}
@@ -111,13 +117,11 @@ public abstract class AbstractGameScreen implements Screen {
 	public void dispose() {
 		Gdx.app.debug("testgame", "Disposing Game Screen");
 
-		batch.dispose();
 		atlas.dispose();
 		stage.dispose();
 		font.dispose();
 		skin.dispose();
 		batch.dispose();
 		background.getTexture().dispose();
-
 	}
 }
