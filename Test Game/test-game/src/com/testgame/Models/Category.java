@@ -25,7 +25,7 @@ public class Category implements Serializable {
 	 * 
 	 * @return String
 	 */
-	public String getCategoryName() {
+	public String getName() {
 		return category;
 	}
 	

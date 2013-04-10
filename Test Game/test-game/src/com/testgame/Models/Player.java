@@ -13,8 +13,9 @@ public class Player {
 	// En Player har en Score poengsum, en Color farge som vises på
 	// kart/gamescreen, og et String navn.
 
-	public Player() {
+	public Player(String name) {
 		score = new Score();
+		this.name = name;
 	}
 
 	public Score getScore() {

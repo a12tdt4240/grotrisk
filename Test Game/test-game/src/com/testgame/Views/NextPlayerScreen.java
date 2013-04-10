@@ -67,18 +67,19 @@ public class NextPlayerScreen extends AbstractScreen {
 			}
 			
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new GameScreen(game));
+				game.setScreen(new QuestionScreen(game));
 			}
 		});
 		
 		// TextField init
 		LabelStyle labelStyleHeader = new LabelStyle();
 		labelStyleHeader.font = font;
-		labelStyleHeader.fontColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+		labelStyleHeader.fontColor = new Color(0.647059f, 0.164706f, 0.164706f, 1.0f);
 		nextPlayerInfo = new Label("Send enheten til:", labelStyleHeader);
 		nextPlayerInfo.setX(Gdx.graphics.getWidth() / 2 - nextPlayerInfo.getWidth() / 2);
 		nextPlayerInfo.setY(Gdx.graphics.getHeight() / 2 - nextPlayerInfo.getHeight() / 2 + Gdx.graphics.getHeight() * 0.19f);
 		nextPlayerInfo.setWidth(0.6f * Gdx.graphics.getWidth());
+		
 		LabelStyle labelStyle = new LabelStyle();
 		labelStyle.font = font;
 		labelStyle.fontColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);

@@ -8,8 +8,8 @@ public class Alternative implements Serializable {
 
 	// Et alternativ har en tekst og holder informasjon om det er det riktige svaret.
 	
-	String text;
-	boolean isCorrectAnswer;
+	private String text;
+	private boolean isCorrectAnswer;
 	
 	public Alternative() {}
 	
@@ -23,7 +23,7 @@ public class Alternative implements Serializable {
 	 * 
 	 * @return String
 	 */
-	public String getAlternativeText() {
+	public String getName() {
 		return text;
 	}
 	
