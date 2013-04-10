@@ -103,13 +103,13 @@ public class QuestionScreen extends AbstractScreen {
 					// 2. TODO: Show that answer was correct
 					
 					// 3. Move on to the nextplayerscreen.
-					game.setScreen(new NextPlayerScreen(game, game.getCurrentPlayer()));
+					game.setScreen(new NextPlayerScreen(game));
 				} else {
 					// Answer was wrong.
 					// 1. TODO: Show that answer was wrong 
 					
 					// 2. Move on to the nextplayerscreen.
-					game.setScreen(new NextPlayerScreen(game, game.getCurrentPlayer()));
+					game.setScreen(new NextPlayerScreen(game));
 				}
 			}
 
@@ -131,13 +131,13 @@ public class QuestionScreen extends AbstractScreen {
 					// 2. TODO: Show that answer was correct
 					
 					// 3. Move on to the nextplayerscreen.
-					game.setScreen(new NextPlayerScreen(game, game.getCurrentPlayer()));
+					game.setScreen(new NextPlayerScreen(game));
 				} else {
 					// Answer was wrong.
 					// 1. TODO: Show that answer was wrong 
 					
 					// 2. Move on to the nextplayerscreen.
-					game.setScreen(new NextPlayerScreen(game, game.getCurrentPlayer()));
+					game.setScreen(new NextPlayerScreen(game));
 				}
 			}
 		});
@@ -158,13 +158,13 @@ public class QuestionScreen extends AbstractScreen {
 					// 2. TODO: Show that answer was correct
 					
 					// 3. Move on to the nextplayerscreen.
-					game.setScreen(new NextPlayerScreen(game, game.getCurrentPlayer()));
+					game.setScreen(new NextPlayerScreen(game));
 				} else {
 					// Answer was wrong.
 					// 1. TODO: Show that answer was wrong 
 					
 					// 2. Move on to the nextplayerscreen.
-					game.setScreen(new NextPlayerScreen(game, game.getCurrentPlayer()));
+					game.setScreen(new NextPlayerScreen(game));
 				}
 			}
 		});
@@ -185,13 +185,13 @@ public class QuestionScreen extends AbstractScreen {
 					// 2. TODO: Show that answer was correct
 					
 					// 3. Move on to the nextplayerscreen.
-					game.setScreen(new NextPlayerScreen(game, game.getCurrentPlayer()));
+					game.setScreen(new NextPlayerScreen(game));
 				} else {
 					// Answer was wrong.
 					// 1. TODO: Show that answer was wrong 
 					
 					// 2. Move on to the nextplayerscreen.
-					game.setScreen(new NextPlayerScreen(game, game.getCurrentPlayer()));
+					game.setScreen(new NextPlayerScreen(game));
 				}
 			}
 		});

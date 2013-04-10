@@ -29,6 +29,6 @@ public class GameScreen extends AbstractGameScreen {
 	public void show() {
 		super.show();
 		// 
-		game.setScreen(new NextPlayerScreen(game, game.getCurrentPlayer()));
+		game.setScreen(new NextPlayerScreen(game));
 	}
 }
