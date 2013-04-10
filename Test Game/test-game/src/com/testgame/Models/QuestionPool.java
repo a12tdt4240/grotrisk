@@ -1,6 +1,7 @@
 package com.testgame.Models;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Class to hold categories and questions
@@ -10,8 +11,10 @@ import java.util.ArrayList;
  */
 public class QuestionPool {
 	private ArrayList<Question> questions;
+	private Random random;
 	
 	public QuestionPool(){
+		random = new Random();
 	}
 	
 	/**
@@ -25,7 +28,7 @@ public class QuestionPool {
 		Alternative alt3 = new Alternative("7.juni 1905", true);
 		Alternative alt4 = new Alternative("7.mai 1945", false);
 		Question questionOne = new Quiz(catOne,
-				"NŒr ble det moderne Norge uavhengig?", alt1, alt2, alt3, alt4);
+				"Når ble det moderne Norge uavhengig?", alt1, alt2, alt3, alt4);
 		return questionOne;
 	}
 	
@@ -35,6 +38,9 @@ public class QuestionPool {
 	 * @return Question
 	 */
 	public Question theRealGetRandomQuestion() {
-		return null;
+		int max = questions.size() - 1;
+		int randomNumber = random.nextInt(max);
+		
+		return questions.get(randomNumber);
 	}
 }
