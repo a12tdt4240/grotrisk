@@ -225,4 +225,21 @@ public class QuestionScreen extends AbstractScreen {
 		// correct.dispose();
 		// wrong.dispose();
 	}
+	
+	class InputEventListener extends InputListener {
+		public boolean touchDown(InputEvent event, float x, float y,
+				int pointer, int button) {
+			return true;
+		}
+
+		public void touchUp(InputEvent event, float x, float y,
+				int pointer, int button) {
+			TextButton alt = (TextButton) event.getTarget();
+			String altName = alt.getName();
+			
+			//if(altName.equals(currentQuestion.getA))
+//			if (currentQuestion.getAlt2().isCorrectAnswer())
+//				game.setScreen(new NextPlayerScreen(game, 1));
+		}
+	}
 }
