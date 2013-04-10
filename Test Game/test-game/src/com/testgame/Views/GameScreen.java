@@ -42,5 +42,6 @@ public class GameScreen extends AbstractGameScreen {
 	 */
 	@Override
 	public void hide() {
+		super.hide();
 	}
 }
