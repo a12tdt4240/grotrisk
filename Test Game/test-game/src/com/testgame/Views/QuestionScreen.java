@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.testgame.MyGame;
+import com.testgame.Models.Area;
 import com.testgame.Models.Quiz;
 
 public class QuestionScreen extends AbstractScreen {
@@ -22,17 +23,19 @@ public class QuestionScreen extends AbstractScreen {
 	LabelStyle labelStyleHeader;
 	int countDownTime = 20;
 	int currentTime = 0;
+	Area area;
 
 	/**
-	 * Constructor to keep a reference to the main Game class
+	 * Constructor to keep a reference to the main Game class TODO: The
+	 * constructor needs to take in from which area this question was generated.
 	 * 
 	 * @param game
 	 */
-	public QuestionScreen(MyGame game) {
+	public QuestionScreen(MyGame game, Area area) {
 		super(game);
+		this.area = area;
 		// correct = Gdx.audio.newSound(Gdx.files.internal("data/correct.wav"));
 		// wrong = Gdx.audio.newSound(Gdx.files.internal("data/wrong.wav"));
-
 		startTimer();
 	}
 
@@ -83,8 +86,8 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	public void initializeButtons() {
 		// get question
-		 currentQuestion = (Quiz) game.getQuestionPool().random();
-//		currentQuestion = (Quiz) game.getQuestionPool().getTestQuestion();
+		currentQuestion = (Quiz) game.getQuestionPool().random();
+		// currentQuestion = (Quiz) game.getQuestionPool().getTestQuestion();
 
 		// create buttons
 		// Vi kan skalere tekststørrelsen til å passe i knappene.
@@ -123,37 +126,6 @@ public class QuestionScreen extends AbstractScreen {
 		alt4Button.setX(Gdx.graphics.getWidth() / 2 + 5);
 		alt4Button.setY((Gdx.graphics.getHeight() / 4));
 
-		// add input listener
-		// alt1Button.addListener(new InputListener() {
-		// public boolean touchDown(InputEvent event, float x, float y,
-		// int pointer, int button) {
-		// return true;
-		// }
-		//
-		// public void touchUp(InputEvent event, float x, float y,
-		// int pointer, int button) {
-		// if (currentQuestion.getAlt1().isCorrectAnswer()) {
-		// // Answer was correct.
-		// // 1. Update score, currently with 100 points.
-		// // TODO: update score with the value of the area the player
-		// // is in.
-		// game.getCurrentPlayer().updateScore(100);
-		// game.switchCurrentPlayer();
-		// // 2. TODO: Show that answer was correct
-		//
-		// // 3. Move on to the nextplayerscreen.
-		// nextPlayer();
-		// } else {
-		// // Answer was wrong.
-		// // 1. TODO: Show that answer was wrong
-		//
-		// // 2. Move on to the nextplayerscreen.
-		// nextPlayer();
-		// }
-		// }
-		//
-		// });
-
 		alt1Button.addListener(new InputEventListener());
 		alt2Button.addListener(new InputEventListener());
 		alt3Button.addListener(new InputEventListener());
@@ -185,7 +157,7 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	public void hide() {
 		super.hide();
-		
+
 		// correct.dispose();
 		// wrong.dispose();
 	}
@@ -239,8 +211,7 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	private void correctAnswer() {
 		// 1. Update score, currently with 100 points.
-		// TODO: update score with the value of the area the player is in.
-		game.getCurrentPlayer().updateScore(100);
+		game.getCurrentPlayer().updateScore(area.getValueOfArea());
 		// 2. TODO: Show that answer was correct
 
 		// 3. Move on to the nextplayerscreen.
@@ -253,6 +224,6 @@ public class QuestionScreen extends AbstractScreen {
 
 		// 2. Move on to the nextplayerscreen.
 		game.switchCurrentPlayer();
-//		nextPlayer();
+		// nextPlayer();
 	}
 }
