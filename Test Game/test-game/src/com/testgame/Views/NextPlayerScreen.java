@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.testgame.MyGame;
+import com.testgame.Models.Player;
 
 public class NextPlayerScreen extends AbstractScreen {
 
@@ -19,9 +20,9 @@ public class NextPlayerScreen extends AbstractScreen {
 	int player;
 	
 	// constructor to keep a reference to the main Game class
-	public NextPlayerScreen(MyGame game, int player) {
+	public NextPlayerScreen(MyGame game, Player player) {
 		super(game);
-		this.player = player;
+		this.player = player.getNumeric();
 	}
 
 	@Override
@@ -33,23 +34,6 @@ public class NextPlayerScreen extends AbstractScreen {
 		nextPlayerInfo.draw(batch, 1.0f);
 		nextPlayerLabel.draw(batch, 1.0f);
 		batch.end();
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		super.resize(width, height);
-	}
-	
-	@Override
-	public void show() {
-		super.show();
-	}
-	
-	/**
-	 * Sets the style of UI elements.
-	 */
-	public void initializeStyle() {
-		super.initializeStyle();
 	}
 	
 	public void initializeButtons() {
@@ -90,10 +74,5 @@ public class NextPlayerScreen extends AbstractScreen {
 
 		
 		this.stage.addActor(nextPlayerButton);
-	}
-
-	@Override
-	public void hide() {
-		super.hide();
 	}
 }

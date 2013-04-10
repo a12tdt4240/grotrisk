@@ -7,23 +7,33 @@ public class Player {
 	Score score;
 	Color color;
 	String name;
+	int numeric;
 
 	// Players lages i oppstarten av spillet (klassen MyGame ?). Der holdes det
 	// styr på hvilken Player sin tur det er.
 	// En Player har en Score poengsum, en Color farge som vises på
-	// kart/gamescreen, og et String navn.
+	// kart/gamescreen, et String navn og en numerisk verdi.
 
-	public Player(String name) {
+	public Player(int n) {
 		score = new Score();
-		this.name = name;
+		numeric = n;
+		this.name = "Player " + numeric;
 	}
 
+	public int getNumeric() {
+		return numeric;
+	}
+	
 	public Score getScore() {
 		return score;
 	}
 
 	public void setScore(Score score) {
 		this.score = score;
+	}
+	
+	public void updateScore(int value) {
+		score.updateScore(value);
 	}
 
 	public Color getColor() {
