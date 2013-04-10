@@ -50,7 +50,7 @@ public class NextPlayerScreen extends AbstractScreen {
 			}
 			
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new QuestionScreen(game));
+				game.setScreen(new GameScreen(game));
 			}
 		});
 		
