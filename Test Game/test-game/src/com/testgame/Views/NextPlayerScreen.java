@@ -34,23 +34,6 @@ public class NextPlayerScreen extends AbstractScreen {
 		nextPlayerLabel.draw(batch, 1.0f);
 		batch.end();
 	}
-
-	@Override
-	public void resize(int width, int height) {
-		super.resize(width, height);
-	}
-	
-	@Override
-	public void show() {
-		super.show();
-	}
-	
-	/**
-	 * Sets the style of UI elements.
-	 */
-	public void initializeStyle() {
-		super.initializeStyle();
-	}
 	
 	public void initializeButtons() {
 		
@@ -90,10 +73,5 @@ public class NextPlayerScreen extends AbstractScreen {
 
 		
 		this.stage.addActor(nextPlayerButton);
-	}
-
-	@Override
-	public void hide() {
-		super.hide();
 	}
 }

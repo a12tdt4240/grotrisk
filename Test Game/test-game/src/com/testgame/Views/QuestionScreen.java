@@ -41,18 +41,6 @@ public class QuestionScreen extends AbstractScreen {
 		batch.end();
 	}
 
-	@Override
-	public void resize(int width, int height) {
-		super.resize(width, height);
-	}
-
-	/**
-	 * Sets the style of UI elements.
-	 */
-	public void initializeStyle() {
-		super.initializeStyle();
-	}
-
 	/**
 	 * Button initialization
 	 */
@@ -178,14 +166,6 @@ public class QuestionScreen extends AbstractScreen {
 		this.stage.addActor(alt2Button);
 		this.stage.addActor(alt3Button);
 		this.stage.addActor(alt4Button);
-	}
-
-	/**
-	 * Called when this screen is set as the screen with game.setScreen();
-	 */
-	@Override
-	public void show() {
-		super.show();
 	}
 
 	/**

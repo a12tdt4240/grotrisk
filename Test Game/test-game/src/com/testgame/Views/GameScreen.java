@@ -30,18 +30,4 @@ public class GameScreen extends AbstractGameScreen {
 		super.show();
 		game.setScreen(new NextPlayerScreen(game, 1));
 	}
-
-	@Override
-	public void resize(int width, int height) {
-		super.resize(width, height);
-	}
-	
-	/**
-	 * Called when the current screen changes from this to a different screen.
-	 * Remember to dispose objects.
-	 */
-	@Override
-	public void hide() {
-		super.hide();
-	}
 }
