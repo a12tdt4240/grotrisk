@@ -52,7 +52,10 @@ public class QuestionScreen extends AbstractScreen {
 		}, 1);
 	}
 
-	public void nextPlayer() {
+	/**
+	 * Helper method setting the next screen.
+	 */
+	private void nextPlayer() {
 		game.setScreen(new NextPlayerScreen(game));
 	}
 
@@ -80,8 +83,8 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	public void initializeButtons() {
 		// get question
-		// currentQuestion = (Quiz) game.getQuestionPool().random();
-		currentQuestion = (Quiz) game.getQuestionPool().getTestQuestion();
+		 currentQuestion = (Quiz) game.getQuestionPool().random();
+//		currentQuestion = (Quiz) game.getQuestionPool().getTestQuestion();
 
 		// create buttons
 		// Vi kan skalere tekststørrelsen til å passe i knappene.
@@ -182,6 +185,7 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	public void hide() {
 		super.hide();
+		
 		// correct.dispose();
 		// wrong.dispose();
 	}
