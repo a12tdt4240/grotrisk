@@ -1,0 +1,14 @@
+[
+	{
+		"class": "com.testgame.Models.Area",
+		"xPosition": 50,
+		"yPosition": 50,
+		"value": 200
+	},
+	{
+		"class": "com.testgame.Models.Area",
+		"xPosition": 200,
+		"yPosition": 200,
+		"value": 100
+	}
+]

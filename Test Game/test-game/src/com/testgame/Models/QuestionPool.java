@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.Json;
@@ -16,6 +17,8 @@ import com.badlogic.gdx.utils.Json;
  */
 public class QuestionPool {
 	
+	public static final String DEFAULT_QUESTIONS = "data/json/questions.json";
+		
 	private Quiz[] questions;
 	private ArrayList<Quiz> randomSelected;
 	
@@ -39,7 +42,7 @@ public class QuestionPool {
 		
 		FileHandle handle = null;
 		try {
-			handle = Gdx.files.internal("data/json/questions.json");
+			handle = Gdx.files.getFileHandle(DEFAULT_QUESTIONS, FileType.Internal);
 			Gdx.app.log("QuestionPool","exists: " + handle.exists());
 		} catch (Exception e) {
 			Gdx.app.error("QuestionPool read from file", e.getMessage());
@@ -52,7 +55,6 @@ public class QuestionPool {
 		}
 		
 		Gdx.app.log("QuestionPool","Questions loaded: " + this.questions.length);
-		Gdx.app.log("QuestionPool","Question: " + this.questions[0].getCategory().getName());
 	}
 	
 	public Quiz[] all() {

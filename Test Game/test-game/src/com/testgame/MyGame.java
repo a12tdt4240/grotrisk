@@ -3,6 +3,8 @@ package com.testgame;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.Gdx;
+import com.testgame.Models.Map;
+import com.testgame.Models.MapFactory;
 import com.testgame.Models.Player;
 import com.testgame.Models.QuestionPool;
 import com.testgame.Views.MainMenuScreen;
@@ -26,6 +28,8 @@ public class MyGame extends Game implements ApplicationListener {
 		
 		//TODO:  Generate question pool.
 		questionPool = new QuestionPool();
+		
+		Map map = new MapFactory().createDefaultMap();
 		
 		//TODO: Create players.
 		player1 = new Player(1);
