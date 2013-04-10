@@ -2,6 +2,7 @@ package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -198,8 +199,8 @@ public class QuestionScreen extends AbstractScreen {
 
 		public void touchUp(InputEvent event, float x, float y, int pointer,
 				int button) {
-			TextButton alt = (TextButton) event.getTarget();
-			String altName = alt.getName();
+			Label alt = (Label) event.getTarget();
+			String altName = alt.getText().toString();
 
 			if (altName.equals(currentQuestion.getAlt1().getName())) {
 				if (currentQuestion.getAlt1().isCorrectAnswer()) {
@@ -247,7 +248,7 @@ public class QuestionScreen extends AbstractScreen {
 			
 			// 2. Move on to the nextplayerscreen.
 			game.switchCurrentPlayer();
-			nextPlayer();
+//			nextPlayer();
 		}
 	}
 }
