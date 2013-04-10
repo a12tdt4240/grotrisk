@@ -38,6 +38,9 @@ public class MyGame extends Game implements ApplicationListener {
 		setScreen(mainMenuScreen);
 	}
 	
+	/**
+	 * Switches which player is the current player.
+	 */
 	public void switchCurrentPlayer() {
 		switch(currentPlayer.getNumeric()) {
 		case 1:
@@ -65,6 +68,10 @@ public class MyGame extends Game implements ApplicationListener {
 		this.currentPlayer = currentPlayer;
 	}
 
+	/**
+	 * Returns the question pool.
+	 * @return
+	 */
 	public QuestionPool getQuestionPool() {
 		return questionPool;
 	}
