@@ -20,7 +20,7 @@ public class QuestionScreen extends AbstractScreen {
 	TextButton alt1Button, alt2Button, alt3Button, alt4Button;
 	Label questionText, responseText, countDownText;
 	LabelStyle labelStyleHeader;
-	int countDownTime = 5;
+	int countDownTime = 20;
 	int currentTime = 0;
 
 	/**
@@ -157,7 +157,7 @@ public class QuestionScreen extends AbstractScreen {
 		alt4Button.addListener(new InputEventListener());
 
 		// Question text field
-		LabelStyle labelStyleHeader = new LabelStyle();
+		labelStyleHeader = new LabelStyle();
 		labelStyleHeader.font = font;
 		labelStyleHeader.fontColor = new Color(0.647059f, 0.164706f, 0.164706f,
 				1.0f);
