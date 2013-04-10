@@ -45,7 +45,7 @@ public class QuestionScreen extends AbstractScreen {
 					currentTime++;
 					startTimer();
 				} else {
-					nextPlayer();
+					wrongAnswer();
 				}
 			}
 
@@ -228,26 +228,27 @@ public class QuestionScreen extends AbstractScreen {
 			}
 		}
 
-		/**
-		 * Called when the answer was correct.
-		 */
-		private void correctAnswer() {
-			// 1. Update score, currently with 100 points.
-			// TODO: update score with the value of the area the player is in.
-			game.getCurrentPlayer().updateScore(100);
-			// 2. TODO: Show that answer was correct
+	}
 
-			// 3. Move on to the nextplayerscreen.
-			game.switchCurrentPlayer();
-			nextPlayer();
-		}
+	/**
+	 * Called when the answer was correct.
+	 */
+	private void correctAnswer() {
+		// 1. Update score, currently with 100 points.
+		// TODO: update score with the value of the area the player is in.
+		game.getCurrentPlayer().updateScore(100);
+		// 2. TODO: Show that answer was correct
 
-		private void wrongAnswer() {
-			// 1. TODO: Show that answer was wrong.
-			
-			// 2. Move on to the nextplayerscreen.
-			game.switchCurrentPlayer();
-			nextPlayer();
-		}
+		// 3. Move on to the nextplayerscreen.
+		game.switchCurrentPlayer();
+		nextPlayer();
+	}
+
+	private void wrongAnswer() {
+		// 1. TODO: Show that answer was wrong.
+
+		// 2. Move on to the nextplayerscreen.
+		game.switchCurrentPlayer();
+		nextPlayer();
 	}
 }
