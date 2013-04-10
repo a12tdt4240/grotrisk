@@ -1,7 +1,5 @@
 package com.testgame.Views;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
 import com.testgame.MyGame;
 
 public class GameScreen extends AbstractGameScreen {
@@ -19,8 +17,7 @@ public class GameScreen extends AbstractGameScreen {
 	 **/
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		
+		super.render(delta);
 	}
 
 	/**
@@ -29,6 +26,6 @@ public class GameScreen extends AbstractGameScreen {
 	@Override
 	public void show() {
 		super.show();
-		// game.setScreen(new NextPlayerScreen(game));
+		//game.setScreen(new NextPlayerScreen(game));
 	}
 }
