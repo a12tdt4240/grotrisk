@@ -19,8 +19,8 @@ public class QuestionPool {
 	private ArrayList<Question> randomSelected;
 	
 	public QuestionPool(){
-		this.loadQuestions();
-		Gdx.app.log("QuestionPool", "construct");
+//		this.loadQuestions();
+//		Gdx.app.log("QuestionPool", "construct");
 	}
 	
 	private void loadQuestions() {
