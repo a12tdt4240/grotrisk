@@ -1,10 +1,10 @@
 package com.testgame.Models;
 
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import java.util.ArrayList;
 
 public class Area {
@@ -14,7 +14,7 @@ public class Area {
 	// An area holds a question.
 	private Question question;
 	// The visual representation of the area.
-	private Image image;
+	private Drawable areaDrawable;
 
 	// Holds color of area
 	private Color color;
@@ -23,6 +23,9 @@ public class Area {
 	// A list of neighboring areas. Areas that can be moved to in one move.
 	private ArrayList<Area> neighbors;
 
+	Skin skin;
+	TextureAtlas atlas;
+	
 	/**
 	 * Constructor.
 	 * 
@@ -41,8 +44,11 @@ public class Area {
 	 * Helper method for loading the Image.
 	 */
 	protected void loadAreaImage() {
-		image = new Image(new Texture(
-				new FileHandle("data/maps/01/area001.png")));
+		atlas = new TextureAtlas("data/maps/map.atlas");
+
+		skin = new Skin();
+		skin.addRegions(atlas);
+		areaDrawable = skin.getDrawable("area001");
 	}
 
 	/**
@@ -98,8 +104,8 @@ public class Area {
 		return value;
 	}
 
-	public Image getImage() {
-		return image;
+	public Drawable getImage() {
+		return areaDrawable;
 	}
 
 	public int getXPosition() {
