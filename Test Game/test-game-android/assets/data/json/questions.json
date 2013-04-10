@@ -1,0 +1,31 @@
+[
+	{
+		"class": "com.testgame.Models.Question",
+		"questionText": "Hva er hovedstaden i Norge?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Sverige",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Oslo",
+			"isCorrectAnswer": true
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "København",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Beijing",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Geografi"
+		}
+
+	}
+]
