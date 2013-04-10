@@ -1,6 +1,7 @@
 package com.testgame.Models;
 
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
@@ -12,6 +13,7 @@ public class Area {
 	private Question question;
 
 	private Image image;
+	private Color color;
 
 	private int value, xPosition, yPosition;
 	private ArrayList<Area> neighbors;
@@ -28,6 +30,19 @@ public class Area {
 	
 	protected void loadAreaImage() {
 		image = new Image(new Texture( new FileHandle("data/maps/mo/area001.png")));
+	}
+	
+	/**
+	 * Returns standard color if no users owns area, and
+	 * returns the owners color if an owner exists
+	 * 
+	 * @return Color
+	 */
+	public Color getColor() {
+		if(getOwner() == null) {
+			return color;
+		}
+		return getOwner().getColor();
 	}
 	
 	/**
