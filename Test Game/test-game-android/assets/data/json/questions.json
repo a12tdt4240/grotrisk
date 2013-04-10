@@ -1,6 +1,6 @@
 [
 	{
-		"class": "com.testgame.Models.Question",
+		"class": "com.testgame.Models.Quiz",
 		"questionText": "Hva er hovedstaden i Norge?",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
