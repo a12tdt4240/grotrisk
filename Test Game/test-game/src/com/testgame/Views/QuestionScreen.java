@@ -79,7 +79,7 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	public void initializeButtons() {
 		// get question
-		currentQuestion = (Quiz) game.getQuestionPool().getRandomQuestion();
+		currentQuestion = (Quiz) game.getQuestionPool().random();
 
 		// create buttons
 		// Vi kan skalere tekststørrelsen til å passe i knappene.
