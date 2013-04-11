@@ -1,6 +1,7 @@
 package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.testgame.MyGame;
@@ -41,13 +42,17 @@ public class GameScreen extends AbstractGameScreen {
 	/**
 	 * Called when this screen is set as the screen with game.setScreen();
 	 */
+	public void show() {
+		super.show();
+		
+	}
+	
 	@Override
 	public void resize(int width, int height) {
 		super.resize(width, height);
 		this.stage.addActor(areaView1);
 		this.stage.addActor(areaView2);
 		this.stage.addActor(areaView3);
-
 	}
 
 	/**
