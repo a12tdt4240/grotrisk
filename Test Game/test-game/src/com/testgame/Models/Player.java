@@ -32,10 +32,6 @@ public class Player {
 		this.score = score;
 	}
 	
-	public void updateScore(int value) {
-		score.updateScore(value);
-	}
-
 	public Color getColor() {
 		return color;
 	}
