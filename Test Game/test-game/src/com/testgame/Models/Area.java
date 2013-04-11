@@ -20,7 +20,7 @@ public class Area implements Serializable {
 	private Drawable areaDrawable;
 
 	// Holds color of area
-	private Color color;
+	private Color color = Color.WHITE;
 
 	private int value, xPosition, yPosition;
 	// A list of neighboring areas. Areas that can be moved to in one move.

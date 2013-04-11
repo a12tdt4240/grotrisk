@@ -15,15 +15,18 @@ public class GameScreen extends AbstractGameScreen {
 
 	MapView mapView;
 	AreaView areaView1, areaView2, areaView3;
+	boolean timeToRePaint;
 
 	// constructor to keep a reference to the main Game class
 	public GameScreen(MyGame game) {
 		super(game);
-
+		
 		// Create dummy areaViews
 		areaView1 = new AreaView(new Area((2 * Gdx.graphics.getWidth()) / 6, Gdx.graphics.getHeight() / 2, 100));
 		areaView2 = new AreaView(new Area((3 * Gdx.graphics.getWidth()) / 6, Gdx.graphics.getHeight() / 2, 100));
 		areaView3 = new AreaView(new Area((4 * Gdx.graphics.getWidth()) / 6, Gdx.graphics.getHeight() / 2, 100));
+		
+		setTimeToRePaint(false);
 		
 		// Add listeners to dummy areas
 		areaView1.addListener(new InputEventListener());
@@ -37,14 +40,32 @@ public class GameScreen extends AbstractGameScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
+		//TODO: Ask a variabel if areas needs to be updated.
+		if (timeToRePaint) rePaintAreaViews();
+		
 	}
+	
+	private void rePaintAreaViews() {
+		// Paint all areaViews. Currently the dummies.
+		areaView1.setColor(areaView1.getArea().getColor());
+		areaView2.setColor(areaView2.getArea().getColor());
+		areaView3.setColor(areaView3.getArea().getColor());
+		
+		// Reset the timeToRePaint variable.
+		setTimeToRePaint(false);
+	}
+	
+	public void setTimeToRePaint(boolean val) {
+		timeToRePaint = val;
+	}
+
 
 	/**
 	 * Called when this screen is set as the screen with game.setScreen();
 	 */
 	public void show() {
 		super.show();
-		
+		setTimeToRePaint(true);
 	}
 	
 	@Override
