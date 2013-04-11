@@ -223,6 +223,6 @@ public class QuestionScreen extends AbstractScreen {
 
 		// 2. Move on to the nextplayerscreen.
 		game.switchCurrentPlayer();
-		// nextPlayer();
+		nextPlayer();
 	}
 }
