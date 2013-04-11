@@ -22,12 +22,13 @@ public class QuestionScreen extends AbstractScreen {
 	TextButton alt1Button, alt2Button, alt3Button, alt4Button;
 	Label questionText, responseText, countDownText;
 	LabelStyle labelStyleHeader;
+	// How many seconds you get to answer a question.
 	int countDownTime = 20;
 	int currentTime = 0;
 	Area area;
 
 	/**
-	 * Constructor to keep a reference to the main Game class
+	 * Constructor keeping a reference to the main Game class
 	 * 
 	 * @param game
 	 */
@@ -39,6 +40,9 @@ public class QuestionScreen extends AbstractScreen {
 		startTimer();
 	}
 
+	/**
+	 * The count down timer.
+	 */
 	private void startTimer() {
 		Timer.schedule(new Task() {
 
@@ -85,12 +89,11 @@ public class QuestionScreen extends AbstractScreen {
 	 * Button initialization
 	 */
 	public void initializeButtons() {
-		// get question
+		// Retrieve question from question pool
 		currentQuestion = (Quiz) game.getQuestionPool().random();
-		// currentQuestion = (Quiz) game.getQuestionPool().getTestQuestion();
 
-		// create buttons
-		// Vi kan skalere tekststørrelsen til å passe i knappene.
+		// Create buttons
+		// Scaling text to fit the buttons.
 		buttonStyle.font.setScale(0.7f);
 
 		// Alternative 1
@@ -126,6 +129,7 @@ public class QuestionScreen extends AbstractScreen {
 		alt4Button.setX(Gdx.graphics.getWidth() / 2 + 5);
 		alt4Button.setY((Gdx.graphics.getHeight() / 4));
 
+		// Add listeners to each button.
 		alt1Button.addListener(new InputEventListener());
 		alt2Button.addListener(new InputEventListener());
 		alt3Button.addListener(new InputEventListener());
@@ -145,6 +149,7 @@ public class QuestionScreen extends AbstractScreen {
 				* 0.19f);
 		questionText.setWidth(0.6f * Gdx.graphics.getWidth());
 
+		// Add the buttons to the stage.
 		this.stage.addActor(alt1Button);
 		this.stage.addActor(alt2Button);
 		this.stage.addActor(alt3Button);
@@ -157,7 +162,7 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	public void hide() {
 		super.hide();
-		//TODO: Stop the countdown clock.
+		// Stop the count down clock. Not 100% sure if this is working correctly.
 		Timer.instance.clear();
 		
 		// correct.dispose();
@@ -214,19 +219,22 @@ public class QuestionScreen extends AbstractScreen {
 	 * Called when the answer was correct.
 	 */
 	private void correctAnswer() {
-		// 1. Update score, currently with 100 points.
+		// 1. Update score and set the new owner of the area.
 		game.getCurrentPlayer().getScore().updateScore(area.getValueOfArea());
 		area.setOwner(game.getCurrentPlayer());
 		// 2. TODO: Show that answer was correct
-		// 3. Move on to the nextplayerscreen.
+		// 3. Move on to the next player screen.
 		game.switchCurrentPlayer();
 		nextPlayer();
 	}
 
+	/**
+	 * Called when the answer was wrong.
+	 */
 	private void wrongAnswer() {
 		// 1. TODO: Show that answer was wrong.
 
-		// 2. Move on to the nextplayerscreen.
+		// 2. Move on to the next player screen.
 		game.switchCurrentPlayer();
 		nextPlayer();
 	}
