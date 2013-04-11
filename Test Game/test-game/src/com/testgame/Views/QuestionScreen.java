@@ -157,7 +157,7 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	public void hide() {
 		super.hide();
-
+		
 		// correct.dispose();
 		// wrong.dispose();
 	}
