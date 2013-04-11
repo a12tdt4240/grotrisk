@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.testgame.MyGame;
@@ -197,13 +198,10 @@ public class QuestionScreen extends AbstractScreen {
 	 * @param Alternative
 	 */
 	private void handleEvent(Label lab, Alternative alt) {
+		LabelStyle style = lab.getStyle();
 		if (alt.isCorrectAnswer()) {
-			
-			//lab.setStyle(style)
-			lab.setColor(Color.GREEN);
 			correctAnswer();
 		} else {
-			lab.setColor(Color.RED);
 			wrongAnswer();
 		}
 	}
