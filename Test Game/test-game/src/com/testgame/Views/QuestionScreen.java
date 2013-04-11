@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.testgame.MyGame;
+import com.testgame.Models.Alternative;
 import com.testgame.Models.Area;
 import com.testgame.Models.Quiz;
 
@@ -177,32 +178,30 @@ public class QuestionScreen extends AbstractScreen {
 			String altName = alt.getText().toString();
 
 			if (altName.equals(currentQuestion.getAlt1().getName())) {
-				if (currentQuestion.getAlt1().isCorrectAnswer()) {
-					correctAnswer();
-				} else {
-					wrongAnswer();
-				}
+				handleEvent(currentQuestion.getAlt1());
 			} else if (altName.equals(currentQuestion.getAlt2().getName())) {
-				if (currentQuestion.getAlt2().isCorrectAnswer()) {
-					correctAnswer();
-				} else {
-					wrongAnswer();
-				}
+				handleEvent(currentQuestion.getAlt2());
 			} else if (altName.equals(currentQuestion.getAlt3().getName())) {
-				if (currentQuestion.getAlt3().isCorrectAnswer()) {
-					correctAnswer();
-				} else {
-					wrongAnswer();
-				}
+				handleEvent(currentQuestion.getAlt3());
 			} else if (altName.equals(currentQuestion.getAlt4().getName())) {
-				if (currentQuestion.getAlt4().isCorrectAnswer()) {
-					correctAnswer();
-				} else {
-					wrongAnswer();
-				}
+				handleEvent(currentQuestion.getAlt4());
 			}
 		}
 
+	}
+	
+	/**
+	 * Takes an alternative, checks if it is correct and 
+	 * handles the given situation appropriately
+	 * 
+	 * @param Alternative
+	 */
+	private void handleEvent(Alternative alt) {
+		if (alt.isCorrectAnswer()) {
+			correctAnswer();
+		} else {
+			wrongAnswer();
+		}
 	}
 
 	/**
