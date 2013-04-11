@@ -2,6 +2,7 @@ package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -27,6 +28,8 @@ public class QuestionScreen extends AbstractScreen {
 	int currentTime = 0;
 	Area area;
 
+	boolean hasAnswered = false;
+
 	/**
 	 * Constructor keeping a reference to the main Game class
 	 * 
@@ -48,11 +51,13 @@ public class QuestionScreen extends AbstractScreen {
 
 			@Override
 			public void run() {
-				if (countDownTime - currentTime != 0) {
-					currentTime++;
-					startTimer();
-				} else {
-					wrongAnswer();
+				if (!hasAnswered) {
+					if (countDownTime - currentTime != 0) {
+						currentTime++;
+						startTimer();
+					} else {
+						wrongAnswer();
+					}
 				}
 			}
 
@@ -162,9 +167,10 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	public void hide() {
 		super.hide();
-		// Stop the count down clock. Not 100% sure if this is working correctly.
+		// Stop the count down clock. Not 100% sure if this is working
+		// correctly.
 		Timer.instance.clear();
-		
+
 		// correct.dispose();
 		// wrong.dispose();
 	}
@@ -196,22 +202,41 @@ public class QuestionScreen extends AbstractScreen {
 		}
 
 	}
-	
+
 	/**
-	 * Takes an alternative, checks if it is correct and 
-	 * handles the given situation appropriately
+	 * Takes an alternative, checks if it is correct and handles the given
+	 * situation appropriately
 	 * 
 	 * @param Alternative
 	 */
 	private void handleEvent(Label lab, Alternative alt) {
+		hasAnswered = true;
+
 		if (alt.isCorrectAnswer()) {
-			
-			//lab.setStyle(style)
+
 			lab.setColor(Color.GREEN);
-			correctAnswer();
+
+			Timer.schedule(new Task() {
+
+				@Override
+				public void run() {
+					correctAnswer();
+				}
+
+			}, 2);
+
 		} else {
 			lab.setColor(Color.RED);
-			wrongAnswer();
+
+			Timer.schedule(new Task() {
+
+				@Override
+				public void run() {
+					wrongAnswer();
+				}
+
+			}, 2);
+
 		}
 	}
 
