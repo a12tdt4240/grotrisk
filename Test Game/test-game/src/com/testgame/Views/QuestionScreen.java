@@ -157,6 +157,8 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	public void hide() {
 		super.hide();
+		//TODO: Stop the countdown clock.
+		Timer.instance.clear();
 		
 		// correct.dispose();
 		// wrong.dispose();
