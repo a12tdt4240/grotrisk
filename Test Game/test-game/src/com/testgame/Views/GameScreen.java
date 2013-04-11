@@ -42,13 +42,17 @@ public class GameScreen extends AbstractGameScreen {
 	/**
 	 * Called when this screen is set as the screen with game.setScreen();
 	 */
+	public void show() {
+		super.show();
+		
+	}
+	
 	@Override
 	public void resize(int width, int height) {
 		super.resize(width, height);
 		this.stage.addActor(areaView1);
 		this.stage.addActor(areaView2);
 		this.stage.addActor(areaView3);
-
 	}
 
 	/**
