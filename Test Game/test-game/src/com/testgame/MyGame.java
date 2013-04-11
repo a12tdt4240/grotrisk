@@ -10,6 +10,7 @@ import com.testgame.Models.QuestionPool;
 import com.testgame.Views.MainMenuScreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 
 public class MyGame extends Game implements ApplicationListener {
 
@@ -26,15 +27,18 @@ public class MyGame extends Game implements ApplicationListener {
 		music.setLooping(true);
 		music.play();
 		
-		//TODO:  Generate question pool.
+		// Generate question pool.
 		questionPool = new QuestionPool();
 		
 		Map map = new MapFactory().createDefaultMap();
 		
-		//TODO: Create players.
+		// Create players.
 		player1 = new Player(1);
 		player2 = new Player(2);
-		//TODO: Set the current player.
+		// Set player colors
+		player1.setColor(Color.BLACK);
+		player2.setColor(Color.ORANGE);
+		// Set the current player.
 		setCurrentPlayer(player1);
 		
 		// Launch main menu screen.

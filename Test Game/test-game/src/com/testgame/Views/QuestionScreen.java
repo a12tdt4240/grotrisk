@@ -212,8 +212,8 @@ public class QuestionScreen extends AbstractScreen {
 	private void correctAnswer() {
 		// 1. Update score, currently with 100 points.
 		game.getCurrentPlayer().updateScore(area.getValueOfArea());
+		area.setOwner(game.getCurrentPlayer());
 		// 2. TODO: Show that answer was correct
-
 		// 3. Move on to the nextplayerscreen.
 		game.switchCurrentPlayer();
 		nextPlayer();
