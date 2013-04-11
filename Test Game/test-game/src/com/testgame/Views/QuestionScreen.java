@@ -174,17 +174,17 @@ public class QuestionScreen extends AbstractScreen {
 
 		public void touchUp(InputEvent event, float x, float y, int pointer,
 				int button) {
-			Label alt = (Label) event.getTarget();
-			String altName = alt.getText().toString();
+			Label altButton = (Label) event.getTarget();
+			String altName = altButton.getText().toString();
 
 			if (altName.equals(currentQuestion.getAlt1().getName())) {
-				handleEvent(currentQuestion.getAlt1());
+				handleEvent(altButton, currentQuestion.getAlt1());
 			} else if (altName.equals(currentQuestion.getAlt2().getName())) {
-				handleEvent(currentQuestion.getAlt2());
+				handleEvent(altButton, currentQuestion.getAlt2());
 			} else if (altName.equals(currentQuestion.getAlt3().getName())) {
-				handleEvent(currentQuestion.getAlt3());
+				handleEvent(altButton, currentQuestion.getAlt3());
 			} else if (altName.equals(currentQuestion.getAlt4().getName())) {
-				handleEvent(currentQuestion.getAlt4());
+				handleEvent(altButton, currentQuestion.getAlt4());
 			}
 		}
 
@@ -196,10 +196,14 @@ public class QuestionScreen extends AbstractScreen {
 	 * 
 	 * @param Alternative
 	 */
-	private void handleEvent(Alternative alt) {
+	private void handleEvent(Label lab, Alternative alt) {
 		if (alt.isCorrectAnswer()) {
+			
+			//lab.setStyle(style)
+			lab.setColor(Color.GREEN);
 			correctAnswer();
 		} else {
+			lab.setColor(Color.RED);
 			wrongAnswer();
 		}
 	}
