@@ -17,13 +17,17 @@ public class NextPlayerScreen extends AbstractScreen {
 	Label nextPlayerInfo;
 	Label nextPlayerLabel;
 	
-	int player;
-	
-	// constructor to keep a reference to the main Game class
+	/**
+	 * Constructor keeping a reference to the main Game class.
+	 * @param game
+	 */
 	public NextPlayerScreen(MyGame game) {
 		super(game);
 	}
 
+	/**
+	 * Updates and draws stuff.
+	 */
 	@Override
 	public void render(float delta) {
 		super.render(delta);
@@ -35,6 +39,9 @@ public class NextPlayerScreen extends AbstractScreen {
 		batch.end();
 	}
 	
+	/**
+	 * Button initialization.
+	 */
 	public void initializeButtons() {
 		
 		// Button initalization
@@ -50,11 +57,11 @@ public class NextPlayerScreen extends AbstractScreen {
 			}
 			
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new GameScreen(game));
+				game.setScreen(game.getGameScreen());
 			}
 		});
 		
-		// TextField init
+		// TextField initialization.
 		LabelStyle labelStyleHeader = new LabelStyle();
 		labelStyleHeader.font = font;
 		labelStyleHeader.fontColor = new Color(0.647059f, 0.164706f, 0.164706f, 1.0f);

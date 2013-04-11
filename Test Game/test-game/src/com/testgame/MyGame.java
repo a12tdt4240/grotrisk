@@ -3,17 +3,20 @@ package com.testgame;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.testgame.Models.Map;
 import com.testgame.Models.MapFactory;
 import com.testgame.Models.Player;
 import com.testgame.Models.QuestionPool;
+import com.testgame.Views.GameScreen;
 import com.testgame.Views.MainMenuScreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 
 public class MyGame extends Game implements ApplicationListener {
 
-	MainMenuScreen mainMenuScreen;
+	GameScreen gameScreen;
 	private Music music;
 	QuestionPool questionPool;
 	Player player1, player2, currentPlayer;
@@ -26,20 +29,25 @@ public class MyGame extends Game implements ApplicationListener {
 		music.setLooping(true);
 		music.play();
 		
-		//TODO:  Generate question pool.
+		// Generate question pool.
 		questionPool = new QuestionPool();
 		
 		Map map = new MapFactory().createDefaultMap();
 		
-		//TODO: Create players.
+		// Create players.
 		player1 = new Player(1);
 		player2 = new Player(2);
-		//TODO: Set the current player.
+		// Set player colors
+		player1.setColor(Color.BLACK);
+		player2.setColor(Color.ORANGE);
+		// Set the current player.
 		setCurrentPlayer(player1);
 		
-		// Launch main menu screen.
-		mainMenuScreen = new MainMenuScreen(this);
-		setScreen(mainMenuScreen);
+		// Create the game screen.
+		gameScreen = new GameScreen(this);
+		
+		// Create and launch main menu screen.
+		setScreen(new MainMenuScreen(this));
 	}
 	
 	/**
@@ -83,5 +91,9 @@ public class MyGame extends Game implements ApplicationListener {
 	@Override
 	public void dispose() {
 		music.dispose();
+	}
+
+	public Screen getGameScreen() {
+		return gameScreen;
 	}
 }
