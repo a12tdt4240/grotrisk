@@ -26,8 +26,7 @@ public class QuestionScreen extends AbstractScreen {
 	Area area;
 
 	/**
-	 * Constructor to keep a reference to the main Game class TODO: The
-	 * constructor needs to take in from which area this question was generated.
+	 * Constructor to keep a reference to the main Game class
 	 * 
 	 * @param game
 	 */
@@ -224,6 +223,6 @@ public class QuestionScreen extends AbstractScreen {
 
 		// 2. Move on to the nextplayerscreen.
 		game.switchCurrentPlayer();
-		// nextPlayer();
+		nextPlayer();
 	}
 }
