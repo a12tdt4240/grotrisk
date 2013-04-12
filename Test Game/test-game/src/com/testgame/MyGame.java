@@ -1,5 +1,7 @@
 package com.testgame;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.Gdx;
@@ -19,7 +21,8 @@ public class MyGame extends Game implements ApplicationListener {
 	GameScreen gameScreen;
 	private Music music;
 	QuestionPool questionPool;
-	Player player1, player2, currentPlayer;
+	ArrayList<Player> players;
+	Player currentPlayer;
 
 	@Override
 	public void create() {
@@ -35,13 +38,12 @@ public class MyGame extends Game implements ApplicationListener {
 		Map map = new MapFactory().createDefaultMap();
 		
 		// Create players.
-		player1 = new Player(1);
-		player2 = new Player(2);
-		// Set player colors
-		player1.setColor(Color.BLACK);
-		player2.setColor(Color.ORANGE);
+		players = createPlayers(2);
+		// Set player colors TO BE UPDATED WITH COLOR CHOOSER VIEW ETC
+		players.get(0).setColor(Color.BLACK);
+		players.get(1).setColor(Color.ORANGE);
 		// Set the current player.
-		setCurrentPlayer(player1);
+		setCurrentPlayer(players.get(0));
 		
 		// Create the game screen.
 		gameScreen = new GameScreen(this);
@@ -54,13 +56,11 @@ public class MyGame extends Game implements ApplicationListener {
 	 * Switches which player is the current player.
 	 */
 	public void switchCurrentPlayer() {
-		switch(currentPlayer.getNumeric()) {
-		case 1:
-			setCurrentPlayer(player2);
-			break;
-		case 2:
-			setCurrentPlayer(player1);
-			break;
+		
+		if (currentPlayer.getNumeric() < players.size()) {
+			setCurrentPlayer(players.get(currentPlayer.getNumeric()));
+		} else {
+			setCurrentPlayer(players.get(0));
 		}
 	}
 	
@@ -71,7 +71,21 @@ public class MyGame extends Game implements ApplicationListener {
 	public Player getCurrentPlayer() {
 		return currentPlayer;
 	}
+	
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
 
+	public ArrayList<Player> createPlayers(int numberOfPlayers) {
+		ArrayList<Player> playersCreated = new ArrayList<Player>();
+		
+		for (int i = 1; i < numberOfPlayers + 1; i++) {
+			playersCreated.add(new Player(i));
+		}
+		
+		return playersCreated;
+	}
+	
 	/**
 	 * Sets the current player.
 	 * @param currentPlayer
