@@ -15,18 +15,6 @@ import com.testgame.MyGame;
 import com.testgame.Models.Area;
 
 public class GameScreen extends AbstractScreen {
-
-	// The game screen has a blue background or sea texture.
-	// On top of this sea we draw land areas (AreaViews), which are clickable.
-	Stage stage;
-	SpriteBatch batch;
-
-	// Graphics data
-	TextureAtlas atlas;
-	BitmapFont font;
-	Skin skin;
-	TextButtonStyle buttonStyle;
-
 	// Our NinePatches
 	NinePatch background;
 	
@@ -164,12 +152,7 @@ public class GameScreen extends AbstractScreen {
 	@Override
 	public void dispose() {
 		Gdx.app.debug("testgame", "Disposing Game Screen");
-
-		atlas.dispose();
-		stage.dispose();
-		font.dispose();
-		skin.dispose();
-		batch.dispose();
+		super.dispose();
 		background.getTexture().dispose();
 	}
 }
