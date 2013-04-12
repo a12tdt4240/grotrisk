@@ -15,8 +15,8 @@ import com.testgame.MyGame;
 
 public abstract class AbstractScreen implements Screen {
 
-	
 	MyGame game;
+	Stage stage;
 
 	/**
 	 * Constructor to keep a reference to the main Game class
