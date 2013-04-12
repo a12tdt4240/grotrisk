@@ -9,15 +9,17 @@ import com.testgame.Models.Area;
 
 public class GameScreen extends AbstractGameScreen {
 
-	// Vi trenger et bakgrunnsbilde som vises her. Et blått hav eller en
-	// havtekstur.
-	// Oppå det blå havet tegner vi landområder, Area, via AreaViews.
+	// The game screen has a blue background or sea texture.
+	// On top of this sea we draw land areas (AreaViews), which are clickable.
 
 	MapView mapView;
 	AreaView areaView1, areaView2, areaView3;
 	boolean timeToRePaint;
 
-	// constructor to keep a reference to the main Game class
+	/**
+	 * Constructor keeping a reference to the main Game class
+	 * @param game
+	 */
 	public GameScreen(MyGame game) {
 		super(game);
 		
@@ -40,13 +42,16 @@ public class GameScreen extends AbstractGameScreen {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		//TODO: Ask a variabel if areas needs to be updated.
+		// Ask a variable if areas needs to be updated.
 		if (timeToRePaint) rePaintAreaViews();
 		
 	}
 	
+	/**
+	 * Paints all area views.
+	 */
 	private void rePaintAreaViews() {
-		// Paint all areaViews. Currently the dummies.
+		// Currently the dummies.
 		areaView1.setColor(areaView1.getArea().getColor());
 		areaView2.setColor(areaView2.getArea().getColor());
 		areaView3.setColor(areaView3.getArea().getColor());
@@ -55,6 +60,10 @@ public class GameScreen extends AbstractGameScreen {
 		setTimeToRePaint(false);
 	}
 	
+	/**
+	 * Controls if it is time to repaint the area views.
+	 * @param val
+	 */
 	public void setTimeToRePaint(boolean val) {
 		timeToRePaint = val;
 	}
