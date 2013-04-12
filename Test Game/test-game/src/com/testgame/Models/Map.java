@@ -53,6 +53,8 @@ public class Map {
 		for(int i = 0; i < ownedByPlayer.size(); ++i) {
 			neighbors.addAll(ownedByPlayer.get(i).getNeighbors());
 		}
+		// Remove all areas owned by player
+		neighbors.removeAll(ownedByPlayer);
 		
 		return new ArrayList<Area>(neighbors);
 	}
