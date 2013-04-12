@@ -8,7 +8,7 @@ import com.testgame.MyGame;
 import com.testgame.Models.Area;
 import com.testgame.Models.Map;
 
-public class MapView extends AbstractGameScreen {
+public class MapView extends AbstractScreen {
 
 	private Map mapModel;
 	private ArrayList<AreaView> areaViews;
