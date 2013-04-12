@@ -15,14 +15,6 @@ import com.testgame.MyGame;
 
 public abstract class AbstractMenuScreen extends AbstractScreen {
 	
-	SpriteBatch batch;
-
-	// Graphics data
-	TextureAtlas atlas;
-	BitmapFont font;
-	Skin skin;
-	TextButtonStyle buttonStyle;
-
 	// Our NinePatches
 	NinePatch panel;
 	NinePatch background;

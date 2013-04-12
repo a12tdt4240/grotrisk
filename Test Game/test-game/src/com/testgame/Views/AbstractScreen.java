@@ -18,6 +18,15 @@ public abstract class AbstractScreen implements Screen {
 	MyGame game;
 	Stage stage;
 
+	SpriteBatch batch;
+
+	// Graphics data
+	TextureAtlas atlas;
+	BitmapFont font;
+	Skin skin;
+	TextButtonStyle buttonStyle;
+	
+	
 	/**
 	 * Constructor to keep a reference to the main Game class
 	 * 
@@ -77,5 +86,9 @@ public abstract class AbstractScreen implements Screen {
 	@Override
 	public void dispose() {
 		stage.dispose();
+		atlas.dispose();
+		font.dispose();
+		skin.dispose();
+		batch.dispose();
 	}
 }
