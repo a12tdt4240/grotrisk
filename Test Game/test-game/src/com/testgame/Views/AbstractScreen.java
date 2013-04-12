@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
 
 public abstract class AbstractScreen implements Screen {
+
 	
 	MyGame game;
 
@@ -27,7 +28,6 @@ public abstract class AbstractScreen implements Screen {
 	TextButtonStyle buttonStyle;
 
 	// Our NinePatches
-	NinePatch panel;
 	NinePatch background;
 
 	/**
@@ -55,11 +55,6 @@ public abstract class AbstractScreen implements Screen {
 						(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 1.0f) / 2,
 						Gdx.graphics.getWidth() * 1.0f,
 						Gdx.graphics.getHeight() * 1.0f);
-		panel.draw(
-				batch,
-				(Gdx.graphics.getWidth() - Gdx.graphics.getWidth() * 0.8f) / 2,
-				(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 0.8f) / 2,
-				Gdx.graphics.getWidth() * 0.8f, Gdx.graphics.getHeight() * 0.8f);
 		
 		
 		batch.end();
@@ -83,8 +78,6 @@ public abstract class AbstractScreen implements Screen {
 
 		background = new NinePatch(new TextureRegion(
 				atlas.findRegion("background")), 190, 190, 114, 292);
-		panel = new NinePatch(new TextureRegion(atlas.findRegion("panel")),
-				215, 200, 140, 140);
 
 		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
 		batch = new SpriteBatch();
@@ -110,21 +103,6 @@ public abstract class AbstractScreen implements Screen {
 
 		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
 											// this stage
-
-		initializeStyle(); // Sets the style of buttons etc.
-		initializeButtons(); // Creates our buttons
-	}
-
-	/**
-	 * Sets the style of UI elements.
-	 */
-	public void initializeStyle() {
-		buttonStyle = new TextButtonStyle();
-		buttonStyle.up = skin.getDrawable("buttonUp");
-		buttonStyle.font = font;
-	}
-
-	public void initializeButtons() {
 	}
 
 	@Override
@@ -137,14 +115,13 @@ public abstract class AbstractScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		Gdx.app.debug("testgame", "Disposing Main Menu");
+		Gdx.app.debug("testgame", "Disposing Game Screen");
 
 		atlas.dispose();
 		stage.dispose();
 		font.dispose();
 		skin.dispose();
 		batch.dispose();
-		panel.getTexture().dispose();
 		background.getTexture().dispose();
 	}
 }

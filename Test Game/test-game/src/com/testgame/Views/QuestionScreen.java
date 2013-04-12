@@ -14,7 +14,7 @@ import com.testgame.Models.Alternative;
 import com.testgame.Models.Area;
 import com.testgame.Models.Quiz;
 
-public class QuestionScreen extends AbstractScreen {
+public class QuestionScreen extends AbstractMenuScreen {
 
 	// private final Sound correct;
 	// private final Sound wrong;

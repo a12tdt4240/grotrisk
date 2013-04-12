@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.testgame.MyGame;
 
-public class MainMenuScreen extends AbstractScreen {
+public class MainMenuScreen extends AbstractMenuScreen {
 	
 	// Our Buttons
 	TextButton newGameButton;
