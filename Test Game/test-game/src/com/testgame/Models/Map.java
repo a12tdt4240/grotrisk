@@ -1,6 +1,7 @@
 package com.testgame.Models;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Map {
 
@@ -35,5 +36,24 @@ public class Map {
 		}
 		
 		return areasPlayer;
+	}
+	
+	/**
+	 * Takes a player and returns a list of all the areas that are neighbors
+	 * to the areas he owns
+	 * 
+	 * @param Player
+	 * @return ArrayList<Area>
+	 */
+	public ArrayList<Area> getNeighborsByPlayer(Player player) {
+		// Use set to avoid duplicates
+		HashSet<Area> neighbors = new HashSet<Area>();
+		// Get areas owned by player
+		ArrayList<Area> ownedByPlayer = getAreasByPlayer(player);
+		for(int i = 0; i < ownedByPlayer.size(); ++i) {
+			neighbors.addAll(ownedByPlayer.get(i).getNeighbors());
+		}
+		
+		return new ArrayList<Area>(neighbors);
 	}
 }
