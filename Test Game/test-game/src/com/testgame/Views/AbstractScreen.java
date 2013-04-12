@@ -18,18 +18,6 @@ public abstract class AbstractScreen implements Screen {
 	
 	MyGame game;
 
-	Stage stage;
-	SpriteBatch batch;
-
-	// Graphics data
-	TextureAtlas atlas;
-	BitmapFont font;
-	Skin skin;
-	TextButtonStyle buttonStyle;
-
-	// Our NinePatches
-	NinePatch background;
-
 	/**
 	 * Constructor to keep a reference to the main Game class
 	 * 
@@ -46,20 +34,6 @@ public abstract class AbstractScreen implements Screen {
 	public void render(float delta) {
 
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-
-		stage.act(delta);
-
-		batch.begin();
-		background.draw(batch,
-						(Gdx.graphics.getWidth() - Gdx.graphics.getWidth() * 1.0f) / 2,
-						(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 1.0f) / 2,
-						Gdx.graphics.getWidth() * 1.0f,
-						Gdx.graphics.getHeight() * 1.0f);
-		
-		
-		batch.end();
-
-		stage.draw();
 	}
 
 	
@@ -69,18 +43,7 @@ public abstract class AbstractScreen implements Screen {
 	@Override
 	public void show() {
 
-		stage = new Stage();
-
-		atlas = new TextureAtlas("skins/mainmenu.atlas");
-
-		skin = new Skin();
-		skin.addRegions(atlas);
-
-		background = new NinePatch(new TextureRegion(
-				atlas.findRegion("background")), 190, 190, 114, 292);
-
-		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
-		batch = new SpriteBatch();
+		
 
 	}
 
@@ -94,15 +57,7 @@ public abstract class AbstractScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		batch.getProjectionMatrix().setToOrtho2D(0, 0, width, height);
-
-		if (stage == null)
-			stage = new Stage(width, height, false);
-
-		stage.clear(); // clears the stage
-
-		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
-											// this stage
+		
 	}
 
 	@Override
@@ -115,13 +70,6 @@ public abstract class AbstractScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		Gdx.app.debug("testgame", "Disposing Game Screen");
 
-		atlas.dispose();
-		stage.dispose();
-		font.dispose();
-		skin.dispose();
-		batch.dispose();
-		background.getTexture().dispose();
 	}
 }
