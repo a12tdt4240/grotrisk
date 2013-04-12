@@ -13,11 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
 
-public abstract class AbstractMenuScreen implements Screen {
+public abstract class AbstractMenuScreen extends AbstractScreen {
 	
-	MyGame game;
-
-	Stage stage;
 	SpriteBatch batch;
 
 	// Graphics data
@@ -36,7 +33,7 @@ public abstract class AbstractMenuScreen implements Screen {
 	 * @param game
 	 */
 	public AbstractMenuScreen(MyGame game) {
-		this.game = game;
+		super(game);
 	}
 
 	/**
@@ -103,14 +100,6 @@ public abstract class AbstractMenuScreen implements Screen {
 	public void resize(int width, int height) {
 		batch.getProjectionMatrix().setToOrtho2D(0, 0, width, height);
 
-		if (stage == null)
-			stage = new Stage(width, height, false);
-
-		stage.clear(); // clears the stage
-
-		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
-											// this stage
-
 		initializeStyle(); // Sets the style of buttons etc.
 		initializeButtons(); // Creates our buttons
 	}
@@ -137,10 +126,11 @@ public abstract class AbstractMenuScreen implements Screen {
 
 	@Override
 	public void dispose() {
+		super.dispose();
 		Gdx.app.debug("testgame", "Disposing Main Menu");
 
 		atlas.dispose();
-		stage.dispose();
+
 		font.dispose();
 		skin.dispose();
 		batch.dispose();

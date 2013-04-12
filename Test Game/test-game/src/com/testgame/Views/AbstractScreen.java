@@ -57,7 +57,13 @@ public abstract class AbstractScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		
+		if (stage == null)
+			stage = new Stage(width, height, false);
+
+		stage.clear(); // clears the stage
+
+		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
+											// this stage
 	}
 
 	@Override
@@ -70,6 +76,6 @@ public abstract class AbstractScreen implements Screen {
 
 	@Override
 	public void dispose() {
-
+		stage.dispose();
 	}
 }
