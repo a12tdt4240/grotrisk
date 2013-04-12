@@ -8,6 +8,8 @@ import com.badlogic.gdx.utils.OrderedMap;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.testgame.Views.Observer;
+
 import java.util.ArrayList;
 
 public class Area implements Serializable {
@@ -18,6 +20,8 @@ public class Area implements Serializable {
 	private Question question;
 	// The visual representation of the area.
 	private Drawable areaDrawable;
+	
+	private ArrayList<Observer> observers;
 
 	// Holds color of area
 	private Color color = Color.WHITE;
@@ -41,6 +45,7 @@ public class Area implements Serializable {
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 		this.value = value;
+		observers = new ArrayList<Observer>();
 		loadAreaImage();
 	}
 	
@@ -75,6 +80,7 @@ public class Area implements Serializable {
 	 */
 	public void setOwner(Player player) {
 		owner = player;
+		fireObserverEvent();
 	}
 	
 	/**
@@ -130,6 +136,21 @@ public class Area implements Serializable {
 	
 	public ArrayList<Area> getNeighbors() {
 		return neighbors;
+	}
+	
+	/**
+	 * Add observer to list
+	 * 
+	 * @param Observer
+	 */
+	public void addObserver(Observer ob) {
+		observers.add(ob);
+	}
+	
+	private void fireObserverEvent() {
+		for(int i = 0; i < observers.size(); ++i) {
+			observers.get(i).changeEvent();
+		}
 	}
 
 	@Override
