@@ -21,6 +21,10 @@ public class AreaView extends Button {
 	public void setModel(Area model) {
 		areaModel = model;
 	}
+	
+	public Area getModel() {
+		return areaModel;
+	}
 
 	public Area getArea() {
 		return areaModel;
