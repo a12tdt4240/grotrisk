@@ -79,6 +79,7 @@ public class GameScreen extends AbstractGameScreen {
 	@Override
 	public void resize(int width, int height) {
 		super.resize(width, height);
+		
 		this.stage.addActor(areaView1);
 		this.stage.addActor(areaView2);
 		this.stage.addActor(areaView3);

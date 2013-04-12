@@ -37,6 +37,7 @@ public abstract class AbstractGameScreen implements Screen {
 	 */
 	public AbstractGameScreen(MyGame game) {
 		this.game = game;
+		stage = new Stage();
 	}
 
 	/**
@@ -69,7 +70,7 @@ public abstract class AbstractGameScreen implements Screen {
 	@Override
 	public void show() {
 
-		stage = new Stage();
+		
 
 		atlas = new TextureAtlas("skins/mainmenu.atlas");
 
