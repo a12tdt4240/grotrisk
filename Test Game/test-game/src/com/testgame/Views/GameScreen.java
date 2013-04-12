@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.testgame.MyGame;
 import com.testgame.Models.Area;
 
-public class GameScreen extends AbstractGameScreen {
+public class GameScreen extends AbstractScreen {
 
 	// The game screen has a blue background or sea texture.
 	// On top of this sea we draw land areas (AreaViews), which are clickable.

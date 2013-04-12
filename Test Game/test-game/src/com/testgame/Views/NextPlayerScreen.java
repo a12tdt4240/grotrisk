@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.testgame.MyGame;
 
-public class NextPlayerScreen extends AbstractScreen {
+public class NextPlayerScreen extends AbstractMenuScreen {
 
 	TextButton nextPlayerButton;
 	Label nextPlayerInfo;
