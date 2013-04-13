@@ -9,7 +9,7 @@ public class AreaView extends Button implements Observer {
 	public AreaView(Area area) {
 		super(area.getImage());
 		
-		this.areaModel = area;
+		setModel(area);
 		
 		setX(area.getXPosition());
 		setY(area.getYPosition());
@@ -18,6 +18,7 @@ public class AreaView extends Button implements Observer {
 
 	public void setModel(Area model) {
 		areaModel = model;
+		areaModel.addObserver(this);
 	}
 	
 	public Area getModel() {
