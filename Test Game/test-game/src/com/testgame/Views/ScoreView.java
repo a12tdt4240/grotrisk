@@ -61,7 +61,7 @@ public class ScoreView extends AbstractScreen {
 
 			name = names.get(i);
 			name.setX(150);
-			name.setY(i * 50);
+			name.setY(i * 50 - 10);
 			name.draw(batch, 1.0f);
 
 		}
