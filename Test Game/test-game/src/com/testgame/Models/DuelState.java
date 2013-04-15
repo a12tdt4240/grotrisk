@@ -8,6 +8,7 @@ public class DuelState {
 	private int scoreDefendant = 0;
 	private Player initiator;
 	private Player defendant;
+	private Area disputeOver;
 	private MyGame game;
 	
 	public DuelState(MyGame game) {
@@ -62,15 +63,42 @@ public class DuelState {
 	}
 	
 	/**
+	 * Reutrns the initiator of the duel
+	 * 
+	 * @return Player
+	 */
+	public Player getInitiator() {
+		return initiator;
+	}
+	
+	/**
+	 * The area the duel is about
+	 * @return Area
+	 */
+	public Area getArea() {
+		return disputeOver;
+	}
+	
+	public void increaseInitiatorScore() {
+		++scoreInitiator;
+	}
+	
+	public void increaseDefenantScore() {
+		++scoreDefendant;
+	}
+	
+	/**
 	 * Initiates duel by setting the initiator and the defendant
 	 * Duel is marked as in action
 	 * 
 	 * @param Player initiator
 	 * @param Player defendant
+	 * @param Area area
 	 */
-	public void initiateDuel(Player initiator, Player defendant) {
+	public void initiateDuel(Player initiator, Player defendant, Area area) {
 		this.initiator = initiator;
 		this.defendant = defendant;
+		disputeOver = area;
 		isDuel = true;
 	}
 	
@@ -83,5 +111,6 @@ public class DuelState {
 		scoreDefendant = 0;
 		initiator = null;
 		defendant = null;
+		disputeOver = null;
 	}
 }
