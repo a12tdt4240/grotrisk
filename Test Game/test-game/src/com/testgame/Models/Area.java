@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 public class Area implements Serializable {
 	
+	private int id;
+	
 	// An area has an owner. Player 1, Player 2 or null;
 	private Player owner;
 	// An area holds a question.
@@ -25,6 +27,7 @@ public class Area implements Serializable {
 	private int value, xPosition, yPosition;
 	// A list of neighboring areas. Areas that can be moved to in one move.
 	private ArrayList<Area> neighbors;
+	private ArrayList<Integer> neighborsMap;
 
 	public Area() {}
 	
@@ -134,9 +137,17 @@ public class Area implements Serializable {
 	@Override
 	public void read(Json json, OrderedMap<String, Object> jsonData) {
 		// TODO Auto-generated method stub
+		this.id = json.readValue("id", Integer.class, jsonData);
 		this.xPosition = json.readValue("xPosition", Integer.class, jsonData);
 		this.yPosition = json.readValue("yPosition", Integer.class, jsonData);
 		this.value = json.readValue("value", Integer.class, jsonData);
+		this.neighborsMap = json.readValue("neighbors", ArrayList.class, jsonData);
 //		loadAreaImage();
+	}
+	
+	public void initiateNeighbors(ArrayList<Area> areas) {
+		for (Area area: areas) {
+			if (this.neighborsMap.contains(area.id)) this.neighbors.add(area); 
+		}
 	}
 }

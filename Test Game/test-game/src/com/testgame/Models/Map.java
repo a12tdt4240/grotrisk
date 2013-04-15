@@ -16,5 +16,12 @@ public class Map {
 
 	public Map(ArrayList<Area> areas) {
 		this.areas = areas;
+		this.initiateAreNeighbors();
+	}
+	
+	private void initiateAreNeighbors() {
+		for (Area area: this.areas) {
+			area.initiateNeighbors(this.areas);
+		}
 	}
 }

@@ -19,6 +19,7 @@ public class MapFactory {
 		Gdx.app.log("MapFactory", "createDefaultMap");
 		Json json = new Json();
 		
+		json.setElementType(Area.class, "id", Integer.class);
 		json.setElementType(Area.class, "xPosition", Integer.class);
 		json.setElementType(Area.class, "yPosition", Integer.class);
 		json.setElementType(Area.class, "value", Integer.class);
