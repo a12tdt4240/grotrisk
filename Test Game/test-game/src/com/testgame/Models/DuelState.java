@@ -1,7 +1,6 @@
-package com.testgame.Views;
+package com.testgame.Models;
 
 import com.testgame.MyGame;
-import com.testgame.Models.Player;
 
 public class DuelState {
 	private boolean isDuel = false;

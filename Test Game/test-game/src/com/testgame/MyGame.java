@@ -6,11 +6,11 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.testgame.Models.DuelState;
 import com.testgame.Models.Map;
 import com.testgame.Models.MapFactory;
 import com.testgame.Models.Player;
 import com.testgame.Models.QuestionPool;
-import com.testgame.Views.DuelState;
 import com.testgame.Views.GameScreen;
 import com.testgame.Views.MainMenuScreen;
 import com.badlogic.gdx.Game;
@@ -68,6 +68,11 @@ public class MyGame extends Game implements ApplicationListener {
 		}
 	}
 	
+	/**
+	 * Returns the state object for duels
+	 *  
+	 * @return DuelState
+	 */
 	public DuelState getDuelState() {
 		return duel;
 	}
