@@ -124,8 +124,6 @@ public class MapView extends AbstractScreen {
 	@Override
 	public void render(float delta) {
 		
-		stage.act(delta);
-		
 		// Draws the background
 		batch.begin();
 		background.draw(batch,
@@ -135,8 +133,6 @@ public class MapView extends AbstractScreen {
 						Gdx.graphics.getHeight() * 1.0f);
 		
 		batch.end();
-
-		stage.draw();
 		
 	}
 	

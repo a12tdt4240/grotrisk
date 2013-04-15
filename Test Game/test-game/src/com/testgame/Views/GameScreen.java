@@ -59,6 +59,9 @@ public class GameScreen extends AbstractScreen {
 		super.render(delta);
 		mapView.render(delta);
 		scoreView.render(delta);
+		
+		stage.act(delta);
+		stage.draw();
 	}
 
 	/**
