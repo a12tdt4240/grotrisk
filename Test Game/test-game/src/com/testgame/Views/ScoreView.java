@@ -42,7 +42,8 @@ public class ScoreView extends AbstractScreen {
 	public void render(float delta) {
 		Label score;
 		Label name;
-
+		colorContainerImage.setRegionHeight(50);
+		colorContainerImage.setRegionWidth(50);
 		batch.begin();
 		for (int i = 0; i < players.size(); i++) {
 			batch.draw(colorContainerImage, 0, i * 50);
@@ -75,7 +76,7 @@ public class ScoreView extends AbstractScreen {
 		
 		labelStyle = new LabelStyle();
 		labelStyle.font = font;
-		labelStyle.fontColor = new Color(0, 0, 0, 1.0f);
+		labelStyle.fontColor = new Color(1, 1, 1, 1.0f);
 
 		for (int i = 0; i < this.players.size(); i++) {
 			scores.add(new Label("" + players.get(i).getScore().getScore(),
