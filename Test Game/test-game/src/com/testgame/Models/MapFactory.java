@@ -32,7 +32,7 @@ public class MapFactory {
 		}
 		
 		try {
-			return new Map(new ArrayList<Area>(Arrays.asList(json.fromJson(Area[].class, handle))));
+			return new Map(new ArrayList<Area>(Arrays.asList(json.fromJson(Area[].class, handle))));	
 		} catch (NullPointerException e) {
 			Gdx.app.error("QuestionPool tojson", e.getMessage());
 		}

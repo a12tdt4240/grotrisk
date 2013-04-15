@@ -7,10 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
-import com.testgame.Models.Alternative;
-import com.testgame.Models.DuelState;
 import com.testgame.Models.Quiz;
-import com.testgame.Views.QuestionScreen.InputEventListener;
 
 public class AlternativeGroupView {
 	
@@ -75,7 +72,7 @@ public class AlternativeGroupView {
 		alt4View = new AlternativeView(currentQuestion.getAlt4(), alt4Button);
 
 		
-		ArrayList<AlternativeView> alternativeViews = new ArrayList(Arrays.asList(alt1View, alt2View, alt3View, alt4View));
+		ArrayList<AlternativeView> alternativeViews = new ArrayList<AlternativeView>(Arrays.asList(alt1View, alt2View, alt3View, alt4View));
 		if (this.game.getDuelState().isDuel() &&
 			(this.game.getCurrentPlayer() == this.game.getDuelState().getDefendant())) {
 			for (AlternativeView av : alternativeViews) {

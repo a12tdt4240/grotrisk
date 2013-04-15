@@ -54,8 +54,8 @@ public class MyGame extends Game implements ApplicationListener {
 		duel = new DuelState(this);
 
 		// Create the game screen.
-		gameScreen = new GameScreen(this);
-
+		gameScreen = new GameScreen(this, map);
+		
 		// Create and launch main menu screen.
 		setScreen(new MainMenuScreen(this));
 		// setScreen(new EndGameScreen(this));

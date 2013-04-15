@@ -33,12 +33,6 @@ public class ScoreView extends AbstractScreen {
 		this.names = new ArrayList<Label>();
 		this.scores = new ArrayList<Label>();
 
-		for (int i = 0; i < this.players.size(); i++) {
-			scores.add(new Label("" + players.get(i).getScore().getScore(),
-					labelStyle));
-			names.add(new Label("" + players.get(i).getName(), labelStyle));
-		}
-
 	}
 
 	/**
@@ -46,7 +40,6 @@ public class ScoreView extends AbstractScreen {
 	 **/
 	@Override
 	public void render(float delta) {
-		super.render(delta);
 		Label score;
 		Label name;
 
@@ -77,18 +70,27 @@ public class ScoreView extends AbstractScreen {
 		atlas = new TextureAtlas("data/maps/map.atlas");
 
 		colorContainerImage = atlas.findRegion("area001");
-
+		
+		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
+		
 		labelStyle = new LabelStyle();
 		labelStyle.font = font;
 		labelStyle.fontColor = new Color(0, 0, 0, 1.0f);
 
-		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
+		for (int i = 0; i < this.players.size(); i++) {
+			scores.add(new Label("" + players.get(i).getScore().getScore(),
+					labelStyle));
+			names.add(new Label("" + players.get(i).getName(), labelStyle));
+		}
+		
+		
 		batch = new SpriteBatch();
 	}
 
 	@Override
 	public void resize(int width, int height) {
-
+		super.resize(width, height);
+		
 	}
 
 	/**

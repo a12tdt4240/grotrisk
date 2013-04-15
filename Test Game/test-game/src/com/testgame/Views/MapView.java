@@ -2,8 +2,16 @@ package com.testgame.Views;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.testgame.MyGame;
 import com.testgame.Models.Area;
 import com.testgame.Models.Map;
@@ -15,6 +23,9 @@ public class MapView extends AbstractScreen {
 	private ArrayList<AreaView> areaViews;
 	// Common listener for all areas
 	private InputEventListener listener;
+	// Background, often a sea image.
+	private NinePatch background;
+	
 	
 	public MapView(MyGame game, Map model) {
 		super(game);
@@ -46,6 +57,8 @@ public class MapView extends AbstractScreen {
 	 */
 	private void makeAreaViews() {
 		ArrayList<Area> areas = mapModel.getAreas();
+		areaViews = new ArrayList<AreaView>();
+		
 		for(int i = 0; i < areas.size(); ++i) {
 			areaViews.add(new AreaView(areas.get(i)));
 		}
@@ -59,6 +72,7 @@ public class MapView extends AbstractScreen {
 			stage.addActor(areaViews.get(i));
 		}
 	}
+	
 	
 	/**
 	 * Adds listeners to correct areas
@@ -94,9 +108,52 @@ public class MapView extends AbstractScreen {
 	
 	public void resize(int width, int height) {
 		super.resize(width, height);
-		
+
 		addAreaViewsAsActors();
 		addListeners();
+	}
+	
+	/**
+	 * Updates and draws objects.
+	 **/
+	@Override
+	public void render(float delta) {
+		
+		stage.act(delta);
+		
+		// Draws the background
+		batch.begin();
+		background.draw(batch,
+						(Gdx.graphics.getWidth() - Gdx.graphics.getWidth() * 1.0f) / 2,
+						(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 1.0f) / 2,
+						Gdx.graphics.getWidth() * 1.0f,
+						Gdx.graphics.getHeight() * 1.0f);
+		
+		batch.end();
+
+		stage.draw();
+		
+	}
+	
+	/**
+	 * Called when this screen is set as the screen with game.setScreen();
+	 */
+	public void show() {
+		super.show();
+		
+		stage = new Stage();
+
+		atlas = new TextureAtlas("skins/mainmenu.atlas");
+
+		skin = new Skin();
+		skin.addRegions(atlas);
+
+		background = new NinePatch(new TextureRegion(
+				atlas.findRegion("background")), 190, 190, 114, 292);
+
+		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
+		batch = new SpriteBatch();
+		
 	}
 	
 	/**

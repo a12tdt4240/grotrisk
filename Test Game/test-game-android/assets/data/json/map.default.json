@@ -2,7 +2,7 @@
 	{
 		"class": "com.testgame.Models.Area",
 		"id": 1,
-		"xPosition": 50,
+		"xPosition": 150,
 		"yPosition": 50,
 		"value": 200,
 		"neighbors": [2,3]
