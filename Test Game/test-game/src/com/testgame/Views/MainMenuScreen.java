@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.testgame.MyGame;
+import com.testgame.Models.Constants;
 
 public class MainMenuScreen extends AbstractMenuScreen {
 	
@@ -20,7 +21,7 @@ public class MainMenuScreen extends AbstractMenuScreen {
 	 * Creates the buttons for drawing.
 	 */
 	public void initializeButtons() {
-		newGameButton = new TextButton("Nytt spill", buttonStyle);
+		newGameButton = new TextButton(Constants.MAINMENU_BUTTON, buttonStyle);
 		newGameButton.setWidth(458);
 		newGameButton.setHeight(88);
 		newGameButton.setX(Gdx.graphics.getWidth() / 2 - newGameButton.getWidth() / 2);

@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.testgame.MyGame;
+import com.testgame.Models.Constants;
 
 public class EndGameScreen extends AbstractMenuScreen {
 
@@ -44,7 +45,7 @@ public class EndGameScreen extends AbstractMenuScreen {
 	public void initializeButtons() {
 
 		// Button initalization
-		mainMenuButton = new TextButton("Hovedmeny", buttonStyle);
+		mainMenuButton = new TextButton(Constants.ENDGAME_MAINBUTTON, buttonStyle);
 		mainMenuButton.setWidth(458);
 		mainMenuButton.setHeight(88);
 		mainMenuButton.setX(Gdx.graphics.getWidth() / 2
@@ -73,7 +74,7 @@ public class EndGameScreen extends AbstractMenuScreen {
 		labelStyleHeader.font = font;
 		labelStyleHeader.fontColor = new Color(0.647059f, 0.164706f, 0.164706f,
 				1.0f);
-		infoLabel = new Label("Spillet er over!", labelStyleHeader);
+		infoLabel = new Label(Constants.ENDGAME_INFOLABEL, labelStyleHeader);
 		infoLabel.setX(Gdx.graphics.getWidth() / 2 - infoLabel.getWidth() / 2);
 		infoLabel.setY(Gdx.graphics.getHeight() / 2 - infoLabel.getHeight() / 2
 				+ Gdx.graphics.getHeight() * 0.19f);
@@ -82,7 +83,7 @@ public class EndGameScreen extends AbstractMenuScreen {
 		LabelStyle labelStyle = new LabelStyle();
 		labelStyle.font = font;
 		labelStyle.fontColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-		winnerLabel = new Label("Vinner: spiller "
+		winnerLabel = new Label(Constants.ENDGAME_WINNERLABEL
 				+ game.getWinningPlayer().getNumeric(), labelStyle);
 		winnerLabel.setX(Gdx.graphics.getWidth() / 2 - winnerLabel.getWidth()
 				/ 2);

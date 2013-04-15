@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.testgame.MyGame;
+import com.testgame.Models.Constants;
 
 public class NextPlayerScreen extends AbstractMenuScreen {
 
@@ -44,7 +45,7 @@ public class NextPlayerScreen extends AbstractMenuScreen {
 	public void initializeButtons() {
 		
 		// Button initalization
-		nextPlayerButton = new TextButton("Ok", buttonStyle);
+		nextPlayerButton = new TextButton(Constants.NEXTPLAYER_BUTTON, buttonStyle);
 		nextPlayerButton.setWidth(458);
 		nextPlayerButton.setHeight(88);
 		nextPlayerButton.setX(Gdx.graphics.getWidth() / 2 - nextPlayerButton.getWidth() / 2);
@@ -64,7 +65,7 @@ public class NextPlayerScreen extends AbstractMenuScreen {
 		LabelStyle labelStyleHeader = new LabelStyle();
 		labelStyleHeader.font = font;
 		labelStyleHeader.fontColor = new Color(0.647059f, 0.164706f, 0.164706f, 1.0f);
-		nextPlayerInfo = new Label("Send enheten til:", labelStyleHeader);
+		nextPlayerInfo = new Label(Constants.NEXTPLAYER_INFO, labelStyleHeader);
 		nextPlayerInfo.setX(Gdx.graphics.getWidth() / 2 - nextPlayerInfo.getWidth() / 2);
 		nextPlayerInfo.setY(Gdx.graphics.getHeight() / 2 - nextPlayerInfo.getHeight() / 2 + Gdx.graphics.getHeight() * 0.19f);
 		nextPlayerInfo.setWidth(0.6f * Gdx.graphics.getWidth());
@@ -72,7 +73,7 @@ public class NextPlayerScreen extends AbstractMenuScreen {
 		LabelStyle labelStyle = new LabelStyle();
 		labelStyle.font = font;
 		labelStyle.fontColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-		nextPlayerLabel = new Label("spiller " + game.getCurrentPlayer().getNumeric(), labelStyle);
+		nextPlayerLabel = new Label(Constants.NEXTPLAYER_LABEL + game.getCurrentPlayer().getNumeric(), labelStyle);
 		nextPlayerLabel.setX(Gdx.graphics.getWidth() / 2 - nextPlayerLabel.getWidth() / 2);
 		nextPlayerLabel.setY(Gdx.graphics.getHeight() / 2 - nextPlayerLabel.getHeight() / 2 + Gdx.graphics.getHeight() * 0.045f);
 		nextPlayerLabel.scale(0.8f, 0.8f);
