@@ -10,6 +10,7 @@ import com.testgame.Models.Map;
 import com.testgame.Models.MapFactory;
 import com.testgame.Models.Player;
 import com.testgame.Models.QuestionPool;
+import com.testgame.Views.DuelState;
 import com.testgame.Views.GameScreen;
 import com.testgame.Views.MainMenuScreen;
 import com.badlogic.gdx.Game;
@@ -23,6 +24,7 @@ public class MyGame extends Game implements ApplicationListener {
 	QuestionPool questionPool;
 	ArrayList<Player> players;
 	Player currentPlayer;
+	private DuelState duel;
 
 	@Override
 	public void create() {
@@ -45,6 +47,8 @@ public class MyGame extends Game implements ApplicationListener {
 		// Set the current player.
 		setCurrentPlayer(players.get(0));
 		
+		duel = new DuelState(this);
+		
 		// Create the game screen.
 		gameScreen = new GameScreen(this);
 		
@@ -62,6 +66,10 @@ public class MyGame extends Game implements ApplicationListener {
 		} else {
 			setCurrentPlayer(players.get(0));
 		}
+	}
+	
+	public DuelState getDuelState() {
+		return duel;
 	}
 	
 	/**
