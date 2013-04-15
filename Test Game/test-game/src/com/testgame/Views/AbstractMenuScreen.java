@@ -1,7 +1,6 @@
 package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
@@ -13,21 +12,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
 
-public abstract class AbstractGameScreen implements Screen {
-
+public abstract class AbstractMenuScreen extends AbstractScreen {
 	
-	MyGame game;
-
-	Stage stage;
-	SpriteBatch batch;
-
-	// Graphics data
-	TextureAtlas atlas;
-	BitmapFont font;
-	Skin skin;
-	TextButtonStyle buttonStyle;
-
 	// Our NinePatches
+	NinePatch panel;
 	NinePatch background;
 
 	/**
@@ -35,8 +23,8 @@ public abstract class AbstractGameScreen implements Screen {
 	 * 
 	 * @param game
 	 */
-	public AbstractGameScreen(MyGame game) {
-		this.game = game;
+	public AbstractMenuScreen(MyGame game) {
+		super(game);
 	}
 
 	/**
@@ -55,6 +43,11 @@ public abstract class AbstractGameScreen implements Screen {
 						(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 1.0f) / 2,
 						Gdx.graphics.getWidth() * 1.0f,
 						Gdx.graphics.getHeight() * 1.0f);
+		panel.draw(
+				batch,
+				(Gdx.graphics.getWidth() - Gdx.graphics.getWidth() * 0.8f) / 2,
+				(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 0.8f) / 2,
+				Gdx.graphics.getWidth() * 0.8f, Gdx.graphics.getHeight() * 0.8f);
 		
 		
 		batch.end();
@@ -78,6 +71,8 @@ public abstract class AbstractGameScreen implements Screen {
 
 		background = new NinePatch(new TextureRegion(
 				atlas.findRegion("background")), 190, 190, 114, 292);
+		panel = new NinePatch(new TextureRegion(atlas.findRegion("panel")),
+				215, 200, 140, 140);
 
 		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
 		batch = new SpriteBatch();
@@ -94,15 +89,23 @@ public abstract class AbstractGameScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
+		super.resize(width, height);
 		batch.getProjectionMatrix().setToOrtho2D(0, 0, width, height);
 
-		if (stage == null)
-			stage = new Stage(width, height, false);
+		initializeStyle(); // Sets the style of buttons etc.
+		initializeButtons(); // Creates our buttons
+	}
 
-		stage.clear(); // clears the stage
+	/**
+	 * Sets the style of UI elements.
+	 */
+	public void initializeStyle() {
+		buttonStyle = new TextButtonStyle();
+		buttonStyle.up = skin.getDrawable("buttonUp");
+		buttonStyle.font = font;
+	}
 
-		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
-											// this stage
+	public void initializeButtons() {
 	}
 
 	@Override
@@ -115,13 +118,15 @@ public abstract class AbstractGameScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		Gdx.app.debug("testgame", "Disposing Game Screen");
+		super.dispose();
+		Gdx.app.debug("testgame", "Disposing Main Menu");
 
 		atlas.dispose();
-		stage.dispose();
+
 		font.dispose();
 		skin.dispose();
 		batch.dispose();
+		panel.getTexture().dispose();
 		background.getTexture().dispose();
 	}
 }

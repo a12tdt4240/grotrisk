@@ -22,7 +22,7 @@ buttonUp
   rotate: false
   xy: 515, 718
   size: 456, 86
-  split: 18, 18, 18, 19
+  split: 0, 0, 0, 0
   orig: 456, 86
   offset: 0, 0
   index: -1

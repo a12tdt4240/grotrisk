@@ -3,7 +3,7 @@ package com.testgame.Views;
 import com.badlogic.gdx.Gdx;
 import com.testgame.MyGame;
 
-public class EndGameScreen extends AbstractScreen {
+public class EndGameScreen extends AbstractMenuScreen {
 
 	// constructor to keep a reference to the main Game class
 	public EndGameScreen(MyGame game) {

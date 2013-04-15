@@ -10,10 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.testgame.MyGame;
+import com.testgame.Models.Alternative;
 import com.testgame.Models.Area;
 import com.testgame.Models.Quiz;
 
-public class QuestionScreen extends AbstractScreen {
+public class QuestionScreen extends AbstractMenuScreen {
 
 	// private final Sound correct;
 	// private final Sound wrong;
@@ -21,13 +22,15 @@ public class QuestionScreen extends AbstractScreen {
 	TextButton alt1Button, alt2Button, alt3Button, alt4Button;
 	Label questionText, responseText, countDownText;
 	LabelStyle labelStyleHeader;
+	// How many seconds you get to answer a question.
 	int countDownTime = 20;
 	int currentTime = 0;
 	Area area;
 
+	boolean hasAnswered = false;
+
 	/**
-	 * Constructor to keep a reference to the main Game class TODO: The
-	 * constructor needs to take in from which area this question was generated.
+	 * Constructor keeping a reference to the main Game class
 	 * 
 	 * @param game
 	 */
@@ -39,16 +42,21 @@ public class QuestionScreen extends AbstractScreen {
 		startTimer();
 	}
 
+	/**
+	 * The count down timer.
+	 */
 	private void startTimer() {
 		Timer.schedule(new Task() {
 
 			@Override
 			public void run() {
-				if (countDownTime - currentTime != 0) {
-					currentTime++;
-					startTimer();
-				} else {
-					wrongAnswer();
+				if (!hasAnswered) {
+					if (countDownTime - currentTime != 0) {
+						currentTime++;
+						startTimer();
+					} else {
+						wrongAnswer();
+					}
 				}
 			}
 
@@ -85,12 +93,11 @@ public class QuestionScreen extends AbstractScreen {
 	 * Button initialization
 	 */
 	public void initializeButtons() {
-		// get question
+		// Retrieve question from question pool
 		currentQuestion = (Quiz) game.getQuestionPool().random();
-		// currentQuestion = (Quiz) game.getQuestionPool().getTestQuestion();
 
-		// create buttons
-		// Vi kan skalere tekststørrelsen til å passe i knappene.
+		// Create buttons
+		// Scaling text to fit the buttons.
 		buttonStyle.font.setScale(0.7f);
 
 		// Alternative 1
@@ -126,6 +133,7 @@ public class QuestionScreen extends AbstractScreen {
 		alt4Button.setX(Gdx.graphics.getWidth() / 2 + 5);
 		alt4Button.setY((Gdx.graphics.getHeight() / 4));
 
+		// Add listeners to each button.
 		alt1Button.addListener(new InputEventListener());
 		alt2Button.addListener(new InputEventListener());
 		alt3Button.addListener(new InputEventListener());
@@ -145,6 +153,7 @@ public class QuestionScreen extends AbstractScreen {
 				* 0.19f);
 		questionText.setWidth(0.6f * Gdx.graphics.getWidth());
 
+		// Add the buttons to the stage.
 		this.stage.addActor(alt1Button);
 		this.stage.addActor(alt2Button);
 		this.stage.addActor(alt3Button);
@@ -157,6 +166,9 @@ public class QuestionScreen extends AbstractScreen {
 	 */
 	public void hide() {
 		super.hide();
+		// Stop the count down clock. Not 100% sure if this is working
+		// correctly.
+		Timer.instance.clear();
 
 		// correct.dispose();
 		// wrong.dispose();
@@ -174,56 +186,76 @@ public class QuestionScreen extends AbstractScreen {
 
 		public void touchUp(InputEvent event, float x, float y, int pointer,
 				int button) {
-			Label alt = (Label) event.getTarget();
-			String altName = alt.getText().toString();
+			Label altButton = (Label) event.getTarget();
+			String altName = altButton.getText().toString();
 
 			if (altName.equals(currentQuestion.getAlt1().getName())) {
-				if (currentQuestion.getAlt1().isCorrectAnswer()) {
-					correctAnswer();
-				} else {
-					wrongAnswer();
-				}
+				handleEvent(altButton, currentQuestion.getAlt1());
 			} else if (altName.equals(currentQuestion.getAlt2().getName())) {
-				if (currentQuestion.getAlt2().isCorrectAnswer()) {
-					correctAnswer();
-				} else {
-					wrongAnswer();
-				}
+				handleEvent(altButton, currentQuestion.getAlt2());
 			} else if (altName.equals(currentQuestion.getAlt3().getName())) {
-				if (currentQuestion.getAlt3().isCorrectAnswer()) {
-					correctAnswer();
-				} else {
-					wrongAnswer();
-				}
+				handleEvent(altButton, currentQuestion.getAlt3());
 			} else if (altName.equals(currentQuestion.getAlt4().getName())) {
-				if (currentQuestion.getAlt4().isCorrectAnswer()) {
-					correctAnswer();
-				} else {
-					wrongAnswer();
-				}
+				handleEvent(altButton, currentQuestion.getAlt4());
 			}
 		}
 
 	}
 
 	/**
+	 * Takes an alternative, checks if it is correct and handles the given
+	 * situation appropriately
+	 * 
+	 * @param Alternative
+	 */
+	private void handleEvent(Label lab, Alternative alt) {
+		hasAnswered = true;
+
+		if (alt.isCorrectAnswer()) {
+			lab.setColor(Color.GREEN);
+
+			Timer.schedule(new Task() {
+
+				@Override
+				public void run() {
+					correctAnswer();
+				}
+
+			}, 2);
+			
+		} else {
+			lab.setColor(Color.RED);
+
+			Timer.schedule(new Task() {
+
+				@Override
+				public void run() {
+					wrongAnswer();
+				}
+
+			}, 2);
+
+		}
+	}
+
+	/**
 	 * Called when the answer was correct.
 	 */
 	private void correctAnswer() {
-		// 1. Update score, currently with 100 points.
-		game.getCurrentPlayer().updateScore(area.getValueOfArea());
-		// 2. TODO: Show that answer was correct
-
-		// 3. Move on to the nextplayerscreen.
+		// Update score and set the new owner of the area.
+		game.getCurrentPlayer().getScore().updateScore(area.getValueOfArea());
+		area.setOwner(game.getCurrentPlayer());
+		// Move on to the next player screen.
 		game.switchCurrentPlayer();
 		nextPlayer();
 	}
 
+	/**
+	 * Called when the answer was wrong.
+	 */
 	private void wrongAnswer() {
-		// 1. TODO: Show that answer was wrong.
-
-		// 2. Move on to the nextplayerscreen.
+		// Move on to the next player screen.
 		game.switchCurrentPlayer();
-		// nextPlayer();
+		nextPlayer();
 	}
 }

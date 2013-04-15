@@ -1,0 +1,19 @@
+
+map.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+area001
+  rotate: false
+  xy: 1, 1
+  size: 140, 140
+  orig: 140, 140
+  offset: 0, 0
+  index: -1
+duel
+  rotate: false
+  xy: 143, 21
+  size: 120, 120
+  orig: 120, 120
+  offset: 0, 0
+  index: -1

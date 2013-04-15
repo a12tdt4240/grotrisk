@@ -1,12 +1,14 @@
 package com.testgame.Models;
 
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.OrderedMap;
+
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.testgame.Views.Observer;
 
 import java.util.ArrayList;
 
@@ -19,16 +21,21 @@ public class Area implements Serializable {
 	// An area holds a question.
 	private Question question;
 	// The visual representation of the area.
-	private Image image;
+	private Drawable areaDrawable;
 	
+	private ArrayList<Observer> observers;
+
 	// Holds color of area
-	private Color color;
+	private Color color = Color.WHITE;
 
 	private int value, xPosition, yPosition;
 	// A list of neighboring areas. Areas that can be moved to in one move.
 	private ArrayList<Area> neighbors;
 	private ArrayList<Integer> neighborsMap;
 
+	Skin skin;
+	TextureAtlas atlas;
+	
 	public Area() {}
 	
 	/**
@@ -41,6 +48,7 @@ public class Area implements Serializable {
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 		this.value = value;
+		observers = new ArrayList<Observer>();
 		loadAreaImage();
 	}
 	
@@ -48,7 +56,11 @@ public class Area implements Serializable {
 	 * Helper method for loading the Image.
 	 */
 	protected void loadAreaImage() {
-		image = new Image(new Texture( new FileHandle("data/maps/mo/area001.png")));
+		atlas = new TextureAtlas("data/maps/map.atlas");
+
+		skin = new Skin();
+		skin.addRegions(atlas);
+		areaDrawable = skin.getDrawable("area001");
 	}
 	
 	/**
@@ -71,6 +83,7 @@ public class Area implements Serializable {
 	 */
 	public void setOwner(Player player) {
 		owner = player;
+		fireObserverEvent();
 	}
 	
 	/**
@@ -103,9 +116,9 @@ public class Area implements Serializable {
 	public int getValueOfArea() {
 		return value;
 	}
-	
-	public Image getImage() {
-		return image;
+
+	public Drawable getImage() {
+		return areaDrawable;
 	}
 
 	public int getXPosition() {
@@ -126,6 +139,21 @@ public class Area implements Serializable {
 	
 	public ArrayList<Area> getNeighbors() {
 		return neighbors;
+	}
+	
+	/**
+	 * Add observer to list
+	 * 
+	 * @param Observer
+	 */
+	public void addObserver(Observer ob) {
+		observers.add(ob);
+	}
+	
+	private void fireObserverEvent() {
+		for(int i = 0; i < observers.size(); ++i) {
+			observers.get(i).changeEvent();
+		}
 	}
 
 	@Override
