@@ -32,6 +32,7 @@ public abstract class AbstractScreen implements Screen {
 	 */
 	public AbstractScreen(MyGame game) {
 		this.game = game;
+		this.batch = new SpriteBatch();
 	}
 
 	/**
@@ -64,13 +65,13 @@ public abstract class AbstractScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
+		batch.getProjectionMatrix().setToOrtho2D(0, 0, width, height);
+		
 		if (stage == null)
 			stage = new Stage(width, height, false);
 
 		stage.clear(); // clears the stage
 
-		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
-											// this stage
 	}
 
 	@Override

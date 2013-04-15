@@ -46,7 +46,7 @@ public class MyGame extends Game implements ApplicationListener {
 		setCurrentPlayer(players.get(0));
 		
 		// Create the game screen.
-		gameScreen = new GameScreen(this);
+		gameScreen = new GameScreen(this, map);
 		
 		// Create and launch main menu screen.
 		setScreen(new MainMenuScreen(this));

@@ -90,10 +90,11 @@ public abstract class AbstractMenuScreen extends AbstractScreen {
 	@Override
 	public void resize(int width, int height) {
 		super.resize(width, height);
-		batch.getProjectionMatrix().setToOrtho2D(0, 0, width, height);
 
 		initializeStyle(); // Sets the style of buttons etc.
 		initializeButtons(); // Creates our buttons
+		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
+		// this stage
 	}
 
 	/**

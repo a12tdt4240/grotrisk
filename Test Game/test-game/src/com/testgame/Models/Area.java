@@ -36,7 +36,10 @@ public class Area implements Serializable {
 	Skin skin;
 	TextureAtlas atlas;
 	
-	public Area() {}
+	public Area() {
+		observers = new ArrayList<Observer>();
+		loadAreaImage();
+	}
 	
 	/**
 	 * Constructor.
