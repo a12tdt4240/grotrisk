@@ -1,5 +1,7 @@
 package com.testgame.Views;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -96,48 +98,8 @@ public class QuestionScreen extends AbstractMenuScreen {
 		// Retrieve question from question pool
 		currentQuestion = (Quiz) game.getQuestionPool().random();
 
-		// Create buttons
-		// Scaling text to fit the buttons.
-		buttonStyle.font.setScale(0.7f);
-
-		// Alternative 1
-		alt1Button = new TextButton(currentQuestion.getAlt1().getName(),
-				buttonStyle);
-		alt1Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
-		alt1Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
-		alt1Button
-				.setX(Gdx.graphics.getWidth() / 2 - alt1Button.getWidth() - 5);
-		alt1Button
-				.setY((Gdx.graphics.getHeight() / 2 - alt1Button.getHeight() / 2));
-		// Alternative 2
-		alt2Button = new TextButton(currentQuestion.getAlt2().getName(),
-				buttonStyle);
-		alt2Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
-		alt2Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
-		alt2Button.setX(Gdx.graphics.getWidth() / 2 + 5);
-		alt2Button
-				.setY((Gdx.graphics.getHeight() / 2 - alt2Button.getHeight() / 2));
-		// Alternative 3
-		alt3Button = new TextButton(currentQuestion.getAlt3().getName(),
-				buttonStyle);
-		alt3Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
-		alt3Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
-		alt3Button
-				.setX(Gdx.graphics.getWidth() / 2 - alt3Button.getWidth() - 5);
-		alt3Button.setY((Gdx.graphics.getHeight() / 4));
-		// Alternative 4
-		alt4Button = new TextButton(currentQuestion.getAlt4().getName(),
-				buttonStyle);
-		alt4Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
-		alt4Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
-		alt4Button.setX(Gdx.graphics.getWidth() / 2 + 5);
-		alt4Button.setY((Gdx.graphics.getHeight() / 4));
-
-		// Add listeners to each button.
-		alt1Button.addListener(new InputEventListener());
-		alt2Button.addListener(new InputEventListener());
-		alt3Button.addListener(new InputEventListener());
-		alt4Button.addListener(new InputEventListener());
+		AlternativeGroupView altGroup = new AlternativeGroupView(currentQuestion, buttonStyle, game);
+		ArrayList<AlternativeView> alternatives = altGroup.getList();
 
 		// Question text field
 		labelStyleHeader = new LabelStyle();
@@ -154,10 +116,10 @@ public class QuestionScreen extends AbstractMenuScreen {
 		questionText.setWidth(0.6f * Gdx.graphics.getWidth());
 
 		// Add the buttons to the stage.
-		this.stage.addActor(alt1Button);
-		this.stage.addActor(alt2Button);
-		this.stage.addActor(alt3Button);
-		this.stage.addActor(alt4Button);
+		for (AlternativeView av : alternatives) {
+			av.getView().addListener(new InputEventListener());
+			this.stage.addActor(av.getView());
+		}
 	}
 
 	/**
