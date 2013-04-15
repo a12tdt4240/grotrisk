@@ -9,9 +9,11 @@ import com.testgame.Models.Area;
 import com.testgame.Models.Map;
 
 public class MapView extends AbstractScreen {
-
+	// Model of the map
 	private Map mapModel;
+	// All AreaViews belonging to the map
 	private ArrayList<AreaView> areaViews;
+	// Common listener for all areas
 	private InputEventListener listener;
 	
 	public MapView(MyGame game, Map model) {
@@ -21,10 +23,20 @@ public class MapView extends AbstractScreen {
 		makeAreaViews();
 	}
 	
+	/**
+	 * Sets the model of the view
+	 * 
+	 * @param Map
+	 */
 	public void setModel(Map model) {
 		mapModel = model;
 	}
 	
+	/**
+	 * Gets current model of view
+	 * 
+	 * @return Map
+	 */
 	public Map getModel() {
 		return mapModel;
 	}
