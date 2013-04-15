@@ -1,29 +1,94 @@
 package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.testgame.MyGame;
 
 public class EndGameScreen extends AbstractMenuScreen {
 
-	// constructor to keep a reference to the main Game class
+	TextButton mainMenuButton;
+	Label infoLabel;
+	Label winnerLabel;
+
+	/**
+	 * Constructor keeping a reference to the main Game class.
+	 * 
+	 * @param game
+	 */
 	public EndGameScreen(MyGame game) {
 		super(game);
 	}
 
+	/**
+	 * Updates and draws stuff.
+	 */
 	@Override
 	public void render(float delta) {
-		// update and draw stuff
-		if (Gdx.input.justTouched())
-			game.setScreen(new MainMenuScreen(game));
+		super.render(delta);
+
+		batch.begin();
+
+		infoLabel.draw(batch, 1.0f);
+		winnerLabel.draw(batch, 1.0f);
+		batch.end();
 	}
 
-	@Override
-	public void show() {
-		// called when this screen is set as the screen with game.setScreen();
-	}
+	/**
+	 * Button initialization.
+	 */
+	public void initializeButtons() {
 
-	@Override
-	public void hide() {
-		// called when current screen changes from this to a different screen
+		// Button initalization
+		mainMenuButton = new TextButton("Hovedmeny", buttonStyle);
+		mainMenuButton.setWidth(458);
+		mainMenuButton.setHeight(88);
+		mainMenuButton.setX(Gdx.graphics.getWidth() / 2
+				- mainMenuButton.getWidth() / 2);
+		mainMenuButton.setY((Gdx.graphics.getHeight() / 2 - mainMenuButton
+				.getHeight() / 2) - Gdx.graphics.getHeight() * 0.15f);
+
+		mainMenuButton.addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				game.setScreen(new MainMenuScreen(game));
+			}
+		});
+
+		// TextField initialization.
+		LabelStyle labelStyleHeader = new LabelStyle();
+		labelStyleHeader.font = font;
+		labelStyleHeader.fontColor = new Color(0.647059f, 0.164706f, 0.164706f,
+				1.0f);
+		infoLabel = new Label("Spillet er over!", labelStyleHeader);
+		infoLabel.setX(Gdx.graphics.getWidth() / 2
+				- infoLabel.getWidth() / 2);
+		infoLabel.setY(Gdx.graphics.getHeight() / 2
+				- infoLabel.getHeight() / 2 + Gdx.graphics.getHeight()
+				* 0.19f);
+		infoLabel.setWidth(0.6f * Gdx.graphics.getWidth());
+
+		LabelStyle labelStyle = new LabelStyle();
+		labelStyle.font = font;
+		labelStyle.fontColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+		winnerLabel = new Label("Vinner: spiller "
+				+ game.getWinningPlayer().getNumeric(), labelStyle);
+		winnerLabel.setX(Gdx.graphics.getWidth() / 2
+				- winnerLabel.getWidth() / 2);
+		winnerLabel.setY(Gdx.graphics.getHeight() / 2
+				- winnerLabel.getHeight() / 2 + Gdx.graphics.getHeight()
+				* 0.045f);
+		winnerLabel.scale(0.8f, 0.8f);
+
+		this.stage.addActor(mainMenuButton);
 	}
 }

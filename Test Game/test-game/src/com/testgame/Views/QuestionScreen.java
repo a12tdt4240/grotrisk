@@ -1,5 +1,7 @@
 package com.testgame.Views;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -64,10 +66,27 @@ public class QuestionScreen extends AbstractMenuScreen {
 	}
 
 	/**
-	 * Helper method setting the next screen.
+	 * Helper method setting the next screen. If the game is considered finished
+	 * it sets the end game screen.
 	 */
 	private void nextPlayer() {
-		game.setScreen(new NextPlayerScreen(game));
+		if (isGameFinished()) {
+			game.setScreen(new EndGameScreen(game));
+		} else {
+			game.setScreen(new NextPlayerScreen(game));
+		}
+	}
+
+	/**
+	 * Currently: Asks if the game has run for # moves.
+	 * 
+	 * @return
+	 */
+	private boolean isGameFinished() {
+		if (game.getPlaysCounter() >= 20) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -96,48 +115,8 @@ public class QuestionScreen extends AbstractMenuScreen {
 		// Retrieve question from question pool
 		currentQuestion = (Quiz) game.getQuestionPool().random();
 
-		// Create buttons
-		// Scaling text to fit the buttons.
-		buttonStyle.font.setScale(0.7f);
-
-		// Alternative 1
-		alt1Button = new TextButton(currentQuestion.getAlt1().getName(),
-				buttonStyle);
-		alt1Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
-		alt1Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
-		alt1Button
-				.setX(Gdx.graphics.getWidth() / 2 - alt1Button.getWidth() - 5);
-		alt1Button
-				.setY((Gdx.graphics.getHeight() / 2 - alt1Button.getHeight() / 2));
-		// Alternative 2
-		alt2Button = new TextButton(currentQuestion.getAlt2().getName(),
-				buttonStyle);
-		alt2Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
-		alt2Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
-		alt2Button.setX(Gdx.graphics.getWidth() / 2 + 5);
-		alt2Button
-				.setY((Gdx.graphics.getHeight() / 2 - alt2Button.getHeight() / 2));
-		// Alternative 3
-		alt3Button = new TextButton(currentQuestion.getAlt3().getName(),
-				buttonStyle);
-		alt3Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
-		alt3Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
-		alt3Button
-				.setX(Gdx.graphics.getWidth() / 2 - alt3Button.getWidth() - 5);
-		alt3Button.setY((Gdx.graphics.getHeight() / 4));
-		// Alternative 4
-		alt4Button = new TextButton(currentQuestion.getAlt4().getName(),
-				buttonStyle);
-		alt4Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
-		alt4Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
-		alt4Button.setX(Gdx.graphics.getWidth() / 2 + 5);
-		alt4Button.setY((Gdx.graphics.getHeight() / 4));
-
-		// Add listeners to each button.
-		alt1Button.addListener(new InputEventListener());
-		alt2Button.addListener(new InputEventListener());
-		alt3Button.addListener(new InputEventListener());
-		alt4Button.addListener(new InputEventListener());
+		AlternativeGroupView altGroup = new AlternativeGroupView(currentQuestion, buttonStyle, game);
+		ArrayList<AlternativeView> alternatives = altGroup.getList();
 
 		// Question text field
 		labelStyleHeader = new LabelStyle();
@@ -154,10 +133,10 @@ public class QuestionScreen extends AbstractMenuScreen {
 		questionText.setWidth(0.6f * Gdx.graphics.getWidth());
 
 		// Add the buttons to the stage.
-		this.stage.addActor(alt1Button);
-		this.stage.addActor(alt2Button);
-		this.stage.addActor(alt3Button);
-		this.stage.addActor(alt4Button);
+		for (AlternativeView av : alternatives) {
+			av.getView().addListener(new InputEventListener());
+			this.stage.addActor(av.getView());
+		}
 	}
 
 	/**
@@ -222,7 +201,7 @@ public class QuestionScreen extends AbstractMenuScreen {
 				}
 
 			}, 2);
-			
+
 		} else {
 			lab.setColor(Color.RED);
 
@@ -237,14 +216,39 @@ public class QuestionScreen extends AbstractMenuScreen {
 
 		}
 	}
+	
+	/**
+	 * Checks if duel is finished, and assigns the area to correct player
+	 * 
+	 */
+	private void handleDuel() {
+		if(game.getDuelState().isFinished() && (game.getCurrentPlayer() == game.getDuelState().getDefendant())) {
+			game.getDuelState().getWinner().getScore().updateScore(area.getValueOfArea());
+			game.getDuelState().finishDuel();
+		}
+	}
 
 	/**
 	 * Called when the answer was correct.
 	 */
 	private void correctAnswer() {
-		// Update score and set the new owner of the area.
-		game.getCurrentPlayer().getScore().updateScore(area.getValueOfArea());
-		area.setOwner(game.getCurrentPlayer());
+		// Duel active
+		if(game.getDuelState().isDuel()) {
+			// Award correct player in duel
+			if(game.getCurrentPlayer() == game.getDuelState().getDefendant()) {
+				game.getDuelState().increaseDefenantScore();
+			} else {
+				game.getDuelState().increaseInitiatorScore();
+			}
+			// Check if duel is finished, and handle it appropriately
+			handleDuel();
+		// No active duel
+		} else {			
+			// Update score and set the new owner of the area.
+			game.getCurrentPlayer().getScore().updateScore(area.getValueOfArea());
+			area.setOwner(game.getCurrentPlayer());
+		}
+		
 		// Move on to the next player screen.
 		game.switchCurrentPlayer();
 		nextPlayer();
@@ -254,6 +258,11 @@ public class QuestionScreen extends AbstractMenuScreen {
 	 * Called when the answer was wrong.
 	 */
 	private void wrongAnswer() {
+		// Duel active
+		if(game.getDuelState().isDuel()) {
+			// Check if duel is finished, and handle it appropriately
+			handleDuel();
+		}
 		// Move on to the next player screen.
 		game.switchCurrentPlayer();
 		nextPlayer();

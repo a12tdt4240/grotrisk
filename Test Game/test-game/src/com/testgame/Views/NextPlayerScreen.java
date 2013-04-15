@@ -56,7 +56,7 @@ public class NextPlayerScreen extends AbstractMenuScreen {
 			}
 			
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(game.getGameScreen());
+				setCorrectScreen();
 			}
 		});
 		
@@ -79,5 +79,17 @@ public class NextPlayerScreen extends AbstractMenuScreen {
 
 		
 		this.stage.addActor(nextPlayerButton);
+	}
+	
+	/**
+	 * Checks if duel is in action and displays correct screen accordingly
+	 * 
+	 */
+	private void setCorrectScreen() {
+		if(game.getDuelState().isDuel()) {
+			game.setScreen(new QuestionScreen(game, game.getDuelState().getArea()));
+		} else {
+			game.setScreen(game.getGameScreen());
+		}
 	}
 }
