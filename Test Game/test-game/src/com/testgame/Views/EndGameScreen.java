@@ -60,6 +60,10 @@ public class EndGameScreen extends AbstractMenuScreen {
 
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
+				// The following method resets the players with scores, areas
+				// with owners, and the
+				// play counter.
+				game.resetGame();
 				game.setScreen(new MainMenuScreen(game));
 			}
 		});
@@ -70,11 +74,9 @@ public class EndGameScreen extends AbstractMenuScreen {
 		labelStyleHeader.fontColor = new Color(0.647059f, 0.164706f, 0.164706f,
 				1.0f);
 		infoLabel = new Label("Spillet er over!", labelStyleHeader);
-		infoLabel.setX(Gdx.graphics.getWidth() / 2
-				- infoLabel.getWidth() / 2);
-		infoLabel.setY(Gdx.graphics.getHeight() / 2
-				- infoLabel.getHeight() / 2 + Gdx.graphics.getHeight()
-				* 0.19f);
+		infoLabel.setX(Gdx.graphics.getWidth() / 2 - infoLabel.getWidth() / 2);
+		infoLabel.setY(Gdx.graphics.getHeight() / 2 - infoLabel.getHeight() / 2
+				+ Gdx.graphics.getHeight() * 0.19f);
 		infoLabel.setWidth(0.6f * Gdx.graphics.getWidth());
 
 		LabelStyle labelStyle = new LabelStyle();
@@ -82,11 +84,10 @@ public class EndGameScreen extends AbstractMenuScreen {
 		labelStyle.fontColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		winnerLabel = new Label("Vinner: spiller "
 				+ game.getWinningPlayer().getNumeric(), labelStyle);
-		winnerLabel.setX(Gdx.graphics.getWidth() / 2
-				- winnerLabel.getWidth() / 2);
-		winnerLabel.setY(Gdx.graphics.getHeight() / 2
-				- winnerLabel.getHeight() / 2 + Gdx.graphics.getHeight()
-				* 0.045f);
+		winnerLabel.setX(Gdx.graphics.getWidth() / 2 - winnerLabel.getWidth()
+				/ 2);
+		winnerLabel.setY(Gdx.graphics.getHeight() / 2 - winnerLabel.getHeight()
+				/ 2 + Gdx.graphics.getHeight() * 0.045f);
 		winnerLabel.scale(0.8f, 0.8f);
 
 		this.stage.addActor(mainMenuButton);
