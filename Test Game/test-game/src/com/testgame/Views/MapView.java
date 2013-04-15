@@ -114,7 +114,7 @@ public class MapView extends AbstractScreen {
 			AreaView areaView = (AreaView) event.getTarget();
 			// If area is already owned by other, initiate duel
 			if(areaView.getModel().getOwner() != null) {
-				game.getDuelState().initiateDuel(game.getCurrentPlayer(), areaView.getModel().getOwner());
+				game.getDuelState().initiateDuel(game.getCurrentPlayer(), areaView.getModel().getOwner(), areaView.getModel());
 			}
 			// Go to question screen
 			game.setScreen(new QuestionScreen(game, areaView.getArea()));
