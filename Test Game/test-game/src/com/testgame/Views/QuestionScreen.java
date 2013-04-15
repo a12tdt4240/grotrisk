@@ -64,10 +64,27 @@ public class QuestionScreen extends AbstractMenuScreen {
 	}
 
 	/**
-	 * Helper method setting the next screen.
+	 * Helper method setting the next screen. If the game is considered finished
+	 * it sets the end game screen.
 	 */
 	private void nextPlayer() {
-		game.setScreen(new NextPlayerScreen(game));
+		if (isGameFinished()) {
+			game.setScreen(new EndGameScreen(game));
+		} else {
+			game.setScreen(new NextPlayerScreen(game));
+		}
+	}
+
+	/**
+	 * Currently: Asks if the game has run for # moves.
+	 * 
+	 * @return
+	 */
+	private boolean isGameFinished() {
+		if (game.getPlaysCounter() >= 20) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -222,7 +239,7 @@ public class QuestionScreen extends AbstractMenuScreen {
 				}
 
 			}, 2);
-			
+
 		} else {
 			lab.setColor(Color.RED);
 
