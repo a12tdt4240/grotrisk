@@ -14,10 +14,9 @@ public class MainActivity extends AndroidApplication {
 
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
-//		cfg.useAccelerometer = false;
-//		cfg.useCompass = false;
-//		cfg.useWakelock = true;
-//		cfg.useGL20 = true;
+		cfg.useAccelerometer = false;
+		cfg.useCompass = false;
+		cfg.useGL20 = false;
 
 		initialize(new MyGame(), cfg);
 	}
