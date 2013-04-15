@@ -17,10 +17,10 @@ public class Map {
 
 	public Map(ArrayList<Area> areas) {
 		this.areas = areas;
-		this.initiateAreNeighbors();
+		this.initiateAreaNeighbors();
 	}
 	
-	private void initiateAreNeighbors() {
+	private void initiateAreaNeighbors() {
 		for (Area area: this.areas) {
 			area.initiateNeighbors(this.areas);
 		}

@@ -79,6 +79,14 @@ public class DuelState {
 		return disputeOver;
 	}
 	
+	public void increaseInitiatorScore() {
+		++scoreInitiator;
+	}
+	
+	public void increaseDefenantScore() {
+		++scoreDefendant;
+	}
+	
 	/**
 	 * Initiates duel by setting the initiator and the defendant
 	 * Duel is marked as in action
