@@ -124,8 +124,6 @@ public class MapView extends AbstractScreen {
 	@Override
 	public void render(float delta) {
 		
-		stage.act(delta);
-		
 		// Draws the background
 		batch.begin();
 		background.draw(batch,
@@ -135,8 +133,6 @@ public class MapView extends AbstractScreen {
 						Gdx.graphics.getHeight() * 1.0f);
 		
 		batch.end();
-
-		stage.draw();
 		
 	}
 	
@@ -173,6 +169,7 @@ public class MapView extends AbstractScreen {
 
 		public void touchUp(InputEvent event, float x, float y, int pointer,
 				int button) {
+			Gdx.app.log("CLICK", "clicked a land");
 			AreaView areaView = (AreaView) event.getTarget();
 			// If area is already owned by other, initiate duel
 			if(areaView.getModel().getOwner() != null) {
