@@ -237,14 +237,39 @@ public class QuestionScreen extends AbstractMenuScreen {
 
 		}
 	}
+	
+	/**
+	 * Checks if duel is finished, and assigns the area to correct player
+	 * 
+	 */
+	private void handleDuel() {
+		if(game.getDuelState().isFinished() && (game.getCurrentPlayer() == game.getDuelState().getDefendant())) {
+			game.getDuelState().getWinner().getScore().updateScore(area.getValueOfArea());
+			game.getDuelState().finishDuel();
+		}
+	}
 
 	/**
 	 * Called when the answer was correct.
 	 */
 	private void correctAnswer() {
-		// Update score and set the new owner of the area.
-		game.getCurrentPlayer().getScore().updateScore(area.getValueOfArea());
-		area.setOwner(game.getCurrentPlayer());
+		// Duel active
+		if(game.getDuelState().isDuel()) {
+			// Award correct player in duel
+			if(game.getCurrentPlayer() == game.getDuelState().getDefendant()) {
+				game.getDuelState().increaseDefenantScore();
+			} else {
+				game.getDuelState().increaseInitiatorScore();
+			}
+			// Check if duel is finished, and handle it appropriately
+			handleDuel();
+		// No active duel
+		} else {			
+			// Update score and set the new owner of the area.
+			game.getCurrentPlayer().getScore().updateScore(area.getValueOfArea());
+			area.setOwner(game.getCurrentPlayer());
+		}
+		
 		// Move on to the next player screen.
 		game.switchCurrentPlayer();
 		nextPlayer();
@@ -254,6 +279,11 @@ public class QuestionScreen extends AbstractMenuScreen {
 	 * Called when the answer was wrong.
 	 */
 	private void wrongAnswer() {
+		// Duel active
+		if(game.getDuelState().isDuel()) {
+			// Check if duel is finished, and handle it appropriately
+			handleDuel();
+		}
 		// Move on to the next player screen.
 		game.switchCurrentPlayer();
 		nextPlayer();
