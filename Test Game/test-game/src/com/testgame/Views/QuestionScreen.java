@@ -242,11 +242,10 @@ public class QuestionScreen extends AbstractMenuScreen {
 	 * Called when the answer was correct.
 	 */
 	private void correctAnswer() {
-		// 1. Update score and set the new owner of the area.
+		// Update score and set the new owner of the area.
 		game.getCurrentPlayer().getScore().updateScore(area.getValueOfArea());
 		area.setOwner(game.getCurrentPlayer());
-		// 2. TODO: Show that answer was correct
-		// 3. Move on to the next player screen.
+		// Move on to the next player screen.
 		game.switchCurrentPlayer();
 		nextPlayer();
 	}
@@ -255,9 +254,7 @@ public class QuestionScreen extends AbstractMenuScreen {
 	 * Called when the answer was wrong.
 	 */
 	private void wrongAnswer() {
-		// 1. TODO: Show that answer was wrong.
-
-		// 2. Move on to the next player screen.
+		// Move on to the next player screen.
 		game.switchCurrentPlayer();
 		nextPlayer();
 	}
