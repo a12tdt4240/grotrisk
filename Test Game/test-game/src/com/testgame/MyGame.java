@@ -60,11 +60,20 @@ public class MyGame extends Game implements ApplicationListener {
 	 * Switches which player is the current player.
 	 */
 	public void switchCurrentPlayer() {
-		
-		if (currentPlayer.getNumeric() < players.size()) {
-			setCurrentPlayer(players.get(currentPlayer.getNumeric()));
+		// If duel is active, switch between the two duelist
+		if(getDuelState().isDuel()) {
+			if(getDuelState().getDefendant() == getCurrentPlayer()) {
+				setCurrentPlayer(getDuelState().getInitiator());
+			} else {
+				setCurrentPlayer(getDuelState().getDefendant());
+			}
+		// Else, follow normal procedure
 		} else {
-			setCurrentPlayer(players.get(0));
+			if (currentPlayer.getNumeric() < players.size()) {
+				setCurrentPlayer(players.get(currentPlayer.getNumeric()));
+			} else {
+				setCurrentPlayer(players.get(0));
+			}
 		}
 	}
 	

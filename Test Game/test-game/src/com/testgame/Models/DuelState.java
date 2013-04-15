@@ -63,6 +63,15 @@ public class DuelState {
 	}
 	
 	/**
+	 * Reutrns the initiator of the duel
+	 * 
+	 * @return Player
+	 */
+	public Player getInitiator() {
+		return initiator;
+	}
+	
+	/**
 	 * The area the duel is about
 	 * @return Area
 	 */
