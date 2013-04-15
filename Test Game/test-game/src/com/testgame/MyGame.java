@@ -121,7 +121,7 @@ public class MyGame extends Game implements ApplicationListener {
 	public ArrayList<Player> createPlayers(int numberOfPlayers) {
 		ArrayList<Player> playersCreated = new ArrayList<Player>();
 
-		for (int i = 1; i < numberOfPlayers + 1; i++) {
+		for (int i = 0; i < numberOfPlayers; i++) {
 			playersCreated.add(new Player(i));
 		}
 
