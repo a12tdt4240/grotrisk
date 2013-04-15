@@ -8,7 +8,9 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.testgame.MyGame;
 import com.testgame.Models.Player;
@@ -25,6 +27,7 @@ public class ScoreView extends AbstractScreen {
 	private ArrayList<Player> players;
 	private ArrayList<Label> names;
 	private ArrayList<Label> scores;
+	private ArrayList<Image> colorIcons;
 
 	public ScoreView(MyGame game) {
 		super(game);
@@ -32,7 +35,7 @@ public class ScoreView extends AbstractScreen {
 
 		this.names = new ArrayList<Label>();
 		this.scores = new ArrayList<Label>();
-
+		this.colorIcons = new ArrayList<Image>();
 	}
 
 	/**
@@ -42,15 +45,18 @@ public class ScoreView extends AbstractScreen {
 	public void render(float delta) {
 		Label score;
 		Label name;
-		colorContainerImage.setRegionHeight(50);
-		colorContainerImage.setRegionWidth(50);
 		batch.begin();
 		for (int i = 0; i < players.size(); i++) {
-			batch.draw(colorContainerImage, 0, i * 50);
+			Image img = colorIcons.get(i);
+			img.setColor(players.get(i).getColor());
+			img.setPosition(0, i * 50);
+			img.setWidth(50);
+			img.setHeight(50);
+			img.draw(batch, 1);
 
 			score = scores.get(i);
 			score.setX(50);
-			score.setY(i * 50);
+			score.setY(i * 50 - 10);
 			score.draw(batch, 1.0f);
 
 			name = names.get(i);
@@ -68,9 +74,17 @@ public class ScoreView extends AbstractScreen {
 	 */
 	@Override
 	public void show() {
+		
+		
 		atlas = new TextureAtlas("data/maps/map.atlas");
-
-		colorContainerImage = atlas.findRegion("area001");
+		skin = new Skin();
+		skin.addRegions(atlas);
+		
+		colorContainerImage = skin.getRegion("area001");
+		
+		for (int i = 0; i < players.size(); i++) {
+			colorIcons.add(new Image(colorContainerImage));
+		}
 		
 		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
 		
@@ -79,9 +93,12 @@ public class ScoreView extends AbstractScreen {
 		labelStyle.fontColor = new Color(1, 1, 1, 1.0f);
 
 		for (int i = 0; i < this.players.size(); i++) {
-			scores.add(new Label("" + players.get(i).getScore().getScore(),
-					labelStyle));
-			names.add(new Label("" + players.get(i).getName(), labelStyle));
+			Label score = new Label("" + players.get(i).getScore().getScore(), labelStyle);
+			Label name = new Label("" + players.get(i).getName(), labelStyle);
+			score.setFontScale(0.6f);
+			name.setFontScale(0.6f);
+			scores.add(score);
+			names.add(name);
 		}
 		
 		
@@ -99,8 +116,8 @@ public class ScoreView extends AbstractScreen {
 	 * Remember to dispose objects.
 	 */
 	@Override
-	public void hide() {
+	public void dispose() {
 		batch.dispose();
+		colorContainerImage.getTexture().dispose();
 	}
-
 }
