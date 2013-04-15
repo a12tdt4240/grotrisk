@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.testgame.MyGame;
+import com.testgame.Models.Constants;
 
 public class EndGameScreen extends AbstractMenuScreen {
 
@@ -44,7 +45,7 @@ public class EndGameScreen extends AbstractMenuScreen {
 	public void initializeButtons() {
 
 		// Button initalization
-		mainMenuButton = new TextButton("Hovedmeny", buttonStyle);
+		mainMenuButton = new TextButton(Constants.ENDGAME_MAINBUTTON, buttonStyle);
 		mainMenuButton.setWidth(458);
 		mainMenuButton.setHeight(88);
 		mainMenuButton.setX(Gdx.graphics.getWidth() / 2
@@ -60,6 +61,10 @@ public class EndGameScreen extends AbstractMenuScreen {
 
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
+				// The following method resets the players with scores, areas
+				// with owners, and the
+				// play counter.
+				game.resetGame();
 				game.setScreen(new MainMenuScreen(game));
 			}
 		});
@@ -69,24 +74,21 @@ public class EndGameScreen extends AbstractMenuScreen {
 		labelStyleHeader.font = font;
 		labelStyleHeader.fontColor = new Color(0.647059f, 0.164706f, 0.164706f,
 				1.0f);
-		infoLabel = new Label("Spillet er over!", labelStyleHeader);
-		infoLabel.setX(Gdx.graphics.getWidth() / 2
-				- infoLabel.getWidth() / 2);
-		infoLabel.setY(Gdx.graphics.getHeight() / 2
-				- infoLabel.getHeight() / 2 + Gdx.graphics.getHeight()
-				* 0.19f);
+		infoLabel = new Label(Constants.ENDGAME_INFOLABEL, labelStyleHeader);
+		infoLabel.setX(Gdx.graphics.getWidth() / 2 - infoLabel.getWidth() / 2);
+		infoLabel.setY(Gdx.graphics.getHeight() / 2 - infoLabel.getHeight() / 2
+				+ Gdx.graphics.getHeight() * 0.19f);
 		infoLabel.setWidth(0.6f * Gdx.graphics.getWidth());
 
 		LabelStyle labelStyle = new LabelStyle();
 		labelStyle.font = font;
 		labelStyle.fontColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-		winnerLabel = new Label("Vinner: spiller "
+		winnerLabel = new Label(Constants.ENDGAME_WINNERLABEL
 				+ game.getWinningPlayer().getNumeric(), labelStyle);
-		winnerLabel.setX(Gdx.graphics.getWidth() / 2
-				- winnerLabel.getWidth() / 2);
-		winnerLabel.setY(Gdx.graphics.getHeight() / 2
-				- winnerLabel.getHeight() / 2 + Gdx.graphics.getHeight()
-				* 0.045f);
+		winnerLabel.setX(Gdx.graphics.getWidth() / 2 - winnerLabel.getWidth()
+				/ 2);
+		winnerLabel.setY(Gdx.graphics.getHeight() / 2 - winnerLabel.getHeight()
+				/ 2 + Gdx.graphics.getHeight() * 0.045f);
 		winnerLabel.scale(0.8f, 0.8f);
 
 		this.stage.addActor(mainMenuButton);

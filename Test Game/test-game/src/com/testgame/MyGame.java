@@ -6,6 +6,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.testgame.Models.Area;
 import com.testgame.Models.DuelState;
 import com.testgame.Models.Map;
 import com.testgame.Models.MapFactory;
@@ -26,6 +27,7 @@ public class MyGame extends Game implements ApplicationListener {
 	Player currentPlayer;
 	private DuelState duel;
 	private int playsCounter;
+	Map map;
 
 	@Override
 	public void create() {
@@ -38,7 +40,7 @@ public class MyGame extends Game implements ApplicationListener {
 		// Generate question pool.
 		questionPool = new QuestionPool();
 
-		Map map = new MapFactory().createDefaultMap();
+		map = new MapFactory().createDefaultMap();
 
 		// Create players.
 		players = createPlayers(2);
@@ -53,10 +55,27 @@ public class MyGame extends Game implements ApplicationListener {
 
 		// Create the game screen.
 		gameScreen = new GameScreen(this, map);
-		
+
 		// Create and launch main menu screen.
 		setScreen(new MainMenuScreen(this));
-		// setScreen(new EndGameScreen(this));
+	}
+
+	/**
+	 * Resets the game. This is called when the main menu button is pressed on
+	 * the end game screen.
+	 */
+	public void resetGame() {
+		// Overwrite the old players with new players.
+		players = createPlayers(2);
+		players.get(0).setColor(Color.BLACK);
+		players.get(1).setColor(Color.ORANGE);
+		setCurrentPlayer(players.get(0));
+		// Reset area owners
+		for (Area area : map.getAreas()) {
+			area.setOwner(null);
+		}
+		// Reset playsCounter
+		playsCounter = 0;
 	}
 
 	/**
