@@ -16,7 +16,7 @@ public class Area implements Serializable {
 	
 	private int id;
 	
-	// An area has an owner. Player 1, Player 2 or null;
+	// An area has an owner. Player 1, Player 2 etc. or null;
 	private Player owner;
 	// An area holds a question.
 	private Question question;

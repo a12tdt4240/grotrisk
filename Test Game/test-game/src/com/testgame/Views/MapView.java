@@ -96,6 +96,7 @@ public class MapView extends AbstractScreen {
 			// UGLY!!
 			for(int k = 0; k < areaViews.size(); ++k) {
 				if(neighbors.get(i) == areaViews.get(k).getModel()) {
+//					Gdx.app.log("ALG", i + ":" + k);
 					areaViews.get(k).addListener(listener);
 				}
 			}
@@ -114,8 +115,9 @@ public class MapView extends AbstractScreen {
 	public void resize(int width, int height) {
 		super.resize(width, height);
 
-		addAreaViewsAsActors();
 		addListeners();
+		addAreaViewsAsActors();
+		
 	}
 	
 	/**
