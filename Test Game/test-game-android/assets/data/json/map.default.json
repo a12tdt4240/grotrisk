@@ -2,8 +2,8 @@
 	{
 		"class": "com.testgame.Models.Area",
 		"id": 1,
-		"xPosition": 200,
-		"yPosition": 200,
+		"xPosition": 150,
+		"yPosition": 100,
 		"value": 200,
 		"neighbors": [2,3]
 	},
@@ -19,7 +19,7 @@
 		"class": "com.testgame.Models.Area",
 		"id": 3,
 		"xPosition": 400,
-		"yPosition": 200,
+		"yPosition": 100,
 		"value": 70,
 		"neighbors": [1,2]
 	},
@@ -34,8 +34,8 @@
 	{
 		"class": "com.testgame.Models.Area",
 		"id": 5,
-		"xPosition": 500,
-		"yPosition": 200,
+		"xPosition": 600,
+		"yPosition": 100,
 		"value": 70,
 		"neighbors": [4]
 	}
