@@ -11,12 +11,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.testgame.Views.Observer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Area implements Serializable {
 	
 	private int id;
 	
-	// An area has an owner. Player 1, Player 2 or null;
+	// An area has an owner. Player 1, Player 2 etc. or null;
 	private Player owner;
 	// An area holds a question.
 	private Question question;
@@ -31,7 +32,7 @@ public class Area implements Serializable {
 	private int value, xPosition, yPosition;
 	// A list of neighboring areas. Areas that can be moved to in one move.
 	private ArrayList<Area> neighbors;
-	private ArrayList<Integer> neighborsMap;
+	private Integer[] neighborsMap;
 
 	Skin skin;
 	TextureAtlas atlas;
@@ -39,6 +40,7 @@ public class Area implements Serializable {
 	public Area() {
 		observers = new ArrayList<Observer>();
 		neighbors = new ArrayList<Area>();
+		neighborsMap = new Integer[0];
 		loadAreaImage();
 	}
 	
@@ -54,6 +56,7 @@ public class Area implements Serializable {
 		this.value = value;
 		observers = new ArrayList<Observer>();
 		neighbors = new ArrayList<Area>();
+		neighborsMap = new Integer[0];
 		loadAreaImage();
 	}
 	
@@ -174,13 +177,14 @@ public class Area implements Serializable {
 		this.xPosition = json.readValue("xPosition", Integer.class, jsonData);
 		this.yPosition = json.readValue("yPosition", Integer.class, jsonData);
 		this.value = json.readValue("value", Integer.class, jsonData);
-		this.neighborsMap = json.readValue("neighbors", ArrayList.class, jsonData);
+		this.neighborsMap = json.readValue("neighbors", Integer[].class, jsonData);
 //		loadAreaImage();
 	}
 	
 	public void initiateNeighbors(ArrayList<Area> areas) {
+		ArrayList<Integer> neighborsList = new ArrayList<Integer>(Arrays.asList(this.neighborsMap));
 		for (Area area: areas) {
-			if (this.neighborsMap.contains(area.id)) this.neighbors.add(area); 
+			if (neighborsList.contains(area.id)) this.neighbors.add(area); 
 		}
 	}
 }
