@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.testgame.MyGame;
 import com.testgame.Models.Player;
 
-public class ScoreView extends AbstractScreen {
+public class ScoreView extends AbstractScreen implements Observer {
 
 	// Graphics data
 	private TextureAtlas atlas;
@@ -97,6 +97,7 @@ public class ScoreView extends AbstractScreen {
 			Label name = new Label("" + players.get(i).getName(), labelStyle);
 			score.setFontScale(0.6f);
 			name.setFontScale(0.6f);
+			players.get(i).getScore().addObserver(this);
 			scores.add(score);
 			names.add(name);
 		}
@@ -119,5 +120,12 @@ public class ScoreView extends AbstractScreen {
 	public void dispose() {
 		batch.dispose();
 		colorContainerImage.getTexture().dispose();
+	}
+
+	@Override
+	public void changeEvent() {
+		for (int i = 0; i < scores.size(); i++) {
+			scores.set(i, new Label("" + players.get(i).getScore().getScore(), labelStyle));
+		}
 	}
 }
