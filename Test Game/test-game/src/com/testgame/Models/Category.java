@@ -73,5 +73,9 @@ public class Category implements Serializable {
 		this.category = json.readValue("category", String.class, jsonData);
 		this.setVisual(this.category);
 	}
+	
+	public String toString() {
+		return getName();
+	}
 
 }
