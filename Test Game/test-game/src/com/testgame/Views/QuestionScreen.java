@@ -253,6 +253,7 @@ public class QuestionScreen extends AbstractMenuScreen {
 		
 		// Move on to the next player screen.
 		game.switchCurrentPlayer();
+		game.increasePlaysCounter();
 		nextPlayer();
 	}
 
@@ -267,6 +268,7 @@ public class QuestionScreen extends AbstractMenuScreen {
 		}
 		// Move on to the next player screen.
 		game.switchCurrentPlayer();
+		game.increasePlaysCounter();
 		nextPlayer();
 	}
 }
