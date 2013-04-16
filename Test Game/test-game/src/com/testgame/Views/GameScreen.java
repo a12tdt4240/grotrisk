@@ -2,7 +2,6 @@ package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.utils.Array;
 import com.testgame.MyGame;
 import com.testgame.Models.Map;
 
@@ -41,10 +40,10 @@ public class GameScreen extends AbstractScreen {
 		mapView.resize(width, height);
 		scoreView.resize(width, height);
 
-		Array<Actor> mapActors = mapView.stage.getActors();
-
-		for (int i = 0; i < mapActors.size; i++) {
-			stage.addActor(mapActors.get(i));
+		Actor[] mapActors = mapView.stage.getActors().toArray();
+		Gdx.app.log("TEST", "" + mapActors.length);
+		for (int i = 0; i < mapActors.length; i++) {
+			stage.addActor(mapActors[i]);
 		}
 
 		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
@@ -59,6 +58,9 @@ public class GameScreen extends AbstractScreen {
 		super.render(delta);
 		mapView.render(delta);
 		scoreView.render(delta);
+		
+		stage.act(delta);
+		stage.draw();
 	}
 
 	/**

@@ -20,14 +20,15 @@ import com.badlogic.gdx.graphics.Color;
 
 public class MyGame extends Game implements ApplicationListener {
 
-	GameScreen gameScreen;
+	private GameScreen gameScreen;
+	private Map map;
 	private Music music;
-	QuestionPool questionPool;
-	ArrayList<Player> players;
-	Player currentPlayer;
+	private QuestionPool questionPool; 
+	private ArrayList<Player> players;
+	private Player currentPlayer;
 	private DuelState duel;
 	private int playsCounter;
-	Map map;
+	
 
 	@Override
 	public void create() {
@@ -40,6 +41,7 @@ public class MyGame extends Game implements ApplicationListener {
 		// Generate question pool.
 		questionPool = new QuestionPool();
 
+		// Get default Map model
 		map = new MapFactory().createDefaultMap();
 
 		// Create players.
@@ -47,17 +49,26 @@ public class MyGame extends Game implements ApplicationListener {
 		// Set player colors TO BE UPDATED WITH COLOR CHOOSER VIEW ETC
 		players.get(0).setColor(Color.BLACK);
 		players.get(1).setColor(Color.ORANGE);
-		// Set the current player.
-		setCurrentPlayer(players.get(0));
+		// Set the current player. A random player.
+		setCurrentPlayer(players.get((int)Math.floor(Math.random() * players.size())));
 		playsCounter = 0;
+		
+		// Give out initial areas
+		setInitialOwnership();
 
 		duel = new DuelState(this);
 
-		// Create the game screen.
+		// Create the game screen with selected map model
 		gameScreen = new GameScreen(this, map);
 
 		// Create and launch main menu screen.
 		setScreen(new MainMenuScreen(this));
+	}
+	
+	// Set initial ownership
+	private void setInitialOwnership() {
+		map.getAreas().get(0).setOwner(getPlayers().get(0));
+		map.getAreas().get(map.getAreas().size() - 1).setOwner(getPlayers().get(1));
 	}
 
 	/**
@@ -79,7 +90,7 @@ public class MyGame extends Game implements ApplicationListener {
 		players = createPlayers(2);
 		players.get(0).setColor(Color.BLACK);
 		players.get(1).setColor(Color.ORANGE);
-		setCurrentPlayer(players.get(0));
+		setCurrentPlayer(players.get((int)Math.ceil(Math.random() * players.size())));
 		// Reset area owners
 		for (Area area : map.getAreas()) {
 			area.setOwner(null);
