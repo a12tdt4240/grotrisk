@@ -54,6 +54,9 @@ public class MyGame extends Game implements ApplicationListener {
 		// Set the current player. A random player.
 		setCurrentPlayer(players.get((int)Math.floor(Math.random() * players.size())));
 		playsCounter = 0;
+		
+		// Give out initial areas
+		setInitialOwnership();
 
 		duel = new DuelState(this);
 
@@ -62,6 +65,22 @@ public class MyGame extends Game implements ApplicationListener {
 
 		// Create and launch main menu screen.
 		setScreen(new MainMenuScreen(this));
+	}
+	
+	// Set initial ownership
+	private void setInitialOwnership() {
+		map.getAreas().get(0).setOwner(getPlayers().get(0));
+		map.getAreas().get(map.getAreas().size() - 1).setOwner(getPlayers().get(1));
+	}
+
+	/**
+	 * Pauses or restarts the music.
+	 */
+	public void changeSoundSetting() {
+		if (music.isPlaying())
+			music.pause();
+		else
+			music.play();
 	}
 
 	/**
@@ -95,8 +114,9 @@ public class MyGame extends Game implements ApplicationListener {
 			}
 			// Else, follow normal procedure
 		} else {
-			if (currentPlayer.getNumeric() < players.size()) {
-				setCurrentPlayer(players.get(currentPlayer.getNumeric()));
+			int pos = players.indexOf(currentPlayer);
+			if (pos < players.size() - 1) {
+				setCurrentPlayer(players.get(pos + 1));
 			} else {
 				setCurrentPlayer(players.get(0));
 			}

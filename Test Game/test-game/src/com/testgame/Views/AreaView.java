@@ -13,7 +13,7 @@ public class AreaView extends Button implements Observer {
 		
 		setX(area.getXPosition());
 		setY(area.getYPosition());
-		
+		changeEvent();
 	}
 
 	public void setModel(Area model) {
