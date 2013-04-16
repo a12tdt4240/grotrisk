@@ -1,7 +1,10 @@
 package com.testgame.Views;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.testgame.MyGame;
 import com.testgame.Models.Map;
 
@@ -61,6 +64,14 @@ public class GameScreen extends AbstractScreen {
 		
 		stage.act(delta);
 		stage.draw();
+		
+		ArrayList<Image> attackImages = mapView.attackImages;
+		batch.begin();
+		for ( int i = 0; i < attackImages.size(); i++) {
+			attackImages.get(i).draw(batch, 1);
+		}
+		
+		batch.end();
 	}
 
 	/**
