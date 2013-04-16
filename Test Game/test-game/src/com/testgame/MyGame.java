@@ -112,8 +112,9 @@ public class MyGame extends Game implements ApplicationListener {
 			}
 			// Else, follow normal procedure
 		} else {
-			if (currentPlayer.getNumeric() < players.size()) {
-				setCurrentPlayer(players.get(currentPlayer.getNumeric()));
+			int pos = players.indexOf(currentPlayer);
+			if (pos < players.size() - 1) {
+				setCurrentPlayer(players.get(pos + 1));
 			} else {
 				setCurrentPlayer(players.get(0));
 			}
