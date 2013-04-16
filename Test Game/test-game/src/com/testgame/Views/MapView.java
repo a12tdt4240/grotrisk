@@ -59,9 +59,14 @@ public class MapView extends AbstractScreen {
 		ArrayList<Area> areas = mapModel.getAreas();
 		areaViews = new ArrayList<AreaView>();
 		
+		// Set initial ownership
+		areas.get(0).setOwner(game.getPlayers().get(0));
+		areas.get(areas.size() - 1).setOwner(game.getPlayers().get(1));
+		
 		for(int i = 0; i < areas.size(); ++i) {
 			areaViews.add(new AreaView(areas.get(i)));
 		}
+		
 	}
 	
 	/**
@@ -119,8 +124,6 @@ public class MapView extends AbstractScreen {
 	@Override
 	public void render(float delta) {
 		
-		stage.act(delta);
-		
 		// Draws the background
 		batch.begin();
 		background.draw(batch,
@@ -130,8 +133,6 @@ public class MapView extends AbstractScreen {
 						Gdx.graphics.getHeight() * 1.0f);
 		
 		batch.end();
-
-		stage.draw();
 		
 	}
 	

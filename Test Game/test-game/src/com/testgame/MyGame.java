@@ -61,6 +61,16 @@ public class MyGame extends Game implements ApplicationListener {
 	}
 
 	/**
+	 * Pauses or restarts the music.
+	 */
+	public void changeSoundSetting() {
+		if (music.isPlaying())
+			music.pause();
+		else
+			music.play();
+	}
+
+	/**
 	 * Resets the game. This is called when the main menu button is pressed on
 	 * the end game screen.
 	 */
@@ -140,7 +150,7 @@ public class MyGame extends Game implements ApplicationListener {
 	public ArrayList<Player> createPlayers(int numberOfPlayers) {
 		ArrayList<Player> playersCreated = new ArrayList<Player>();
 
-		for (int i = 1; i < numberOfPlayers + 1; i++) {
+		for (int i = 0; i < numberOfPlayers; i++) {
 			playersCreated.add(new Player(i));
 		}
 

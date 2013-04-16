@@ -1,11 +1,15 @@
 package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
@@ -23,8 +27,9 @@ public abstract class AbstractScreen implements Screen {
 	BitmapFont font;
 	Skin skin;
 	TextButtonStyle buttonStyle;
+
 	
-	
+
 	/**
 	 * Constructor to keep a reference to the main Game class
 	 * 
@@ -40,18 +45,14 @@ public abstract class AbstractScreen implements Screen {
 	 **/
 	@Override
 	public void render(float delta) {
-
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 	}
 
-	
 	/**
 	 * Called when this screen is set as the screen with game.setScreen();
 	 */
 	@Override
 	public void show() {
-
-		
 
 	}
 
@@ -65,8 +66,10 @@ public abstract class AbstractScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
+
+		// Following should go in render?
 		batch.getProjectionMatrix().setToOrtho2D(0, 0, width, height);
-		
+
 		if (stage == null)
 			stage = new Stage(width, height, false);
 

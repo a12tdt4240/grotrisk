@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
@@ -17,7 +18,9 @@ public abstract class AbstractMenuScreen extends AbstractScreen {
 	// Our NinePatches
 	NinePatch panel;
 	NinePatch background;
-
+	
+	
+	
 	/**
 	 * Constructor to keep a reference to the main Game class
 	 * 

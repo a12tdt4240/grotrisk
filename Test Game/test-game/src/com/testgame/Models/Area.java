@@ -38,6 +38,7 @@ public class Area implements Serializable {
 	
 	public Area() {
 		observers = new ArrayList<Observer>();
+		neighbors = new ArrayList<Area>();
 		loadAreaImage();
 	}
 	
@@ -52,6 +53,7 @@ public class Area implements Serializable {
 		this.yPosition = yPosition;
 		this.value = value;
 		observers = new ArrayList<Observer>();
+		neighbors = new ArrayList<Area>();
 		loadAreaImage();
 	}
 	

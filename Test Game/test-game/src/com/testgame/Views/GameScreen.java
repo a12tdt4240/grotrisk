@@ -29,7 +29,7 @@ public class GameScreen extends AbstractScreen {
 	public void dispose() {
 		Gdx.app.debug("testgame", "Disposing Game Screen");
 		super.dispose();
-		
+
 		mapView.dispose();
 		scoreView.dispose();
 	}
