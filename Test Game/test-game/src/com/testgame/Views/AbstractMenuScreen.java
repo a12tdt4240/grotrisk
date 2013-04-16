@@ -67,7 +67,7 @@ public abstract class AbstractMenuScreen extends AbstractScreen {
 
 		stage = new Stage();
 
-		atlas = new TextureAtlas("skins/mainmenu.atlas");
+		atlas = new TextureAtlas(MyGame.SPRITE);
 
 		skin = new Skin();
 		skin.addRegions(atlas);

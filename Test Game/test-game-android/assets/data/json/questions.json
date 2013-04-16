@@ -27,5 +27,92 @@
 			"category": "Geografi"
 		}
 
+	},
+	{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "I hvilken etasje ligger R10?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Underetasje",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "1.etasje",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "3.etasje",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "5.etasje",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Geografi"
+		}
+
+	},
+	{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvor mange sekunder er det i en dag?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "86400",
+			"isCorrectAnswer": true
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "3600",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "31536000",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "172800",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Mix"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hva er verdensrekorden på 100m?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "9.79",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "9.53",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "9.58",
+			"isCorrectAnswer": true
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "9.69",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Sport"
+		}
+
 	}
 ]

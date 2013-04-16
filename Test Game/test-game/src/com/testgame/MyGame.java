@@ -20,6 +20,8 @@ import com.badlogic.gdx.graphics.Color;
 
 public class MyGame extends Game implements ApplicationListener {
 
+	public static final String SPRITE = "skins/mainmenu.atlas";
+	
 	private GameScreen gameScreen;
 	private Map map;
 	private Music music;
