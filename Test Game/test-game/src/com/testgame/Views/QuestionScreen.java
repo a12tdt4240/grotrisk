@@ -134,7 +134,9 @@ public class QuestionScreen extends AbstractMenuScreen {
 
 		// Add the buttons to the stage.
 		for (AlternativeView av : alternatives) {
-			av.getView().addListener(new InputEventListener());
+			if (!av.getView().isDisabled()) {
+				av.getView().addListener(new InputEventListener());
+			}
 			this.stage.addActor(av.getView());
 		}
 	}

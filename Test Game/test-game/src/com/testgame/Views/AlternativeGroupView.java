@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.testgame.MyGame;
 import com.testgame.Models.Quiz;
 
@@ -81,7 +82,7 @@ public class AlternativeGroupView {
 			(this.game.getCurrentPlayer() == this.game.getDuelState().getDefendant())) {
 			for (AlternativeView av : alternativeViews) {
 				if (!this.advantageEnabled && !av.getModel().isCorrectAnswer()) {
-					TextButtonStyle disabledButtonStyle = this.buttonStyle;
+					TextButtonStyle disabledButtonStyle = new TextButtonStyle(this.buttonStyle);
 					disabledButtonStyle.up = new Skin(new TextureAtlas(MyGame.SPRITE)).getDrawable("buttonUpGrey");
 					av.getView().setStyle(disabledButtonStyle);
 					av.getView().setDisabled(true);
