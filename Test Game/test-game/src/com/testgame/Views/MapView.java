@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.testgame.MyGame;
 import com.testgame.Models.Area;
 import com.testgame.Models.Map;
@@ -29,7 +28,6 @@ public class MapView extends AbstractScreen {
 	private NinePatch background;
 	
 	ArrayList<Image> attackImages;
-	Image attackDrawable;
 	
 	
 	public MapView(MyGame game, Map model) {
@@ -95,19 +93,17 @@ public class MapView extends AbstractScreen {
 		removeListeners();
 		// Get list of all neighbors
 		ArrayList<Area> neighbors = getModel().getNeighborsByPlayer(game.getCurrentPlayer());
-		
-		if(areaViews.size() > 0)
-			attackDrawable = areaViews.get(0).getModel().getAttackImage();
-			attackDrawable.setScale(0.2f);
+
 		// Add listener to neighbors
 		for(int i = 0; i < neighbors.size(); ++i) {
 			// Find matching view to model
 			// UGLY!!
 			for(int k = 0; k < areaViews.size(); ++k) {
 				if(neighbors.get(i) == areaViews.get(k).getModel()) {
-//					Gdx.app.log("ALG", i + ":" + k);
 					areaViews.get(k).addListener(listener);
 					
+					Image attackDrawable = new Image(areaViews.get(0).getModel().getAttackImage().getDrawable());
+					attackDrawable.setScale(0.4f);
 					attackDrawable.setPosition(areaViews.get(k).getX(), areaViews.get(k).getY());
 					attackImages.add(attackDrawable);
 				}
@@ -187,6 +183,7 @@ public class MapView extends AbstractScreen {
 			if(areaView.getModel().getOwner() != null) {
 				game.getDuelState().initiateDuel(game.getCurrentPlayer(), areaView.getModel().getOwner(), areaView.getModel());
 			}
+			attackImages.clear();
 			// Go to question screen
 			game.setScreen(new QuestionScreen(game, areaView.getArea()));
 
