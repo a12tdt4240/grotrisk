@@ -39,6 +39,7 @@ public class Area implements Serializable {
 	public Area() {
 		observers = new ArrayList<Observer>();
 		neighbors = new ArrayList<Area>();
+		neighborsMap = new ArrayList<Integer>();
 		loadAreaImage();
 	}
 	
@@ -54,6 +55,7 @@ public class Area implements Serializable {
 		this.value = value;
 		observers = new ArrayList<Observer>();
 		neighbors = new ArrayList<Area>();
+		neighborsMap = new ArrayList<Integer>();
 		loadAreaImage();
 	}
 	
