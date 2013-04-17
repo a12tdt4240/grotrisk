@@ -1,26 +1,26 @@
 [
 	{
 		"class": "com.testgame.Models.Quiz",
-		"questionText": "Hva er hovedstaden i Norge?",
+		"questionText": "Hva er den største byen i Norden?",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
-			"text": "Sverige",
+			"text": "Oslo",
 			"isCorrectAnswer": false
 		},
 		"alt2": {
 			"class": "com.testgame.Models.Alternative",
-			"text": "Oslo",
-			"isCorrectAnswer": true
+			"text": "København",
+			"isCorrectAnswer": false
 		},
 		"alt3":{
 			"class": "com.testgame.Models.Alternative",
-			"text": "København",
+			"text": "Helsingfors",
 			"isCorrectAnswer": false
 		},
 		"alt4":{
 			"class": "com.testgame.Models.Alternative",
-			"text": "Beijing",
-			"isCorrectAnswer": false
+			"text": "Stockholm",
+			"isCorrectAnswer": true
 		},
 		"category": {
 			"class": "com.testgame.Models.Category",
@@ -30,30 +30,30 @@
 	},
 	{
 		"class": "com.testgame.Models.Quiz",
-		"questionText": "I hvilken etasje ligger R10?",
+		"questionText": "Facebook ble åpnet for alle i..",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
-			"text": "Underetasje",
+			"text": "2004",
 			"isCorrectAnswer": false
 		},
 		"alt2": {
 			"class": "com.testgame.Models.Alternative",
-			"text": "1.etasje",
+			"text": "2005",
 			"isCorrectAnswer": false
 		},
 		"alt3":{
 			"class": "com.testgame.Models.Alternative",
-			"text": "3.etasje",
-			"isCorrectAnswer": false
+			"text": "2006",
+			"isCorrectAnswer": true
 		},
 		"alt4":{
 			"class": "com.testgame.Models.Alternative",
-			"text": "5.etasje",
-			"isCorrectAnswer": true
+			"text": "2007",
+			"isCorrectAnswer": false
 		},
 		"category": {
 			"class": "com.testgame.Models.Category",
-			"category": "Geografi"
+			"category": "Mix"
 		}
 
 	},
@@ -112,6 +112,93 @@
 		"category": {
 			"class": "com.testgame.Models.Category",
 			"category": "Sport"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "..er ikke en amerikansk delstat:",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "New York",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Washington",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Philadelphia",
+			"isCorrectAnswer": true
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "New Hampshire",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Geografi"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hva er hovedstaden i Australia?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Canberra",
+			"isCorrectAnswer": true
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Sydney",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Melbourne",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Brisbane",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Geografi"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvor ligger Trollveggen?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Sør-Trøndelag",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Oppland",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Sogn og Fjordane",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Møre og Romsdal",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Geografi"
 		}
 
 	}
