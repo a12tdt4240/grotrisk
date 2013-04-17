@@ -27,7 +27,7 @@ public class AreaView extends Button implements Observer {
 		
 		float width = (wantedLength - 5);
 		float value = 0;
-		float leftBorder = (Gdx.graphics.getWidth() - width * 5 ) / 2;
+		float leftBorder = (Gdx.graphics.getWidth() - width * 7 ) / 2;
 		Gdx.app.log("ImageWidth", "" + width);
 		int temp = area.getXPosition();
 		switch (temp) {
@@ -46,6 +46,11 @@ public class AreaView extends Button implements Observer {
 		case 4:
 			value = width * 4 + leftBorder;
 			break;
+		case 5:
+			value = width * 5 + leftBorder;
+			break;
+		case 6:
+			value = width * 6 + leftBorder;
 		}
 		return value;
 	}
