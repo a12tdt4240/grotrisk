@@ -73,7 +73,7 @@ public class NextPlayerScreen extends AbstractMenuScreen {
 		LabelStyle labelStyle = new LabelStyle();
 		labelStyle.font = font;
 		labelStyle.fontColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-		nextPlayerLabel = new Label(Constants.NEXTPLAYER_LABEL + game.getCurrentPlayer().getNumeric(), labelStyle);
+		nextPlayerLabel = new Label(game.getCurrentPlayer().getName(), labelStyle);
 		nextPlayerLabel.setX(Gdx.graphics.getWidth() / 2 - nextPlayerLabel.getWidth() / 2);
 		nextPlayerLabel.setY(Gdx.graphics.getHeight() / 2 - nextPlayerLabel.getHeight() / 2 + Gdx.graphics.getHeight() * 0.045f);
 		nextPlayerLabel.scale(0.8f, 0.8f);
