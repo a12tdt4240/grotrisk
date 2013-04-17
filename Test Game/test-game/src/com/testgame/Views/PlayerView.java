@@ -81,7 +81,7 @@ public class PlayerView extends AbstractMenuScreen {
 		okButton.setWidth(458);
 		okButton.setHeight(88);
 		okButton.setX(Gdx.graphics.getWidth() / 2 - okButton.getWidth() / 2);
-		okButton.setY(Gdx.graphics.getHeight() / 1.8f - okButton.getHeight() / 2);
+		okButton.setY(Gdx.graphics.getHeight() / 3 - okButton.getHeight() / 2);
 
 		okButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y,
