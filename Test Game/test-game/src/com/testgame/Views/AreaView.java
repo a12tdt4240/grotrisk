@@ -6,12 +6,10 @@ import com.testgame.Models.Area;
 
 public class AreaView extends Button implements Observer {
 	private Area areaModel;
-	private Area area;
 	private float wantedLength;
 
 	public AreaView(Area area) {
 		super(area.getImage());
-		this.area = area;
 
 		// wantedLength is the height of the screen divided by the
 		// number of area views + 1 in the y direction.
@@ -39,7 +37,7 @@ public class AreaView extends Button implements Observer {
 		// the x direction.
 		float leftBorder = (Gdx.graphics.getWidth() - width * 7) / 2;
 		Gdx.app.log("ImageWidth", "" + width);
-		int temp = area.getXPosition();
+		int temp = getModel().getXPosition();
 		switch (temp) {
 		case 0:
 			value = leftBorder;
@@ -75,7 +73,7 @@ public class AreaView extends Button implements Observer {
 		float value = 0;
 		float lowBorder = 90;
 		Gdx.app.log("ImageHeight", "" + width);
-		int temp = area.getYPosition();
+		int temp = getModel().getYPosition();
 		switch (temp) {
 		case 0:
 			value = lowBorder;
