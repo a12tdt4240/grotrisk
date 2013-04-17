@@ -12,22 +12,32 @@ public class AreaView extends Button implements Observer {
 	public AreaView(Area area) {
 		super(area.getImage());
 		this.area = area;
+
+		// wantedLength is the height of the screen divided by the
+		// number of area views + 1 in the y direction.
 		this.wantedLength = Gdx.graphics.getHeight() / 6;
-		
+
 		setModel(area);
-		setHeight(wantedLength); // to change
-		setWidth(wantedLength); // to change
+		setHeight(wantedLength);
+		setWidth(wantedLength);
 		setX(calculateXPosition());
 		setY(calculateYPosition());
 		changeEvent();
-		
 	}
 
+	/**
+	 * Helper for placing the area view in the x plane.
+	 * 
+	 * @return
+	 */
 	private float calculateXPosition() {
-		
 		float width = (wantedLength - 5);
 		float value = 0;
-		float leftBorder = (Gdx.graphics.getWidth() - width * 7 ) / 2;
+		// leftBorder scales so that we get the same border on each side of the
+		// map of area views. This is hard coded using the number of area views
+		// in
+		// the x direction.
+		float leftBorder = (Gdx.graphics.getWidth() - width * 7) / 2;
 		Gdx.app.log("ImageWidth", "" + width);
 		int temp = area.getXPosition();
 		switch (temp) {
@@ -55,6 +65,11 @@ public class AreaView extends Button implements Observer {
 		return value;
 	}
 
+	/**
+	 * Helper for placing the area view in the y direction.
+	 * 
+	 * @return
+	 */
 	private float calculateYPosition() {
 		float width = wantedLength - 5;
 		float value = 0;
