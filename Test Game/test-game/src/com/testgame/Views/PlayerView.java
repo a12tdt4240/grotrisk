@@ -71,7 +71,7 @@ public class PlayerView extends AbstractMenuScreen {
 		nameField = new TextField("skriv inn navn", nameFieldStyle);
 		nameField.setWidth(Gdx.graphics.getWidth() * 0.6f);
 		nameField.setX((Gdx.graphics.getWidth() - nameField.getWidth()) / 2);
-		nameField.setY((Gdx.graphics.getHeight() / 2) + nameField.getHeight());
+		nameField.setY(Gdx.graphics.getHeight() / 2 - nameField.getHeight() / 2 + Gdx.graphics.getHeight() * 0.19f);
 		nameField.setMaxLength(15);
 
 		this.stage.addActor(nameField);
@@ -80,7 +80,7 @@ public class PlayerView extends AbstractMenuScreen {
 		okButton.setWidth(458);
 		okButton.setHeight(88);
 		okButton.setX(Gdx.graphics.getWidth() / 2 - okButton.getWidth() / 2);
-		okButton.setY(Gdx.graphics.getHeight() / 3 - okButton.getHeight() / 2);
+		okButton.setY((Gdx.graphics.getHeight() / 2 - okButton.getHeight() / 2) - Gdx.graphics.getHeight() * 0.15f);
 
 		okButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -107,7 +107,7 @@ public class PlayerView extends AbstractMenuScreen {
 			// btn.setX(100);
 			btn.setX(((Gdx.graphics.getWidth() - ((colorButtonWidth * scale + 5) * colors.length)) / 2)
 					+ (colorButtonWidth * scale + 5) * i);
-			btn.setY(Gdx.graphics.getHeight() / 2);
+			btn.setY(Gdx.graphics.getHeight() / 2 - btn.getHeight() / 2 + Gdx.graphics.getHeight() * 0.045f);
 			btn.addListener(new InputEventListener());
 			buttonGroup.add(btn);
 			colorButtons.add(btn);
