@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.Timer.Task;
 import com.testgame.MyGame;
 import com.testgame.Models.Alternative;
 import com.testgame.Models.Area;
+import com.testgame.Models.Constants;
 import com.testgame.Models.Quiz;
 
 public class QuestionScreen extends AbstractMenuScreen {
@@ -83,7 +84,7 @@ public class QuestionScreen extends AbstractMenuScreen {
 	 * @return
 	 */
 	private boolean isGameFinished() {
-		if (game.getPlaysCounter() >= 20) {
+		if (game.getPlaysCounter() >= Constants.QUESTION_MAXPLAYROUNDS) {
 			return true;
 		}
 		return false;
