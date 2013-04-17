@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.OrderedMap;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.testgame.Views.Observer;
@@ -23,6 +24,8 @@ public class Area implements Serializable {
 	private Question question;
 	// The visual representation of the area.
 	private Drawable areaDrawable;
+	
+	private Image attackImage;
 	
 	private ArrayList<Observer> observers;
 
@@ -69,6 +72,8 @@ public class Area implements Serializable {
 		skin = new Skin();
 		skin.addRegions(atlas);
 		areaDrawable = skin.getDrawable("area001");
+		attackImage = new Image(skin.getRegion("duel"));
+		
 	}
 	
 	/**
@@ -186,5 +191,9 @@ public class Area implements Serializable {
 		for (Area area: areas) {
 			if (neighborsList.contains(area.id)) this.neighbors.add(area); 
 		}
+	}
+	
+	public Image getAttackImage() {
+		return attackImage;
 	}
 }

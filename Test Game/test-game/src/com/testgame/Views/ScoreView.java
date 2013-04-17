@@ -124,8 +124,10 @@ public class ScoreView extends AbstractScreen implements Observer {
 
 	@Override
 	public void changeEvent() {
-		for (int i = 0; i < scores.size(); i++) {
-			scores.set(i, new Label("" + players.get(i).getScore().getScore(), labelStyle));
+		for (int i = 0; i < players.size(); i++) {
+			Label score = new Label("" + players.get(i).getScore().getScore(), labelStyle);
+			score.setFontScale(0.6f);
+			scores.set(i, score);
 		}
 	}
 }

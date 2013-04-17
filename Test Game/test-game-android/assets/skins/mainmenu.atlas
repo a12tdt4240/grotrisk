@@ -26,3 +26,10 @@ buttonUp
   orig: 456, 86
   offset: 0, 0
   index: -1
+buttonUpGrey
+  rotate: false
+  xy: 515, 630
+  size: 456, 86
+  orig: 456, 86
+  offset: 0, 0
+  index: -1

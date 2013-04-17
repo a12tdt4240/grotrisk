@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.testgame.MyGame;
 import com.testgame.Models.Area;
@@ -26,11 +27,14 @@ public class MapView extends AbstractScreen {
 	// Background, often a sea image.
 	private NinePatch background;
 	
+	ArrayList<Image> attackImages;
+	
 	
 	public MapView(MyGame game, Map model) {
 		super(game);
 		setModel(model);
 		listener = new InputEventListener();
+		this.attackImages = new ArrayList<Image>();
 		makeAreaViews();
 	}
 	
@@ -89,15 +93,19 @@ public class MapView extends AbstractScreen {
 		removeListeners();
 		// Get list of all neighbors
 		ArrayList<Area> neighbors = getModel().getNeighborsByPlayer(game.getCurrentPlayer());
-		
+
 		// Add listener to neighbors
 		for(int i = 0; i < neighbors.size(); ++i) {
 			// Find matching view to model
 			// UGLY!!
 			for(int k = 0; k < areaViews.size(); ++k) {
 				if(neighbors.get(i) == areaViews.get(k).getModel()) {
-//					Gdx.app.log("ALG", i + ":" + k);
 					areaViews.get(k).addListener(listener);
+					
+					Image attackDrawable = new Image(areaViews.get(0).getModel().getAttackImage().getDrawable());
+					attackDrawable.setScale(0.4f);
+					attackDrawable.setPosition(areaViews.get(k).getX(), areaViews.get(k).getY());
+					attackImages.add(attackDrawable);
 				}
 			}
 		}
@@ -132,8 +140,7 @@ public class MapView extends AbstractScreen {
 						(Gdx.graphics.getWidth() - Gdx.graphics.getWidth() * 1.0f) / 2,
 						(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 1.0f) / 2,
 						Gdx.graphics.getWidth() * 1.0f,
-						Gdx.graphics.getHeight() * 1.0f);
-		
+						Gdx.graphics.getHeight() * 1.0f);	
 		batch.end();
 		
 	}
@@ -153,7 +160,6 @@ public class MapView extends AbstractScreen {
 
 		background = new NinePatch(new TextureRegion(
 				atlas.findRegion("background")), 190, 190, 114, 292);
-
 		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
 		batch = new SpriteBatch();
 		
@@ -177,6 +183,7 @@ public class MapView extends AbstractScreen {
 			if(areaView.getModel().getOwner() != null) {
 				game.getDuelState().initiateDuel(game.getCurrentPlayer(), areaView.getModel().getOwner(), areaView.getModel());
 			}
+			attackImages.clear();
 			// Go to question screen
 			game.setScreen(new QuestionScreen(game, areaView.getArea()));
 

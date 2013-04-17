@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
@@ -17,9 +19,9 @@ public class AlternativeGroupView {
 	private MyGame game;
 	
 	public AlternativeGroupView(Quiz question, TextButtonStyle buttonStyle, MyGame game) {
+		this.game = game;
 		this.advantageEnabled = false;
 		this.currentQuestion = question;
-		this.game = game;
 		this.buttonStyle = buttonStyle;
 	}
 
@@ -72,12 +74,17 @@ public class AlternativeGroupView {
 		alt4View = new AlternativeView(currentQuestion.getAlt4(), alt4Button);
 
 		
+		// Give advantage to defendant
 		ArrayList<AlternativeView> alternativeViews = new ArrayList<AlternativeView>(Arrays.asList(alt1View, alt2View, alt3View, alt4View));
 		if (this.game.getDuelState().isDuel() &&
 			(this.game.getCurrentPlayer() == this.game.getDuelState().getDefendant())) {
 			for (AlternativeView av : alternativeViews) {
 				if (!this.advantageEnabled && !av.getModel().isCorrectAnswer()) {
+					TextButtonStyle disabledButtonStyle = new TextButtonStyle(this.buttonStyle);
+					disabledButtonStyle.up = new Skin(new TextureAtlas(MyGame.SPRITE)).getDrawable("buttonUpGrey");
+					av.getView().setStyle(disabledButtonStyle);
 					av.getView().setDisabled(true);
+					
 					this.advantageEnabled = true;
 				}
 			}

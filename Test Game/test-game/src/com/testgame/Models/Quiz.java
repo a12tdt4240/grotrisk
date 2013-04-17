@@ -62,6 +62,10 @@ public class Quiz extends Question implements Serializable {
 		this.alt4 = json.readValue("alt4", Alternative.class, jsonData);
 		this.category = json.readValue("category", Category.class, jsonData);
 	}
+	
+	public String toString() {
+		return getQuestionText();
+	}
 
 }
 
