@@ -4,7 +4,7 @@
 		"id": 1,
 		"xPosition": 0,
 		"yPosition": 4,
-		"value": 0,
+		"value": 50,
 		"neighbors": [2,6]
 	},
 	{
@@ -44,7 +44,7 @@
 		"id": 6,
 		"xPosition": 1,
 		"yPosition": 4,
-		"value": 0,
+		"value": 50,
 		"neighbors": [1,7,11]
 	},
 	{
@@ -84,7 +84,7 @@
 		"id": 11,
 		"xPosition": 2,
 		"yPosition": 4,
-		"value": 0,
+		"value": 50,
 		"neighbors": [6,12,16]
 	},
 	{
@@ -124,7 +124,7 @@
 		"id": 16,
 		"xPosition": 3,
 		"yPosition": 4,
-		"value": 0,
+		"value": 50,
 		"neighbors": [11,17,21]
 	},
 	{
@@ -164,8 +164,8 @@
 		"id": 21,
 		"xPosition": 4,
 		"yPosition": 4,
-		"value": 0,
-		"neighbors": [16,22]
+		"value": 50,
+		"neighbors": [16,22,26]
 	},
 	{
 		"class": "com.testgame.Models.Area",
@@ -173,7 +173,7 @@
 		"xPosition": 4,
 		"yPosition": 3,
 		"value": 100,
-		"neighbors": [17,21,23]
+		"neighbors": [17,21,23,27]
 	},
 	{
 		"class": "com.testgame.Models.Area",
@@ -181,7 +181,7 @@
 		"xPosition": 4,
 		"yPosition": 2,
 		"value": 70,
-		"neighbors": [18,22,24]
+		"neighbors": [18,22,24,28]
 	},
 	{
 		"class": "com.testgame.Models.Area",
@@ -189,7 +189,7 @@
 		"xPosition": 4,
 		"yPosition": 1,
 		"value": 70,
-		"neighbors": [19,23,25]
+		"neighbors": [19,23,25,29]
 	},
 	{
 		"class": "com.testgame.Models.Area",
@@ -197,7 +197,86 @@
 		"xPosition": 4,
 		"yPosition": 0,
 		"value": 200,
-		"neighbors": [20,24]
+		"neighbors": [20,24,30]
+	},
+{
+		"class": "com.testgame.Models.Area",
+		"id": 26,
+		"xPosition": 5,
+		"yPosition": 4,
+		"value": 70,
+		"neighbors": [21,27,31]
+	},
+	{
+		"class": "com.testgame.Models.Area",
+		"id": 27,
+		"xPosition": 5,
+		"yPosition": 3,
+		"value": 70,
+		"neighbors": [22,26,28,32]
+	},
+	{
+		"class": "com.testgame.Models.Area",
+		"id": 28,
+		"xPosition": 5,
+		"yPosition": 2,
+		"value": 200,
+		"neighbors": [23,27,29,33]
+	},
+{
+		"class": "com.testgame.Models.Area",
+		"id": 29,
+		"xPosition": 5,
+		"yPosition": 1,
+		"value": 70,
+		"neighbors": [24,28,30,34]
+	},
+	{
+		"class": "com.testgame.Models.Area",
+		"id": 30,
+		"xPosition": 5,
+		"yPosition": 0,
+		"value": 70,
+		"neighbors": [25,29,35]
+	},
+{
+		"class": "com.testgame.Models.Area",
+		"id": 31,
+		"xPosition": 6,
+		"yPosition": 4,
+		"value": 70,
+		"neighbors": [26,32]
+	},
+	{
+		"class": "com.testgame.Models.Area",
+		"id": 32,
+		"xPosition": 6,
+		"yPosition": 3,
+		"value": 70,
+		"neighbors": [27,31,33]
+	},
+	{
+		"class": "com.testgame.Models.Area",
+		"id": 33,
+		"xPosition": 6,
+		"yPosition": 2,
+		"value": 200,
+		"neighbors": [28,32,34]
+	},
+{
+		"class": "com.testgame.Models.Area",
+		"id": 34,
+		"xPosition": 6,
+		"yPosition": 1,
+		"value": 70,
+		"neighbors": [29,33,35]
+	},
+	{
+		"class": "com.testgame.Models.Area",
+		"id": 35,
+		"xPosition": 6,
+		"yPosition": 0,
+		"value": 70,
+		"neighbors": [30,34]
 	}
-
 ]

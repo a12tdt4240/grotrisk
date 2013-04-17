@@ -82,6 +82,14 @@ public class MyGame extends Game implements ApplicationListener {
 		else
 			music.play();
 	}
+	
+	/**
+	 * Getting access to the music variable.
+	 * @return
+	 */
+	public Music getMusic() {
+		return music;
+	}
 
 	/**
 	 * Resets the game. This is called when the main menu button is pressed on
@@ -92,13 +100,16 @@ public class MyGame extends Game implements ApplicationListener {
 		players = createPlayers(2);
 		players.get(0).setColor(Color.BLACK);
 		players.get(1).setColor(Color.ORANGE);
-		setCurrentPlayer(players.get((int)Math.ceil(Math.random() * players.size())));
+		setCurrentPlayer(players.get((int)Math.floor(Math.random() * players.size())));
 		// Reset area owners
 		for (Area area : map.getAreas()) {
 			area.setOwner(null);
 		}
 		// Reset playsCounter
 		playsCounter = 0;
+		setInitialOwnership();
+		// Clean up after duel just in case.
+		getDuelState().finishDuel();
 	}
 
 	/**
@@ -205,4 +216,5 @@ public class MyGame extends Game implements ApplicationListener {
 	public int getPlaysCounter() {
 		return playsCounter;
 	}
+	
 }
