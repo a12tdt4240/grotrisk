@@ -103,7 +103,7 @@ public class MapView extends AbstractScreen {
 
 					Image attackDrawable = new Image(areaViews.get(0)
 							.getModel().getAttackImage().getDrawable());
-					attackDrawable.setScale(0.4f);
+					attackDrawable.setScale((Gdx.graphics.getHeight() * 0.065f) / attackDrawable.getHeight());
 					attackDrawable.setPosition(areaViews.get(k).getX(),
 							areaViews.get(k).getY());
 					attackImages.add(attackDrawable);
