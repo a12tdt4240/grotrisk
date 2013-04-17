@@ -1,11 +1,17 @@
 package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.testgame.Models.Area;
 
 public class AreaView extends Button implements Observer {
 	private Area areaModel;
+	private Label value;
+	private LabelStyle labelStyle;
 	private float wantedLength;
 
 	public AreaView(Area area) {
@@ -20,6 +26,16 @@ public class AreaView extends Button implements Observer {
 		setWidth(wantedLength);
 		setX(calculateXPosition());
 		setY(calculateYPosition());
+		
+		labelStyle = new LabelStyle();
+		BitmapFont font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
+		font.scale(0.05f);
+		labelStyle.font = font; 
+		
+		value = new Label("" + getModel().getValueOfArea(), labelStyle);
+		value.setColor(Color.BLACK);
+		add(value);
+		
 		changeEvent();
 	}
 
