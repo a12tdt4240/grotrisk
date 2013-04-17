@@ -70,7 +70,6 @@ public class GameScreen extends AbstractScreen {
 		for ( int i = 0; i < attackImages.size(); i++) {
 			attackImages.get(i).draw(batch, 1);
 		}
-		
 		batch.end();
 	}
 
