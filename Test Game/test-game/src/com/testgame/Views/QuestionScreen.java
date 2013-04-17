@@ -183,10 +183,9 @@ public class QuestionScreen extends AbstractMenuScreen {
 				int button) {
 			Label altButton = (Label) event.getTarget();
 			String altName = altButton.getText().toString();
-
+			removeEventListeners();
 			if (altName.equals(currentQuestion.getAlt1().getName())) {
 				handleEvent(altButton, currentQuestion.getAlt1());
-				removeEventListeners();
 			} else if (altName.equals(currentQuestion.getAlt2().getName())) {
 				handleEvent(altButton, currentQuestion.getAlt2());
 			} else if (altName.equals(currentQuestion.getAlt3().getName())) {
