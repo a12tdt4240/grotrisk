@@ -5,7 +5,7 @@ filter: Nearest,Nearest
 repeat: none
 background
   rotate: false
-  xy: 1, 292
+  xy: 1, 434
   size: 512, 512
   split: 0, 0, 0, 0
   orig: 512, 512
@@ -13,14 +13,14 @@ background
   index: -1
 panel
   rotate: false
-  xy: 1, 1
+  xy: 1, 143
   size: 424, 289
   orig: 424, 289
   offset: 0, 0
   index: -1
 buttonUp
   rotate: false
-  xy: 515, 718
+  xy: 515, 860
   size: 456, 86
   split: 0, 0, 0, 0
   orig: 456, 86
@@ -28,8 +28,15 @@ buttonUp
   index: -1
 buttonUpGrey
   rotate: false
-  xy: 515, 630
+  xy: 515, 772
   size: 456, 86
   orig: 456, 86
+  offset: 0, 0
+  index: -1
+container
+  rotate: false
+  xy: 1, 1
+  size: 140, 140
+  orig: 140, 140
   offset: 0, 0
   index: -1
