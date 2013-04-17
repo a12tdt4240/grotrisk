@@ -92,13 +92,14 @@ public class MyGame extends Game implements ApplicationListener {
 		players = createPlayers(2);
 		players.get(0).setColor(Color.BLACK);
 		players.get(1).setColor(Color.ORANGE);
-		setCurrentPlayer(players.get((int)Math.ceil(Math.random() * players.size())));
+		setCurrentPlayer(players.get((int)Math.floor(Math.random() * players.size())));
 		// Reset area owners
 		for (Area area : map.getAreas()) {
 			area.setOwner(null);
 		}
 		// Reset playsCounter
 		playsCounter = 0;
+		setInitialOwnership();
 	}
 
 	/**
