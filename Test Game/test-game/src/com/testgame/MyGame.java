@@ -83,6 +83,10 @@ public class MyGame extends Game implements ApplicationListener {
 			music.play();
 	}
 	
+	/**
+	 * Getting access to the music variable.
+	 * @return
+	 */
 	public Music getMusic() {
 		return music;
 	}
@@ -104,6 +108,8 @@ public class MyGame extends Game implements ApplicationListener {
 		// Reset playsCounter
 		playsCounter = 0;
 		setInitialOwnership();
+		// Clean up after duel just in case.
+		getDuelState().finishDuel();
 	}
 
 	/**
@@ -210,4 +216,5 @@ public class MyGame extends Game implements ApplicationListener {
 	public int getPlaysCounter() {
 		return playsCounter;
 	}
+	
 }

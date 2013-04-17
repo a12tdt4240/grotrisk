@@ -80,12 +80,14 @@ public class QuestionScreen extends AbstractMenuScreen {
 	}
 
 	/**
-	 * Currently: Asks if the game has run for # moves.
+	 * Currently: Asks if the game has run for # moves and is not in a duel
+	 * state.
 	 * 
 	 * @return
 	 */
 	private boolean isGameFinished() {
-		if (game.getPlaysCounter() >= Constants.QUESTION_MAXPLAYROUNDS) {
+		if (game.getPlaysCounter() >= Constants.QUESTION_MAXPLAYROUNDS
+				&& !game.getDuelState().isDuel()) {
 			return true;
 		}
 		return false;
