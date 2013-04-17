@@ -3,6 +3,7 @@ package com.testgame.Views;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -19,8 +20,8 @@ import com.testgame.Models.Quiz;
 
 public class QuestionScreen extends AbstractMenuScreen {
 
-	// private final Sound correct;
-	// private final Sound wrong;
+	private final Sound correct;
+	private final Sound wrong;
 	Quiz currentQuestion;
 	TextButton alt1Button, alt2Button, alt3Button, alt4Button;
 	Label questionText, responseText, countDownText;
@@ -40,8 +41,8 @@ public class QuestionScreen extends AbstractMenuScreen {
 	public QuestionScreen(MyGame game, Area area) {
 		super(game);
 		this.area = area;
-		// correct = Gdx.audio.newSound(Gdx.files.internal("data/correct.wav"));
-		// wrong = Gdx.audio.newSound(Gdx.files.internal("data/wrong.wav"));
+		correct = Gdx.audio.newSound(Gdx.files.internal("data/correct.wav"));
+		wrong = Gdx.audio.newSound(Gdx.files.internal("data/wrong.wav"));
 		startTimer();
 	}
 
@@ -116,7 +117,8 @@ public class QuestionScreen extends AbstractMenuScreen {
 		// Retrieve question from question pool
 		currentQuestion = (Quiz) game.getQuestionPool().random();
 
-		AlternativeGroupView altGroup = new AlternativeGroupView(currentQuestion, buttonStyle, game);
+		AlternativeGroupView altGroup = new AlternativeGroupView(
+				currentQuestion, buttonStyle, game);
 		ArrayList<AlternativeView> alternatives = altGroup.getList();
 
 		// Question text field
@@ -152,8 +154,8 @@ public class QuestionScreen extends AbstractMenuScreen {
 		// correctly.
 		Timer.instance.clear();
 
-		// correct.dispose();
-		// wrong.dispose();
+		correct.dispose();
+		wrong.dispose();
 	}
 
 	/**
@@ -194,8 +196,11 @@ public class QuestionScreen extends AbstractMenuScreen {
 		hasAnswered = true;
 
 		if (alt.isCorrectAnswer()) {
+			// Change label color.
 			lab.setColor(Color.GREEN);
-
+			// Play the correct sound.
+			if (game.getMusic().isPlaying())
+				correct.play();
 			Timer.schedule(new Task() {
 
 				@Override
@@ -206,8 +211,11 @@ public class QuestionScreen extends AbstractMenuScreen {
 			}, 2);
 
 		} else {
+			// Change the label color.
 			lab.setColor(Color.RED);
-
+			// Play the wrong sound.
+			if (game.getMusic().isPlaying())
+				wrong.play();
 			Timer.schedule(new Task() {
 
 				@Override
@@ -219,20 +227,25 @@ public class QuestionScreen extends AbstractMenuScreen {
 
 		}
 	}
-	
+
 	/**
 	 * Checks if duel is finished, and assigns the area to correct player
 	 * 
 	 */
 	private void handleDuel() {
-		if(game.getDuelState().isFinished() && (game.getCurrentPlayer() == game.getDuelState().getDefendant())) {
-			if(game.getDuelState().getWinner() == game.getDuelState().getInitiator()) {
+		if (game.getDuelState().isFinished()
+				&& (game.getCurrentPlayer() == game.getDuelState()
+						.getDefendant())) {
+			if (game.getDuelState().getWinner() == game.getDuelState()
+					.getInitiator()) {
 				// Update score of winner
-				game.getDuelState().getWinner().getScore().updateScore(area.getValueOfArea());
+				game.getDuelState().getWinner().getScore()
+						.updateScore(area.getValueOfArea());
 				// Update owner of area
 				area.setOwner(game.getDuelState().getWinner());
 			}
-			// Set current player to initiator of duel, so that correct next player
+			// Set current player to initiator of duel, so that correct next
+			// player
 			// is set afterwards
 			game.setCurrentPlayer(game.getDuelState().getInitiator());
 			// Clean up after duel
@@ -245,22 +258,23 @@ public class QuestionScreen extends AbstractMenuScreen {
 	 */
 	private void correctAnswer() {
 		// Duel active
-		if(game.getDuelState().isDuel()) {
+		if (game.getDuelState().isDuel()) {
 			// Award correct player in duel
-			if(game.getCurrentPlayer() == game.getDuelState().getDefendant()) {
+			if (game.getCurrentPlayer() == game.getDuelState().getDefendant()) {
 				game.getDuelState().increaseDefenantScore();
 			} else {
 				game.getDuelState().increaseInitiatorScore();
 			}
 			// Check if duel is finished, and handle it appropriately
 			handleDuel();
-		// No active duel
-		} else {			
+			// No active duel
+		} else {
 			// Update score and set the new owner of the area.
-			game.getCurrentPlayer().getScore().updateScore(area.getValueOfArea());
+			game.getCurrentPlayer().getScore()
+					.updateScore(area.getValueOfArea());
 			area.setOwner(game.getCurrentPlayer());
 		}
-		
+
 		// Move on to the next player screen.
 		game.switchCurrentPlayer();
 		game.increasePlaysCounter();
@@ -272,7 +286,7 @@ public class QuestionScreen extends AbstractMenuScreen {
 	 */
 	private void wrongAnswer() {
 		// Duel active
-		if(game.getDuelState().isDuel()) {
+		if (game.getDuelState().isDuel()) {
 			// Check if duel is finished, and handle it appropriately
 			handleDuel();
 		}

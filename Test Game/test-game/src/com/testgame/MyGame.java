@@ -82,6 +82,10 @@ public class MyGame extends Game implements ApplicationListener {
 		else
 			music.play();
 	}
+	
+	public Music getMusic() {
+		return music;
+	}
 
 	/**
 	 * Resets the game. This is called when the main menu button is pressed on
