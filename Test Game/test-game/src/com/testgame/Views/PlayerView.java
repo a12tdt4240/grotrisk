@@ -37,8 +37,8 @@ public class PlayerView extends AbstractMenuScreen {
 
 	public PlayerView(MyGame game) {
 		super(game);
-		colorButtons = new ArrayList<Button>();
-		selectedColor = colors[0];
+		this.colorButtons = new ArrayList<Button>();
+		this.selectedColor = colors[0];
 	}
 
 	@Override
@@ -109,6 +109,7 @@ public class PlayerView extends AbstractMenuScreen {
 			btn.setX(((Gdx.graphics.getWidth() - ((colorButtonWidth * scale + 5) * colors.length)) / 2)
 					+ (colorButtonWidth * scale + 5) * i);
 			btn.setY(Gdx.graphics.getHeight() / 2);
+			btn.addListener(new InputEventListener());
 			buttonGroup.add(btn);
 			colorButtons.add(btn);
 			this.stage.addActor(btn);
@@ -125,8 +126,6 @@ public class PlayerView extends AbstractMenuScreen {
 				int button) {
 			Gdx.app.log("CLICK", "clicked a color");
 			Button colorPick = (Button) event.getTarget();
-
-			colorPick.setChecked(true);
 			selectedColor = colorPick.getColor();
 		}
 	}
