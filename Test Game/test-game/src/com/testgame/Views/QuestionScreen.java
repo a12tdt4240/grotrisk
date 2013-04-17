@@ -30,6 +30,8 @@ public class QuestionScreen extends AbstractMenuScreen {
 	int countDownTime = 20;
 	int currentTime = 0;
 	Area area;
+	InputEventListener listener;
+	ArrayList<AlternativeView> alternatives;
 
 	boolean hasAnswered = false;
 
@@ -44,6 +46,7 @@ public class QuestionScreen extends AbstractMenuScreen {
 		correct = Gdx.audio.newSound(Gdx.files.internal("data/correct.wav"));
 		wrong = Gdx.audio.newSound(Gdx.files.internal("data/wrong.wav"));
 		startTimer();
+		listener = new InputEventListener();
 	}
 
 	/**
@@ -121,7 +124,7 @@ public class QuestionScreen extends AbstractMenuScreen {
 
 		AlternativeGroupView altGroup = new AlternativeGroupView(
 				currentQuestion, buttonStyle, game);
-		ArrayList<AlternativeView> alternatives = altGroup.getList();
+		alternatives = altGroup.getList();
 
 		// Question text field
 		labelStyleHeader = new LabelStyle();
@@ -140,7 +143,7 @@ public class QuestionScreen extends AbstractMenuScreen {
 		// Add the buttons to the stage.
 		for (AlternativeView av : alternatives) {
 			if (!av.getView().isDisabled()) {
-				av.getView().addListener(new InputEventListener());
+				av.getView().addListener(listener);
 			}
 			this.stage.addActor(av.getView());
 		}
@@ -160,6 +163,12 @@ public class QuestionScreen extends AbstractMenuScreen {
 		wrong.dispose();
 	}
 
+	public void removeEventListeners() {
+		for(int i = 0; i < alternatives.size(); i++) {
+			alternatives.get(i).getView().removeListener(listener);
+		}
+	}
+	
 	/**
 	 * Unified InputListener
 	 * 
@@ -177,6 +186,7 @@ public class QuestionScreen extends AbstractMenuScreen {
 
 			if (altName.equals(currentQuestion.getAlt1().getName())) {
 				handleEvent(altButton, currentQuestion.getAlt1());
+				removeEventListeners();
 			} else if (altName.equals(currentQuestion.getAlt2().getName())) {
 				handleEvent(altButton, currentQuestion.getAlt2());
 			} else if (altName.equals(currentQuestion.getAlt3().getName())) {
