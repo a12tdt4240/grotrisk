@@ -21,16 +21,15 @@ import com.badlogic.gdx.graphics.Color;
 public class MyGame extends Game implements ApplicationListener {
 
 	public static final String SPRITE = "skins/mainmenu.atlas";
-	
+
 	private GameScreen gameScreen;
 	private Map map;
 	private Music music;
-	private QuestionPool questionPool; 
+	private QuestionPool questionPool;
 	private ArrayList<Player> players;
 	private Player currentPlayer;
 	private DuelState duel;
 	private int playsCounter;
-	
 
 	@Override
 	public void create() {
@@ -49,12 +48,13 @@ public class MyGame extends Game implements ApplicationListener {
 		// Create players.
 		players = createPlayers(2);
 		// Set player colors TO BE UPDATED WITH COLOR CHOOSER VIEW ETC
-		players.get(0).setColor(Color.BLACK);
+		players.get(0).setColor(Color.DARK_GRAY);
 		players.get(1).setColor(Color.ORANGE);
 		// Set the current player. A random player.
-		setCurrentPlayer(players.get((int)Math.floor(Math.random() * players.size())));
+		setCurrentPlayer(players.get((int) Math.floor(Math.random()
+				* players.size())));
 		playsCounter = 0;
-		
+
 		// Give out initial areas
 		setInitialOwnership();
 
@@ -66,11 +66,12 @@ public class MyGame extends Game implements ApplicationListener {
 		// Create and launch main menu screen.
 		setScreen(new MainMenuScreen(this));
 	}
-	
+
 	// Set initial ownership
 	private void setInitialOwnership() {
 		map.getAreas().get(0).setOwner(getPlayers().get(0));
-		map.getAreas().get(map.getAreas().size() - 1).setOwner(getPlayers().get(1));
+		map.getAreas().get(map.getAreas().size() - 1)
+				.setOwner(getPlayers().get(1));
 	}
 
 	/**
@@ -82,9 +83,10 @@ public class MyGame extends Game implements ApplicationListener {
 		else
 			music.play();
 	}
-	
+
 	/**
 	 * Getting access to the music variable.
+	 * 
 	 * @return
 	 */
 	public Music getMusic() {
@@ -100,7 +102,8 @@ public class MyGame extends Game implements ApplicationListener {
 		players = createPlayers(2);
 		players.get(0).setColor(Color.BLACK);
 		players.get(1).setColor(Color.ORANGE);
-		setCurrentPlayer(players.get((int)Math.floor(Math.random() * players.size())));
+		setCurrentPlayer(players.get((int) Math.floor(Math.random()
+				* players.size())));
 		// Reset area owners
 		for (Area area : map.getAreas()) {
 			area.setOwner(null);
@@ -216,5 +219,5 @@ public class MyGame extends Game implements ApplicationListener {
 	public int getPlaysCounter() {
 		return playsCounter;
 	}
-	
+
 }
