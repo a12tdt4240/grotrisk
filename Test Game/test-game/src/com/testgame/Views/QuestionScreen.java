@@ -225,7 +225,16 @@ public class QuestionScreen extends AbstractMenuScreen {
 	 */
 	private void handleDuel() {
 		if(game.getDuelState().isFinished() && (game.getCurrentPlayer() == game.getDuelState().getDefendant())) {
-			game.getDuelState().getWinner().getScore().updateScore(area.getValueOfArea());
+			if(game.getDuelState().getWinner() == game.getDuelState().getInitiator()) {
+				// Update score of winner
+				game.getDuelState().getWinner().getScore().updateScore(area.getValueOfArea());
+				// Update owner of area
+				area.setOwner(game.getDuelState().getWinner());
+			}
+			// Set current player to initiator of duel, so that correct next player
+			// is set afterwards
+			game.setCurrentPlayer(game.getDuelState().getInitiator());
+			// Clean up after duel
 			game.getDuelState().finishDuel();
 		}
 	}
