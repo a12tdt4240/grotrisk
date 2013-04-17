@@ -3,6 +3,7 @@ package com.testgame.Views;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
@@ -34,6 +35,7 @@ public class AreaView extends Button implements Observer {
 		
 		value = new Label("" + getModel().getValueOfArea(), labelStyle);
 		value.setColor(Color.BLACK);
+		value.setTouchable(Touchable.disabled);
 		add(value);
 		
 		changeEvent();
