@@ -29,7 +29,7 @@ public class AreaView extends Button implements Observer {
 		
 		labelStyle = new LabelStyle();
 		BitmapFont font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
-		font.scale(0.05f);
+		font.setScale((Gdx.graphics.getHeight() * 0.05f)/font.getXHeight());
 		labelStyle.font = font; 
 		
 		value = new Label("" + getModel().getValueOfArea(), labelStyle);
