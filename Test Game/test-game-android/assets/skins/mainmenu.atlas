@@ -18,9 +18,23 @@ panel
   orig: 424, 289
   offset: 0, 0
   index: -1
+background
+  rotate: false
+  xy: 515, 867
+  size: 491, 79
+  orig: 491, 79
+  offset: 0, 0
+  index: -1
+selected
+  rotate: false
+  xy: 515, 786
+  size: 491, 79
+  orig: 491, 79
+  offset: 0, 0
+  index: -1
 buttonUp
   rotate: false
-  xy: 515, 860
+  xy: 515, 698
   size: 456, 86
   split: 0, 0, 0, 0
   orig: 456, 86
@@ -28,7 +42,7 @@ buttonUp
   index: -1
 buttonUpGrey
   rotate: false
-  xy: 515, 772
+  xy: 515, 610
   size: 456, 86
   orig: 456, 86
   offset: 0, 0
@@ -38,5 +52,19 @@ container
   xy: 1, 1
   size: 140, 140
   orig: 140, 140
+  offset: 0, 0
+  index: -1
+container2
+  rotate: false
+  xy: 515, 468
+  size: 140, 140
+  orig: 140, 140
+  offset: 0, 0
+  index: -1
+cursor
+  rotate: false
+  xy: 427, 352
+  size: 13, 80
+  orig: 13, 80
   offset: 0, 0
   index: -1

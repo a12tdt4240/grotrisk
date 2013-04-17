@@ -14,6 +14,8 @@ public final class Constants {
 	public static final String ENDGAME_WINNERLABEL = "Vinner: spiller ";
 	public static final int QUESTION_MAXPLAYROUNDS = 20;
 	
+	public static final String OK_BUTTON = "OK";
+	
 	private Constants() {
 		throw new AssertionError();
 	}

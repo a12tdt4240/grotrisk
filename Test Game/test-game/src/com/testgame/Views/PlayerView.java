@@ -4,51 +4,130 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.testgame.MyGame;
+import com.testgame.Models.Constants;
 
 public class PlayerView extends AbstractMenuScreen {
 
-	Color[] colors = {Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY,
-						Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE,
-						Color.PINK, Color.RED, Color.YELLOW};
-	
+	Color[] colors = { Color.CYAN, Color.DARK_GRAY, Color.LIGHT_GRAY,
+			Color.MAGENTA, Color.ORANGE, Color.YELLOW };
+
+	TextField nameField;
+	TextFieldStyle nameFieldStyle;
+	TextButton okButton;
 	ArrayList<Button> colorButtons;
 	ButtonStyle colorButtonStyle;
+	Drawable colorButton;
+	Drawable colorButtonChecked;
+	Color selectedColor;
+
+	ButtonGroup buttonGroup;
+
 	float colorButtonWidth = 0;
-	
-	public PlayerView (MyGame game) {
+	float scale;
+
+	public PlayerView(MyGame game) {
 		super(game);
 		colorButtons = new ArrayList<Button>();
+		selectedColor = colors[0];
 	}
-	
+
 	@Override
 	public void resize(int width, int height) {
-			super.resize(width, height);
+		super.resize(width, height);
 	}
-	
+
 	@Override
 	public void initializeStyle() {
 		super.initializeStyle();
-		
-		colorButtonStyle = new ButtonStyle(skin.getDrawable("container"), skin.getDrawable("container"), skin.getDrawable("container"));
-		colorButtonWidth = skin.getDrawable("container").getMinWidth();
+
+		colorButton = skin.getDrawable("container");
+		colorButtonChecked = skin.getDrawable("container2"); // to fix
+
+		colorButtonStyle = new ButtonStyle(colorButton, colorButton,
+				colorButtonChecked);
+		colorButtonWidth = colorButton.getMinWidth();
+		font.setColor(Color.BLACK);
+		nameFieldStyle = new TextFieldStyle(font, Color.WHITE,
+				skin.getDrawable("cursor"), skin.getDrawable("selected"),
+				skin.getDrawable("background"));
 	}
+
 	/**
 	 * Creates the buttons for drawing.
 	 */
 	public void initializeButtons() {
+		buttonGroup = new ButtonGroup();
+		buttonGroup.setMaxCheckCount(1);
+		buttonGroup.setUncheckLast(true);
+		nameField = new TextField("skriv inn navn", nameFieldStyle);
+		nameField.setWidth(Gdx.graphics.getWidth() * 0.7f);
+		nameField.setX((Gdx.graphics.getWidth() - nameField.getWidth()) / 2);
+		nameField.setY((Gdx.graphics.getHeight() / 2) + nameField.getHeight());
+		nameField.setMaxLength(15);
+
+		this.stage.addActor(nameField);
+
+		okButton = new TextButton(Constants.OK_BUTTON, buttonStyle);
+		okButton.setWidth(458);
+		okButton.setHeight(88);
+		okButton.setX(Gdx.graphics.getWidth() / 2 - okButton.getWidth() / 2);
+		okButton.setY(Gdx.graphics.getHeight() / 1.8f - okButton.getHeight() / 2);
+
+		okButton.addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				game.getPlayers().get(0).setName(nameField.getText());
+				game.getPlayers().get(0).setColor(selectedColor);
+				game.setScreen(new NextPlayerScreen(game));
+			}
+		});
+
+		this.stage.addActor(okButton);
+
 		for (int i = 0; i < colors.length; i++) {
 			Button btn = new Button(colorButtonStyle);
-			float scale = (Gdx.graphics.getWidth() * 0.1f) / colorButtonWidth;
-			btn.setScale(scale);
+			scale = (Gdx.graphics.getWidth() * 0.055f) / colorButtonWidth;
+			btn.setHeight(scale * colorButtonWidth);
+			btn.setWidth(scale * colorButtonWidth);
 			btn.setColor(colors[i]);
-			btn.setX((Gdx.graphics.getWidth() - ((colorButtonWidth + 5) * colors.length)) / 2);
-			btn.setY(Gdx.graphics.getWidth() / 2);
+			// btn.setX(100);
+			btn.setX(((Gdx.graphics.getWidth() - ((colorButtonWidth * scale + 5) * colors.length)) / 2)
+					+ (colorButtonWidth * scale + 5) * i);
+			btn.setY(Gdx.graphics.getHeight() / 2);
+			buttonGroup.add(btn);
 			colorButtons.add(btn);
 			this.stage.addActor(btn);
 		}
+	}
 
+	class InputEventListener extends InputListener {
+		public boolean touchDown(InputEvent event, float x, float y,
+				int pointer, int button) {
+			return true;
+		}
+
+		public void touchUp(InputEvent event, float x, float y, int pointer,
+				int button) {
+			Gdx.app.log("CLICK", "clicked a color");
+			Button colorPick = (Button) event.getTarget();
+
+			colorPick.setChecked(true);
+			selectedColor = colorPick.getColor();
+		}
 	}
 }

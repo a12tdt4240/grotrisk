@@ -57,7 +57,7 @@ public class MainMenuScreen extends AbstractMenuScreen {
 			}
 			
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				game.setScreen(new NextPlayerScreen(game));
+				game.setScreen(new PlayerView(game));
 			}
 		});
 		soundCheckBox.addListener(new InputListener() {
