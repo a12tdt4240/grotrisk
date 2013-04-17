@@ -56,8 +56,7 @@ public class PlayerView extends AbstractMenuScreen {
 		colorButtonStyle = new ButtonStyle(colorButton, colorButton,
 				colorButtonChecked);
 		colorButtonWidth = colorButton.getMinWidth();
-		font.setColor(Color.BLACK);
-		nameFieldStyle = new TextFieldStyle(font, Color.WHITE,
+		nameFieldStyle = new TextFieldStyle(font, Color.BLACK,
 				skin.getDrawable("cursor"), skin.getDrawable("selected"),
 				skin.getDrawable("background"));
 	}
@@ -70,7 +69,7 @@ public class PlayerView extends AbstractMenuScreen {
 		buttonGroup.setMaxCheckCount(1);
 		buttonGroup.setUncheckLast(true);
 		nameField = new TextField("skriv inn navn", nameFieldStyle);
-		nameField.setWidth(Gdx.graphics.getWidth() * 0.7f);
+		nameField.setWidth(Gdx.graphics.getWidth() * 0.6f);
 		nameField.setX((Gdx.graphics.getWidth() - nameField.getWidth()) / 2);
 		nameField.setY((Gdx.graphics.getHeight() / 2) + nameField.getHeight());
 		nameField.setMaxLength(15);
