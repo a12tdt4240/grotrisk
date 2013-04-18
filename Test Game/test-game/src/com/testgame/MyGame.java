@@ -48,8 +48,10 @@ public class MyGame extends Game implements ApplicationListener {
 		// Create players.
 		players = createPlayers(2);
 		// Set player colors TO BE UPDATED WITH COLOR CHOOSER VIEW ETC
+		// TODO Remove
 		players.get(0).setColor(Color.DARK_GRAY);
 		players.get(1).setColor(Color.ORANGE);
+		
 		// Set the current player. A random player.
 		setCurrentPlayer(players.get((int) Math.floor(Math.random()
 				* players.size())));
