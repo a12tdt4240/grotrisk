@@ -38,7 +38,6 @@ public class ScoreView extends AbstractScreen implements Observer {
 	
 	public ScoreView(MyGame game) {
 		super(game);
-		this.players = game.getPlayers();
 
 		this.names = new ArrayList<Label>();
 		this.scores = new ArrayList<Label>();
@@ -89,6 +88,8 @@ public class ScoreView extends AbstractScreen implements Observer {
 	public void show() {
 		
 		stage = new Stage();
+		
+		players = game.getPlayers();
 		
 		colorContainerImage = skin.getRegion("area001");
 		
