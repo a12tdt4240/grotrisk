@@ -1,5 +1,8 @@
 package com.testgame.Views;
 
+import java.awt.Color;
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -78,9 +81,7 @@ public abstract class AbstractMenuScreen extends AbstractScreen {
 
 		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
 		batch = new SpriteBatch();
-
 	}
-
 	/**
 	 * Called when the current screen changes from this to a different screen.
 	 * Remember to dispose objects.
