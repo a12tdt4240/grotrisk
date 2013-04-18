@@ -48,6 +48,12 @@ public class GameScreen extends AbstractScreen {
 		for (int i = 0; i < mapActors.length; i++) {
 			stage.addActor(mapActors[i]);
 		}
+		
+		Actor[] scoreActors = scoreView.stage.getActors().toArray();
+		Gdx.app.log("TEST", "" + scoreActors.length);
+		for (int i = 0; i < scoreActors.length; i++) {
+			stage.addActor(scoreActors[i]);
+		}
 
 		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
 		// this stage

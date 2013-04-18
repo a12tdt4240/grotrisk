@@ -8,27 +8,34 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.testgame.MyGame;
+import com.testgame.Models.Constants;
 import com.testgame.Models.Player;
 
 public class ScoreView extends AbstractScreen implements Observer {
 
 	// Graphics data
-	private TextureAtlas atlas;
 	private BitmapFont font;
 	private SpriteBatch batch;
 	private TextureRegion colorContainerImage;
 	private LabelStyle labelStyle;
+	private Skin skin, menuSkin;
 
 	private ArrayList<Player> players;
 	private ArrayList<Label> names;
 	private ArrayList<Label> scores;
 	private ArrayList<Image> colorIcons;
-
+	
+	
 	public ScoreView(MyGame game) {
 		super(game);
 		this.players = game.getPlayers();
@@ -36,6 +43,12 @@ public class ScoreView extends AbstractScreen implements Observer {
 		this.names = new ArrayList<Label>();
 		this.scores = new ArrayList<Label>();
 		this.colorIcons = new ArrayList<Image>();
+		
+		this.skin = new Skin();
+		this.skin.addRegions(new TextureAtlas("data/maps/map.atlas"));
+		
+		this.menuSkin = new Skin();
+		this.menuSkin.addRegions(new TextureAtlas("skins/mainmenu.atlas"));
 	}
 
 	/**
@@ -65,8 +78,8 @@ public class ScoreView extends AbstractScreen implements Observer {
 			name.draw(batch, 1.0f);
 
 		}
+		
 		batch.end();
-
 	}
 
 	/**
@@ -74,11 +87,6 @@ public class ScoreView extends AbstractScreen implements Observer {
 	 */
 	@Override
 	public void show() {
-		
-		
-		atlas = new TextureAtlas("data/maps/map.atlas");
-		skin = new Skin();
-		skin.addRegions(atlas);
 		
 		colorContainerImage = skin.getRegion("area001");
 		
@@ -102,8 +110,32 @@ public class ScoreView extends AbstractScreen implements Observer {
 			names.add(name);
 		}
 		
-		
 		batch = new SpriteBatch();
+		stage = new Stage();
+		TextButtonStyle exitButtonStyle = new TextButtonStyle();
+		exitButtonStyle.up = menuSkin.getDrawable("buttonUp");
+		exitButtonStyle.font = font;
+		
+		TextButton exitButton = new TextButton(Constants.EXIT_BUTTON, exitButtonStyle);
+		exitButton.setWidth(200);
+		exitButton.setHeight(20);
+		exitButton.setX(Gdx.graphics.getWidth() - (float)(exitButton.getWidth() + 10));
+		exitButton.setY(10f);
+
+		exitButton.addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				Gdx.app.log("grotrisk", "touchDown: avslutt");
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				Gdx.app.log("grotrisk", "touchUp: avslutt");
+				game.resetGame();
+				game.setScreen(new MainMenuScreen(game));
+			}
+		});
+		this.stage.addActor(exitButton);
+		
 	}
 
 	@Override
