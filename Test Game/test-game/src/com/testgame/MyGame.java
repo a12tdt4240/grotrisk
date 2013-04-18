@@ -68,7 +68,7 @@ public class MyGame extends Game implements ApplicationListener {
 	}
 
 	// Set initial ownership
-	private void setInitialOwnership() {
+	public void setInitialOwnership() {
 		map.getAreas().get(0).setOwner(getPlayers().get(0));
 		map.getAreas().get(map.getAreas().size() - 1)
 				.setOwner(getPlayers().get(1));

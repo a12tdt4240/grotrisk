@@ -92,6 +92,8 @@ public class PlayerView extends AbstractMenuScreen {
 					int pointer, int button) {
 				game.getPlayers().get(0).setName(nameField.getText());
 				game.getPlayers().get(0).setColor(selectedColor);
+				// Give out initial areas
+				game.setInitialOwnership();
 				game.setScreen(new NextPlayerScreen(game));
 			}
 		});
