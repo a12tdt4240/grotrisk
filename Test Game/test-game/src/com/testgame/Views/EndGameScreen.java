@@ -84,7 +84,7 @@ public class EndGameScreen extends AbstractMenuScreen {
 		labelStyle.font = font;
 		labelStyle.fontColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		winnerLabel = new Label(Constants.ENDGAME_WINNERLABEL
-				+ game.getWinningPlayer().getNumeric(), labelStyle);
+				+ game.getWinningPlayer().getName(), labelStyle);
 		winnerLabel.setX(Gdx.graphics.getWidth() / 2 - winnerLabel.getWidth()
 				/ 2);
 		winnerLabel.setY(Gdx.graphics.getHeight() / 2 - winnerLabel.getHeight()
