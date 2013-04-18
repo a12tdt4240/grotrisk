@@ -20,24 +20,24 @@ import com.testgame.Models.Player;
 
 public class PlayerView extends AbstractPanelView {
 
-	ArrayList<Color> colors;
+	private ArrayList<Color> colors;
 
-	TextField nameField;
-	TextFieldStyle nameFieldStyle;
-	TextButton okButton;
-	ArrayList<Button> colorButtons;
-	ButtonStyle colorButtonStyle;
-	Drawable colorButton;
-	Drawable colorButtonChecked;
-	Color selectedColor;
+	private TextField nameField;
+	private TextFieldStyle nameFieldStyle;
+	private TextButton okButton;
+	private ArrayList<Button> colorButtons;
+	private ButtonStyle colorButtonStyle;
+	private Drawable colorButton;
+	private Drawable colorButtonChecked;
+	private Color selectedColor;
 
-	ButtonGroup buttonGroup;
+	private ButtonGroup buttonGroup;
 
-	int currentPlayer;
-	ArrayList<Player> players;
+	private int currentPlayer;
+	private ArrayList<Player> players;
 
-	float colorButtonWidth = 0;
-	float scale;
+	private float colorButtonWidth = 0;
+	private float scale;
 
 	public PlayerView(MyGame game) {
 		super(game);

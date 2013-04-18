@@ -6,8 +6,8 @@ import com.testgame.Views.Observer;
 
 public class Score {
 
-	int score;
-	ArrayList<Observer> observers;
+	private int score;
+	private ArrayList<Observer> observers;
 
 	public Score() {
 		this.score = 0;

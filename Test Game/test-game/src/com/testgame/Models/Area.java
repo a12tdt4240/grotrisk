@@ -37,8 +37,8 @@ public class Area implements Serializable {
 	private ArrayList<Area> neighbors;
 	private Integer[] neighborsMap;
 
-	Skin skin;
-	TextureAtlas atlas;
+	private Skin skin;
+	private TextureAtlas atlas;
 	
 	public Area() {
 		observers = new ArrayList<Observer>();

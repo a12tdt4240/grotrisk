@@ -12,9 +12,9 @@ import com.testgame.Models.Constants;
 
 public class EndGameView extends AbstractPanelView {
 
-	TextButton mainMenuButton;
-	Label infoLabel;
-	Label winnerLabel;
+	private TextButton mainMenuButton;
+	private Label infoLabel;
+	private Label winnerLabel;
 
 	/**
 	 * Constructor keeping a reference to the main Game class.

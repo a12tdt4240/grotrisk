@@ -30,7 +30,7 @@ public class MapView extends AbstractView {
 	// Background, often a sea image.
 	private NinePatch background;
 
-	ArrayList<Image> attackImages;
+	private ArrayList<Image> attackImages;
 
 	public MapView(MyGame game, Map model) {
 		super(game);
@@ -128,9 +128,22 @@ public class MapView extends AbstractView {
 	public void resize(int width, int height) {
 		super.resize(width, height);
 		scoreView.resize(width, height);
+		
+		atlas = new TextureAtlas("skins/mainmenu.atlas");
+
+		skin = new Skin();
+		skin.addRegions(atlas);
+
+		background = new NinePatch(new TextureRegion(
+				atlas.findRegion("background")), 190, 190, 114, 292);
+		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
+		batch = new SpriteBatch();
+		
+		
 		addListeners();
 		addAreaViewsAsActors();
 
+		// Add scoreViews' actors to this stage
 		Actor[] scoreActors = scoreView.stage.getActors().toArray();
 		Gdx.app.log("TEST", "" + scoreActors.length);
 		for (int i = 0; i < scoreActors.length; i++) {
@@ -156,12 +169,14 @@ public class MapView extends AbstractView {
 						Gdx.graphics.getWidth() * 1.0f,
 						Gdx.graphics.getHeight() * 1.0f);
 		batch.end();
-
+		
+		// render ScoreView
 		scoreView.render(delta);
 		
 		stage.act(delta);
 		stage.draw();
 		
+		// Draw the attack icons
 		batch.begin();
 		for ( int i = 0; i < attackImages.size(); i++) {
 			attackImages.get(i).draw(batch, 1);
@@ -176,16 +191,8 @@ public class MapView extends AbstractView {
 		super.show();
 
 		stage = new Stage();
-
-		atlas = new TextureAtlas("skins/mainmenu.atlas");
-
-		skin = new Skin();
-		skin.addRegions(atlas);
-
-		background = new NinePatch(new TextureRegion(
-				atlas.findRegion("background")), 190, 190, 114, 292);
-		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
-		batch = new SpriteBatch();
+		
+		// show the score view
 		scoreView.show();
 	}
 

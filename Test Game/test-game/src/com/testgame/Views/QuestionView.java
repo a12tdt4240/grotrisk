@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
@@ -22,16 +21,15 @@ public class QuestionView extends AbstractPanelView {
 
 	private final Sound correct;
 	private final Sound wrong;
-	Quiz currentQuestion;
-	TextButton alt1Button, alt2Button, alt3Button, alt4Button;
-	Label questionText, responseText, countDownText;
-	LabelStyle labelStyleHeader;
+	private Quiz currentQuestion;
+	private Label questionText, countDownText;
+	private LabelStyle labelStyleHeader;
 	// How many seconds you get to answer a question.
-	int countDownTime = 20;
-	int currentTime = 0;
-	Area area;
-	InputEventListener listener;
-	ArrayList<AlternativeView> alternatives;
+	private int countDownTime = 20;
+	private int currentTime = 0;
+	private Area area;
+	private InputEventListener listener;
+	private ArrayList<AlternativeView> alternatives;
 
 	boolean hasAnswered = false;
 

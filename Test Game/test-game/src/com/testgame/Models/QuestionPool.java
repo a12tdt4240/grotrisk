@@ -68,7 +68,7 @@ public class QuestionPool {
 		
 		for (int i = 0; i < this.questions.length; i++) {
 			Quiz question = this.questions[i];
-			if (question.category.getName().equals(category.getName())) {
+			if (question.getCategory().getName().equals(category.getName())) {
 				listByCategory.add(question);
 			}
 		} 
@@ -92,7 +92,7 @@ public class QuestionPool {
 		}
 		
 		Quiz random = this.random();
-		if (!random.category.getName().equals(category.getName())) {
+		if (!random.getCategory().getName().equals(category.getName())) {
 			return this.randomByCategory(category); 
 		}
 		return random;

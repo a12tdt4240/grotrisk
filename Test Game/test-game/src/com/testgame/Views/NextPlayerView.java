@@ -13,9 +13,10 @@ import com.testgame.Models.Constants;
 
 public class NextPlayerView extends AbstractPanelView {
 
-	TextButton nextPlayerButton;
-	Label nextPlayerInfo;
-	Label nextPlayerLabel;
+	// Our GUI elements
+	private TextButton nextPlayerButton;
+	private Label nextPlayerInfo;
+	private Label nextPlayerLabel;
 	
 	/**
 	 * Constructor keeping a reference to the main Game class.
@@ -44,7 +45,7 @@ public class NextPlayerView extends AbstractPanelView {
 	 */
 	public void initializeButtons() {
 		
-		// Button initalization
+		// Button initialization
 		nextPlayerButton = new TextButton(Constants.NEXTPLAYER_BUTTON, buttonStyle);
 		nextPlayerButton.setWidth(458);
 		nextPlayerButton.setHeight(88);
@@ -78,7 +79,7 @@ public class NextPlayerView extends AbstractPanelView {
 		nextPlayerLabel.setY(Gdx.graphics.getHeight() / 2 - nextPlayerLabel.getHeight() / 2 + Gdx.graphics.getHeight() * 0.045f);
 		nextPlayerLabel.scale(0.8f, 0.8f);
 
-		
+		// Add buttons to stage
 		this.stage.addActor(nextPlayerButton);
 	}
 	

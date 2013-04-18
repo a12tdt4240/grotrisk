@@ -10,8 +10,8 @@ public class Category implements Serializable {
 	// Vi vil ha muligheten til � sp�rre et Question om hvilken kategori det tilh�rer.
 	// En kategori skal ha en visuell gjenkjenning som kan vises p� kart/gamescreen. Farge?
 	
-	String category;
-	Color visual;
+	private String category;
+	private Color visual;
 	
 	public Category() {}
 	

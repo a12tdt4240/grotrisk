@@ -1,7 +1,6 @@
 package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -19,7 +18,6 @@ public abstract class AbstractPanelView extends AbstractView {
 	NinePatch background;
 	
 	
-	
 	/**
 	 * Constructor to keep a reference to the main Game class
 	 * 
@@ -34,8 +32,7 @@ public abstract class AbstractPanelView extends AbstractView {
 	 **/
 	@Override
 	public void render(float delta) {
-
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		super.render(delta);
 
 		stage.act(delta);
 
@@ -120,13 +117,7 @@ public abstract class AbstractPanelView extends AbstractView {
 	@Override
 	public void dispose() {
 		super.dispose();
-		Gdx.app.debug("testgame", "Disposing Main Menu");
 
-		atlas.dispose();
-
-		font.dispose();
-		skin.dispose();
-		batch.dispose();
 		panel.getTexture().dispose();
 		background.getTexture().dispose();
 	}

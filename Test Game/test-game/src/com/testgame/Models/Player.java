@@ -4,10 +4,10 @@ import com.badlogic.gdx.graphics.Color;
 
 public class Player {
 
-	Score score;
-	Color color;
-	String name;
-	int numeric;
+	private Score score;
+	private Color color;
+	private String name;
+	private int numeric;
 
 	// Players lages i oppstarten av spillet (klassen MyGame ?). Der holdes det
 	// styr på hvilken Player sin tur det er.
