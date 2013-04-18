@@ -12,8 +12,8 @@ import com.testgame.Models.Map;
 import com.testgame.Models.MapFactory;
 import com.testgame.Models.Player;
 import com.testgame.Models.QuestionPool;
-import com.testgame.Views.GameScreen;
 import com.testgame.Views.MainMenuView;
+import com.testgame.Views.MapView;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
@@ -22,7 +22,7 @@ public class MyGame extends Game implements ApplicationListener {
 
 	public static final String SPRITE = "skins/mainmenu.atlas";
 
-	private GameScreen gameScreen;
+	private MapView gameScreen;
 	private Map map;
 	private Music music;
 	private QuestionPool questionPool;
@@ -66,7 +66,7 @@ public class MyGame extends Game implements ApplicationListener {
 		duel = new DuelState(this);
 
 		// Create the game screen with selected map model
-		gameScreen = new GameScreen(this, map);
+		gameScreen = new MapView(this, map);
 
 		// Create and launch main menu screen.
 		setScreen(new MainMenuView(this));

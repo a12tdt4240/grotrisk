@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -22,6 +23,8 @@ public class MapView extends AbstractView {
 	private Map mapModel;
 	// All AreaViews belonging to the map
 	private ArrayList<AreaView> areaViews;
+	// Holds our score view
+	private ScoreView scoreView;
 	// Common listener for all areas
 	private InputEventListener listener;
 	// Background, often a sea image.
@@ -35,6 +38,7 @@ public class MapView extends AbstractView {
 		listener = new InputEventListener();
 		this.attackImages = new ArrayList<Image>();
 		makeAreaViews();
+		this.scoreView = new ScoreView(game);
 	}
 
 	/**
@@ -123,10 +127,18 @@ public class MapView extends AbstractView {
 
 	public void resize(int width, int height) {
 		super.resize(width, height);
-
+		scoreView.resize(width, height);
 		addListeners();
 		addAreaViewsAsActors();
 
+		Actor[] scoreActors = scoreView.stage.getActors().toArray();
+		Gdx.app.log("TEST", "" + scoreActors.length);
+		for (int i = 0; i < scoreActors.length; i++) {
+			stage.addActor(scoreActors[i]);
+		}
+
+		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
+		// this stage
 	}
 
 	/**
@@ -134,7 +146,7 @@ public class MapView extends AbstractView {
 	 **/
 	@Override
 	public void render(float delta) {
-
+		super.render(delta);
 		// Draws the background
 		batch.begin();
 		background
@@ -145,6 +157,16 @@ public class MapView extends AbstractView {
 						Gdx.graphics.getHeight() * 1.0f);
 		batch.end();
 
+		scoreView.render(delta);
+		
+		stage.act(delta);
+		stage.draw();
+		
+		batch.begin();
+		for ( int i = 0; i < attackImages.size(); i++) {
+			attackImages.get(i).draw(batch, 1);
+		}
+		batch.end();
 	}
 
 	/**
@@ -164,7 +186,7 @@ public class MapView extends AbstractView {
 				atlas.findRegion("background")), 190, 190, 114, 292);
 		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
 		batch = new SpriteBatch();
-
+		scoreView.show();
 	}
 
 	/**
@@ -194,5 +216,13 @@ public class MapView extends AbstractView {
 			game.setScreen(new QuestionView(game, areaView.getArea()));
 
 		}
+	}
+	
+	@Override
+	public void dispose() {
+		Gdx.app.debug("testgame", "Disposing MapView");
+		super.dispose();
+
+		scoreView.dispose();
 	}
 }
