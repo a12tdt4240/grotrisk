@@ -39,6 +39,7 @@ public class MainMenuScreen extends AbstractMenuScreen {
 		soundCheckBox.setHeight(88);
 		soundCheckBox.setX(Gdx.graphics.getWidth() / 2 - soundCheckBox.getWidth() / 2);
 		soundCheckBox.setY(Gdx.graphics.getHeight() / 2.4f - soundCheckBox.getHeight() / 2);
+		// TODO remove ?
 //		soundButton = new TextButton(Constants.MAINMENU_SOUND, buttonStyle);
 //		soundButton.setWidth(200);
 //		soundButton.setHeight(88);
