@@ -13,7 +13,7 @@ import com.testgame.Models.MapFactory;
 import com.testgame.Models.Player;
 import com.testgame.Models.QuestionPool;
 import com.testgame.Views.GameScreen;
-import com.testgame.Views.MainMenuScreen;
+import com.testgame.Views.MainMenuView;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
@@ -69,7 +69,7 @@ public class MyGame extends Game implements ApplicationListener {
 		gameScreen = new GameScreen(this, map);
 
 		// Create and launch main menu screen.
-		setScreen(new MainMenuScreen(this));
+		setScreen(new MainMenuView(this));
 	}
 
 	/**

@@ -1,8 +1,5 @@
 package com.testgame.Views;
 
-import java.awt.Color;
-import java.util.ArrayList;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -15,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
 
-public abstract class AbstractMenuScreen extends AbstractScreen {
+public abstract class AbstractPanelView extends AbstractView {
 	
 	// Our NinePatches
 	NinePatch panel;
@@ -28,7 +25,7 @@ public abstract class AbstractMenuScreen extends AbstractScreen {
 	 * 
 	 * @param game
 	 */
-	public AbstractMenuScreen(MyGame game) {
+	public AbstractPanelView(MyGame game) {
 		super(game);
 	}
 

@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.testgame.MyGame;
 import com.testgame.Models.Map;
 
-public class GameScreen extends AbstractScreen {
+public class GameScreen extends AbstractView {
 
 	// Holds our current Map View
 	MapView mapView;

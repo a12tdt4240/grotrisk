@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.testgame.MyGame;
 import com.testgame.Models.Constants;
 
-public class NextPlayerScreen extends AbstractMenuScreen {
+public class NextPlayerView extends AbstractPanelView {
 
 	TextButton nextPlayerButton;
 	Label nextPlayerInfo;
@@ -21,7 +21,7 @@ public class NextPlayerScreen extends AbstractMenuScreen {
 	 * Constructor keeping a reference to the main Game class.
 	 * @param game
 	 */
-	public NextPlayerScreen(MyGame game) {
+	public NextPlayerView(MyGame game) {
 		super(game);
 	}
 
@@ -88,7 +88,7 @@ public class NextPlayerScreen extends AbstractMenuScreen {
 	 */
 	private void setCorrectScreen() {
 		if(game.getDuelState().isDuel()) {
-			game.setScreen(new QuestionScreen(game, game.getDuelState().getArea()));
+			game.setScreen(new QuestionView(game, game.getDuelState().getArea()));
 		} else {
 			game.setScreen(game.getGameScreen());
 		}

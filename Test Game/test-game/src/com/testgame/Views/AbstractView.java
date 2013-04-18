@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
 
-public abstract class AbstractScreen implements Screen {
+public abstract class AbstractView implements Screen {
 
 	MyGame game;
 	Stage stage;
@@ -31,7 +31,7 @@ public abstract class AbstractScreen implements Screen {
 	 * 
 	 * @param game
 	 */
-	public AbstractScreen(MyGame game) {
+	public AbstractView(MyGame game) {
 		this.game = game;
 		this.batch = new SpriteBatch();
 	}

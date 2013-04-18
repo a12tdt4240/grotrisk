@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.testgame.MyGame;
 import com.testgame.Models.Constants;
 
-public class MainMenuScreen extends AbstractMenuScreen {
+public class MainMenuView extends AbstractPanelView {
 
 	// Our Buttons
 	TextButton newGameButton;
@@ -18,7 +18,7 @@ public class MainMenuScreen extends AbstractMenuScreen {
 	CheckBoxStyle checkBoxStyle;
 
 	// constructor to keep a reference to the main Game class
-	public MainMenuScreen(MyGame game) {
+	public MainMenuView(MyGame game) {
 		super(game);
 		}
 

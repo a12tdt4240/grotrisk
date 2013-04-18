@@ -17,7 +17,7 @@ import com.testgame.MyGame;
 import com.testgame.Models.Area;
 import com.testgame.Models.Map;
 
-public class MapView extends AbstractScreen {
+public class MapView extends AbstractView {
 	// Model of the map
 	private Map mapModel;
 	// All AreaViews belonging to the map
@@ -191,7 +191,7 @@ public class MapView extends AbstractScreen {
 			// Increase the number of plays.
 			game.increasePlaysCounter();
 			// Go to question screen
-			game.setScreen(new QuestionScreen(game, areaView.getArea()));
+			game.setScreen(new QuestionView(game, areaView.getArea()));
 
 		}
 	}

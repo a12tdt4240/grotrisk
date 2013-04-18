@@ -1,7 +1,6 @@
 package com.testgame.Views;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 import com.badlogic.gdx.Gdx;
@@ -19,7 +18,7 @@ import com.testgame.MyGame;
 import com.testgame.Models.Constants;
 import com.testgame.Models.Player;
 
-public class PlayerView extends AbstractMenuScreen {
+public class PlayerView extends AbstractPanelView {
 
 	ArrayList<Color> colors;
 
@@ -114,7 +113,7 @@ public class PlayerView extends AbstractMenuScreen {
 					initializeButtons();
 				} else {
 					game.setInitialOwnership();
-					game.setScreen(new NextPlayerScreen(game));
+					game.setScreen(new NextPlayerView(game));
 				}
 			}
 		});

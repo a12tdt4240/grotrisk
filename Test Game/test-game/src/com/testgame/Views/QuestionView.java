@@ -18,7 +18,7 @@ import com.testgame.Models.Area;
 import com.testgame.Models.Constants;
 import com.testgame.Models.Quiz;
 
-public class QuestionScreen extends AbstractMenuScreen {
+public class QuestionView extends AbstractPanelView {
 
 	private final Sound correct;
 	private final Sound wrong;
@@ -40,7 +40,7 @@ public class QuestionScreen extends AbstractMenuScreen {
 	 * 
 	 * @param game
 	 */
-	public QuestionScreen(MyGame game, Area area) {
+	public QuestionView(MyGame game, Area area) {
 		super(game);
 		this.area = area;
 		correct = Gdx.audio.newSound(Gdx.files.internal("data/correct.wav"));
@@ -76,9 +76,9 @@ public class QuestionScreen extends AbstractMenuScreen {
 	 */
 	private void nextPlayer() {
 		if (isGameFinished()) {
-			game.setScreen(new EndGameScreen(game));
+			game.setScreen(new EndGameView(game));
 		} else {
-			game.setScreen(new NextPlayerScreen(game));
+			game.setScreen(new NextPlayerView(game));
 		}
 	}
 

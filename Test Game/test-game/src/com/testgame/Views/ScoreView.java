@@ -21,7 +21,7 @@ import com.testgame.MyGame;
 import com.testgame.Models.Constants;
 import com.testgame.Models.Player;
 
-public class ScoreView extends AbstractScreen implements Observer {
+public class ScoreView extends AbstractView implements Observer {
 
 	// Graphics data
 	private BitmapFont font;
@@ -134,7 +134,7 @@ public class ScoreView extends AbstractScreen implements Observer {
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				Gdx.app.log("grotrisk", "touchUp: avslutt");
 				game.resetGame();
-				game.setScreen(new MainMenuScreen(game));
+				game.setScreen(new MainMenuView(game));
 			}
 		});
 		
