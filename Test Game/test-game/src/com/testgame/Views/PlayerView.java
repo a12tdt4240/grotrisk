@@ -1,6 +1,8 @@
 package com.testgame.Views;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -15,11 +17,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.testgame.MyGame;
 import com.testgame.Models.Constants;
+import com.testgame.Models.Player;
 
 public class PlayerView extends AbstractMenuScreen {
 
-	Color[] colors = { Color.CYAN, Color.DARK_GRAY, Color.LIGHT_GRAY,
-			Color.MAGENTA, Color.ORANGE, Color.YELLOW };
+	ArrayList<Color> colors;
 
 	TextField nameField;
 	TextFieldStyle nameFieldStyle;
@@ -32,13 +34,22 @@ public class PlayerView extends AbstractMenuScreen {
 
 	ButtonGroup buttonGroup;
 
+	int currentPlayer;
+	ArrayList<Player> players;
+
 	float colorButtonWidth = 0;
 	float scale;
 
 	public PlayerView(MyGame game) {
 		super(game);
+		this.colors = new ArrayList<Color>();
+		Collections.addAll(colors, Color.CYAN, Color.DARK_GRAY, Color.LIGHT_GRAY, Color.MAGENTA,
+				Color.ORANGE, Color.YELLOW);
+		
 		this.colorButtons = new ArrayList<Button>();
-		this.selectedColor = colors[0];
+		this.selectedColor = colors.get(0);
+		this.players = game.getPlayers();
+		this.currentPlayer = 0;
 	}
 
 	@Override
@@ -68,10 +79,12 @@ public class PlayerView extends AbstractMenuScreen {
 		buttonGroup = new ButtonGroup();
 		buttonGroup.setMaxCheckCount(1);
 		buttonGroup.setUncheckLast(true);
-		nameField = new TextField("skriv inn navn", nameFieldStyle);
+		nameField = new TextField(players.get(currentPlayer).getName(),
+				nameFieldStyle);
 		nameField.setWidth(Gdx.graphics.getWidth() * 0.6f);
 		nameField.setX((Gdx.graphics.getWidth() - nameField.getWidth()) / 2);
-		nameField.setY(Gdx.graphics.getHeight() / 2 - nameField.getHeight() / 2 + Gdx.graphics.getHeight() * 0.19f);
+		nameField.setY(Gdx.graphics.getHeight() / 2 - nameField.getHeight() / 2
+				+ Gdx.graphics.getHeight() * 0.19f);
 		nameField.setMaxLength(15);
 
 		this.stage.addActor(nameField);
@@ -80,7 +93,8 @@ public class PlayerView extends AbstractMenuScreen {
 		okButton.setWidth(458);
 		okButton.setHeight(88);
 		okButton.setX(Gdx.graphics.getWidth() / 2 - okButton.getWidth() / 2);
-		okButton.setY((Gdx.graphics.getHeight() / 2 - okButton.getHeight() / 2) - Gdx.graphics.getHeight() * 0.15f);
+		okButton.setY((Gdx.graphics.getHeight() / 2 - okButton.getHeight() / 2)
+				- Gdx.graphics.getHeight() * 0.15f);
 
 		okButton.addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y,
@@ -90,24 +104,34 @@ public class PlayerView extends AbstractMenuScreen {
 
 			public void touchUp(InputEvent event, float x, float y,
 					int pointer, int button) {
-				game.getPlayers().get(0).setName(nameField.getText());
-				game.getPlayers().get(0).setColor(selectedColor);
-				game.setScreen(new NextPlayerScreen(game));
+				players.get(currentPlayer).setName(nameField.getText());
+				players.get(currentPlayer).setColor(selectedColor);
+				colors.remove(selectedColor);
+				// Give out initial areas
+				if (currentPlayer < players.size() - 1) {
+					currentPlayer++;
+					stage.clear();
+					initializeButtons();
+				} else {
+					game.setInitialOwnership();
+					game.setScreen(new NextPlayerScreen(game));
+				}
 			}
 		});
 
 		this.stage.addActor(okButton);
 
-		for (int i = 0; i < colors.length; i++) {
+		for (int i = 0; i < colors.size(); i++) {
 			Button btn = new Button(colorButtonStyle);
 			scale = (Gdx.graphics.getWidth() * 0.055f) / colorButtonWidth;
 			btn.setHeight(scale * colorButtonWidth);
 			btn.setWidth(scale * colorButtonWidth);
-			btn.setColor(colors[i]);
+			btn.setColor(colors.get(i));
 			// btn.setX(100);
-			btn.setX(((Gdx.graphics.getWidth() - ((colorButtonWidth * scale + 5) * colors.length)) / 2)
-					+ (colorButtonWidth * scale + 5) * i);
-			btn.setY(Gdx.graphics.getHeight() / 2 - btn.getHeight() / 2 + Gdx.graphics.getHeight() * 0.045f);
+			btn.setX(((Gdx.graphics.getWidth() - ((colorButtonWidth * scale + 5) * colors
+					.size())) / 2) + (colorButtonWidth * scale + 5) * i);
+			btn.setY(Gdx.graphics.getHeight() / 2 - btn.getHeight() / 2
+					+ Gdx.graphics.getHeight() * 0.045f);
 			btn.addListener(new InputEventListener());
 			buttonGroup.add(btn);
 			colorButtons.add(btn);
@@ -115,6 +139,7 @@ public class PlayerView extends AbstractMenuScreen {
 		}
 	}
 
+	// EventListener for color buttons
 	class InputEventListener extends InputListener {
 		public boolean touchDown(InputEvent event, float x, float y,
 				int pointer, int button) {

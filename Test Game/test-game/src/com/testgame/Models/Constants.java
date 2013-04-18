@@ -5,6 +5,7 @@ public final class Constants {
 	public static final String NEXTPLAYER_BUTTON = "OK";
 	public static final String NEXTPLAYER_INFO = "Send enheten til";
 	public static final String NEXTPLAYER_LABEL = "spiller ";
+	public static final String PLAYER_TEXT = "spiller ";
 	
 	public static final String MAINMENU_BUTTON = "Nytt spill";
 	public static final String MAINMENU_SOUND = "Lyd";
