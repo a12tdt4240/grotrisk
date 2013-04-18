@@ -34,7 +34,7 @@ public class ScoreView extends AbstractScreen implements Observer {
 	private ArrayList<Label> names;
 	private ArrayList<Label> scores;
 	private ArrayList<Image> colorIcons;
-	
+	private TextButton exitButton;
 	
 	public ScoreView(MyGame game) {
 		super(game);
@@ -88,6 +88,8 @@ public class ScoreView extends AbstractScreen implements Observer {
 	@Override
 	public void show() {
 		
+		stage = new Stage();
+		
 		colorContainerImage = skin.getRegion("area001");
 		
 		for (int i = 0; i < players.size(); i++) {
@@ -111,14 +113,14 @@ public class ScoreView extends AbstractScreen implements Observer {
 		}
 		
 		batch = new SpriteBatch();
-		stage = new Stage();
+		
 		TextButtonStyle exitButtonStyle = new TextButtonStyle();
 		exitButtonStyle.up = menuSkin.getDrawable("buttonUp");
 		exitButtonStyle.font = font;
 		
-		TextButton exitButton = new TextButton(Constants.EXIT_BUTTON, exitButtonStyle);
-		exitButton.setWidth(200);
-		exitButton.setHeight(20);
+		exitButton = new TextButton(Constants.EXIT_BUTTON, exitButtonStyle);
+		exitButton.setWidth(Gdx.graphics.getWidth() * 0.2f);
+		exitButton.setHeight(Gdx.graphics.getHeight() * 0.1f);
 		exitButton.setX(Gdx.graphics.getWidth() - (float)(exitButton.getWidth() + 10));
 		exitButton.setY(10f);
 
@@ -134,14 +136,13 @@ public class ScoreView extends AbstractScreen implements Observer {
 				game.setScreen(new MainMenuScreen(game));
 			}
 		});
-		this.stage.addActor(exitButton);
 		
 	}
 
 	@Override
 	public void resize(int width, int height) {
 		super.resize(width, height);
-		
+		this.stage.addActor(exitButton);
 	}
 
 	/**

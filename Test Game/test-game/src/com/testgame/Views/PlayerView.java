@@ -45,9 +45,8 @@ public class PlayerView extends AbstractMenuScreen {
 		this.colors = new ArrayList<Color>();
 		Collections.addAll(colors, Color.CYAN, Color.DARK_GRAY, Color.LIGHT_GRAY, Color.MAGENTA,
 				Color.ORANGE, Color.YELLOW);
-		
+		this.selectedColor = null;
 		this.colorButtons = new ArrayList<Button>();
-		this.selectedColor = colors.get(0);
 		this.players = game.getPlayers();
 		this.currentPlayer = 0;
 	}
@@ -76,6 +75,7 @@ public class PlayerView extends AbstractMenuScreen {
 	 * Creates the buttons for drawing.
 	 */
 	public void initializeButtons() {
+		selectedColor = colors.get(0);
 		buttonGroup = new ButtonGroup();
 		buttonGroup.setMaxCheckCount(1);
 		buttonGroup.setUncheckLast(true);
