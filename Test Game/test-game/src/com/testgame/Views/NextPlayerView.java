@@ -89,7 +89,7 @@ public class NextPlayerView extends AbstractPanelView {
 	 */
 	private void setCorrectScreen() {
 		if(game.getDuelState().isDuel()) {
-			game.setScreen(new QuestionView(game, game.getDuelState().getArea()));
+			game.setScreen(new QuizView(game, game.getDuelState().getArea()));
 		} else {
 			game.setScreen(game.getGameScreen());
 		}
