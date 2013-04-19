@@ -19,12 +19,12 @@ public class QuestionPool {
 	
 	public static final String DEFAULT_QUESTIONS = "data/json/questions.json";
 		
-	private Quiz[] questions;
-	private ArrayList<Quiz> randomSelected;
+	private Question[] questions;
+	private ArrayList<Question> randomSelected;
 	
 	public QuestionPool(){
 		this.loadQuestions();
-		this.randomSelected = new ArrayList<Quiz>();
+		this.randomSelected = new ArrayList<Question>();
 		Gdx.app.log("QuestionPool", "construct");
 		
 		Gdx.app.log("QP",this.randomByCategory(new Category("Geografi")).toString());
@@ -57,17 +57,17 @@ public class QuestionPool {
 		Gdx.app.log("QuestionPool","Questions loaded: " + this.questions.length);
 	}
 	
-	public Quiz[] all() {
+	public Question[] all() {
 		Gdx.app.log("QuestionPool", "QuestionPool:all");
-		return this.questions;
+		return questions;
 	}
 	
-	public ArrayList<Quiz> allByCategory(Category category) {
+	public ArrayList<Question> allByCategory(Category category) {
 		Gdx.app.log("QuestionPool", "QuestionPool:allByCategory");
-		ArrayList<Quiz> listByCategory = new ArrayList<Quiz>(); 
+		ArrayList<Question> listByCategory = new ArrayList<Question>(); 
 		
-		for (int i = 0; i < this.questions.length; i++) {
-			Quiz question = this.questions[i];
+		for (int i = 0; i < questions.length; i++) {
+			Question question = questions[i];
 			if (question.getCategory().getName().equals(category.getName())) {
 				listByCategory.add(question);
 			}
@@ -84,24 +84,24 @@ public class QuestionPool {
 	 * @throws NullPointerException
 	 * @return
 	 */
-	public Quiz randomByCategory(Category category) {
+	public Question randomByCategory(Category category) {
 		Gdx.app.log("QuestionPool", "QuestionPool:randomByCategory");
 		if (this.allByCategory(category).size() == 0) {
 			Gdx.app.log("QuestionPool", "QuestionPool:randomByCategory return null");
 			return null;
 		}
 		
-		Quiz random = this.random();
+		Question random = random();
 		if (!random.getCategory().getName().equals(category.getName())) {
 			return this.randomByCategory(category); 
 		}
 		return random;
 	}
 	
-	public Quiz random() {
+	public Question random() {
 		Gdx.app.log("QuestionPool", "QuestionPool:random");
 		Random randomIndex = new Random(); 
-		Quiz random = this.questions[randomIndex.nextInt(this.questions.length)];
+		Question random = questions[randomIndex.nextInt(questions.length)];
 		
 		if (this.randomSelected.contains(random) && (this.randomSelected.size() <= this.questions.length)) {
 			this.randomSelected.add(random);
