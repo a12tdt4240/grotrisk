@@ -22,6 +22,9 @@ public class QuizView extends QuestionView {
 		listener = new InputEventListener();
 	}
 	
+	/**
+	 * Initialize buttons related to QuizView
+	 */
 	public void initializeButtons() {
 		super.initializeButtons();
 		currentQuiz = (Quiz) getCurrentQuestion();

@@ -145,6 +145,11 @@ public class QuestionView extends AbstractPanelView {
 		hasAnswered = bol;
 	}
 	
+	/**
+	 * Provides current question to its children
+	 * 
+	 * @return Question
+	 */
 	protected Question getCurrentQuestion() {
 		return currentQuestion;
 	}
@@ -215,10 +220,16 @@ public class QuestionView extends AbstractPanelView {
 		}
 	}
 	
+	/**
+	 * Plays the sound of the correct answer
+	 */
 	protected void playCorrectAnswerSound() {
 		correct.play();
 	}
 	
+	/**
+	 * Plays the sound of the wrong answer
+	 */
 	protected void playWrongAnswerSound() {
 		wrong.play();
 	}
@@ -227,6 +238,10 @@ public class QuestionView extends AbstractPanelView {
 		return area;
 	}
 
+	/**
+	 * Sets which area the questions might give you
+	 * @param area
+	 */
 	public void setArea(Area area) {
 		this.area = area;
 	}

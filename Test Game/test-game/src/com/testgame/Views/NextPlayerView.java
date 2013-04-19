@@ -105,7 +105,7 @@ public class NextPlayerView extends AbstractPanelView {
 		if (game.getDuelState().isDuel()) {
 			// Go to question screen
 			if (game.getQuestionView() == null)
-				game.setQuestionView(new QuestionView(game));
+				game.setQuestionView(new QuizView(game));
 
 			game.getQuestionView().setArea(game.getDuelState().getArea());
 			game.setScreen(game.getQuestionView());
