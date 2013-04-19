@@ -14,6 +14,8 @@ import com.testgame.Models.Player;
 import com.testgame.Models.QuestionPool;
 import com.testgame.Views.MainMenuView;
 import com.testgame.Views.MapView;
+import com.testgame.Views.NextPlayerView;
+import com.testgame.Views.QuestionView;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
@@ -22,7 +24,7 @@ public class MyGame extends Game implements ApplicationListener {
 
 	public static final String SPRITE = "skins/mainmenu.atlas";
 
-	private MapView gameScreen;
+	private MapView mapView;
 	private Map map;
 	private Music music;
 	private QuestionPool questionPool;
@@ -30,6 +32,8 @@ public class MyGame extends Game implements ApplicationListener {
 	private Player currentPlayer;
 	private DuelState duel;
 	private int playsCounter;
+	private NextPlayerView nextPlayerView;
+	private QuestionView questionView;
 
 	@Override
 	public void create() {
@@ -64,9 +68,6 @@ public class MyGame extends Game implements ApplicationListener {
 
 		// create a DuelState for duels
 		duel = new DuelState(this);
-
-		// Create the game screen with selected map model
-		gameScreen = new MapView(this, map);
 
 		// Create and launch main menu screen.
 		setScreen(new MainMenuView(this));
@@ -222,14 +223,22 @@ public class MyGame extends Game implements ApplicationListener {
 	}
 
 	/**
-	 * Gets current GameScreen object
+	 * Gets current MapView object
 	 * 
 	 * @return
 	 */
-	public Screen getGameScreen() {
-		return gameScreen;
+	public Screen getMapView() {
+		return mapView;
 	}
 
+	public void setMapView(MapView mapView) {
+		this.mapView = mapView;
+	}
+	
+	public Map getMapModel() {
+		return map;
+	}
+	
 	/**
 	 * Increase the turn value
 	 */
@@ -249,6 +258,22 @@ public class MyGame extends Game implements ApplicationListener {
 	@Override
 	public void dispose() {
 		music.dispose();
+	}
+
+	public NextPlayerView getNextPlayerView() {
+		return nextPlayerView;
+	}
+
+	public void setNextPlayerView(NextPlayerView nextPlayerView) {
+		this.nextPlayerView = nextPlayerView;
+	}
+
+	public QuestionView getQuestionView() {
+		return questionView;
+	}
+
+	public void setQuestionView(QuestionView questionView) {
+		this.questionView = questionView;
 	}
 
 }

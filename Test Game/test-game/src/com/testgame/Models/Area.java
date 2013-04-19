@@ -65,12 +65,9 @@ public class Area implements Serializable {
 	 * Helper method for loading the Image.
 	 */
 	protected void loadAreaImage() {
-		atlas = new TextureAtlas("data/maps/map.atlas");
-
-		skin = new Skin();
-		skin.addRegions(atlas);
-		areaDrawable = skin.getDrawable("area001");
-		attackImage = new Image(skin.getRegion("duel"));
+		skin = SkinSingleton.getInstance().getMapSkin();
+		areaDrawable = SkinSingleton.getInstance().getAreaImage();
+		attackImage = SkinSingleton.getInstance().getAttackImage();
 		
 	}
 	

@@ -30,12 +30,10 @@ public class QuestionView extends AbstractPanelView {
 	 * 
 	 * @param game
 	 */
-	public QuestionView(MyGame game, Area area) {
+	public QuestionView(MyGame game) {
 		super(game);
-		this.area = area;
 		correct = Gdx.audio.newSound(Gdx.files.internal("data/correct.wav"));
 		wrong = Gdx.audio.newSound(Gdx.files.internal("data/wrong.wav"));
-		startTimer();
 	}
 
 	/**
@@ -67,7 +65,10 @@ public class QuestionView extends AbstractPanelView {
 		if (isGameFinished()) {
 			game.setScreen(new EndGameView(game));
 		} else {
-			game.setScreen(new NextPlayerView(game));
+			if (game.getNextPlayerView() == null)
+				game.setNextPlayerView(new NextPlayerView(game));
+			
+			game.setScreen(game.getNextPlayerView());
 		}
 	}
 
@@ -135,7 +136,7 @@ public class QuestionView extends AbstractPanelView {
 		// Stop the count down clock. Not 100% sure if this is working
 		// correctly.
 		Timer.instance.clear();
-
+		currentTime = 0;
 		correct.dispose();
 		wrong.dispose();
 	}
@@ -220,5 +221,19 @@ public class QuestionView extends AbstractPanelView {
 	
 	protected void playWrongAnswerSound() {
 		wrong.play();
+	}
+
+	public Area getArea() {
+		return area;
+	}
+
+	public void setArea(Area area) {
+		this.area = area;
+	}
+	
+	@Override
+	public void show() {
+		super.show();
+		startTimer();
 	}
 }

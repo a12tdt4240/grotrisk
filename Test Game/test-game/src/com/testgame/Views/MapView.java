@@ -120,6 +120,7 @@ public class MapView extends AbstractView {
 	 * Removes all listeners to make sure only neighbors have listener
 	 */
 	private void removeListeners() {
+		attackImages.clear();
 		for (int i = 0; i < areaViews.size(); ++i) {
 			areaViews.get(i).removeListener(listener);
 		}
@@ -215,12 +216,16 @@ public class MapView extends AbstractView {
 				game.getDuelState().initiateDuel(game.getCurrentPlayer(),
 						areaView.getModel().getOwner(), areaView.getModel());
 			}
-			attackImages.clear();
 
 			// Increase the number of plays.
 			game.increasePlaysCounter();
-			// Go to quiz screen
-			game.setScreen(new QuizView(game, areaView.getArea()));
+
+			// Go to question screen
+			if (game.getQuestionView() == null)
+				game.setQuestionView(new QuizView(game));
+			
+			game.getQuestionView().setArea(areaView.getArea());
+			game.setScreen(game.getQuestionView());
 
 		}
 	}
