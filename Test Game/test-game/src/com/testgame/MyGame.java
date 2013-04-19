@@ -12,6 +12,7 @@ import com.testgame.Models.Map;
 import com.testgame.Models.MapFactory;
 import com.testgame.Models.Player;
 import com.testgame.Models.QuestionPool;
+import com.testgame.Models.SkinSingleton;
 import com.testgame.Views.MainMenuView;
 import com.testgame.Views.MapView;
 import com.testgame.Views.NextPlayerView;
@@ -22,7 +23,8 @@ import com.badlogic.gdx.graphics.Color;
 
 public class MyGame extends Game implements ApplicationListener {
 
-	public static final String SPRITE = "skins/mainmenu.atlas";
+	public static final String MENU_ATLAS_PATH = "skins/mainmenu.atlas";
+	public static final String MAP_ATLAS_PATH = "data/maps/map.atlas";
 
 	private MapView mapView;
 	private Map map;
@@ -258,6 +260,14 @@ public class MyGame extends Game implements ApplicationListener {
 	@Override
 	public void dispose() {
 		music.dispose();
+		SkinSingleton.getInstance().dispose();
+		if (nextPlayerView != null)
+			nextPlayerView.dispose();
+		if (questionView != null)
+			questionView.dispose();
+		if (mapView != null)
+			mapView.dispose();
+		
 	}
 
 	public NextPlayerView getNextPlayerView() {

@@ -3,11 +3,8 @@ package com.testgame.Views;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
 
@@ -19,12 +16,7 @@ public abstract class AbstractView implements Screen {
 	SpriteBatch batch;
 
 	// Graphics data
-	TextureAtlas atlas;
-	BitmapFont font;
-	Skin skin;
 	TextButtonStyle buttonStyle;
-
-	
 
 	/**
 	 * Constructor to keep a reference to the main Game class
@@ -84,9 +76,6 @@ public abstract class AbstractView implements Screen {
 	@Override
 	public void dispose() {
 		stage.dispose();
-		atlas.dispose();
-		font.dispose();
-		skin.dispose();
 		batch.dispose();
 	}
 }

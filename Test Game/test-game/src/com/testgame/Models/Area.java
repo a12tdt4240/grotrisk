@@ -1,13 +1,11 @@
 package com.testgame.Models;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.OrderedMap;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.testgame.Views.Observer;
 
@@ -34,9 +32,6 @@ public class Area implements Serializable {
 	// A list of neighboring areas. Areas that can be moved to in one move.
 	private ArrayList<Area> neighbors;
 	private Integer[] neighborsMap;
-
-	private Skin skin;
-	private TextureAtlas atlas;
 	
 	public Area() {
 		observers = new ArrayList<Observer>();
@@ -65,7 +60,6 @@ public class Area implements Serializable {
 	 * Helper method for loading the Image.
 	 */
 	protected void loadAreaImage() {
-		skin = SkinSingleton.getInstance().getMapSkin();
 		areaDrawable = SkinSingleton.getInstance().getAreaImage();
 		attackImage = SkinSingleton.getInstance().getAttackImage();
 		

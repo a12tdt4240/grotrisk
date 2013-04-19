@@ -1,23 +1,18 @@
 package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
+import com.testgame.Models.SkinSingleton;
 
 public abstract class AbstractPanelView extends AbstractView {
-	
+
 	// Our NinePatches
 	NinePatch panel;
 	NinePatch background;
-	
-	
+
 	/**
 	 * Constructor to keep a reference to the main Game class
 	 * 
@@ -37,7 +32,8 @@ public abstract class AbstractPanelView extends AbstractView {
 		stage.act(delta);
 
 		batch.begin();
-		background.draw(batch,
+		background
+				.draw(batch,
 						(Gdx.graphics.getWidth() - Gdx.graphics.getWidth() * 1.0f) / 2,
 						(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 1.0f) / 2,
 						Gdx.graphics.getWidth() * 1.0f,
@@ -47,35 +43,25 @@ public abstract class AbstractPanelView extends AbstractView {
 				(Gdx.graphics.getWidth() - Gdx.graphics.getWidth() * 0.8f) / 2,
 				(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 0.8f) / 2,
 				Gdx.graphics.getWidth() * 0.8f, Gdx.graphics.getHeight() * 0.8f);
-		
-		
+
 		batch.end();
 
 		stage.draw();
 	}
 
-	
 	/**
 	 * Called when this screen is set as the screen with game.setScreen();
 	 */
 	@Override
 	public void show() {
-
 		stage = new Stage();
 
-		atlas = new TextureAtlas(MyGame.SPRITE);
+		background = SkinSingleton.getInstance().getMenuBackground();
+		panel = SkinSingleton.getInstance().getPanelImage();
 
-		skin = new Skin();
-		skin.addRegions(atlas);
-
-		background = new NinePatch(new TextureRegion(
-				atlas.findRegion("background")), 190, 190, 114, 292);
-		panel = new NinePatch(new TextureRegion(atlas.findRegion("panel")),
-				215, 200, 140, 140);
-
-		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
 		batch = new SpriteBatch();
 	}
+
 	/**
 	 * Called when the current screen changes from this to a different screen.
 	 * Remember to dispose objects.
@@ -98,9 +84,7 @@ public abstract class AbstractPanelView extends AbstractView {
 	 * Sets the style of UI elements.
 	 */
 	public void initializeStyle() {
-		buttonStyle = new TextButtonStyle();
-		buttonStyle.up = skin.getDrawable("buttonUp");
-		buttonStyle.font = font;
+		buttonStyle = SkinSingleton.getInstance().getDefaultButtonStyle();
 	}
 
 	public void initializeButtons() {
@@ -117,8 +101,5 @@ public abstract class AbstractPanelView extends AbstractView {
 	@Override
 	public void dispose() {
 		super.dispose();
-
-		panel.getTexture().dispose();
-		background.getTexture().dispose();
 	}
 }

@@ -4,25 +4,34 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
 import com.testgame.Models.Quiz;
+import com.testgame.Models.SkinSingleton;
 
 public class AlternativeGroupView {
 	
 	private Boolean advantageEnabled;
 	private Quiz currentQuestion;
-	private TextButtonStyle buttonStyle;
+	private TextButtonStyle buttonStyle1, buttonStyle2, buttonStyle3, buttonStyle4;
 	private MyGame game;
+	private BitmapFont font1, font2, font3, font4;
 	
 	public AlternativeGroupView(Quiz question, TextButtonStyle buttonStyle, MyGame game) {
 		this.game = game;
 		this.advantageEnabled = false;
 		this.currentQuestion = question;
-		this.buttonStyle = buttonStyle;
+		buttonStyle1 = new TextButtonStyle(buttonStyle);
+		buttonStyle2 = new TextButtonStyle(buttonStyle);
+		buttonStyle3 = new TextButtonStyle(buttonStyle);
+		buttonStyle4 = new TextButtonStyle(buttonStyle);
+		font1 = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
+		font2 = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
+		font3 = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
+		font4 = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
+
 	}
 
 	public ArrayList<AlternativeView> getList() {
@@ -31,11 +40,11 @@ public class AlternativeGroupView {
 		
 		// Create buttons
 		// Scaling text to fit the buttons.
-		buttonStyle.font.setScale(0.7f);
 
 		// Alternative 1
 		alt1Button = new TextButton(currentQuestion.getAlt1().getName(),
-				buttonStyle);
+				buttonStyle1);
+		alt1Button = setLayoutProperties(font1, alt1Button, buttonStyle1);
 		alt1Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
 		alt1Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
 		alt1Button
@@ -46,7 +55,9 @@ public class AlternativeGroupView {
 		
 		// Alternative 2
 		alt2Button = new TextButton(currentQuestion.getAlt2().getName(),
-				buttonStyle);
+				buttonStyle2);
+		alt2Button.getStyle().font = font2;
+		alt2Button = setLayoutProperties(font2, alt2Button, buttonStyle2);
 		alt2Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
 		alt2Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
 		alt2Button.setX(Gdx.graphics.getWidth() / 2 + 5);
@@ -56,7 +67,8 @@ public class AlternativeGroupView {
 		
 		// Alternative 3
 		alt3Button = new TextButton(currentQuestion.getAlt3().getName(),
-				buttonStyle);
+				buttonStyle3);
+		alt3Button = setLayoutProperties(font3, alt3Button, buttonStyle3);
 		alt3Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
 		alt3Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
 		alt3Button
@@ -66,11 +78,14 @@ public class AlternativeGroupView {
 		
 		// Alternative 4
 		alt4Button = new TextButton(currentQuestion.getAlt4().getName(),
-				buttonStyle);
+				buttonStyle4);
+		
+		alt4Button = setLayoutProperties(font4, alt4Button, buttonStyle4);
 		alt4Button.setWidth(Gdx.graphics.getWidth() * 0.3f);
 		alt4Button.setHeight(Gdx.graphics.getHeight() * 0.15f);
 		alt4Button.setX(Gdx.graphics.getWidth() / 2 + 5);
 		alt4Button.setY((Gdx.graphics.getHeight() / 4));
+		
 		alt4View = new AlternativeView(currentQuestion.getAlt4(), alt4Button);
 
 		
@@ -80,9 +95,8 @@ public class AlternativeGroupView {
 			(this.game.getCurrentPlayer() == this.game.getDuelState().getDefendant())) {
 			for (AlternativeView av : alternativeViews) {
 				if (!this.advantageEnabled && !av.getModel().isCorrectAnswer()) {
-					TextButtonStyle disabledButtonStyle = new TextButtonStyle(this.buttonStyle);
-					disabledButtonStyle.up = new Skin(new TextureAtlas(MyGame.SPRITE)).getDrawable("buttonUpGrey");
-					av.getView().setStyle(disabledButtonStyle);
+					
+					av.getView().setStyle(SkinSingleton.getInstance().getDisabledButtonStyle());
 					av.getView().setDisabled(true);
 					
 					this.advantageEnabled = true;
@@ -90,6 +104,36 @@ public class AlternativeGroupView {
 			}
 		}
 		return alternativeViews;
+	}
+
+	private TextButton setLayoutProperties(BitmapFont font, TextButton button, TextButtonStyle style) {
+		if ((60 * button.getText().toString().length()) > button.getWidth()) {
+			font.setScale(button.getWidth() / (60 * button.getText().toString().length()));
+			style.font = font;
+			button.getStyle().font = font;
+//			button.getStyle().font.setScale(button.getWidth() / (100 * button.getText().toString().length()));
+		} else {
+			font.setScale(button.getWidth() / (9 * 60));
+			style.font = font;
+			
+//			button.getStyle().font.setScale(button.getWidth() / (12 * 100));
+		}
+		button.setStyle(style);
+		return button;
+	}
+	
+	public void dispose() {
+		font1.dispose();
+		font2.dispose();
+		font3.dispose();
+		font4.dispose();
+	}
+	
+	public void reset() {
+		font1.setScale(1);
+		font2.setScale(1);
+		font3.setScale(1);
+		font4.setScale(1);
 	}
 	
 }

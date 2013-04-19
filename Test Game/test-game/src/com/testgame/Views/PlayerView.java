@@ -13,10 +13,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.testgame.MyGame;
 import com.testgame.Models.Constants;
 import com.testgame.Models.Player;
+import com.testgame.Models.SkinSingleton;
 
 public class PlayerView extends AbstractPanelView {
 
@@ -27,8 +27,6 @@ public class PlayerView extends AbstractPanelView {
 	private TextButton okButton;
 	private ArrayList<Button> colorButtons;
 	private ButtonStyle colorButtonStyle;
-	private Drawable colorButton;
-	private Drawable colorButtonChecked;
 	private Color selectedColor;
 
 	private ButtonGroup buttonGroup;
@@ -59,15 +57,9 @@ public class PlayerView extends AbstractPanelView {
 	public void initializeStyle() {
 		super.initializeStyle();
 
-		colorButton = skin.getDrawable("container");
-		colorButtonChecked = skin.getDrawable("container2"); // to fix
-
-		colorButtonStyle = new ButtonStyle(colorButton, colorButton,
-				colorButtonChecked);
-		colorButtonWidth = colorButton.getMinWidth();
-		nameFieldStyle = new TextFieldStyle(font, Color.BLACK,
-				skin.getDrawable("cursor"), skin.getDrawable("selected"),
-				skin.getDrawable("background"));
+		colorButtonStyle = SkinSingleton.getInstance().getRadioButtonStyle();
+		colorButtonWidth = colorButtonStyle.up.getMinWidth();
+		nameFieldStyle = SkinSingleton.getInstance().getTextFieldStyle();
 	}
 
 	/**

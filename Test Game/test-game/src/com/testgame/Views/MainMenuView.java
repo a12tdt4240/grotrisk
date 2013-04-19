@@ -1,7 +1,6 @@
 package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
@@ -9,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.testgame.MyGame;
 import com.testgame.Models.Constants;
+import com.testgame.Models.SkinSingleton;
 
 public class MainMenuView extends AbstractPanelView {
 
@@ -26,12 +26,15 @@ public class MainMenuView extends AbstractPanelView {
 
 	@Override
 	public void resize(int width, int height) {
-		this.checkBoxStyle = new CheckBoxStyle(
-				skin.getDrawable("buttonUpGrey"), skin.getDrawable("buttonUp"),
-				font, Color.WHITE);
+		this.checkBoxStyle = SkinSingleton.getInstance().getCheckBoxStyle();
 		super.resize(width, height);
 	}
 
+	@Override
+	public void hide() {
+		super.hide();
+		SkinSingleton.getInstance().resetFontSize();
+	}
 	/**
 	 * Creates the buttons for drawing.
 	 */
