@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.Json;
 
 public class MapFactory {
 	
-	public static final String DEFAULT_MAP = "data/json/map.default.json";
+	public static final String DEFAULT_MAP = "data/json/map.basic.json";
 	
 	public MapFactory() {}
 	
