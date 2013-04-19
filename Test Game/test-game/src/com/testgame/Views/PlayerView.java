@@ -42,7 +42,7 @@ public class PlayerView extends AbstractPanelView {
 	public PlayerView(MyGame game) {
 		super(game);
 		this.colors = new ArrayList<Color>();
-		Collections.addAll(colors, Color.CYAN, Color.DARK_GRAY, Color.LIGHT_GRAY, Color.MAGENTA,
+		Collections.addAll(colors, Color.RED, Color.DARK_GRAY, Color.GREEN, Color.BLUE,
 				Color.ORANGE, Color.YELLOW);
 		this.selectedColor = null;
 		this.colorButtons = new ArrayList<Button>();
