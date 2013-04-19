@@ -1,38 +1,29 @@
 package com.testgame.Views;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.testgame.MyGame;
-import com.testgame.Models.Alternative;
 import com.testgame.Models.Area;
 import com.testgame.Models.Constants;
-import com.testgame.Models.Quiz;
+import com.testgame.Models.Question;
 
 public class QuestionView extends AbstractPanelView {
 
 	private final Sound correct;
 	private final Sound wrong;
-	private Quiz currentQuestion;
+	private Question currentQuestion;
 	private Label questionText, countDownText;
 	private LabelStyle labelStyleHeader;
 	// How many seconds you get to answer a question.
 	private int countDownTime = 20;
 	private int currentTime = 0;
-	private Area area;
-
-	private InputEventListener listener;
-	private ArrayList<AlternativeView> alternatives;
-
-	boolean hasAnswered = false;
+	protected Area area;
+	private boolean hasAnswered = false;
 
 	/**
 	 * Constructor keeping a reference to the main Game class
@@ -43,7 +34,6 @@ public class QuestionView extends AbstractPanelView {
 		super(game);
 		correct = Gdx.audio.newSound(Gdx.files.internal("data/correct.wav"));
 		wrong = Gdx.audio.newSound(Gdx.files.internal("data/wrong.wav"));
-		listener = new InputEventListener();
 	}
 
 	/**
@@ -71,7 +61,7 @@ public class QuestionView extends AbstractPanelView {
 	 * Helper method setting the next screen. If the game is considered finished
 	 * it sets the end game screen.
 	 */
-	private void nextPlayer() {
+	protected void nextPlayer() {
 		if (isGameFinished()) {
 			game.setScreen(new EndGameView(game));
 		} else {
@@ -120,11 +110,7 @@ public class QuestionView extends AbstractPanelView {
 	 */
 	public void initializeButtons() {
 		// Retrieve question from question pool
-		currentQuestion = (Quiz) game.getQuestionPool().random();
-
-		AlternativeGroupView altGroup = new AlternativeGroupView(
-				currentQuestion, buttonStyle, game);
-		alternatives = altGroup.getList();
+		currentQuestion = game.getQuestionPool().random();
 
 		// Question text field
 		labelStyleHeader = new LabelStyle();
@@ -139,14 +125,6 @@ public class QuestionView extends AbstractPanelView {
 				- questionText.getHeight() / 2 + Gdx.graphics.getHeight()
 				* 0.19f);
 		questionText.setWidth(0.6f * Gdx.graphics.getWidth());
-
-		// Add the buttons to the stage.
-		for (AlternativeView av : alternatives) {
-			if (!av.getView().isDisabled()) {
-				av.getView().addListener(listener);
-			}
-			this.stage.addActor(av.getView());
-		}
 	}
 
 	/**
@@ -162,113 +140,19 @@ public class QuestionView extends AbstractPanelView {
 		correct.dispose();
 		wrong.dispose();
 	}
-
-	public void removeEventListeners() {
-		for(int i = 0; i < alternatives.size(); i++) {
-			alternatives.get(i).getView().removeListener(listener);
-		}
+	
+	protected void setAnswerd(boolean bol) {
+		hasAnswered = bol;
+	}
+	
+	protected Question getCurrentQuestion() {
+		return currentQuestion;
 	}
 	
 	/**
-	 * Unified InputListener
-	 * 
-	 */
-	class InputEventListener extends InputListener {
-		public boolean touchDown(InputEvent event, float x, float y,
-				int pointer, int button) {
-			return true;
-		}
-
-		public void touchUp(InputEvent event, float x, float y, int pointer,
-				int button) {
-			Label altButton = (Label) event.getTarget();
-			String altName = altButton.getText().toString();
-			removeEventListeners();
-			
-			if (altName.equals(currentQuestion.getAlt1().getName())) {
-				handleEvent(altButton, currentQuestion.getAlt1());
-			} else if (altName.equals(currentQuestion.getAlt2().getName())) {
-				handleEvent(altButton, currentQuestion.getAlt2());
-			} else if (altName.equals(currentQuestion.getAlt3().getName())) {
-				handleEvent(altButton, currentQuestion.getAlt3());
-			} else if (altName.equals(currentQuestion.getAlt4().getName())) {
-				handleEvent(altButton, currentQuestion.getAlt4());
-			}
-		}
-
-	}
-
-	/**
-	 * Takes an alternative, checks if it is correct and handles the given
-	 * situation appropriately
-	 * 
-	 * @param Alternative
-	 */
-	private void handleEvent(Label lab, Alternative alt) {
-		hasAnswered = true;
-
-		if (alt.isCorrectAnswer()) {
-			// Change label color.
-			lab.setColor(Color.GREEN);
-			// Play the correct sound.
-			if (game.getMusic().isPlaying())
-				correct.play();
-			Timer.schedule(new Task() {
-
-				@Override
-				public void run() {
-					correctAnswer();
-				}
-
-			}, 2);
-
-		} else {
-			// Change the label color.
-			lab.setColor(Color.RED);
-			// Play the wrong sound.
-			if (game.getMusic().isPlaying())
-				wrong.play();
-			Timer.schedule(new Task() {
-
-				@Override
-				public void run() {
-					wrongAnswer();
-				}
-
-			}, 2);
-
-		}
-	}
-
-	/**
-	 * Checks if duel is finished, and assigns the area to correct player
-	 * 
-	 */
-	private void handleDuel() {
-		if (game.getDuelState().isFinished()
-				&& (game.getCurrentPlayer() == game.getDuelState()
-						.getDefendant())) {
-			if (game.getDuelState().getWinner() == game.getDuelState()
-					.getInitiator()) {
-				// Update score of winner
-				game.getDuelState().getWinner().getScore()
-						.updateScore(area.getValueOfArea());
-				// Update owner of area
-				area.setOwner(game.getDuelState().getWinner());
-			}
-			// Set current player to initiator of duel, so that correct next
-			// player
-			// is set afterwards
-			game.setCurrentPlayer(game.getDuelState().getInitiator());
-			// Clean up after duel
-			game.getDuelState().finishDuel();
-		}
-	}
-
-	/**
 	 * Called when the answer was correct.
 	 */
-	private void correctAnswer() {
+	protected void correctAnswer() {
 		// Duel active
 		if (game.getDuelState().isDuel()) {
 			// Award correct player in duel
@@ -295,7 +179,7 @@ public class QuestionView extends AbstractPanelView {
 	/**
 	 * Called when the answer was wrong.
 	 */
-	private void wrongAnswer() {
+	protected void wrongAnswer() {
 		// Duel active
 		if (game.getDuelState().isDuel()) {
 			// Check if duel is finished, and handle it appropriately
@@ -306,6 +190,39 @@ public class QuestionView extends AbstractPanelView {
 		nextPlayer();
 	}
 	
+	/**
+	 * Checks if duel is finished, and assigns the area to correct player
+	 * 
+	 */
+	protected void handleDuel() {
+		if (game.getDuelState().isFinished()
+				&& (game.getCurrentPlayer() == game.getDuelState()
+						.getDefendant())) {
+			if (game.getDuelState().getWinner() == game.getDuelState()
+					.getInitiator()) {
+				// Update score of winner
+				game.getDuelState().getWinner().getScore()
+						.updateScore(area.getValueOfArea());
+				// Update owner of area
+				area.setOwner(game.getDuelState().getWinner());
+			}
+			// Set current player to initiator of duel, so that correct next
+			// player
+			// is set afterwards
+			game.setCurrentPlayer(game.getDuelState().getInitiator());
+			// Clean up after duel
+			game.getDuelState().finishDuel();
+		}
+	}
+	
+	protected void playCorrectAnswerSound() {
+		correct.play();
+	}
+	
+	protected void playWrongAnswerSound() {
+		wrong.play();
+	}
+
 	public Area getArea() {
 		return area;
 	}

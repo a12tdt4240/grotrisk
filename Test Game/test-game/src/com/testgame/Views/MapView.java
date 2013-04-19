@@ -219,9 +219,10 @@ public class MapView extends AbstractView {
 
 			// Increase the number of plays.
 			game.increasePlaysCounter();
+
 			// Go to question screen
 			if (game.getQuestionView() == null)
-				game.setQuestionView(new QuestionView(game));
+				game.setQuestionView(new QuizView(game));
 			
 			game.getQuestionView().setArea(areaView.getArea());
 			game.setScreen(game.getQuestionView());
