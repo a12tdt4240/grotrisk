@@ -2,7 +2,7 @@ package com.testgame.Models;
 
 public class Question {
 
-	Category category;
+	private Category category;
 
 	public Question() {}
 	
@@ -17,6 +17,10 @@ public class Question {
 	 */
 	public Category getCategory() {
 		return category;
+	}
+	
+	public void setCategory(Category cat) {
+		category = cat;
 	}
 
 }

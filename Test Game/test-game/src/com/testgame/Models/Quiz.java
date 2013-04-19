@@ -6,8 +6,8 @@ import com.badlogic.gdx.utils.OrderedMap;
 
 public class Quiz extends Question implements Serializable {
 
-	String questionText;
-	Alternative alt1, alt2, alt3, alt4;
+	private String questionText;
+	private Alternative alt1, alt2, alt3, alt4;
 
 	public Quiz() {super();}	
 	
@@ -60,7 +60,7 @@ public class Quiz extends Question implements Serializable {
 		this.alt2 = json.readValue("alt2", Alternative.class, jsonData);
 		this.alt3 = json.readValue("alt3", Alternative.class, jsonData);
 		this.alt4 = json.readValue("alt4", Alternative.class, jsonData);
-		this.category = json.readValue("category", Category.class, jsonData);
+		this.setCategory(json.readValue("category", Category.class, jsonData));
 	}
 	
 	public String toString() {

@@ -4,9 +4,11 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.OrderedMap;
 
+/**
+ * An alternative that contains the alternatives' text and information about 
+ * if it's the right answer or not.
+ */
 public class Alternative implements Serializable {
-
-	// Et alternativ har en tekst og holder informasjon om det er det riktige svaret.
 	
 	private String text;
 	private boolean isCorrectAnswer;
@@ -37,14 +39,10 @@ public class Alternative implements Serializable {
 	}
 
 	@Override
-	public void write(Json json) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void write(Json json) {}
 
 	@Override
 	public void read(Json json, OrderedMap<String, Object> jsonData) {
-		// TODO Auto-generated method stub
 		this.text = json.readValue("text", String.class, jsonData);
 		this.isCorrectAnswer = json.readValue("isCorrectAnswer", Boolean.class, jsonData);
 	}

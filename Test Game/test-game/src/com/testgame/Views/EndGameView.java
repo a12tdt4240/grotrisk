@@ -10,18 +10,18 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.testgame.MyGame;
 import com.testgame.Models.Constants;
 
-public class EndGameScreen extends AbstractMenuScreen {
+public class EndGameView extends AbstractPanelView {
 
-	TextButton mainMenuButton;
-	Label infoLabel;
-	Label winnerLabel;
+	private TextButton mainMenuButton;
+	private Label infoLabel;
+	private Label winnerLabel;
 
 	/**
 	 * Constructor keeping a reference to the main Game class.
 	 * 
 	 * @param game
 	 */
-	public EndGameScreen(MyGame game) {
+	public EndGameView(MyGame game) {
 		super(game);
 	}
 
@@ -65,7 +65,7 @@ public class EndGameScreen extends AbstractMenuScreen {
 				// with owners, and the
 				// play counter.
 				game.resetGame();
-				game.setScreen(new MainMenuScreen(game));
+				game.setScreen(new MainMenuView(game));
 			}
 		});
 

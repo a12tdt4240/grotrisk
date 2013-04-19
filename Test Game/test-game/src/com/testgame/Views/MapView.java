@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -17,17 +18,19 @@ import com.testgame.MyGame;
 import com.testgame.Models.Area;
 import com.testgame.Models.Map;
 
-public class MapView extends AbstractScreen {
+public class MapView extends AbstractView {
 	// Model of the map
 	private Map mapModel;
 	// All AreaViews belonging to the map
 	private ArrayList<AreaView> areaViews;
+	// Holds our score view
+	private ScoreView scoreView;
 	// Common listener for all areas
 	private InputEventListener listener;
 	// Background, often a sea image.
 	private NinePatch background;
 
-	ArrayList<Image> attackImages;
+	private ArrayList<Image> attackImages;
 
 	public MapView(MyGame game, Map model) {
 		super(game);
@@ -35,6 +38,7 @@ public class MapView extends AbstractScreen {
 		listener = new InputEventListener();
 		this.attackImages = new ArrayList<Image>();
 		makeAreaViews();
+		this.scoreView = new ScoreView(game);
 	}
 
 	/**
@@ -123,38 +127,8 @@ public class MapView extends AbstractScreen {
 
 	public void resize(int width, int height) {
 		super.resize(width, height);
-
-		addListeners();
-		addAreaViewsAsActors();
-
-	}
-
-	/**
-	 * Updates and draws objects.
-	 **/
-	@Override
-	public void render(float delta) {
-
-		// Draws the background
-		batch.begin();
-		background
-				.draw(batch,
-						(Gdx.graphics.getWidth() - Gdx.graphics.getWidth() * 1.0f) / 2,
-						(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 1.0f) / 2,
-						Gdx.graphics.getWidth() * 1.0f,
-						Gdx.graphics.getHeight() * 1.0f);
-		batch.end();
-
-	}
-
-	/**
-	 * Called when this screen is set as the screen with game.setScreen();
-	 */
-	public void show() {
-		super.show();
-
-		stage = new Stage();
-
+		scoreView.resize(width, height);
+		
 		atlas = new TextureAtlas("skins/mainmenu.atlas");
 
 		skin = new Skin();
@@ -164,7 +138,62 @@ public class MapView extends AbstractScreen {
 				atlas.findRegion("background")), 190, 190, 114, 292);
 		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
 		batch = new SpriteBatch();
+		
+		
+		addListeners();
+		addAreaViewsAsActors();
 
+		// Add scoreViews' actors to this stage
+		Actor[] scoreActors = scoreView.stage.getActors().toArray();
+		Gdx.app.log("TEST", "" + scoreActors.length);
+		for (int i = 0; i < scoreActors.length; i++) {
+			stage.addActor(scoreActors[i]);
+		}
+
+		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
+		// this stage
+	}
+
+	/**
+	 * Updates and draws objects.
+	 **/
+	@Override
+	public void render(float delta) {
+		super.render(delta);
+		// Draws the background
+		batch.begin();
+		background
+				.draw(batch,
+						(Gdx.graphics.getWidth() - Gdx.graphics.getWidth() * 1.0f) / 2,
+						(Gdx.graphics.getHeight() - Gdx.graphics.getHeight() * 1.0f) / 2,
+						Gdx.graphics.getWidth() * 1.0f,
+						Gdx.graphics.getHeight() * 1.0f);
+		batch.end();
+		
+		// render ScoreView
+		scoreView.render(delta);
+		
+		stage.act(delta);
+		stage.draw();
+		
+		// Draw the attack icons
+		batch.begin();
+		for ( int i = 0; i < attackImages.size(); i++) {
+			attackImages.get(i).draw(batch, 1);
+		}
+		batch.end();
+	}
+
+	/**
+	 * Called when this screen is set as the screen with game.setScreen();
+	 */
+	public void show() {
+		super.show();
+
+		stage = new Stage();
+		
+		// show the score view
+		scoreView.show();
 	}
 
 	/**
@@ -191,8 +220,16 @@ public class MapView extends AbstractScreen {
 			// Increase the number of plays.
 			game.increasePlaysCounter();
 			// Go to question screen
-			game.setScreen(new QuestionScreen(game, areaView.getArea()));
+			game.setScreen(new QuestionView(game, areaView.getArea()));
 
 		}
+	}
+	
+	@Override
+	public void dispose() {
+		Gdx.app.debug("testgame", "Disposing MapView");
+		super.dispose();
+
+		scoreView.dispose();
 	}
 }

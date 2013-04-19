@@ -1,7 +1,7 @@
 [
 	{
 		"class": "com.testgame.Models.Quiz",
-		"questionText": "Hva er den største byen i Norden?",
+		"questionText": "Hva er den st\u00F8rste byen i Norden?",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
 			"text": "Oslo",
@@ -9,7 +9,7 @@
 		},
 		"alt2": {
 			"class": "com.testgame.Models.Alternative",
-			"text": "København",
+			"text": "K\u00F8benhavn",
 			"isCorrectAnswer": false
 		},
 		"alt3":{
@@ -30,7 +30,7 @@
 	},
 	{
 		"class": "com.testgame.Models.Quiz",
-		"questionText": "Facebook ble åpnet for alle i..",
+		"questionText": "Facebook ble \u00E5pnet for alle i..",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
 			"text": "2004",
@@ -88,7 +88,7 @@
 	},
 {
 		"class": "com.testgame.Models.Quiz",
-		"questionText": "Hva er verdensrekorden på 100m?",
+		"questionText": "Hva er verdensrekorden p\u00E5 100m?",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
 			"text": "9.79",
@@ -178,7 +178,7 @@
 		"questionText": "Hvor ligger Trollveggen?",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
-			"text": "Sør-Trøndelag",
+			"text": "S\u00F8r-Tr\u00F8ndelag",
 			"isCorrectAnswer": false
 		},
 		"alt2": {
@@ -193,12 +193,243 @@
 		},
 		"alt4":{
 			"class": "com.testgame.Models.Alternative",
-			"text": "Møre og Romsdal",
+			"text": "M\u00F8re og Romsdal",
 			"isCorrectAnswer": true
 		},
 		"category": {
 			"class": "com.testgame.Models.Category",
 			"category": "Geografi"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvilken energiressurs er Norges viktigste?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Kull",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Olje",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Vannkraft",
+			"isCorrectAnswer": true
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Telys",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Naturfag"
+		}
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvor mange g\u00E5r det p\u00E5 et snes?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "30",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "20",
+			"isCorrectAnswer": true
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "12",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "5",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Benevning"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvor mange fot g\u00E5r det p\u00E5 en alen?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "10",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "1.5",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "3",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "2",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Benevning"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvilket land er kjent som portvinens hjemland?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Italia",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Spania",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Portugal",
+			"isCorrectAnswer": true
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Tyrkia",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Mix"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvor h\u00F8y kan en struts bli?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "2 meter",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "2.5 meter",
+			"isCorrectAnswer": true
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "1 meter",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "3 meter",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Naturfag"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hva heter Japans hellige fjell?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Kosmo",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Shogikashira",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Fujiyama",
+			"isCorrectAnswer": true
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Misugaki",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Geografi"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvilken fugl er Norges nasjonalfugl?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Fossekallen",
+			"isCorrectAnswer": true
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Svane",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Hvithode\u00F8rn",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Linerle",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Mix"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hva er registreringsnummeret til Donalds bil?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "KH932782",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "613",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "313",
+			"isCorrectAnswer": true
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "181",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Mix"
 		}
 
 	}

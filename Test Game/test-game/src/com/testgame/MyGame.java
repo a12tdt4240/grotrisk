@@ -12,8 +12,8 @@ import com.testgame.Models.Map;
 import com.testgame.Models.MapFactory;
 import com.testgame.Models.Player;
 import com.testgame.Models.QuestionPool;
-import com.testgame.Views.GameScreen;
-import com.testgame.Views.MainMenuScreen;
+import com.testgame.Views.MainMenuView;
+import com.testgame.Views.MapView;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
@@ -22,7 +22,7 @@ public class MyGame extends Game implements ApplicationListener {
 
 	public static final String SPRITE = "skins/mainmenu.atlas";
 
-	private GameScreen gameScreen;
+	private MapView gameScreen;
 	private Map map;
 	private Music music;
 	private QuestionPool questionPool;
@@ -39,6 +39,9 @@ public class MyGame extends Game implements ApplicationListener {
 		music.setLooping(true);
 		music.play();
 
+		// Start at turn zero
+		playsCounter = 0;
+
 		// Generate question pool.
 		questionPool = new QuestionPool();
 
@@ -47,29 +50,31 @@ public class MyGame extends Game implements ApplicationListener {
 
 		// Create players.
 		players = createPlayers(2);
+		
 		// Set player colors TO BE UPDATED WITH COLOR CHOOSER VIEW ETC
-		// TODO Remove
 		players.get(0).setColor(Color.DARK_GRAY);
 		players.get(1).setColor(Color.ORANGE);
-		
-		// Set the current player. A random player.
+
+		// Set the current player. A random player to start.
 		setCurrentPlayer(players.get((int) Math.floor(Math.random()
 				* players.size())));
-		playsCounter = 0;
 
 		// Give out initial areas
 		setInitialOwnership();
 
+		// create a DuelState for duels
 		duel = new DuelState(this);
 
 		// Create the game screen with selected map model
-		gameScreen = new GameScreen(this, map);
+		gameScreen = new MapView(this, map);
 
 		// Create and launch main menu screen.
-		setScreen(new MainMenuScreen(this));
+		setScreen(new MainMenuView(this));
 	}
 
-	// Set initial ownership
+	/**
+	 * Set initial ownership
+	 */
 	public void setInitialOwnership() {
 		map.getAreas().get(0).setOwner(getPlayers().get(0));
 		map.getAreas().get(map.getAreas().size() - 1)
@@ -173,10 +178,21 @@ public class MyGame extends Game implements ApplicationListener {
 		return currentPlayer;
 	}
 
+	/**
+	 * Returns the current players
+	 * 
+	 * @return
+	 */
 	public ArrayList<Player> getPlayers() {
 		return players;
 	}
 
+	/**
+	 * Creates a list of x Players
+	 * 
+	 * @param numberOfPlayers
+	 * @return a list of players created
+	 */
 	public ArrayList<Player> createPlayers(int numberOfPlayers) {
 		ArrayList<Player> playersCreated = new ArrayList<Player>();
 
@@ -205,21 +221,34 @@ public class MyGame extends Game implements ApplicationListener {
 		return questionPool;
 	}
 
-	@Override
-	public void dispose() {
-		music.dispose();
-	}
-
+	/**
+	 * Gets current GameScreen object
+	 * 
+	 * @return
+	 */
 	public Screen getGameScreen() {
 		return gameScreen;
 	}
 
+	/**
+	 * Increase the turn value
+	 */
 	public void increasePlaysCounter() {
 		playsCounter++;
 	}
 
+	/**
+	 * Returns current turn value
+	 * 
+	 * @return
+	 */
 	public int getPlaysCounter() {
 		return playsCounter;
+	}
+
+	@Override
+	public void dispose() {
+		music.dispose();
 	}
 
 }

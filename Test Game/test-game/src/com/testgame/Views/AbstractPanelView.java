@@ -1,7 +1,6 @@
 package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,12 +11,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
 
-public abstract class AbstractMenuScreen extends AbstractScreen {
+public abstract class AbstractPanelView extends AbstractView {
 	
 	// Our NinePatches
 	NinePatch panel;
 	NinePatch background;
-	
 	
 	
 	/**
@@ -25,7 +23,7 @@ public abstract class AbstractMenuScreen extends AbstractScreen {
 	 * 
 	 * @param game
 	 */
-	public AbstractMenuScreen(MyGame game) {
+	public AbstractPanelView(MyGame game) {
 		super(game);
 	}
 
@@ -34,8 +32,7 @@ public abstract class AbstractMenuScreen extends AbstractScreen {
 	 **/
 	@Override
 	public void render(float delta) {
-
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		super.render(delta);
 
 		stage.act(delta);
 
@@ -78,9 +75,7 @@ public abstract class AbstractMenuScreen extends AbstractScreen {
 
 		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
 		batch = new SpriteBatch();
-
 	}
-
 	/**
 	 * Called when the current screen changes from this to a different screen.
 	 * Remember to dispose objects.
@@ -122,13 +117,7 @@ public abstract class AbstractMenuScreen extends AbstractScreen {
 	@Override
 	public void dispose() {
 		super.dispose();
-		Gdx.app.debug("testgame", "Disposing Main Menu");
 
-		atlas.dispose();
-
-		font.dispose();
-		skin.dispose();
-		batch.dispose();
 		panel.getTexture().dispose();
 		background.getTexture().dispose();
 	}

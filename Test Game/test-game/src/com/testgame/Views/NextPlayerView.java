@@ -11,17 +11,18 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.testgame.MyGame;
 import com.testgame.Models.Constants;
 
-public class NextPlayerScreen extends AbstractMenuScreen {
+public class NextPlayerView extends AbstractPanelView {
 
-	TextButton nextPlayerButton;
-	Label nextPlayerInfo;
-	Label nextPlayerLabel;
+	// Our GUI elements
+	private TextButton nextPlayerButton;
+	private Label nextPlayerInfo;
+	private Label nextPlayerLabel;
 	
 	/**
 	 * Constructor keeping a reference to the main Game class.
 	 * @param game
 	 */
-	public NextPlayerScreen(MyGame game) {
+	public NextPlayerView(MyGame game) {
 		super(game);
 	}
 
@@ -44,7 +45,7 @@ public class NextPlayerScreen extends AbstractMenuScreen {
 	 */
 	public void initializeButtons() {
 		
-		// Button initalization
+		// Button initialization
 		nextPlayerButton = new TextButton(Constants.NEXTPLAYER_BUTTON, buttonStyle);
 		nextPlayerButton.setWidth(458);
 		nextPlayerButton.setHeight(88);
@@ -78,7 +79,7 @@ public class NextPlayerScreen extends AbstractMenuScreen {
 		nextPlayerLabel.setY(Gdx.graphics.getHeight() / 2 - nextPlayerLabel.getHeight() / 2 + Gdx.graphics.getHeight() * 0.045f);
 		nextPlayerLabel.scale(0.8f, 0.8f);
 
-		
+		// Add buttons to stage
 		this.stage.addActor(nextPlayerButton);
 	}
 	
@@ -88,7 +89,7 @@ public class NextPlayerScreen extends AbstractMenuScreen {
 	 */
 	private void setCorrectScreen() {
 		if(game.getDuelState().isDuel()) {
-			game.setScreen(new QuestionScreen(game, game.getDuelState().getArea()));
+			game.setScreen(new QuestionView(game, game.getDuelState().getArea()));
 		} else {
 			game.setScreen(game.getGameScreen());
 		}

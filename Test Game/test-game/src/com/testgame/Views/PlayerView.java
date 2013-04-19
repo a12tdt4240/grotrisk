@@ -1,7 +1,6 @@
 package com.testgame.Views;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 import com.badlogic.gdx.Gdx;
@@ -19,35 +18,34 @@ import com.testgame.MyGame;
 import com.testgame.Models.Constants;
 import com.testgame.Models.Player;
 
-public class PlayerView extends AbstractMenuScreen {
+public class PlayerView extends AbstractPanelView {
 
-	ArrayList<Color> colors;
+	private ArrayList<Color> colors;
 
-	TextField nameField;
-	TextFieldStyle nameFieldStyle;
-	TextButton okButton;
-	ArrayList<Button> colorButtons;
-	ButtonStyle colorButtonStyle;
-	Drawable colorButton;
-	Drawable colorButtonChecked;
-	Color selectedColor;
+	private TextField nameField;
+	private TextFieldStyle nameFieldStyle;
+	private TextButton okButton;
+	private ArrayList<Button> colorButtons;
+	private ButtonStyle colorButtonStyle;
+	private Drawable colorButton;
+	private Drawable colorButtonChecked;
+	private Color selectedColor;
 
-	ButtonGroup buttonGroup;
+	private ButtonGroup buttonGroup;
 
-	int currentPlayer;
-	ArrayList<Player> players;
+	private int currentPlayer;
+	private ArrayList<Player> players;
 
-	float colorButtonWidth = 0;
-	float scale;
+	private float colorButtonWidth = 0;
+	private float scale;
 
 	public PlayerView(MyGame game) {
 		super(game);
 		this.colors = new ArrayList<Color>();
 		Collections.addAll(colors, Color.CYAN, Color.DARK_GRAY, Color.LIGHT_GRAY, Color.MAGENTA,
 				Color.ORANGE, Color.YELLOW);
-		
+		this.selectedColor = null;
 		this.colorButtons = new ArrayList<Button>();
-		this.selectedColor = colors.get(0);
 		this.players = game.getPlayers();
 		this.currentPlayer = 0;
 	}
@@ -76,6 +74,7 @@ public class PlayerView extends AbstractMenuScreen {
 	 * Creates the buttons for drawing.
 	 */
 	public void initializeButtons() {
+		selectedColor = colors.get(0);
 		buttonGroup = new ButtonGroup();
 		buttonGroup.setMaxCheckCount(1);
 		buttonGroup.setUncheckLast(true);
@@ -114,7 +113,7 @@ public class PlayerView extends AbstractMenuScreen {
 					initializeButtons();
 				} else {
 					game.setInitialOwnership();
-					game.setScreen(new NextPlayerScreen(game));
+					game.setScreen(new NextPlayerView(game));
 				}
 			}
 		});
