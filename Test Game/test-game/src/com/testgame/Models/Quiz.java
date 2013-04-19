@@ -48,13 +48,12 @@ public class Quiz extends Question implements Serializable {
 
 	@Override
 	public void write(Json json) {
-		// TODO Auto-generated method stub
+		// Does nothing
 		
 	}
 
 	@Override
 	public void read(Json json, OrderedMap<String, Object> jsonData) {
-		// TODO Auto-generated method stub
 		this.questionText = json.readValue("questionText", String.class, jsonData);
 		this.alt1 = json.readValue("alt1", Alternative.class, jsonData);
 		this.alt2 = json.readValue("alt2", Alternative.class, jsonData);
