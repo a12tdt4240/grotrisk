@@ -54,8 +54,8 @@ public class MyGame extends Game implements ApplicationListener {
 
 		// Create players.
 		players = createPlayers(2);
-
-		// Set player init colors so the map can be drawn.
+		
+		// Set player colors TO BE UPDATED WITH COLOR CHOOSER VIEW ETC
 		players.get(0).setColor(Color.DARK_GRAY);
 		players.get(1).setColor(Color.ORANGE);
 

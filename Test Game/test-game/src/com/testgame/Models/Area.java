@@ -20,8 +20,6 @@ public class Area implements Serializable {
 	
 	// An area has an owner. Player 1, Player 2 etc. or null;
 	private Player owner;
-	// An area holds a question.
-	private Question question;
 	// The visual representation of the area.
 	private Drawable areaDrawable;
 	
@@ -103,24 +101,6 @@ public class Area implements Serializable {
 	 */
 	public Player getOwner() {
 		return owner;
-	}
-	
-	/**
-	 * Sets provided question as question of area
-	 * 
-	 * @param question
-	 */
-	public void setQuestion(Question question) {
-		this.question = question;
-	}
-	
-	/**
-	 * Provides the question of the area
-	 * 
-	 * @return Question
-	 */
-	public Question getQuestion() {
-		return question;
 	}
 	
 	public int getValueOfArea() {
