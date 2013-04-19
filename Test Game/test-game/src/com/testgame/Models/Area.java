@@ -28,13 +28,13 @@ public class Area implements Serializable {
 	private ArrayList<Observer> observers;
 
 	// Holds color of area
-	private Color color = Color.WHITE;
+	private Color color = Color.LIGHT_GRAY;
 
 	private int value, xPosition, yPosition;
 	// A list of neighboring areas. Areas that can be moved to in one move.
 	private ArrayList<Area> neighbors;
 	private Integer[] neighborsMap;
-
+	
 	private Skin skin;
 	private TextureAtlas atlas;
 	
