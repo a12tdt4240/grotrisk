@@ -122,18 +122,13 @@ public class AlternativeGroupView {
 		return button;
 	}
 	
+	
+	
 	public void dispose() {
 		font1.dispose();
 		font2.dispose();
 		font3.dispose();
 		font4.dispose();
-	}
-	
-	public void reset() {
-		font1.setScale(1);
-		font2.setScale(1);
-		font3.setScale(1);
-		font4.setScale(1);
 	}
 	
 }

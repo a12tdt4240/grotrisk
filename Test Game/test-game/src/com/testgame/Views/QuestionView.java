@@ -171,7 +171,7 @@ public class QuestionView extends AbstractPanelView {
 		Timer.instance.clear();
 		currentTime = 0;
 		hasAnswered = false;
-		altGroup.reset();
+		altGroup.dispose();
 	}
 	
 	public void dispose() {
