@@ -36,7 +36,7 @@ public class AreaView extends Button implements Observer {
 		labelStyle.font = font; 
 		
 		value = new Label("" + getModel().getValueOfArea(), labelStyle);
-		value.setColor(Color.BLACK);
+		value.setColor(Color.WHITE);
 		value.setTouchable(Touchable.disabled);
 		add(value);
 		
