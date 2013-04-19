@@ -37,6 +37,11 @@ public class SkinSingleton {
 
 	
 	private SkinSingleton() {
+		init();
+
+	}
+	
+	private void init() {
 		mapAtlas = new TextureAtlas(MyGame.MAP_ATLAS_PATH);
 		menuAtlas = new TextureAtlas(MyGame.MENU_ATLAS_PATH);
 
@@ -80,7 +85,6 @@ public class SkinSingleton {
 		textFieldStyle = new TextFieldStyle(new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false), Color.BLACK,
 				menuSkin.getDrawable("cursor"), menuSkin.getDrawable("selected"),
 				menuSkin.getDrawable("textFieldBg"));
-
 	}
 
 	public static SkinSingleton getInstance() {
@@ -88,13 +92,13 @@ public class SkinSingleton {
 	}
 	
 	public void dispose() {
-//		mapSkin.dispose();
-//		menuSkin.dispose();
-//		mapAtlas.dispose();
-//		menuAtlas.dispose();
-//		menuBackground.getTexture().dispose();
-//		panel.getTexture().dispose();
-//		font.dispose();
+		mapSkin.dispose();
+		menuSkin.dispose();
+		mapAtlas.dispose();
+		menuAtlas.dispose();
+		menuBackground.getTexture().dispose();
+		panel.getTexture().dispose();
+		font.dispose();
 	}
 	
 	public Skin getMapSkin() {
@@ -160,5 +164,10 @@ public class SkinSingleton {
 		labelStyle.font.setScale(1);
 		checkBoxStyle.font.setScale(1);
 		textFieldStyle.font.setScale(1);
+	}
+	
+	// For the dumb android VM!!!
+	public void resetSingleton() {
+		init();
 	}
 }

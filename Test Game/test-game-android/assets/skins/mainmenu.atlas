@@ -18,7 +18,7 @@ panel
   orig: 424, 289
   offset: 0, 0
   index: -1
-background
+textFieldBg
   rotate: false
   xy: 515, 867
   size: 491, 79

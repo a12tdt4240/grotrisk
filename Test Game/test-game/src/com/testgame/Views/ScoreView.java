@@ -156,7 +156,7 @@ public class ScoreView extends AbstractView implements Observer {
 	 */
 	@Override
 	public void dispose() {
-		batch.dispose();
+		super.dispose();
 	}
 
 	/**

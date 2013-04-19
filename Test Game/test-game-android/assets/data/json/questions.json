@@ -290,7 +290,7 @@
 	},
 {
 		"class": "com.testgame.Models.Quiz",
-		"questionText": "Hvilket land er kjent som portvinens hjemland?",
+		"questionText": "Portvinens hjemland er...",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
 			"text": "Italia",
@@ -406,7 +406,7 @@
 	},
 {
 		"class": "com.testgame.Models.Quiz",
-		"questionText": "Hva er registreringsnummeret til Donalds bil?",
+		"questionText": "Hva er reg. nummeret til Donalds bil?",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
 			"text": "KH932782",
@@ -430,6 +430,586 @@
 		"category": {
 			"class": "com.testgame.Models.Category",
 			"category": "Mix"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvor mange delstater er det i USA?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "48",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "49",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "50",
+			"isCorrectAnswer": true
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "52",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Geografi"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hva er det norske navnet for OL-grenen skeet?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Banel\u00F8p",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Rullesk\u00F8yter",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Skyting",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Leirdueskyting",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Sport"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Kon-Tiki krysset hvilket hav?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Stillehavet",
+			"isCorrectAnswer": true
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Atlanterhavet",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Indiahavet",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Sør-Kina-havet",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Historie"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hva er en kumquat?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "En grønnsak",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "En frukt",
+			"isCorrectAnswer": true
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Et pungdyr",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "En hatt",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Mix"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Krigen som varte fra 1337 til 1453 kalles?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Korstogene",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Hundre\u00E5rskrigen",
+			"isCorrectAnswer": true
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Elite-krigen",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Germanerkrigen",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Historie"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Frans av Assisi stiftet hvilken orden?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Fransiskanerordenen",
+			"isCorrectAnswer": true
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Tempelridderordenen",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Assasinerordenen",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Johanitterordenen",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Historie"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvor lang er mennenes skiskytteretapper?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "10 km",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "5 km",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "15 km",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "7,5 km",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Sport"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Helt til 1975 var Angola underlagt ..",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Frankrike",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Nederland",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Spania",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Portugal",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Historie"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Verdens mest vannrike elv heter ..",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Amazonas",
+			"isCorrectAnswer": true
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Nilen",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Mississippi",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Yangtze",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Geografi"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "I Yatzy betyr liten straight ..",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "1-2-3-4-5",
+			"isCorrectAnswer": true
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "2-3-4-5-6",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "1-1-1-1-1",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "1-2-3-4-5-6",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Mix"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hva het de romerske keisernes livvakter?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Legion\u00E6rer",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Principier",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Triarii",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Pretorianer",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Historie"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hva kalles forskningen på bakterier og virus?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Mikrobiologi",
+			"isCorrectAnswer": true
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Virusologi",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Bactologi",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Nanobiologi",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Naturfag"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvilket spill forkortes WoW?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Warriors of Warcraft",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "World of Warriors",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Wind can open Windows",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "World of Warcraft",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Mix"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Folk med c\u00F8liaki sliter med ..",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Karbohydrat",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Gluten",
+			"isCorrectAnswer": true
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Glukose",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "\u00F8l",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Mix"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvilke av disse var ikke på Jalta i 1945?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Franklin D. Roosevelt",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Winston Churchill",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Josef Stalin",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Adolf Hitler",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Historie"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvilken del av kroppen sitter tibia i?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Beinet",
+			"isCorrectAnswer": true
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Hodet",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Armen",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Hoften",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Naturfag"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Dette landet er nr 4 i befolkningsantall.",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Brasil",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Indonesia",
+			"isCorrectAnswer": true
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "USA",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Pakistan",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Geografi"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Hvor spiser de kimchi?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Korea",
+			"isCorrectAnswer": true
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Japan",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Indonesia",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "New Zealand",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Geografi"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Kortspill spilt av en person kalles ..",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Kortorama",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Egenspill",
+			"isCorrectAnswer": false
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Kabel",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Kabal",
+			"isCorrectAnswer": true
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Geografi"
+		}
+
+	},
+{
+		"class": "com.testgame.Models.Quiz",
+		"questionText": "Logikkens far var hvilken filosof?",
+		"alt1": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Sokrates",
+			"isCorrectAnswer": false
+		},
+		"alt2": {
+			"class": "com.testgame.Models.Alternative",
+			"text": "Aristoteles",
+			"isCorrectAnswer": true
+		},
+		"alt3":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Platon",
+			"isCorrectAnswer": false
+		},
+		"alt4":{
+			"class": "com.testgame.Models.Alternative",
+			"text": "Demokrit",
+			"isCorrectAnswer": false
+		},
+		"category": {
+			"class": "com.testgame.Models.Category",
+			"category": "Historie"
 		}
 
 	}

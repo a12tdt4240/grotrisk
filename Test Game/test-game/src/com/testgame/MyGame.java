@@ -39,6 +39,9 @@ public class MyGame extends Game implements ApplicationListener {
 
 	@Override
 	public void create() {
+		
+		// for the dumb Android VM!!
+		SkinSingleton.getInstance().resetSingleton();
 		// Load and start playing music.
 		music = Gdx.audio.newMusic(Gdx.files.getFileHandle(
 				"data/Riskspillet.mp3", FileType.Internal));
@@ -260,14 +263,14 @@ public class MyGame extends Game implements ApplicationListener {
 	@Override
 	public void dispose() {
 		music.dispose();
-		SkinSingleton.getInstance().dispose();
+		
 		if (nextPlayerView != null)
 			nextPlayerView.dispose();
 		if (questionView != null)
 			questionView.dispose();
 		if (mapView != null)
 			mapView.dispose();
-		
+		SkinSingleton.getInstance().dispose();
 	}
 
 	public NextPlayerView getNextPlayerView() {

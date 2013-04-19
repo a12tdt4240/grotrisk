@@ -228,7 +228,6 @@ public class MapView extends AbstractView {
 	public void dispose() {
 		Gdx.app.debug("testgame", "Disposing MapView");
 		super.dispose();
-
 		scoreView.dispose();
 	}
 }
