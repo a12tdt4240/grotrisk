@@ -113,7 +113,11 @@ public class PlayerView extends AbstractPanelView {
 					initializeButtons();
 				} else {
 					game.setInitialOwnership();
-					game.setScreen(new NextPlayerView(game));
+					
+					if (game.getNextPlayerView() == null)
+						game.setNextPlayerView(new NextPlayerView(game));
+					
+					game.setScreen(game.getNextPlayerView());
 				}
 			}
 		});

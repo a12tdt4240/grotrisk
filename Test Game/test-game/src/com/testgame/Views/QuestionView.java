@@ -28,6 +28,7 @@ public class QuestionView extends AbstractPanelView {
 	private int countDownTime = 20;
 	private int currentTime = 0;
 	private Area area;
+
 	private InputEventListener listener;
 	private ArrayList<AlternativeView> alternatives;
 
@@ -38,12 +39,10 @@ public class QuestionView extends AbstractPanelView {
 	 * 
 	 * @param game
 	 */
-	public QuestionView(MyGame game, Area area) {
+	public QuestionView(MyGame game) {
 		super(game);
-		this.area = area;
 		correct = Gdx.audio.newSound(Gdx.files.internal("data/correct.wav"));
 		wrong = Gdx.audio.newSound(Gdx.files.internal("data/wrong.wav"));
-		startTimer();
 		listener = new InputEventListener();
 	}
 
@@ -76,7 +75,10 @@ public class QuestionView extends AbstractPanelView {
 		if (isGameFinished()) {
 			game.setScreen(new EndGameView(game));
 		} else {
-			game.setScreen(new NextPlayerView(game));
+			if (game.getNextPlayerView() == null)
+				game.setNextPlayerView(new NextPlayerView(game));
+			
+			game.setScreen(game.getNextPlayerView());
 		}
 	}
 
@@ -156,7 +158,7 @@ public class QuestionView extends AbstractPanelView {
 		// Stop the count down clock. Not 100% sure if this is working
 		// correctly.
 		Timer.instance.clear();
-
+		currentTime = 0;
 		correct.dispose();
 		wrong.dispose();
 	}
@@ -182,6 +184,7 @@ public class QuestionView extends AbstractPanelView {
 			Label altButton = (Label) event.getTarget();
 			String altName = altButton.getText().toString();
 			removeEventListeners();
+			
 			if (altName.equals(currentQuestion.getAlt1().getName())) {
 				handleEvent(altButton, currentQuestion.getAlt1());
 			} else if (altName.equals(currentQuestion.getAlt2().getName())) {
@@ -301,5 +304,19 @@ public class QuestionView extends AbstractPanelView {
 		// Move on to the next player screen.
 		game.switchCurrentPlayer();
 		nextPlayer();
+	}
+	
+	public Area getArea() {
+		return area;
+	}
+
+	public void setArea(Area area) {
+		this.area = area;
+	}
+	
+	@Override
+	public void show() {
+		super.show();
+		startTimer();
 	}
 }
