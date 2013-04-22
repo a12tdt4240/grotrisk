@@ -29,7 +29,7 @@ public class AreaView extends Button implements Observer {
 		setY(calculateYPosition());
 		
 		value = new Label("" + getModel().getValueOfArea(), SkinSingleton.getInstance().getLabelStyle());
-		value.setColor(Color.BLACK);
+		value.setColor(Color.WHITE);
 		value.setFontScale(0.75f);
 		value.setTouchable(Touchable.disabled);
 		add(value);
