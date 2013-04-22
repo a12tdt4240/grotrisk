@@ -9,7 +9,7 @@
 		},
 		"alt2": {
 			"class": "com.testgame.Models.Alternative",
-			"text": "K\u00F8benhavn",
+			"text": "København",
 			"isCorrectAnswer": false
 		},
 		"alt3":{
