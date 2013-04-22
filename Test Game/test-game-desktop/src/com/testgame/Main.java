@@ -1,6 +1,6 @@
 package com.testgame;
 
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
@@ -12,6 +12,6 @@ public class Main {
 		cfg.width = 1024;
 		cfg.height = 768;
 		
-		new LwjglApplication(new MyGame(), cfg);
+		new LwjglApplication(new Takeover(), cfg);
 	}
 }

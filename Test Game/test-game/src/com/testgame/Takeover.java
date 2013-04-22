@@ -15,13 +15,11 @@ import com.testgame.Models.QuestionPool;
 import com.testgame.Models.SkinSingleton;
 import com.testgame.Views.MainMenuView;
 import com.testgame.Views.MapView;
-import com.testgame.Views.NextPlayerView;
-import com.testgame.Views.QuestionView;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 
-public class MyGame extends Game implements ApplicationListener {
+public class Takeover extends Game implements ApplicationListener {
 
 	public static final String MENU_ATLAS_PATH = "skins/mainmenu.atlas";
 	public static final String MAP_ATLAS_PATH = "data/maps/map.atlas";
@@ -34,8 +32,6 @@ public class MyGame extends Game implements ApplicationListener {
 	private Player currentPlayer;
 	private DuelState duel;
 	private int playsCounter;
-	private NextPlayerView nextPlayerView;
-	private QuestionView questionView;
 
 	@Override
 	public void create() {
@@ -264,29 +260,8 @@ public class MyGame extends Game implements ApplicationListener {
 	public void dispose() {
 		music.dispose();
 		
-		if (nextPlayerView != null)
-			nextPlayerView.dispose();
-		if (questionView != null)
-			questionView.dispose();
 		if (mapView != null)
 			mapView.dispose();
 		SkinSingleton.getInstance().dispose();
 	}
-
-	public NextPlayerView getNextPlayerView() {
-		return nextPlayerView;
-	}
-
-	public void setNextPlayerView(NextPlayerView nextPlayerView) {
-		this.nextPlayerView = nextPlayerView;
-	}
-
-	public QuestionView getQuestionView() {
-		return questionView;
-	}
-
-	public void setQuestionView(QuestionView questionView) {
-		this.questionView = questionView;
-	}
-
 }

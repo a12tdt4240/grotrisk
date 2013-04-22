@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 import com.testgame.Models.Constants;
 import com.testgame.Models.Player;
 import com.testgame.Models.SkinSingleton;
@@ -37,7 +37,7 @@ public class PlayerView extends AbstractPanelView {
 	private float colorButtonWidth = 0;
 	private float scale;
 
-	public PlayerView(MyGame game) {
+	public PlayerView(Takeover game) {
 		super(game);
 		this.colors = new ArrayList<Color>();
 		Collections.addAll(colors, Color.RED, Color.DARK_GRAY, Color.GREEN, Color.BLUE,
@@ -105,11 +105,8 @@ public class PlayerView extends AbstractPanelView {
 					initializeButtons();
 				} else {
 					game.setInitialOwnership();
-					
-					if (game.getNextPlayerView() == null)
-						game.setNextPlayerView(new NextPlayerView(game));
-					
-					game.setScreen(game.getNextPlayerView());
+
+					game.setScreen(new NextPlayerView(game));
 				}
 			}
 		});

@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 
 public class SkinSingleton {
 	private static final SkinSingleton instance = new SkinSingleton();
@@ -42,8 +42,8 @@ public class SkinSingleton {
 	}
 	
 	private void init() {
-		mapAtlas = new TextureAtlas(MyGame.MAP_ATLAS_PATH);
-		menuAtlas = new TextureAtlas(MyGame.MENU_ATLAS_PATH);
+		mapAtlas = new TextureAtlas(Takeover.MAP_ATLAS_PATH);
+		menuAtlas = new TextureAtlas(Takeover.MENU_ATLAS_PATH);
 
 		mapSkin = new Skin();
 		menuSkin = new Skin();

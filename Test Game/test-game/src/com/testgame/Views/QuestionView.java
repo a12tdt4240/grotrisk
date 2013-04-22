@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 import com.testgame.Models.Area;
 import com.testgame.Models.Constants;
 import com.testgame.Models.Question;
@@ -30,7 +30,7 @@ public class QuestionView extends AbstractPanelView {
 	 * 
 	 * @param game
 	 */
-	public QuestionView(MyGame game) {
+	public QuestionView(Takeover game) {
 		super(game);
 		correct = Gdx.audio.newSound(Gdx.files.internal("data/correct.wav"));
 		wrong = Gdx.audio.newSound(Gdx.files.internal("data/wrong.wav"));
@@ -67,10 +67,7 @@ public class QuestionView extends AbstractPanelView {
 		if (isGameFinished()) {
 			game.setScreen(new EndGameView(game));
 		} else {
-			if (game.getNextPlayerView() == null)
-				game.setNextPlayerView(new NextPlayerView(game));
-			
-			game.setScreen(game.getNextPlayerView());
+			game.setScreen(new NextPlayerView(game));
 		}
 	}
 

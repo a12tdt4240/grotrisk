@@ -7,7 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 import com.testgame.Models.Quiz;
 import com.testgame.Models.SkinSingleton;
 
@@ -16,10 +16,10 @@ public class AlternativeGroupView {
 	private Boolean advantageEnabled;
 	private Quiz currentQuestion;
 	private TextButtonStyle buttonStyle1, buttonStyle2, buttonStyle3, buttonStyle4;
-	private MyGame game;
+	private Takeover game;
 	private BitmapFont font1, font2, font3, font4;
 	
-	public AlternativeGroupView(Quiz question, TextButtonStyle buttonStyle, MyGame game) {
+	public AlternativeGroupView(Quiz question, TextButtonStyle buttonStyle, Takeover game) {
 		this.game = game;
 		this.advantageEnabled = false;
 		this.currentQuestion = question;

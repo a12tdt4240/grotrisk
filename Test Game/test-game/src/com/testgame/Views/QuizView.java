@@ -8,8 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 import com.testgame.Models.Alternative;
+import com.testgame.Models.Area;
 import com.testgame.Models.Quiz;
 
 public class QuizView extends QuestionView {
@@ -18,8 +19,9 @@ public class QuizView extends QuestionView {
 	private ArrayList<AlternativeView> alternatives; 
 	private AlternativeGroupView altGroup;
 	
-	public QuizView(MyGame game) {
+	public QuizView(Takeover game, Area area) {
 		super(game);
+		setArea(area);
 		listener = new InputEventListener();
 	}
 	

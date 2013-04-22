@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 import com.testgame.Models.Constants;
 import com.testgame.Models.SkinSingleton;
 
@@ -22,7 +22,7 @@ public class NextPlayerView extends AbstractPanelView {
 	 * 
 	 * @param game
 	 */
-	public NextPlayerView(MyGame game) {
+	public NextPlayerView(Takeover game) {
 		super(game);
 	}
 
@@ -114,11 +114,7 @@ public class NextPlayerView extends AbstractPanelView {
 	private void setCorrectScreen() {
 		if (game.getDuelState().isDuel()) {
 			// Go to question screen
-			if (game.getQuestionView() == null)
-				game.setQuestionView(new QuizView(game));
-
-			game.getQuestionView().setArea(game.getDuelState().getArea());
-			game.setScreen(game.getQuestionView());
+			game.setScreen(new QuizView(game, game.getDuelState().getArea()));
 		} else {
 			if (game.getMapView() == null)
 				game.setMapView(new MapView(game, game.getMapModel()));

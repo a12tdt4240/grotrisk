@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 import com.testgame.Models.SkinSingleton;
 
 public abstract class AbstractPanelView extends AbstractView {
@@ -18,7 +18,7 @@ public abstract class AbstractPanelView extends AbstractView {
 	 * 
 	 * @param game
 	 */
-	public AbstractPanelView(MyGame game) {
+	public AbstractPanelView(Takeover game) {
 		super(game);
 	}
 

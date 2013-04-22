@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 import com.testgame.Models.Constants;
 import com.testgame.Models.Player;
 import com.testgame.Models.SkinSingleton;
@@ -31,7 +31,7 @@ public class ScoreView extends AbstractView implements Observer {
 	private ArrayList<Image> colorIcons;
 	
 	
-	public ScoreView(MyGame game) {
+	public ScoreView(Takeover game) {
 		super(game);
 
 		this.colorIcons = new ArrayList<Image>();

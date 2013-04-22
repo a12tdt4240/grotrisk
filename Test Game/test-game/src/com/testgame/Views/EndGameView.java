@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 import com.testgame.Models.Constants;
 import com.testgame.Models.SkinSingleton;
 
@@ -21,7 +21,7 @@ public class EndGameView extends AbstractPanelView {
 	 * 
 	 * @param game
 	 */
-	public EndGameView(MyGame game) {
+	public EndGameView(Takeover game) {
 		super(game);
 	}
 

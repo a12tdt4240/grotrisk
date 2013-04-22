@@ -6,11 +6,11 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 
 public abstract class AbstractView implements Screen {
 
-	MyGame game;
+	Takeover game;
 	Stage stage;
 
 	SpriteBatch batch;
@@ -23,7 +23,7 @@ public abstract class AbstractView implements Screen {
 	 * 
 	 * @param game
 	 */
-	public AbstractView(MyGame game) {
+	public AbstractView(Takeover game) {
 		this.game = game;
 		this.batch = new SpriteBatch();
 	}

@@ -1,6 +1,6 @@
 package com.testgame.Models;
 
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 
 public class DuelState {
 	private boolean isDuel = false;
@@ -9,9 +9,9 @@ public class DuelState {
 	private Player initiator;
 	private Player defendant;
 	private Area disputeOver;
-	private MyGame game;
+	private Takeover game;
 	
-	public DuelState(MyGame game) {
+	public DuelState(Takeover game) {
 		this.game = game;
 	}
 	

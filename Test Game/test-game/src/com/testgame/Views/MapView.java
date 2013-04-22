@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.testgame.MyGame;
+import com.testgame.Takeover;
 import com.testgame.Models.Area;
 import com.testgame.Models.Map;
 import com.testgame.Models.SkinSingleton;
@@ -29,7 +29,7 @@ public class MapView extends AbstractView {
 
 	private ArrayList<Image> attackImages;
 
-	public MapView(MyGame game, Map model) {
+	public MapView(Takeover game, Map model) {
 		super(game);
 		setModel(model);
 		listener = new InputEventListener();
@@ -215,13 +215,7 @@ public class MapView extends AbstractView {
 			// Increase the number of plays.
 			game.increasePlaysCounter();
 
-			// Go to question screen
-			if (game.getQuestionView() == null)
-				game.setQuestionView(new QuizView(game));
-			
-			game.getQuestionView().setArea(areaView.getArea());
-			game.setScreen(game.getQuestionView());
-
+			game.setScreen(new QuizView(game, areaView.getArea()));
 		}
 	}
 	
