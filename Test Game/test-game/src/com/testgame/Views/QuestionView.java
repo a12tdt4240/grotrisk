@@ -2,7 +2,6 @@ package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
@@ -125,7 +124,6 @@ public class QuestionView extends AbstractPanelView {
 				/ 2);
 		questionText.setY(Gdx.graphics.getHeight() / 2
 				- questionText.getHeight() / 2 + Gdx.graphics.getHeight() * 0.22f);
-		questionText.setWidth(0.6f * Gdx.graphics.getWidth());
 		
 		
 		
