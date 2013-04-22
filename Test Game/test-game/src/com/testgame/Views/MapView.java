@@ -1,6 +1,9 @@
 package com.testgame.Views;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
@@ -205,6 +208,7 @@ public class MapView extends AbstractView {
 		public void touchUp(InputEvent event, float x, float y, int pointer,
 				int button) {
 			Gdx.app.log("CLICK", "clicked a land");
+			Gdx.app.log("TAKEOVER-TIME", "START - Area click time: "+ new SimpleDateFormat("HH:mm:ss.SSSS").format(new Date()));
 			AreaView areaView = (AreaView) event.getTarget();
 			// If area is already owned by other, initiate duel
 			if (areaView.getModel().getOwner() != null) {

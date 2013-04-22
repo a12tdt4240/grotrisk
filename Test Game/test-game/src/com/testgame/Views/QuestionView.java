@@ -1,5 +1,8 @@
 package com.testgame.Views;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -98,6 +101,11 @@ public class QuestionView extends AbstractPanelView {
 		batch.end();
 	}
 
+	@Override
+	public void resize(int width, int height) {
+		super.resize(width, height);
+		Gdx.app.log("TAKEOVER-TIME", "END - Question resize time: "+ new SimpleDateFormat("HH:mm:ss.SSSS").format(new Date()));
+	}
 	/**
 	 * Button initialization
 	 */
@@ -261,5 +269,6 @@ public class QuestionView extends AbstractPanelView {
 	public void show() {
 		super.show();
 		startTimer();
+		Gdx.app.log("TAKEOVER-TIME", "Question show time: "+ new SimpleDateFormat("HH:mm:ss.SSSS").format(new Date()));
 	}
 }
