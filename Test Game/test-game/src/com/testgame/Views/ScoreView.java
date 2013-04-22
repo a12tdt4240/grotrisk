@@ -3,30 +3,25 @@ package com.testgame.Views;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.MyGame;
 import com.testgame.Models.Constants;
 import com.testgame.Models.Player;
+import com.testgame.Models.SkinSingleton;
 
 public class ScoreView extends AbstractView implements Observer {
 
 	// Graphics data
-	private TextureRegion colorContainerImage;
+	private Image colorContainerImage;
 	private LabelStyle labelStyle;
-	private Skin menuSkin;
 	private TextButton exitButton;
 	
 	// Player information data
@@ -42,12 +37,6 @@ public class ScoreView extends AbstractView implements Observer {
 		this.colorIcons = new ArrayList<Image>();
 		this.names = new ArrayList<Label>();
 		this.scores = new ArrayList<Label>();
-		// Load skins
-		this.skin = new Skin();
-		this.skin.addRegions(new TextureAtlas("data/maps/map.atlas"));
-		
-		this.menuSkin = new Skin();
-		this.menuSkin.addRegions(new TextureAtlas("skins/mainmenu.atlas"));
 	}
 
 	/**
@@ -103,20 +92,15 @@ public class ScoreView extends AbstractView implements Observer {
 		players = game.getPlayers();
 		
 		// TextureRegion to use as color icon
-		colorContainerImage = skin.getRegion("area001");
+		colorContainerImage = SkinSingleton.getInstance().getBoxImage();
 		
 		// Create images of the TextureRegion
 		for (int i = 0; i < players.size(); i++) {
-			colorIcons.add(new Image(colorContainerImage));
+			colorIcons.add(colorContainerImage);
 		}
 		
-		// The font to use
-		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
-		
 		// The style to our labels
-		labelStyle = new LabelStyle();
-		labelStyle.font = font;
-		labelStyle.fontColor = new Color(1, 1, 1, 1.0f);
+		labelStyle = SkinSingleton.getInstance().getLabelStyle();
 		
 		Label score, name;
 		// Create our labels and set ScoreView as an observer to a Score
@@ -132,20 +116,15 @@ public class ScoreView extends AbstractView implements Observer {
 		
 		batch = new SpriteBatch();
 		
-		// Our exit button style
-		TextButtonStyle exitButtonStyle = new TextButtonStyle();
-		exitButtonStyle.up = menuSkin.getDrawable("buttonUp");
-		exitButtonStyle.font = font;
-		
 		// initialize the exit button
-		exitButton = new TextButton(Constants.EXIT_BUTTON, exitButtonStyle);
+		exitButton = new TextButton(Constants.EXIT_BUTTON, new TextButtonStyle(SkinSingleton.getInstance().getDefaultButtonStyle()));
 		exitButton.setWidth(Gdx.graphics.getWidth() * 0.2f);
 		exitButton.setHeight(Gdx.graphics.getHeight() * 0.1f);
 		exitButton.setX(Gdx.graphics.getWidth() - (float)(exitButton.getWidth() + 10));
 		exitButton.setY(10f);
 		
 		// Set the font to scale according to the screen size.
-		exitButtonStyle.font.setScale((exitButton.getWidth() * 4) / Gdx.graphics.getWidth());
+		exitButton.getStyle().font.setScale((exitButton.getWidth() * 4) / Gdx.graphics.getWidth());
 		
 		// Add listener to the exit button
 		exitButton.addListener(new InputListener() {
@@ -177,8 +156,7 @@ public class ScoreView extends AbstractView implements Observer {
 	 */
 	@Override
 	public void dispose() {
-		batch.dispose();
-		colorContainerImage.getTexture().dispose();
+		super.dispose();
 	}
 
 	/**

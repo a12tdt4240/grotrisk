@@ -3,20 +3,17 @@ package com.testgame.Views;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.testgame.MyGame;
 import com.testgame.Models.Area;
 import com.testgame.Models.Map;
+import com.testgame.Models.SkinSingleton;
 
 public class MapView extends AbstractView {
 	// Model of the map
@@ -105,8 +102,7 @@ public class MapView extends AbstractView {
 				if (neighbors.get(i) == areaViews.get(k).getModel()) {
 					areaViews.get(k).addListener(listener);
 
-					Image attackDrawable = new Image(areaViews.get(0)
-							.getModel().getAttackImage().getDrawable());
+					Image attackDrawable = new Image(SkinSingleton.getInstance().getAttackImage().getDrawable());
 					attackDrawable.setScale((Gdx.graphics.getHeight() * 0.065f) / attackDrawable.getHeight());
 					attackDrawable.setPosition(areaViews.get(k).getX(),
 							areaViews.get(k).getY());
@@ -130,14 +126,7 @@ public class MapView extends AbstractView {
 		super.resize(width, height);
 		scoreView.resize(width, height);
 		
-		atlas = new TextureAtlas("skins/mainmenu.atlas");
-
-		skin = new Skin();
-		skin.addRegions(atlas);
-
-		background = new NinePatch(new TextureRegion(
-				atlas.findRegion("background")), 190, 190, 114, 292);
-		font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
+		background = SkinSingleton.getInstance().getMenuBackground();
 		batch = new SpriteBatch();
 		
 		
@@ -153,6 +142,12 @@ public class MapView extends AbstractView {
 
 		Gdx.input.setInputProcessor(stage); // sets gdx to listen to input from
 		// this stage
+	}
+	
+	@Override
+	public void hide() {
+		super.hide();
+		SkinSingleton.getInstance().resetFontSize();
 	}
 
 	/**
@@ -234,7 +229,6 @@ public class MapView extends AbstractView {
 	public void dispose() {
 		Gdx.app.debug("testgame", "Disposing MapView");
 		super.dispose();
-
 		scoreView.dispose();
 	}
 }

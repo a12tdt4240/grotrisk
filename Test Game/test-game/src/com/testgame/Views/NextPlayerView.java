@@ -1,7 +1,5 @@
 package com.testgame.Views;
 
-import com.badlogic.gdx.graphics.Color;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -10,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.testgame.MyGame;
 import com.testgame.Models.Constants;
+import com.testgame.Models.SkinSingleton;
 
 public class NextPlayerView extends AbstractPanelView {
 
@@ -44,6 +43,7 @@ public class NextPlayerView extends AbstractPanelView {
 	/**
 	 * Button initialization.
 	 */
+	@Override
 	public void initializeButtons() {
 
 		// Button initialization
@@ -69,34 +69,44 @@ public class NextPlayerView extends AbstractPanelView {
 		});
 
 		// TextField initialization.
-		LabelStyle labelStyleHeader = new LabelStyle();
-		labelStyleHeader.font = font;
-		labelStyleHeader.fontColor = new Color(0.647059f, 0.164706f, 0.164706f,
-				1.0f);
-		nextPlayerInfo = new Label(Constants.NEXTPLAYER_INFO, labelStyleHeader);
+		LabelStyle labelStyle = SkinSingleton.getInstance().getLabelStyle();
+
+		nextPlayerInfo = new Label(Constants.NEXTPLAYER_INFO, labelStyle);
+		nextPlayerInfo.setFontScale(0.9f);
+		nextPlayerInfo.setAlignment(2);
+		nextPlayerInfo.setColor(0.647059f, 0.164706f, 0.164706f, 1.0f);
 		nextPlayerInfo.setX(Gdx.graphics.getWidth() / 2
 				- nextPlayerInfo.getWidth() / 2);
 		nextPlayerInfo.setY(Gdx.graphics.getHeight() / 2
 				- nextPlayerInfo.getHeight() / 2 + Gdx.graphics.getHeight()
 				* 0.19f);
-		nextPlayerInfo.setWidth(0.6f * Gdx.graphics.getWidth());
+		
+		
 
-		LabelStyle labelStyle = new LabelStyle();
-		labelStyle.font = font;
-		labelStyle.fontColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		nextPlayerLabel = new Label(game.getCurrentPlayer().getName(),
 				labelStyle);
+		nextPlayerLabel.setFontScale(0.8f);
+		nextPlayerLabel.setAlignment(2);
+		nextPlayerLabel.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 		nextPlayerLabel.setX(Gdx.graphics.getWidth() / 2
 				- nextPlayerLabel.getWidth() / 2);
 		nextPlayerLabel.setY(Gdx.graphics.getHeight() / 2
 				- nextPlayerLabel.getHeight() / 2 + Gdx.graphics.getHeight()
 				* 0.045f);
-		nextPlayerLabel.scale(0.8f, 0.8f);
-
+		
 		// Add buttons to stage
 		this.stage.addActor(nextPlayerButton);
 	}
-
+	@Override
+	public void show() {
+		super.show();
+		
+	}
+	@Override
+	public void hide() {
+		super.hide();
+		SkinSingleton.getInstance().resetFontSize();
+	}
 	/**
 	 * Checks if duel is in action and displays correct screen accordingly
 	 * 

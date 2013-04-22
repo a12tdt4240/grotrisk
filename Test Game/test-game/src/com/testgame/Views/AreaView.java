@@ -2,18 +2,16 @@ package com.testgame.Views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.testgame.Models.Area;
+import com.testgame.Models.SkinSingleton;
 
 public class AreaView extends Button implements Observer {
 	
 	private Area areaModel;
 	private Label value;
-	private LabelStyle labelStyle;
 	private float wantedLength;
 
 	public AreaView(Area area) {
@@ -30,13 +28,9 @@ public class AreaView extends Button implements Observer {
 		setX(calculateXPosition());
 		setY(calculateYPosition());
 		
-		labelStyle = new LabelStyle();
-		BitmapFont font = new BitmapFont(Gdx.files.internal("skins/fonts.fnt"), false);
-		font.setScale((Gdx.graphics.getHeight() * 0.05f)/font.getXHeight());
-		labelStyle.font = font; 
-		
-		value = new Label("" + getModel().getValueOfArea(), labelStyle);
-		value.setColor(Color.WHITE);
+		value = new Label("" + getModel().getValueOfArea(), SkinSingleton.getInstance().getLabelStyle());
+		value.setColor(Color.BLACK);
+		value.setFontScale(0.75f);
 		value.setTouchable(Touchable.disabled);
 		add(value);
 		

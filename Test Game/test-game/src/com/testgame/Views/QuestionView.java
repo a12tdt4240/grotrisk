@@ -11,6 +11,7 @@ import com.testgame.MyGame;
 import com.testgame.Models.Area;
 import com.testgame.Models.Constants;
 import com.testgame.Models.Question;
+import com.testgame.Models.SkinSingleton;
 
 public class QuestionView extends AbstractPanelView {
 
@@ -18,7 +19,7 @@ public class QuestionView extends AbstractPanelView {
 	private final Sound wrong;
 	private Question currentQuestion;
 	private Label questionText, countDownText;
-	private LabelStyle labelStyleHeader;
+	private LabelStyle labelStyle;
 	// How many seconds you get to answer a question.
 	private int countDownTime = 20;
 	private int currentTime = 0;
@@ -47,6 +48,8 @@ public class QuestionView extends AbstractPanelView {
 				if (!hasAnswered) {
 					if (countDownTime - currentTime != 0) {
 						currentTime++;
+						// Count down label must update each render
+						countDownText.setText("" + (countDownTime - currentTime));
 						startTimer();
 					} else {
 						wrongAnswer();
@@ -93,12 +96,6 @@ public class QuestionView extends AbstractPanelView {
 	public void render(float delta) {
 		super.render(delta);
 
-		// Count down label must update each render
-		countDownText = new Label("" + (countDownTime - currentTime),
-				labelStyleHeader);
-		countDownText.setX((4 * Gdx.graphics.getWidth()) / 5);
-		countDownText.setY((3 * Gdx.graphics.getHeight()) / 4);
-
 		batch.begin();
 		questionText.draw(batch, 1.0f);
 		countDownText.draw(batch, 1.0f);
@@ -111,20 +108,33 @@ public class QuestionView extends AbstractPanelView {
 	public void initializeButtons() {
 		// Retrieve question from question pool
 		currentQuestion = game.getQuestionPool().random();
-
+		
 		// Question text field
-		labelStyleHeader = new LabelStyle();
-		labelStyleHeader.font = font;
-		labelStyleHeader.fontColor = new Color(0.647059f, 0.164706f, 0.164706f,
-				1.0f);
+		labelStyle = SkinSingleton.getInstance().getLabelStyle();
+
 		questionText = new Label(currentQuestion.getQuestionText(),
-				labelStyleHeader);
+				labelStyle);
+		questionText.setFontScale(0.7f);
+			
+		questionText.setAlignment(2);
+		questionText.setColor(0.647059f, 0.164706f, 0.164706f, 1.0f);
+		questionText.setWidth(0.8f * Gdx.graphics.getWidth());
+		questionText.setWrap(true);
+		
 		questionText.setX(Gdx.graphics.getWidth() / 2 - questionText.getWidth()
 				/ 2);
 		questionText.setY(Gdx.graphics.getHeight() / 2
-				- questionText.getHeight() / 2 + Gdx.graphics.getHeight()
-				* 0.19f);
+				- questionText.getHeight() / 2 + Gdx.graphics.getHeight() * 0.22f);
 		questionText.setWidth(0.6f * Gdx.graphics.getWidth());
+		
+		
+		
+		
+		countDownText = new Label("" + countDownTime, labelStyle);
+		countDownText.setColor(0.647059f, 0.164706f, 0.164706f, 1.0f);
+		countDownText.setX((4 * Gdx.graphics.getWidth()) / 5);
+		countDownText.setY((3 * Gdx.graphics.getHeight()) / 4);
+		
 	}
 
 	/**
@@ -133,10 +143,16 @@ public class QuestionView extends AbstractPanelView {
 	 */
 	public void hide() {
 		super.hide();
+		SkinSingleton.getInstance().resetFontSize();
 		// Stop the count down clock. Not 100% sure if this is working
 		// correctly.
 		Timer.instance.clear();
 		currentTime = 0;
+		hasAnswered = false;
+//		altGroup.dispose();
+	}
+	
+	public void dispose() {
 		correct.dispose();
 		wrong.dispose();
 	}

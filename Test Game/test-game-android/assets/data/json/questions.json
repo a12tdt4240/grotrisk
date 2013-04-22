@@ -290,7 +290,7 @@
 	},
 {
 		"class": "com.testgame.Models.Quiz",
-		"questionText": "Hvilket land er kjent som portvinens hjemland?",
+		"questionText": "Portvinens hjemland er...",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
 			"text": "Italia",
@@ -406,7 +406,7 @@
 	},
 {
 		"class": "com.testgame.Models.Quiz",
-		"questionText": "Hva er registreringsnummeret til Donalds bil?",
+		"questionText": "Hva er reg. nummeret til Donalds bil?",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
 			"text": "KH932782",
