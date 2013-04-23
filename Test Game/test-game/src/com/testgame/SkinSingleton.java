@@ -1,4 +1,4 @@
-package com.testgame.Models;
+package com.testgame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.testgame.Takeover;
 
 public class SkinSingleton {
 	private static final SkinSingleton instance = new SkinSingleton();

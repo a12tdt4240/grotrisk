@@ -12,10 +12,10 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.testgame.SkinSingleton;
 import com.testgame.Takeover;
 import com.testgame.Models.Area;
 import com.testgame.Models.Map;
-import com.testgame.Models.SkinSingleton;
 
 public class MapView extends AbstractView {
 	// Model of the map

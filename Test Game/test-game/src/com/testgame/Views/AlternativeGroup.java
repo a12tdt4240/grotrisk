@@ -7,9 +7,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.testgame.SkinSingleton;
 import com.testgame.Takeover;
 import com.testgame.Models.Quiz;
-import com.testgame.Models.SkinSingleton;
 
 public class AlternativeGroup {
 	

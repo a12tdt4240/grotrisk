@@ -7,8 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.testgame.Constants;
+import com.testgame.SkinSingleton;
 import com.testgame.Takeover;
-import com.testgame.Models.SkinSingleton;
 
 public class EndGameView extends AbstractPanelView {
 

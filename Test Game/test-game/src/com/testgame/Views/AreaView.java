@@ -6,8 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.testgame.Observer;
+import com.testgame.SkinSingleton;
 import com.testgame.Models.Area;
-import com.testgame.Models.SkinSingleton;
 
 public class AreaView extends Button implements Observer {
 	

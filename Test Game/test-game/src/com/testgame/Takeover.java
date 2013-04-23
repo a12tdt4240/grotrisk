@@ -12,7 +12,6 @@ import com.testgame.Models.Map;
 import com.testgame.Models.MapFactory;
 import com.testgame.Models.Player;
 import com.testgame.Models.QuestionPool;
-import com.testgame.Models.SkinSingleton;
 import com.testgame.Views.MainMenuView;
 import com.testgame.Views.MapView;
 import com.badlogic.gdx.Game;

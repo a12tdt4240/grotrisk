@@ -7,8 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.testgame.Constants;
+import com.testgame.SkinSingleton;
 import com.testgame.Takeover;
-import com.testgame.Models.SkinSingleton;
 
 public class MainMenuView extends AbstractPanelView {
 

@@ -14,9 +14,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.testgame.Constants;
+import com.testgame.SkinSingleton;
 import com.testgame.Takeover;
 import com.testgame.Models.Player;
-import com.testgame.Models.SkinSingleton;
 
 public class PlayerView extends AbstractPanelView {
 
