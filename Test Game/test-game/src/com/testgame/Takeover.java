@@ -7,6 +7,7 @@ import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.testgame.Models.Area;
+import com.testgame.Models.Duel;
 import com.testgame.Models.Map;
 import com.testgame.Models.MapFactory;
 import com.testgame.Models.Player;
@@ -29,7 +30,7 @@ public class Takeover extends Game implements ApplicationListener {
 	private QuestionPool questionPool;
 	private ArrayList<Player> players;
 	private Player currentPlayer;
-	private DuelState duel;
+	private Duel duel;
 	private int playsCounter;
 
 	@Override
@@ -67,7 +68,7 @@ public class Takeover extends Game implements ApplicationListener {
 		setInitialOwnership();
 
 		// create a DuelState for duels
-		duel = new DuelState(this);
+		duel = new Duel(this);
 
 		// Create and launch main menu screen.
 		setScreen(new MainMenuView(this));
@@ -166,7 +167,7 @@ public class Takeover extends Game implements ApplicationListener {
 	 * 
 	 * @return DuelState
 	 */
-	public DuelState getDuelState() {
+	public Duel getDuelState() {
 		return duel;
 	}
 

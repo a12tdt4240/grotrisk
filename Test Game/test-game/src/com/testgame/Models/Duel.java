@@ -1,9 +1,8 @@
-package com.testgame;
+package com.testgame.Models;
 
-import com.testgame.Models.Area;
-import com.testgame.Models.Player;
+import com.testgame.Takeover;
 
-public class DuelState {
+public class Duel {
 	private boolean isDuel = false;
 	private int scoreInitiator = 0;
 	private int scoreDefendant = 0;
@@ -12,7 +11,7 @@ public class DuelState {
 	private Area disputeOver;
 	private Takeover game;
 	
-	public DuelState(Takeover game) {
+	public Duel(Takeover game) {
 		this.game = game;
 	}
 	
