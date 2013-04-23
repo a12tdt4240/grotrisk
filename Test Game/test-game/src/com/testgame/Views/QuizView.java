@@ -17,7 +17,7 @@ public class QuizView extends QuestionView {
 	private Quiz currentQuiz;
 	private InputEventListener listener;
 	private ArrayList<AlternativeView> alternatives; 
-	private AlternativeGroupView altGroup;
+	private AlternativeGroup altGroup;
 	
 	public QuizView(Takeover game, Area area) {
 		super(game);
@@ -32,7 +32,7 @@ public class QuizView extends QuestionView {
 		super.initializeButtons();
 		currentQuiz = (Quiz) getCurrentQuestion();
 		
-		altGroup = new AlternativeGroupView(
+		altGroup = new AlternativeGroup(
 				currentQuiz, buttonStyle, game);
 		alternatives = altGroup.getList();
 		
