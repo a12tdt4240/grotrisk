@@ -9,9 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
+import com.testgame.Constants;
 import com.testgame.Takeover;
 import com.testgame.Models.Area;
-import com.testgame.Models.Constants;
 import com.testgame.Models.Question;
 import com.testgame.Models.SkinSingleton;
 

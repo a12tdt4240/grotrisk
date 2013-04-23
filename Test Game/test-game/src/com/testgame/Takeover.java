@@ -7,7 +7,6 @@ import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.testgame.Models.Area;
-import com.testgame.Models.DuelState;
 import com.testgame.Models.Map;
 import com.testgame.Models.MapFactory;
 import com.testgame.Models.Player;

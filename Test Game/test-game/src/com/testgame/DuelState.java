@@ -1,6 +1,7 @@
-package com.testgame.Models;
+package com.testgame;
 
-import com.testgame.Takeover;
+import com.testgame.Models.Area;
+import com.testgame.Models.Player;
 
 public class DuelState {
 	private boolean isDuel = false;

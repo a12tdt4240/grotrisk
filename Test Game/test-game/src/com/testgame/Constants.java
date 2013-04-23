@@ -1,4 +1,4 @@
-package com.testgame.Models;
+package com.testgame;
 
 public final class Constants {
 

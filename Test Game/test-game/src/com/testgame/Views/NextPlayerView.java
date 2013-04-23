@@ -6,8 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.testgame.Constants;
 import com.testgame.Takeover;
-import com.testgame.Models.Constants;
 import com.testgame.Models.SkinSingleton;
 
 public class NextPlayerView extends AbstractPanelView {

@@ -1,6 +1,7 @@
 package com.testgame.Models;
 
 import com.badlogic.gdx.graphics.Color;
+import com.testgame.Constants;
 
 public class Player {
 
