@@ -9,6 +9,7 @@ public class Player {
 	private Color color;
 	private String name;
 	private int numeric;
+	private QuestionPool questionPool;
 
 	// Players lages i oppstarten av spillet (klassen MyGame ?). Der holdes det
 	// styr på hvilken Player sin tur det er.
@@ -49,4 +50,11 @@ public class Player {
 		this.name = name;
 	}
 
+	public void setQuestionPool(QuestionPool questions) {
+		this.questionPool = questions;
+	}
+	
+	public QuestionPool getQuestionPool() {
+		return this.questionPool;
+	}
 }

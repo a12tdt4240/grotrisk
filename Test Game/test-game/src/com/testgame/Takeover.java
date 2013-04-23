@@ -26,7 +26,6 @@ public class Takeover extends Game implements ApplicationListener {
 	private MapView mapView;
 	private Map map;
 	private Music music;
-	private QuestionPool questionPool;
 	private ArrayList<Player> players;
 	private Player currentPlayer;
 	private Duel duel;
@@ -47,9 +46,6 @@ public class Takeover extends Game implements ApplicationListener {
 
 		// Start at turn zero
 		playsCounter = 0;
-
-		// Generate question pool.
-		questionPool = new QuestionPool();
 
 		// Get default Map model
 		map = new MapFactory().createDefaultMap();
@@ -203,9 +199,12 @@ public class Takeover extends Game implements ApplicationListener {
 	 */
 	public ArrayList<Player> createPlayers(int numberOfPlayers) {
 		ArrayList<Player> playersCreated = new ArrayList<Player>();
+		Player newPlayer;
 
 		for (int i = 0; i < numberOfPlayers; i++) {
-			playersCreated.add(new Player(i));
+			newPlayer = new Player(i);
+			newPlayer.setQuestionPool(new QuestionPool());
+			playersCreated.add(newPlayer);
 		}
 
 		return playersCreated;
@@ -226,7 +225,7 @@ public class Takeover extends Game implements ApplicationListener {
 	 * @return
 	 */
 	public QuestionPool getQuestionPool() {
-		return questionPool;
+		return this.currentPlayer.getQuestionPool();
 	}
 
 	/**

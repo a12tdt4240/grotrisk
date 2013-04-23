@@ -19,11 +19,14 @@ public class QuestionPool {
 	
 	public static final String DEFAULT_QUESTIONS = "data/json/questions.json";
 		
-	private Question[] questions;
+	private static Question[] questions;
 	private ArrayList<Question> randomSelected;
 	
 	public QuestionPool(){
-		this.loadQuestions();
+		if (questions == null) {
+			Gdx.app.log("QuestionPool", "read and parse from file");
+			this.loadQuestions();
+		}
 		this.randomSelected = new ArrayList<Question>();
 		Gdx.app.log("QuestionPool", "construct");
 		
@@ -49,12 +52,12 @@ public class QuestionPool {
 		}
 		
 		try {
-			this.questions = json.fromJson(Quiz[].class, handle);
+			QuestionPool.questions = json.fromJson(Quiz[].class, handle);
 		} catch (NullPointerException e) {
 			Gdx.app.error("QuestionPool tojson", e.getMessage());
 		}
 		
-		Gdx.app.log("QuestionPool","Questions loaded: " + this.questions.length);
+		Gdx.app.log("QuestionPool","Questions loaded: " + QuestionPool.questions.length);
 	}
 	
 	public Question[] all() {
@@ -103,7 +106,7 @@ public class QuestionPool {
 		Random randomIndex = new Random(); 
 		Question random = questions[randomIndex.nextInt(questions.length)];
 		
-		if (this.randomSelected.contains(random) && (this.randomSelected.size() <= this.questions.length)) {
+		if (this.randomSelected.contains(random) && (this.randomSelected.size() <= QuestionPool.questions.length)) {
 			this.randomSelected.add(random);
 		} else {
 			this.randomSelected.clear();
