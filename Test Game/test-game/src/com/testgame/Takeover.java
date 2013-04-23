@@ -32,10 +32,12 @@ public class Takeover extends Game implements ApplicationListener {
 	private Player currentPlayer;
 	private Duel duel;
 	private int playsCounter;
+	private State currentState;
+	private State duelState;
+	private State defaultState;
 
 	@Override
 	public void create() {
-		
 		// for the dumb Android VM!!
 		SkinSingleton.getInstance().resetSingleton();
 		// Load and start playing music.
@@ -69,6 +71,11 @@ public class Takeover extends Game implements ApplicationListener {
 
 		// create a DuelState for duels
 		duel = new Duel(this);
+		
+		// Initialize states
+		defaultState = new DefaultState(this);
+		duelState = new DuelState(this);
+		currentState = defaultState;
 
 		// Create and launch main menu screen.
 		setScreen(new MainMenuView(this));
@@ -121,7 +128,7 @@ public class Takeover extends Game implements ApplicationListener {
 		playsCounter = 0;
 		setInitialOwnership();
 		// Clean up after duel just in case.
-		getDuelState().finishDuel();
+		getDuel().finishDuel();
 	}
 
 	/**
@@ -129,11 +136,11 @@ public class Takeover extends Game implements ApplicationListener {
 	 */
 	public void switchCurrentPlayer() {
 		// If duel is active, switch between the two duelist
-		if (getDuelState().isDuel()) {
-			if (getDuelState().getDefendant() == getCurrentPlayer()) {
-				setCurrentPlayer(getDuelState().getInitiator());
+		if (getDuel().isDuel()) {
+			if (getDuel().getDefendant() == getCurrentPlayer()) {
+				setCurrentPlayer(getDuel().getInitiator());
 			} else {
-				setCurrentPlayer(getDuelState().getDefendant());
+				setCurrentPlayer(getDuel().getDefendant());
 			}
 			// Else, follow normal procedure
 		} else {
@@ -167,7 +174,7 @@ public class Takeover extends Game implements ApplicationListener {
 	 * 
 	 * @return DuelState
 	 */
-	public Duel getDuelState() {
+	public Duel getDuel() {
 		return duel;
 	}
 
@@ -254,6 +261,19 @@ public class Takeover extends Game implements ApplicationListener {
 	 */
 	public int getPlaysCounter() {
 		return playsCounter;
+	}
+	
+	// Switches between the to states
+	public void switchState() {
+		if(currentState == defaultState) {
+			currentState = duelState;
+		} else {
+			currentState = defaultState;
+		}
+	}
+	
+	public State getState() {
+		return currentState;
 	}
 
 	@Override

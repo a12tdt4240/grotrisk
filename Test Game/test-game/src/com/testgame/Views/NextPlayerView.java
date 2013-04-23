@@ -108,18 +108,10 @@ public class NextPlayerView extends AbstractPanelView {
 		SkinSingleton.getInstance().resetFontSize();
 	}
 	/**
-	 * Checks if duel is in action and displays correct screen accordingly
+	 * Sets correct screen
 	 * 
 	 */
 	private void setCorrectScreen() {
-		if (game.getDuelState().isDuel()) {
-			// Go to question screen
-			game.setScreen(new QuizView(game, game.getDuelState().getArea()));
-		} else {
-			if (game.getMapView() == null)
-				game.setMapView(new MapView(game, game.getMapModel()));
-
-			game.setScreen(game.getMapView());
-		}
+		game.getState().goToNextScreen();
 	}
 }

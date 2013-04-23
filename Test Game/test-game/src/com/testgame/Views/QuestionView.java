@@ -82,7 +82,7 @@ public class QuestionView extends AbstractPanelView {
 	 */
 	private boolean isGameFinished() {
 		if (game.getPlaysCounter() >= Constants.QUESTION_MAXPLAYROUNDS
-				&& !game.getDuelState().isDuel()) {
+				&& !game.getDuel().isDuel()) {
 			return true;
 		}
 		return false;
@@ -177,26 +177,8 @@ public class QuestionView extends AbstractPanelView {
 	 * Called when the answer was correct.
 	 */
 	protected void correctAnswer() {
-		// Duel active
-		if (game.getDuelState().isDuel()) {
-			// Award correct player in duel
-			if (game.getCurrentPlayer() == game.getDuelState().getDefendant()) {
-				game.getDuelState().increaseDefenantScore();
-			} else {
-				game.getDuelState().increaseInitiatorScore();
-			}
-			// Check if duel is finished, and handle it appropriately
-			handleDuel();
-			// No active duel
-		} else {
-			// Update score and set the new owner of the area.
-			game.getCurrentPlayer().getScore()
-					.updateScore(area.getValueOfArea());
-			area.setOwner(game.getCurrentPlayer());
-		}
-
-		// Move on to the next player screen.
-		game.switchCurrentPlayer();
+		game.getState().updateScore(area, true);
+		game.getState().nextPlayer();
 		nextPlayer();
 	}
 
@@ -204,40 +186,11 @@ public class QuestionView extends AbstractPanelView {
 	 * Called when the answer was wrong.
 	 */
 	protected void wrongAnswer() {
-		// Duel active
-		if (game.getDuelState().isDuel()) {
-			// Check if duel is finished, and handle it appropriately
-			handleDuel();
-		}
-		// Move on to the next player screen.
-		game.switchCurrentPlayer();
+		game.getState().updateScore(area, false);
+		game.getState().nextPlayer();
 		nextPlayer();
 	}
 	
-	/**
-	 * Checks if duel is finished, and assigns the area to correct player
-	 * 
-	 */
-	protected void handleDuel() {
-		if (game.getDuelState().isFinished()
-				&& (game.getCurrentPlayer() == game.getDuelState()
-						.getDefendant())) {
-			if (game.getDuelState().getWinner() == game.getDuelState()
-					.getInitiator()) {
-				// Update score of winner
-				game.getDuelState().getWinner().getScore()
-						.updateScore(area.getValueOfArea());
-				// Update owner of area
-				area.setOwner(game.getDuelState().getWinner());
-			}
-			// Set current player to initiator of duel, so that correct next
-			// player
-			// is set afterwards
-			game.setCurrentPlayer(game.getDuelState().getInitiator());
-			// Clean up after duel
-			game.getDuelState().finishDuel();
-		}
-	}
 	
 	/**
 	 * Plays the sound of the correct answer

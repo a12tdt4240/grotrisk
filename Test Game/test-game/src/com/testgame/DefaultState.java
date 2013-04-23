@@ -1,5 +1,6 @@
 package com.testgame;
 
+import com.testgame.Models.Area;
 import com.testgame.Models.Player;
 import com.testgame.Views.MapView;
 
@@ -9,15 +10,18 @@ public class DefaultState implements State {
 	
 	public DefaultState(Takeover game) {
 		this.game = game;
+		currentPlayer = game.getCurrentPlayer();
 	}
 	
 	@Override
 	public void nextPlayer() {
 		int pos = game.getPlayers().indexOf(currentPlayer);
 		if (pos < game.getPlayers().size() - 1) {
-			game.setCurrentPlayer(game.getPlayers().get(pos + 1));
+			currentPlayer = game.getPlayers().get(pos + 1);
+			game.setCurrentPlayer(currentPlayer);
 		} else {
-			game.setCurrentPlayer(game.getPlayers().get(0));
+			currentPlayer = game.getPlayers().get(0);
+			game.setCurrentPlayer(currentPlayer);
 		}
 	}
 
@@ -27,6 +31,14 @@ public class DefaultState implements State {
 			game.setMapView(new MapView(game, game.getMapModel()));
 
 		game.setScreen(game.getMapView());
+	}
+
+	@Override
+	public void updateScore(Area area, boolean correctAnswer) {
+		if(correctAnswer == true) {
+			game.getCurrentPlayer().getScore().updateScore(area.getValueOfArea());
+			area.setOwner(game.getCurrentPlayer());
+		}
 	}
 
 }

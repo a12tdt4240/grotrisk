@@ -91,8 +91,8 @@ public class AlternativeGroup {
 		
 		// Give advantage to defendant
 		ArrayList<AlternativeView> alternativeViews = new ArrayList<AlternativeView>(Arrays.asList(alt1View, alt2View, alt3View, alt4View));
-		if (this.game.getDuelState().isDuel() &&
-			(this.game.getCurrentPlayer() == this.game.getDuelState().getDefendant())) {
+		if (this.game.getDuel().isDuel() &&
+			(this.game.getCurrentPlayer() == this.game.getDuel().getDefendant())) {
 			for (AlternativeView av : alternativeViews) {
 				if (!this.advantageEnabled && !av.getModel().isCorrectAnswer()) {
 					

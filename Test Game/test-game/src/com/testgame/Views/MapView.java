@@ -211,8 +211,9 @@ public class MapView extends AbstractView {
 			AreaView areaView = (AreaView) event.getTarget();
 			// If area is already owned by other, initiate duel
 			if (areaView.getModel().getOwner() != null) {
-				game.getDuelState().initiateDuel(game.getCurrentPlayer(),
+				game.getDuel().initiateDuel(game.getCurrentPlayer(),
 						areaView.getModel().getOwner(), areaView.getModel());
+				game.switchState();
 			}
 
 			// Increase the number of plays.
