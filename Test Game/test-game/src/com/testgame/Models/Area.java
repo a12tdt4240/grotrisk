@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.OrderedMap;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.testgame.Views.Observer;
+import com.testgame.Observer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

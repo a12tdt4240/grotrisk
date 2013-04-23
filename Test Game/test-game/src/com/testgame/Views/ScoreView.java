@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.testgame.Constants;
+import com.testgame.Observer;
 import com.testgame.Takeover;
 import com.testgame.Models.Player;
 import com.testgame.Models.SkinSingleton;

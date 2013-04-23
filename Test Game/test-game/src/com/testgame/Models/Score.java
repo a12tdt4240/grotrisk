@@ -1,8 +1,7 @@
 package com.testgame.Models;
 
 import java.util.ArrayList;
-
-import com.testgame.Views.Observer;
+import com.testgame.Observer;
 
 public class Score {
 
