@@ -6,9 +6,6 @@ import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.OrderedMap;
 
 public class Category implements Serializable {
-
-	// Vi vil ha muligheten til � sp�rre et Question om hvilken kategori det tilh�rer.
-	// En kategori skal ha en visuell gjenkjenning som kan vises p� kart/gamescreen. Farge?
 	
 	private String category;
 	private Color visual;
@@ -30,7 +27,7 @@ public class Category implements Serializable {
 	}
 	
 	/**
-	 * Colour of category
+	 * Color of category
 	 * 
 	 * @return Color
 	 */
@@ -48,7 +45,7 @@ public class Category implements Serializable {
 	}
 	
 	/**
-	 * JSON-parseren skal ta seg av � sette categori-fargen? Jeg lar metodenskallet st� til eventuell bruk.
+	 * Method not used.
 	 * @param category
 	 */
 	public void setVisual(String category) {
