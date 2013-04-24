@@ -1,6 +1,8 @@
 package com.testgame.Models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
@@ -103,16 +105,12 @@ public class QuestionPool {
 	
 	public Question random() {
 		Gdx.app.log("QuestionPool", "QuestionPool:random");
-		Random randomIndex = new Random(); 
-		Question random = questions[randomIndex.nextInt(questions.length)];
 		
-		if (this.randomSelected.contains(random) && (this.randomSelected.size() <= QuestionPool.questions.length)) {
-			this.randomSelected.add(random);
-		} else {
-			this.randomSelected.clear();
-			this.randomSelected.add(random);
+		if (this.randomSelected.size() <= 0) {
+			this.randomSelected = new ArrayList(Arrays.asList(QuestionPool.questions));
+			Collections.shuffle(this.randomSelected);
 		}
 		
-		return random;
+		return this.randomSelected.remove(0);
 	}
 }
