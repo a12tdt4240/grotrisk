@@ -9,7 +9,7 @@
 		},
 		"alt2": {
 			"class": "com.testgame.Models.Alternative",
-			"text": "København",
+			"text": "K\u00F8benhavn",
 			"isCorrectAnswer": false
 		},
 		"alt3":{
@@ -204,7 +204,7 @@
 	},
 {
 		"class": "com.testgame.Models.Quiz",
-		"questionText": "Hvilken energiressurs er Norges viktigste?",
+		"questionText": "Hvilken rene energiressurs er Norges viktigste?",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
 			"text": "Kull",
@@ -409,12 +409,12 @@
 		"questionText": "Hva er reg. nummeret til Donalds bil?",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
-			"text": "KH932782",
+			"text": "Duckmobile",
 			"isCorrectAnswer": false
 		},
 		"alt2": {
 			"class": "com.testgame.Models.Alternative",
-			"text": "613",
+			"text": "Duck-1",
 			"isCorrectAnswer": false
 		},
 		"alt3":{
@@ -438,18 +438,18 @@
 		"questionText": "Hvor mange delstater er det i USA?",
 		"alt1": {
 			"class": "com.testgame.Models.Alternative",
-			"text": "48",
+			"text": "49",
 			"isCorrectAnswer": false
 		},
 		"alt2": {
 			"class": "com.testgame.Models.Alternative",
-			"text": "49",
-			"isCorrectAnswer": false
+			"text": "50",
+			"isCorrectAnswer": true
 		},
 		"alt3":{
 			"class": "com.testgame.Models.Alternative",
-			"text": "50",
-			"isCorrectAnswer": true
+			"text": "51",
+			"isCorrectAnswer": false
 		},
 		"alt4":{
 			"class": "com.testgame.Models.Alternative",
@@ -511,7 +511,7 @@
 		},
 		"alt4":{
 			"class": "com.testgame.Models.Alternative",
-			"text": "Sør-Kina-havet",
+			"text": "S\u00F8r-Kina-havet",
 			"isCorrectAnswer": false
 		},
 		"category": {
